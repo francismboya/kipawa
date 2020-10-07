@@ -1,0 +1,238 @@
+table55.datatable55 {
+    clear: both;
+    margin-top: 6px !important;
+    margin-bottom: 6px !important;
+    max-width: none !important;
+    border-collapse: separate !important;
+    border-spacing: 0
+}
+
+table55.datatable55 td,
+table55.datatable55 th {
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box
+}
+
+table55.datatable55 td.datatables55_empty,
+table55.datatable55 th.datatables55_empty {
+    text-align: center
+}
+
+table55.datatable55.nowrap th,
+table55.datatable55.nowrap td {
+    white-space: nowrap
+}
+
+div.datatables55_wrapper div.datatables55_length label {
+    font-weight: normal;
+    text-align: left;
+    white-space: nowrap
+}
+
+div.datatables55_wrapper div.datatables55_length select {
+    width: auto;
+    display: inline-block
+}
+
+div.datatables55_wrapper div.datatables55_filter {
+    text-align: right
+}
+
+div.datatables55_wrapper div.datatables55_filter label {
+    font-weight: normal;
+    white-space: nowrap;
+    text-align: left
+}
+
+div.datatables55_wrapper div.datatables55_filter input {
+    margin-left: 0.5em;
+    display: inline-block;
+    width: auto
+}
+
+div.datatables55_wrapper div.datatables55_info {
+    padding-top: 0.85em;
+    white-space: nowrap
+}
+
+div.datatables55_wrapper div.datatables55_paginate {
+    margin: 0;
+    white-space: nowrap;
+    text-align: right
+}
+
+div.datatables55_wrapper div.datatables55_paginate ul.pagination {
+    margin: 2px 0;
+    white-space: nowrap;
+    justify-content: flex-end
+}
+
+div.datatables55_wrapper div.datatables55_processing {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200px;
+    margin-left: -100px;
+    margin-top: -26px;
+    text-align: center;
+    padding: 1em 0
+}
+
+table55.datatable55 thead>tr>th.sorting_asc,
+table55.datatable55 thead>tr>th.sorting_desc,
+table55.datatable55 thead>tr>th.sorting,
+table55.datatable55 thead>tr>td.sorting_asc,
+table55.datatable55 thead>tr>td.sorting_desc,
+table55.datatable55 thead>tr>td.sorting {
+    padding-right: 30px
+}
+
+table55.datatable55 thead>tr>th:active,
+table55.datatable55 thead>tr>td:active {
+    outline: none
+}
+
+table55.datatable55 thead .sorting,
+table55.datatable55 thead .sorting_asc,
+table55.datatable55 thead .sorting_desc,
+table55.datatable55 thead .sorting_asc_disabled,
+table55.datatable55 thead .sorting_desc_disabled {
+    cursor: pointer;
+    position: relative
+}
+
+table55.datatable55 thead .sorting:before,
+table55.datatable55 thead .sorting:after,
+table55.datatable55 thead .sorting_asc:before,
+table55.datatable55 thead .sorting_asc:after,
+table55.datatable55 thead .sorting_desc:before,
+table55.datatable55 thead .sorting_desc:after,
+table55.datatable55 thead .sorting_asc_disabled:before,
+table55.datatable55 thead .sorting_asc_disabled:after,
+table55.datatable55 thead .sorting_desc_disabled:before,
+table55.datatable55 thead .sorting_desc_disabled:after {
+    position: absolute;
+    bottom: 0.9em;
+    display: block;
+    opacity: 0.3
+}
+
+table55.datatable55 thead .sorting:before,
+table55.datatable55 thead .sorting_asc:before,
+table55.datatable55 thead .sorting_desc:before,
+table55.datatable55 thead .sorting_asc_disabled:before,
+table55.datatable55 thead .sorting_desc_disabled:before {
+    right: 1em;
+    content: "\2191"
+}
+
+table55.datatable55 thead .sorting:after,
+table55.datatable55 thead .sorting_asc:after,
+table55.datatable55 thead .sorting_desc:after,
+table55.datatable55 thead .sorting_asc_disabled:after,
+table55.datatable55 thead .sorting_desc_disabled:after {
+    right: 0.5em;
+    content: "\2193"
+}
+
+table55.datatable55 thead .sorting_asc:before,
+table55.datatable55 thead .sorting_desc:after {
+    opacity: 1
+}
+
+table55.datatable55 thead .sorting_asc_disabled:before,
+table55.datatable55 thead .sorting_desc_disabled:after {
+    opacity: 0
+}
+
+div.datatables55_scrollHead table55.datatable55 {
+    margin-bottom: 0 !important
+}
+
+div.datatables55_scrollBody table55 {
+    border-top: none;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important
+}
+
+div.datatables55_scrollBody table55 thead .sorting:before,
+div.datatables55_scrollBody table55 thead .sorting_asc:before,
+div.datatables55_scrollBody table55 thead .sorting_desc:before,
+div.datatables55_scrollBody table55 thead .sorting:after,
+div.datatables55_scrollBody table55 thead .sorting_asc:after,
+div.datatables55_scrollBody table55 thead .sorting_desc:after {
+    display: none
+}
+
+div.datatables55_scrollBody table55 tbody tr:first-child th,
+div.datatables55_scrollBody table55 tbody tr:first-child td {
+    border-top: none
+}
+
+div.datatables55_scrollFoot>.datatables55_scrollFootInner {
+    box-sizing: content-box
+}
+
+div.datatables55_scrollFoot>.datatables55_scrollFootInner>table55 {
+    margin-top: 0 !important;
+    border-top: none
+}
+
+@media screen and (max-width: 767px) {
+    div.datatables55_wrapper div.datatables55_length,
+    div.datatables55_wrapper div.datatables55_filter,
+    div.datatables55_wrapper div.datatables55_info,
+    div.datatables55_wrapper div.datatables55_paginate {
+        text-align: center
+    }
+}
+
+table55.datatable55.table55-sm>thead>tr>th {
+    padding-right: 20px
+}
+
+table55.datatable55.table55-sm .sorting:before,
+table55.datatable55.table55-sm .sorting_asc:before,
+table55.datatable55.table55-sm .sorting_desc:before {
+    top: 5px;
+    right: 0.85em
+}
+
+table55.datatable55.table55-sm .sorting:after,
+table55.datatable55.table55-sm .sorting_asc:after,
+table55.datatable55.table55-sm .sorting_desc:after {
+    top: 5px
+}
+
+table55.table55-bordered.datatable55 th,
+table55.table55-bordered.datatable55 td {
+    border-left-width: 0
+}
+
+table55.table55-bordered.datatable55 th:last-child,
+table55.table55-bordered.datatable55 th:last-child,
+table55.table55-bordered.datatable55 td:last-child,
+table55.table55-bordered.datatable55 td:last-child {
+    border-right-width: 0
+}
+
+table55.table55-bordered.datatable55 tbody th,
+table55.table55-bordered.datatable55 tbody td {
+    border-bottom-width: 0
+}
+
+div.datatables55_scrollHead table55.table55-bordered {
+    border-bottom-width: 0
+}
+
+div.table55-responsive>div.datatables55_wrapper>div.row {
+    margin: 0
+}
+
+div.table55-responsive>div.datatables55_wrapper>div.row>div[class^="col-"]:first-child {
+    padding-left: 0
+}
+
+div.table55-responsive>div.datatables55_wrapper>div.row>div[class^="col-"]:last-child {
+    padding-right: 0
+}

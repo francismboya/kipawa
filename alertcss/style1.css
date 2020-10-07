@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+* {
+    box-sizing: border-box;
+}
+
+#body1,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: rgb(173, 238, 232);
+    background-image: url("../img/nzu.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+body {
+    background: #e7e2ec;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Montserrat', sans-serif;
+    height: 100vh;
+    margin: -20px 0 50px;
+}
+
+.user-card {
+    margin-top: auto;
+    margin-bottom: auto;
+    background: rgb(245, 244, 243);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+    box-shadow: 0 4px 8px 0 rgb(248, 232, 230), 0 6px 20px 0 rgb(248, 232, 230);
+    -webkit-box-shadow: 0 4px 8px 0 rgb(248, 232, 230), 0 6px 20px 0 rgb(248, 232, 230);
+    -moz-box-shadow: 0 4px 8px 0 rgb(248, 232, 230), 0 6px 20px 0 rgb(248, 232, 230);
+    border-radius: 5px;
+    height: 100%;
+    width: 200%;
+}
+
+.brand-logo-container {
+    position: absolute;
+    height: 160px;
+    width: 160px;
+    top: 0px;
+    text-align: center;
+    border-radius: 50%;
+    padding: 5px;
+    background: rgb(245, 244, 243);
+}
+
+.brand-logo {
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+.form_container {
+    margin-top: 190px;
+}
+
+.login_btn {
+    width: 52%;
+    margin-top: 0px;
+    background-color: rgb(56, 59, 228);
+    color: white !important;
+}
+
+.login_btn:focus {
+    box-shadow: none;
+    outline: 0px !important;
+}
+
+.login_container {
+    padding: 0 2rem;
+}
+
+.input-group-text {
+    background: rgb(56, 59, 228);
+    color: hsl(0, 0%, 100%);
+    border: 0 !important;
+    border-radius: 0.25rem 0 0 0.25rem;
+}
+
+.input_user,
+.input_pass:focus {
+    box-shadow: none !important;
+    outline: 0px !important;
+}
+
+.custom-checkbox .custom-control-input:checked-.custom-control-label::before {
+    background-color: rgb(56, 59, 228);
+}
+
+.login_btn:hover {
+    background-color: rgb(42, 178, 231);
+}
+
+.newer {
+    color: blue;
+    font-size: x-large;
+}
+
+.small-dev {
+    display: none;
+    visibility: hidden;
+}
+
+footer {
+    background-color: #222;
+    color: #fff;
+    bottom: 0;
+    position: fixed;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 999;
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: url("../img/nzuf.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+footer p {
+    margin: 10px 0;
+    font-weight: 900;
+    font-size: 22px;
+}
+
+footer i {
+    color: rgb(240, 230, 230);
+    background-color: lavender;
+}
+
+footer a {
+    color: #3c97bf;
+}
+
+@media only screen and (orientation: landscape) {
+    footer {
+        background-color: lightblue;
+        visibility: visible;
+    }
+}
+
+@media screen and (max-width: 587px) {
+    .user-card {
+        width: 400px
+    }
+    .small-dev {
+        visibility: hidden;
+    }
+}
+
+@media screen and (max-width: 421px) {
+    .user-card {
+        width: 200px
+    }
+    .small-dev {
+        visibility: visible;
+        display: initial;
+    }
+    .large-dev {
+        visibility: hidden;
+        display: none;
+    }
+}
+
+@media screen and (min-width: 422px) {
+    .small-dev {
+        visibility: hidden;
+    }
+}
+
+@media screen and (max-width: 200px) {
+    .user-card {
+        width: 100px;
+    }
+    .brand-logo-container {
+        width: 25px;
+    }
+    .brand-logo {
+        height: 180px;
+        width: 24px;
+    }
+    .form_container {
+        width: 100px;
+    }
+    .login_btn {
+        width: 100px;
+        margin-top: 0px;
+    }
+}

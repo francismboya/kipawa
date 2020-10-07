@@ -1,0 +1,98 @@
+#diva {
+    width: 50px;
+    height: 30px;
+    position: relative;
+}
+
+#smallsmall {
+    width: 100px;
+    height: 30px;
+    position: relative;
+}
+
+.animate {
+    display: inline;
+}
+
+#diva2 {
+    width: 50px;
+    height: 30px;
+    position: relative;
+    animation-name: example2;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    background-size: cover;
+}
+
+.disabl {
+    pointer-events: none;
+    cursor: default;
+}
+
+@keyframes example2 {
+    0% {
+        left: 0px;
+        top: 0px;
+    }
+    25% {
+        left: 50px;
+        top: 0px;
+    }
+    50% {
+        left: 50px;
+        top: 0px;
+    }
+    75% {
+        left: 0px;
+        top: 0px;
+    }
+    100% {
+        left: 0px;
+        top: 0px;
+    }
+}
+
+@media only screen and (orientation: landscape) {
+    #diva {
+        visibility: visible;
+        display: initial;
+    }
+    #diva2 {
+        visibility: visible;
+        display: initial;
+    }
+    #smallsmall {
+        visibility: hidden;
+        display: none;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    #smallsmall {
+        visibility: visible;
+        display: initial;
+    }
+    #diva {
+        visibility: hidden;
+        display: none;
+    }
+    #diva2 {
+        visibility: hidden;
+        display: none;
+    }
+}
+
+@media screen and (min-width: 576px) {
+    #smallsmall {
+        visibility: hidden;
+        display: none;
+    }
+    #diva {
+        visibility: visible;
+        display: initial;
+    }
+    #diva2 {
+        visibility: visible;
+        display: initial;
+    }
+}

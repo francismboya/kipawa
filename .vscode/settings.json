@@ -1,0 +1,6 @@
+{
+    "workbench.editor.closeOnFileDelete": true,
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "workbench.editor.enablePreview": false
+}

@@ -1,0 +1,303 @@
+<head>
+    <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel='stylesheet' href='../vendor/bootstrap/css/bootstrap.min.css'>
+</head>
+<?php
+include '../includes/connection.php';
+include '../includes/sidebar.php';
+include 'studentfile.php';
+$users = $_SESSION['users'];
+$typid = $_SESSION['typid'];
+$ID = $_SESSION['id'];
+
+$query = "SELECT u." . $ID . ", t.statusName
+                          FROM " . $users . " u
+                          JOIN status t ON t.email=u.email WHERE u.email = '" . $_SESSION['email'] . "'";
+$result = mysqli_query($db, $query) or die(mysqli_error($db));
+
+while ($row = mysqli_fetch_assoc($result)) {
+    $Aa = $row['statusName'];
+
+    if ($Aa == 'User') {
+        ?>
+<script type="text/javascript">
+//then it will be redirected
+alert("Restricted Page! You will be redirected to POS");
+window.location = "pos.php";
+</script>
+<?php
+}
+}
+$sql = "SELECT regno, fname, mname, lname, depertmentid,
+year, level, email, gender, state, regdate, programID, phoneno FROM student";
+$result = mysqli_query($db, $sql) or die("Bad SQL: $sql");
+
+//$aaa = "<select class='form-control' name='category' required>
+//        <option disabled selected hidden>Select Category</option>";
+// while ($row = mysqli_fetch_assoc($result)) {
+//   $aaa .= "<option value='".$row['CATEGORY_ID']."'>".$row['CNAME']."</option>";
+//}
+
+//$aaa .= "</select>";
+
+//$sql2 = "SELECT DISTINCT SUPPLIER_ID, COMPANY_NAME FROM supplier order by COMPANY_NAME asc";
+//$result2 = mysqli_query($db, $sql2) or die ("Bad SQL: $sql2");
+
+//$sup = "<select class='form-control' name='supplier' required>
+//  <option disabled selected hidden>Select Supplier</option>";
+//while ($row = mysqli_fetch_assoc($result2)) {
+// $sup .= "<option value='".$row['SUPPLIER_ID']."'>".$row['COMPANY_NAME']."</option>";
+// }
+
+//$sup .= "</select>";
+
+?>
+
+<?php
+$sqldip = "SELECT DISTINCT depertmentID, dName FROM department order by depertmentID asc";
+$result = mysqli_query($db, $sqldip) or die("Bad SQL: $sqldip");
+
+$dip = "<select class='form-control' name='deparment' required>
+        <option value='' disabled selected hidden>Select Department</option>";
+while ($row = mysqli_fetch_assoc($result)) {
+    $dip .= "<option value='" . $row['depertmentID'] . "'>" . $row['dName'] . "</option>";
+}
+$dip .= "</select>";
+
+$sqlpro = "SELECT DISTINCT programID, pName
+FROM program order by programID asc";
+$result = mysqli_query($db, $sqlpro) or die("Bad SQL: $sqlpro");
+
+$pro = "<select class='form-control col-sm-12' name='program' required>
+        <option value='' disabled selected hidden>Select Program</option>";
+while ($row = mysqli_fetch_assoc($result)) {
+    $pro .= "<option value='" . $row['programID'] . "'>" . $row['pName'] . "</option>";
+}
+
+$pro .= "</select>";
+?>
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <div class="row col-sm-12">
+            <h4 class="m-2 col-sm-4 font-weight-bold text-primary">Add Student&nbsp;<a href="#" data-toggle="modal"
+                    data-target="#aModal" type="button" class="btn btn-primary bg-gradient-primary"
+                    style="border-radius: 0px;"><i class="fas fa-fw fa-plus"></i></a></h4>
+            <h4 class="m-2 col-sm-6 font-weight-bold text-primary">Import Student Detail from csv file &nbsp;<a href="#"
+                    data-toggle="modal" data-target="#abModal" type="button" class="btn btn-primary bg-gradient-primary"
+                    style="border-radius: 0px;"><i class="fas fa-paperclip" aria-hidden="true"></i></a></h4>
+        </div>
+
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Reg no</th>
+                        <th>Name</th>
+                        <th>Department</th>
+                        <th>contact</th>
+                        <th>Program</th>
+                        <th>gender</th>
+
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <?php $query = "SELECT regno, fname, mname, lname, student.depertmentid,
+year, student.level, email, gender, state, regdate, program.programID, program.pName, phoneno FROM student
+join program on program.programID=student.programID
+";
+$result = mysqli_query($db, $query) or die(mysqli_error($db));
+
+while ($row = mysqli_fetch_assoc($result)) {
+
+    echo '<tr>';
+    echo '<td>' . $row['regno'] . '</td>';
+    echo '<td>' . $row['fname'] . ' ' . $row['mname'] . ' ' . $row['lname'] . '</td>';
+    echo '<td>' . $row['depertmentid'] . '</td>';
+    echo '<td>' . '' . $row['phoneno'] . '<br>' . $row['email'] . '</td>';
+    echo '<td>' . '(' . $row['programID'] . ') ' . $row['pName'] . '</td>';
+    echo '<td>' . $row['gender'] . '</td>';
+    echo '<td align="right"> <div class="btn-group">
+                              <a type="button" class="btn btn-primary bg-gradient-primary" href="pro_searchfrm.php?action=edit & id=' . $row['regno'] . '"><i class="fas fa-fw fa-list-alt"></i> Details</a>
+                            <div class="btn-group">
+                              <a type="button" class="btn btn-primary bg-gradient-primary dropdown no-arrow" data-toggle="dropdown" style="color:white;">
+                              ... <span class="caret"></span></a>
+                            <ul class="dropdown-menu text-center" role="menu">
+                                <li>
+                                  <a type="button" class="btn btn-warning bg-gradient-warning btn-block" style="border-radius: 0px;" href="pro_edit.php?action=edit & id=' . $row['regno'] . '">
+                                    <i class="fas fa-fw fa-edit"></i> Edit
+                                  </a>
+                                </li>
+                            </ul>
+                            </div>
+                          </div> </td>';
+    echo '</tr> ';
+}
+?>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<?php
+include '../includes/footer.php';
+?>
+
+<!-- Customer Modal-->
+<div class="modal fade" id="aModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add New student</h5>
+
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+
+            </div>
+            <div class="modal-body">
+
+
+                <form role="form" method="post" action="pro_transac.php?action=add" class="form-horizontal">
+                    <!--image-->
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-sm-6 imgUp">
+                                <div class="imagePreview"></div>
+                                <label class="btn btn-primary col-sm-12">
+                                    Upload profile photo<input type="file" class="uploadFile img" value="Upload Photo"
+                                        style="width:0px;height: 0px;overflow: hidden;">
+                                </label>
+                            </div><!-- col-2 -->
+                        </div><!-- row -->
+                    </div><!-- container -->
+                    <!--image-->
+                    <!--image-->
+                    <script src="../js/script.js"></script>
+                    <!--image-->
+                    <div class="row">
+                        <div class="form-group col-sm-4">
+                            <input class="form-control " placeholder="First Name" name="firstname" required>
+
+                        </div>
+                        <div class="form-group col-sm-4">
+                            <input class="form-control" placeholder="Middle Name" name="firstname">
+
+                        </div>
+
+                        <div class="form-group col-sm-4">
+                            <input class="form-control " placeholder="Last Name" name="lastname" required>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-sm-4">
+                            <input class="form-control" placeholder="Email" name="email" required>
+                        </div>
+                        <div class="form-group col-sm-4">
+                            <input class="form-control" placeholder="Employee ID" name="employeeid" required>
+                        </div>
+                        <div class="form-group col-sm-4">
+                            <input class="form-control" placeholder="Phone Number" name="phonenumber" required>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <select class='form-control' name='level' required>
+                                <option value="" disabled selected hidden>Select Level</option>
+                                <option value="NTA4">NTA4</option>
+                                <option value="NTA5">NTA5</option>
+                                <option value="NTA6">NTA6</option>
+
+                            </select>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <select class='form-control' name='gender' required>
+                                <option value="" disabled selected hidden>Select Gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-sm-6">
+                                <?php echo $dip; ?>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <?php echo $pro; ?>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-sm-6">
+                                <input class="form-control " placeholder="Registration number" name="regno" required>
+
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <input placeholder="Registration Date" type="text" onfocus="(this.type='date')"
+                                    onblur="(this.type='text')" id="FromDate" name="regddate" class="form-control" />
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <hr>
+                    <button type="submit" class="btn btn-success"><i class="fa fa-check fa-fw"></i>Save</button>
+                    <button type="reset" class="btn btn-danger"><i class="fa fa-times fa-fw"></i>Reset</button>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="modal fade" id="abModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add CSV File</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form role="form" method="post" action="studentfile.php" enctype='multipart/form-data'>
+
+                    <div class="file-loading">
+
+                        <input type='file' id='csvfl' name='file' accept=".csv">
+                        <?php echo $msg
+?>
+                    </div>
+
+                    <hr>
+                    <button type="submit" name="import" class="btn btn-success"><i
+                            class="fa fa-check fa-fw"></i>Save</button>
+                    <button type="reset" class="btn btn-danger"><i class="fa fa-times fa-fw"></i>Reset</button>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>

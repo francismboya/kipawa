@@ -1,0 +1,166 @@
+html body {
+    margin: 0px;
+    padding: 0px;
+}
+
+label {
+    font-size: 28px;
+    color: #888888;
+}
+
+#identity,
+#password {
+    width: 380px;
+    height: 40px;
+    padding: 2px 20px 2px 15px;
+    border: 1px solid #ccc;
+    font-size: 25px;
+    font-weight: normal;
+    color: #888;
+    outline-color: #888;
+    outline-width: thin;
+}
+
+#identity:focus,
+#password:focus {
+    outline-color: #126784;
+    outline-width: 1px;
+}
+
+div#home {
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+}
+
+div#head {
+    height: 100px;
+    border: 0px;
+    margin: 0px;
+    background-color: #144491;
+    min-width: 1000px;
+    overflow: hidden;
+    background-image: url("../img/mundi.png");
+}
+
+div#head2 {
+    height: 30px;
+    overflow: hidden;
+}
+
+div#head nav {
+    height: 100px
+}
+
+div.login_line {
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    height: 10px;
+    background-image: url('../img/login_line.jpg');
+    min-width: 1000px;
+}
+
+div#footer {
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    height: 60px;
+    width: 100%;
+    color: #FFFFFF;
+    background-color: #144491;
+}
+
+
+/* IE 6 */
+
+* html div#footer {
+    position: absolute;
+    /*top: expression((0-(footer.offsetHeight)+(document.documentElement.clientHeight ? document.documentElement.clientHeight: document.body.clientHeight)+(ignoreMe=document.documentElement.scrollTop ? document.documentElement.scrollTop: document.body.scrollTop))+'px');
+*/
+}
+
+div#footer p#copyright {
+    margin-left: 40px;
+    float: left;
+}
+
+div#footer p#developers {
+    margin-right: 40px;
+    float: right;
+}
+
+div#footer p span {
+    font-style: italic;
+}
+
+div#footer p a {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+div#footer p a:hover {
+    color: #999;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+div#loginArea {
+    border: 2px solid #ccc;
+    width: 890px;
+    margin: 150px 250px 0px 250px;
+    background-color: transparent;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    behavior: url(border-radius.htc);
+}
+
+div#loginbox {
+    margin: 15px 0 25px 25px;
+    width: 400px;
+    height: auto;
+    /*            width: 990px;*/
+    /*               border: 1px solid green;*/
+    float: left;
+}
+
+.submit {
+    float: right;
+    font-size: 20px;
+    margin: 15px 0px 0px 0px;
+    padding: 0px 10px 0px 10px;
+}
+
+#help {
+    float: right;
+    cursor: pointer;
+}
+
+.signin {
+    text-align: left;
+    margin: 20px 10px 20px 12px;
+    border-bottom: 2px solid #888888;
+    font-size: 30px;
+    padding: 0 0 15px 0;
+}
+
+.clear {
+    clear: both;
+}
+
+@media screen and (max-width: 1256px) {
+    #vetalg {
+        visibility: hidden;
+        display: none;
+    }
+}
+
+#head {
+    background-image: url("../img/mundi.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* background-attachment: fixed;*/
+}
