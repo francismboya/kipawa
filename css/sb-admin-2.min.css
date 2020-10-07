@@ -7256,7 +7256,7 @@ button.bg-dark:hover {
 }
 
 .d-none {
-    display: none!important
+    display: inline!important
 }
 
 .d-inline {
@@ -10925,7 +10925,11 @@ a:focus {
 }
 
 .text-gray-600 {
-    color: #858796!important
+    color: #ffffff!important;
+    font-size: .85rem;
+    display: inline;
+    font-weight: 900;
+    text-transform: uppercase;
 }
 
 .text-gray-700 {
@@ -11064,7 +11068,9 @@ a:focus {
 
 .topbar {
     height: 4.375rem;
-    background-image: url(../img/mundi2.png);
+    background-image: url(../img/mundi2.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .topbar #sidebarToggleTop {
@@ -11403,7 +11409,8 @@ a:focus {
     }
     .sidebar .nav-item .nav-link span {
         font-size: .85rem;
-        display: inline
+        display: inline;
+        font-weight: 900;
     }
     .sidebar .nav-item .nav-link[data-toggle=collapse]::after {
         width: 1rem;
