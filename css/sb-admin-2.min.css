@@ -11063,12 +11063,13 @@ a:focus {
 }
 
 .topbar {
-    height: 4.375rem
+    height: 4.375rem;
+    background-image: url(../img/mundi2.png);
 }
 
 .topbar #sidebarToggleTop {
     height: 2.5rem;
-    width: 2.5rem
+    width: 2.5rem;
 }
 
 .topbar #sidebarToggleTop:hover {
