@@ -194,7 +194,7 @@ while ($row = mysqli_fetch_array($result)) {
                                 <div class="panel-body">
                                     <div class="list-group">
                                         <?php
-$query = "SELECT email, ostate FROM loginST  where ostate='online' order by OID DESC LIMIT 10";
+$query = "SELECT email FROM employee  order by email DESC LIMIT 10";
 $result = mysqli_query($db, $query) or die(mysqli_error($db));
 while ($row = mysqli_fetch_array($result)) {
 

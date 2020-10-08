@@ -1,6 +1,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=0.6 user-scalable=no">
 </head>
+
 <!-- Content Wrapper -->
 <div id="content-wrapper" class="d-flex flex-column">
 
@@ -53,7 +54,7 @@ $query = "SELECT u." . $ID . ", fname, lname, u.email, l.password
 $result = mysqli_query($db, $query) or die(mysqli_error($db));
 
 while ($row = mysqli_fetch_assoc($result)) {
-    $a = $_SESSION['ID'];
+    echo $a = $_SESSION['ID'];
 }
 
 ?>
