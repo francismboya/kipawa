@@ -54,7 +54,7 @@ $query = "SELECT u." . $ID . ", fname, lname, u.email, l.password
 $result = mysqli_query($db, $query) or die(mysqli_error($db));
 
 while ($row = mysqli_fetch_assoc($result)) {
-    echo $a = $_SESSION['ID'];
+    $a = $_SESSION['ID'];
 }
 
 ?>
