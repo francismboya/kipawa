@@ -63,9 +63,10 @@ $pro .= "</select>";
     <div class="card-header py-3">
         <div class="row col-sm-12">
             <h4 class="m-2 col-sm-5 font-weight-bold text-primary">Upload Coursework&nbsp;
-                    <a href="#"
-                    data-toggle="modal" data-target="#aModal" type="button" class="btn btn-primary bg-gradient-primary"
-                    style="border-radius: 0px;"><i class="fas fa-paperclip"></i></a></h4>
+                <a href="#" data-toggle="modal" data-target="#aModal" type="button"
+                    class="btn btn-primary bg-gradient-primary" style="border-radius: 0px;"><i
+                        class="fas fa-paperclip"></i></a>
+            </h4>
             <h4 class="m-2 col-sm-5 font-weight-bold text-primary">Upload course Result &nbsp;<a href="#"
                     data-toggle="modal" data-target="#abModal" type="button" class="btn btn-primary bg-gradient-primary"
                     style="border-radius: 0px;"><i class="fas fa-paperclip" aria-hidden="true"></i></a></h4>
@@ -181,38 +182,38 @@ include '../includes/footer.php';
                             </select>
                         </div>
                         <?php
-                        $emp=$_SESSION['ID'];
-                        $query = "SELECT employee.employeeID, course.courseID,course.cName, course.programID, course.level, course.credit, course.classfication from employee left join course on course.employeeID=employee.employeeID where employee.employeeID='".$emp."'";
-                        $result = mysqli_query($db, $query) or die(mysqli_error($db));
-                        $courseID=array();
-                        $cName=array();
-                        $levo= array();
-                        $len=count($courseID); 
-                        $value=array();
+$emp = $_SESSION['ID'];
+$query = "SELECT employee.employeeID, course.courseID,course.cName, course.programID, course.level, course.credit, course.classfication from employee left join course on course.employeeID=employee.employeeID where employee.employeeID='" . $emp . "'";
+$result = mysqli_query($db, $query) or die(mysqli_error($db));
+$courseID = array();
+$cName = array();
+$levo = array();
+$len = count($courseID);
+$value = array();
 
 while ($row = mysqli_fetch_assoc($result)) {
-                        ?>
+    ?>
                         <div class="form-group col-sm-6">
                             <select class='form-control' name='gender' required>
-                              <option value="" disabled selected hidden>Select Course</option>
+                                <option value="" disabled selected hidden>Select Course</option>
                                 <option value="NTA4">NTA4</option>
                                 <option value="NTA5">NTA5</option>
                                 <option value="NTA6">NTA6</option>
 
                             </select>
                         </div>
-                        </div>
+                    </div>
                     <hr>
                     <button type="submit" class="btn btn-success"><i class="fa fa-check fa-fw"></i>Save</button>
                     <button type="reset" class="btn btn-danger"><i class="fa fa-times fa-fw"></i>Reset</button>
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                 </form>
-                </div>
             </div>
         </div>
     </div>
 </div>
-<?php } ?>
+</div>
+<?php }?>
 <div class="modal fade" id="abModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">

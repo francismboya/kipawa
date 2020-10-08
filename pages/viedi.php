@@ -12,7 +12,7 @@ $ID = $_SESSION['id'];
 $name1 = $_SESSION['fname'];
 $name2 = $_SESSION['lname'];
 ?>
-<div class="card-body padding-top:200px">
+<div class="card-body">
     <div class="table-responsive">
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
             <thead>
