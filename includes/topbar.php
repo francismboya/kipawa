@@ -21,18 +21,18 @@
 
                 <li class="nav-item dropdown no-arrow">
                     <a class="nav-link" href="pos.php" role="button">
-                        <span class="mr-2 d-none d-lg-inline text-gray-600 small">POS</span>
+                        <span class="mr-2 d-non255e d-lg-inline text-gray-600 small">POS</span>
                     </a>
                 </li>
 
-                <div class="topbar-divider d-none d-sm-block"></div>
+                <div class="topbar-divider d-non255e d-sm-block"></div>
 
                 <!-- Nav Item - User Information -->
                 <li class="nav-item dropdown no-arrow">
                     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
                         <span
-                            class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['fname'] . ' ' . $_SESSION['lname']; ?></span>
+                            class="mr-2 d-non255e d-lg-inline text-gray-600 small"><?php echo $_SESSION['fname'] . ' ' . $_SESSION['lname']; ?></span>
                         <img class="img-profile rounded-circle" <?php
 if ($_SESSION['gender'] == 'male') {
     echo 'src="../img/male.png"';
