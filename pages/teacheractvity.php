@@ -36,23 +36,31 @@ window.location = "pos.php";
     <link rel="stylesheet" href="../assets/assetsani/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/assetsani/css/Animated-Type-Heading.css">
     <link rel="stylesheet" href="../assets/assetsani/css/styles.css">
+
+    <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel='stylesheet' href='../vendor/bootstrap/css/bootstrap.min.css'>
 </head>
 
-<body>
-    <div class="caption v-middle text-center">
-        <h1 class="cd-headline clip">
-            <span class="blc">Welcome| </span>
-            <span class="cd-words-wrapper">
-                <b class="is-visible"><?php echo $name1 . " " . $name2 ?></b>
-                <b>Teacher Dashboard </b>
-                <!--<b>Teacher</b>-->
-            </span>
-        </h1>
-    </div>
-    <script src="../assets/js/jquery.min.js"></script>
-    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../assets/js/Animated-Type-Heading.js"></script>
-</body>
+
+<div class="caption v-middle text-center">
+    <h1 class="cd-headline clip">
+        <span class="blc">Welcome| </span>
+        <span class="cd-words-wrapper">
+            <b class="is-visible"><?php echo $name1 . " " . $name2 ?></b>
+            <b>Teacher Dashboard </b>
+            <!--<b>Teacher</b>-->
+        </span>
+    </h1>
+</div>
+
+<script src="../assets/js/jquery.min.js"></script>
+<script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="../assets/js/Animated-Type-Heading.js"></script>
+
 
 </html>
 
