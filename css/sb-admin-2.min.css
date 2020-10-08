@@ -1765,7 +1765,11 @@ pre code {
 .table {
     width: 100%;
     margin-bottom: 1rem;
-    background-color: transparent
+    color: black;
+    border-top: 2px;
+    border-left: 3px;
+    border-right: 3px;
+    border-bottom: 2px;
 }
 
 .table td,
@@ -2055,6 +2059,7 @@ pre code {
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
         -ms-overflow-style: -ms-autohiding-scrollbar
+
     }
     .table-responsive-sm>.table-bordered {
         border: 0
@@ -2105,7 +2110,11 @@ pre code {
     width: 100%;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
-    -ms-overflow-style: -ms-autohiding-scrollbar
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    font-family: sans-serif;
+    font-size: 25px;
+    color: black;
+        
 }
 
 .table-responsive>.table-bordered {
