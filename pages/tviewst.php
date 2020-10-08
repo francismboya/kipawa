@@ -14,15 +14,16 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel='stylesheet' href='../vendor/bootstrap/css/bootstrap.min.css'>
 </head>
+
 <body>
-<?php
+    <?php
 include '../includes/connection.php';
 include '../includes/tsidebar.php';
 $users = $_SESSION['users'];
 $typid = $_SESSION['typid'];
 $ID = $_SESSION['id'];
-$emp=$_SESSION['ID'];
-$data=''; // env data
+$emp = $_SESSION['ID'];
+$data = ''; // env data
 $query = "SELECT u." . $ID . ", t.statusName
                           FROM " . $users . " u
                           JOIN status t ON t.email=u.email WHERE u.email = '" . $_SESSION['email'] . "'";
@@ -33,19 +34,19 @@ while ($row = mysqli_fetch_assoc($result)) {
 
     if ($Aa == 'User') {
         ?>
-<script type="text/javascript">
-//then it will be redirected
-alert("Restricted Page! You will be redirected to POS");
-window.location = "pos.php";
-</script>
-<?php
+    <script type="text/javascript">
+    //then it will be redirected
+    alert("Restricted Page! You will be redirected to POS");
+    window.location = "pos.php";
+    </script>
+    <?php
 }
 }
 $sql = "SELECT regno, fname, mname, lname, depertmentid,
 year, level, email, gender, state, regdate, programID, phoneno FROM student";
 $result = mysqli_query($db, $sql) or die("Bad SQL: $sql");
 ?>
-<?php
+    <?php
 $sqldip = "SELECT DISTINCT depertmentID, dName FROM department order by depertmentID asc";
 $result = mysqli_query($db, $sqldip) or die("Bad SQL: $sqldip");
 
@@ -69,76 +70,124 @@ while ($row = mysqli_fetch_assoc($result)) {
 $pro .= "</select>";
 ?>
 
-<div class="card shadow mb-"6>
+    <div class="card shadow mb-" 6>
         <?php
-            $query = "select student.regno,student.fname,student.lname, student.programID, courseprogram.level,program.programID,program.pName,course.courseID,course.employeeID,course.cName,course.depertmentID,course.level  from student join courseprogram on courseprogram.programID=student.programID join course on course.courseID=courseprogram.courseID join program on program.programID=student.programID where course.employeeID='".$emp."' and student.level= courseprogram.level" ;
+$query = "select student.regno,student.fname,student.lname, student.programID, courseprogram.level,program.programID,program.pName,course.courseID,course.employeeID,course.cName,course.depertmentID,course.level  from student join courseprogram on courseprogram.programID=student.programID join course on course.courseID=courseprogram.courseID join program on program.programID=student.programID where course.employeeID='" . $emp . "' and student.level= courseprogram.level";
 $result = mysqli_query($db, $query) or die(mysqli_error($db));
-$k=0;
-$j=0;
-$counter=0;
-$courseID =array();
-$regno=array();
-$fname=array();
-$lname=array();
-$programID=array();
-$level=array();
-$pName=array();
-$employeeID=array();
-$cName=array();
-$depertmentID=array();
-$href=array();
+$k = 0;
+$j = 0;
+$counter = 0;
+$courseID = array();
+$regno = array();
+$fname = array();
+$lname = array();
+$programID = array();
+$level = array();
+$pName = array();
+$employeeID = array();
+$cName = array();
+$depertmentID = array();
+$href = array();
 while ($row = mysqli_fetch_assoc($result)) {
-    $regno[$counter]=$row['regno'];
-    if(!in_array($row['courseID'], $courseID)){
-    $courseID[count($courseID)] =$row['courseID'];
-  # code...
+    $regno[$counter] = $row['regno'];
+    if (!in_array($row['courseID'], $courseID)) {
+        $courseID[count($courseID)] = $row['courseID'];
+        # code...
     }
     $counter++;
- } 
- $len=count($courseID); 
- ?>
-<div class="col-md-12">
-        <div class="div class="col-md-12 mb-12">
-    <div class="table-responsive">
-    <div class="container py-5">
-<div class="p-5 bg-white rounded shadow mb-5">
-    <!-- Bordered tabs-->
-    <ul id="myTab1" role="tablist" class="nav nav-tabs nav-pills with-arrow flex-column flex-sm-row text-center">
-<?php
+}
+$len = count($courseID);
+?>
+        <div class="col-md-12">
+            <div class="div class=" col-md-12 mb-12">
+                <div class="table-responsive">
+                    <div class="container py-5">
+                        <div class="p-5 bg-white rounded shadow mb-5">
+                            <!-- Bordered tabs-->
+                            <ul id="myTab1" role="tablist"
+                                class="nav nav-tabs nav-pills with-arrow flex-column flex-sm-row text-center">
+                                <?php
 
-for($i=0; $i<$len; $i++){
-    while ($j<$len) {
-            if($j==0){
-                    $upl='<li class="nav-item flex-sm-fill">
+for ($i = 0; $i < $len; $i++) {
+    while ($j < $len) {
+        if ($j == 0) {
+            $upl = '<li class="nav-item flex-sm-fill">
         <a id="home1-tab" data-toggle="tab" href=';
-        $href[$j]='"#'.$courseID[$j].'"';
-        $dwl='role="tab" aria-controls="home1" aria-selected="true" class="nav-link text-uppercase font-weight-bold mr-sm-3 rounded-0 border active">';
-        $course=$courseID[$j].'</a>';
-        $record=$upl.$href[$j].$dwl.$course;
-        echo $record;
-            }else{
-                $upl='<li class="nav-item flex-sm-fill">
+            $href[$j] = '"#' . $courseID[$j] . '"';
+            $dwl = 'role="tab" aria-controls="home1" aria-selected="true" class="nav-link text-uppercase font-weight-bold mr-sm-3 rounded-0 border active">';
+            $course = $courseID[$j] . '</a>';
+            $record = $upl . $href[$j] . $dwl . $course;
+            echo $record;
+        } else {
+            $upl = '<li class="nav-item flex-sm-fill">
         <a id="home1-tab" data-toggle="tab" href=';
-        $href[$j]='"#'.$courseID[$j].'"';
-        $dwl='role="tab" aria-controls="profile1" aria-selected="false" class="nav-link text-uppercase font-weight-bold mr-sm-3 rounded-0 border">';
-        $course=$courseID[$j].'</a>';
-        $record=$upl.$href[$j].$dwl.$course;
-        echo $record;
-            }
-            $j++;
-
+            $href[$j] = '"#' . $courseID[$j] . '"';
+            $dwl = 'role="tab" aria-controls="profile1" aria-selected="false" class="nav-link text-uppercase font-weight-bold mr-sm-3 rounded-0 border">';
+            $course = $courseID[$j] . '</a>';
+            $record = $upl . $href[$j] . $dwl . $course;
+            echo $record;
         }
-        if($k==0){
+        $j++;
+
+    }
+    if ($k == 0) {
         echo "</ul>";
         $k++;
+    }
+    if ($i == 0) {
+        $headt = '<div id="myTab1Content" class="tab-content">';
+        $hrefd = '<div id="' . substr($href[$i], 2);
+        $tbody1 = 'role="tabpanel" aria-labelledby="home-tab" class="tab-pane fade px-4 py-5 show active">
+       <table class="table">
+            <thead>
+                <tr><h4> Student enrolled in course' . ' ' . $courseID[$i] . '</h4></tr>   <tr>
+                        <th>Reg no</th>
+                        <th>Name</th>
+                        <th>Department</th>
+                        <th>Program</th>
+                        <th>NTA Level</th>
+                    </tr>
+                </thead>
+                <tbody>';
+        $sql3 = "select student.regno,student.fname,student.lname, student.programID, student.depertmentID,courseprogram.level  from student join courseprogram on courseprogram.programID=student.programID AND courseprogram.level=student.level WHERE courseprogram.courseID='" . $courseID[$i] . "'";
+        $result21 = mysqli_query($db, $sql3) or die(mysqli_error($db));
+        $counter = 0;
+        $regno = array();
+
+        while ($row = mysqli_fetch_assoc($result21)) {
+            $regno[$counter] = $row['regno'];
+            $fname[$counter] = $row['fname'];
+            $lname[$counter] = $row['lname'];
+            $programID[$counter] = $row['programID'];
+            $level[$counter] = $row['level'];
+            $depertmentID[$counter] = $row['depertmentID'];
+            $counter++;
+
         }
-        if($i==0){ 
-            $headt='<div id="myTab1Content" class="tab-content">';
-        $hrefd='<div id="'.substr($href[$i], 2);
-        $tbody1='role="tabpanel" aria-labelledby="home-tab" class="tab-pane fade px-4 py-5 show active">
+        $reg2 = count($regno);
+
+        for ($r = 0; $r < $reg2; $r++) {
+            $data = $data . '<tr><td>' . $regno[$r] . '</td>' .
+                '<td>' . $fname[$r] . ' ' . $lname[$r] . '</td>' .
+                '<td>' . $depertmentID[$r] . '</td>' .
+                '<td>' . $programID[$r] . '</td>' .
+                '<td>' . $level[$r] . '</td> </tr>';
+        }
+        $close = "
+                </tbody>
+        </table>
+      </div>";
+        $divend = "</div>";
+        $edata = $headt . $hrefd . $tbody1 . $data . $close;
+        echo $edata;
+        $data = '';
+    } else {
+
+        $hrefd = '<div id="' . substr($href[$i], 2);
+        $tbody1 = 'role="tabpanel" aria-labelledby="home-tab" class="tab-pane fade px-4 py-5">
        <table class="table">
             <thead>
-                <tr><h4> Student enrolled in course'.' '.$courseID[$i].'</h4></tr>   <tr>
+                <tr><h4> Student enrolled in course' . ' ' . $courseID[$i] . '</h4></tr>   <tr>
                         <th>Reg no</th>
                         <th>Name</th>
                         <th>Department</th>
@@ -147,105 +196,52 @@ for($i=0; $i<$len; $i++){
                     </tr>
                 </thead>
                 <tbody>';
-                 $sql3 = "select student.regno,student.fname,student.lname, student.programID, student.depertmentID,courseprogram.level  from student join courseprogram on courseprogram.programID=student.programID AND courseprogram.level=student.level WHERE courseprogram.courseID='".$courseID[$i]."'";
-                $result21 = mysqli_query($db, $sql3) or die(mysqli_error($db));
-                $counter=0;
-                $regno=array();
-                
-    while ($row = mysqli_fetch_assoc($result21)) {
-    $regno[$counter]=$row['regno'];
-    $fname[$counter] =$row['fname'];
-    $lname[$counter] =$row['lname'];
-    $programID[$counter] =$row['programID'];
-    $level[$counter] =$row['level'];
-    $depertmentID[$counter] =$row['depertmentID'];
-    $counter++;
-    
- } 
-  $reg2=count($regno);
+        $sql3 = "select student.regno,student.fname,student.lname, student.programID, student.depertmentID,courseprogram.level  from student join courseprogram on courseprogram.programID=student.programID AND courseprogram.level=student.level WHERE courseprogram.courseID='" . $courseID[$i] . "'";
+        $result21 = mysqli_query($db, $sql3) or die(mysqli_error($db));
+        $counter = 0;
+        $regno = array();
 
+        while ($row = mysqli_fetch_assoc($result21)) {
+            $regno[$counter] = $row['regno'];
+            $fname[$counter] = $row['fname'];
+            $lname[$counter] = $row['lname'];
+            $programID[$counter] = $row['programID'];
+            $level[$counter] = $row['level'];
+            $depertmentID[$counter] = $row['depertmentID'];
+            $counter++;
 
-                for($r=0; $r<$reg2; $r++){
-                $data=$data.'<tr><td>' . $regno[$r] . '</td>'.
-                    '<td>' . $fname[$r]. ' ' . $lname[$r] . '</td>'.
-                    '<td>'.$depertmentID[$r].'</td>'.
-                     '<td>'.$programID[$r].'</td>'.
-                     '<td>'.$level[$r].'</td> </tr>';
-                 } 
-                $close="
+        }
+        $reg = count($regno);
+
+        for ($r = 0; $r < $reg; $r++) {
+            $data = $data . '<tr><td>' . $regno[$r] . '</td>' .
+                '<td>' . $fname[$r] . ' ' . $lname[$r] . '</td>' .
+                '<td>' . $depertmentID[$r] . '</td>' .
+                '<td>' . $programID[$r] . '</td>' .
+                '<td>' . $level[$r] . '</td> </tr>';
+        }
+        $close = "
                 </tbody>
         </table>
       </div>";
-      $divend="</div>";
-      $edata=$headt.$hrefd.$tbody1.$data.$close;
-      echo $edata;
-      $data='';
-  }
-      else
-      {
-
-        $hrefd='<div id="'.substr($href[$i], 2);
-        $tbody1='role="tabpanel" aria-labelledby="home-tab" class="tab-pane fade px-4 py-5">
-       <table class="table">
-            <thead>
-                <tr><h4> Student enrolled in course'.' '.$courseID[$i].'</h4></tr>   <tr>
-                        <th>Reg no</th>
-                        <th>Name</th>
-                        <th>Department</th>
-                        <th>Program</th>
-                        <th>NTA Level</th>
-                    </tr>
-                </thead>
-                <tbody>';
-                $sql3 = "select student.regno,student.fname,student.lname, student.programID, student.depertmentID,courseprogram.level  from student join courseprogram on courseprogram.programID=student.programID AND courseprogram.level=student.level WHERE courseprogram.courseID='".$courseID[$i]."'";
-                $result21 = mysqli_query($db, $sql3) or die(mysqli_error($db));
-                $counter=0;
-                $regno=array();
-                
-
- while ($row = mysqli_fetch_assoc($result21)) {
-    $regno[$counter]=$row['regno'];
-    $fname[$counter] =$row['fname'];
-    $lname[$counter] =$row['lname'];
-    $programID[$counter] =$row['programID'];
-    $level[$counter] =$row['level'];
-    $depertmentID[$counter] =$row['depertmentID'];
-    $counter++;
-    
- } 
- $reg=count($regno);
-
-for($r=0; $r<$reg; $r++){
-                $data=$data.'<tr><td>' . $regno[$r] . '</td>'.
-                    '<td>' . $fname[$r]. ' ' . $lname[$r] . '</td>'.
-                    '<td>'.$depertmentID[$r].'</td>'.
-                     '<td>'.$programID[$r].'</td>'.
-                     '<td>'.$level[$r].'</td> </tr>';
-                 }
-                $close="
-                </tbody>
-        </table>
-      </div>";
-      $edata=$hrefd.$tbody1.$data.$close;
-      echo $edata;
-      $data='';
-      }
-      if($i==$len-1){
+        $edata = $hrefd . $tbody1 . $data . $close;
+        echo $edata;
+        $data = '';
+    }
+    if ($i == $len - 1) {
         echo $divend;
-      }
-
-
+    }
 
     ?>
-    <?php }
+                                <?php }
 ?>
-    <!-- End bordered tabs -->
-  </div>
-  </div> 
-<?php
+                                <!-- End bordered tabs -->
+                        </div>
+                    </div>
+                    <?php
 include '../includes/footer.php';
 ?>
- <script src="../vendor/assets/js/jquery.min.js"></script>
-    <script src="../vendor/assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../vendor/stde/assets/js/jquery.min.js"></script>
-<!-- Customer Modal-->
+
+                    <script src="../vendor/assets/bootstrap/js/bootstrap.min.js"></script>
+                    <script src="../vendor/stde/assets/js/jquery.min.js"></script>
+                    <!-- Customer Modal-->

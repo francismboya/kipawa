@@ -1,5 +1,8 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=0.6 user-scalable=no">
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/Animated-Type-Heading.js"></script>
+
 </head>
 <?php
 include '../includes/connection.php';
@@ -56,10 +59,6 @@ window.location = "pos.php";
         </span>
     </h1>
 </div>
-
-<script src="../assets/js/jquery.min.js"></script>
-<script src="../assets/bootstrap/js/bootstrap.min.js"></script>
-<script src="../assets/js/Animated-Type-Heading.js"></script>
 
 
 </html>
