@@ -174,7 +174,7 @@ while ($row = mysqli_fetch_array($result)) {
 
     </div>
 
-
-    <?php
+</div>
+<?php
 include '../includes/footer.php';
 ?>

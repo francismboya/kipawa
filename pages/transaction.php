@@ -38,14 +38,14 @@ window.location = "pos.php";
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th width="19%">course code</th>
+                        <th>course code</th>
                         <th>Course name</th>
-                        <th width="13%">Department</th>
-                        <th width="13%">Level</th>
-                        <th width="13%">Credit</th>
-                        <th width="13%">classfication</th>
+                        <th>Department</th>
+                        <th>Level</th>
+                        <th>Credit</th>
+                        <th>classfication</th>
 
-                        <th width="11%">Action</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>

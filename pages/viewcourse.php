@@ -32,7 +32,7 @@ $emp = $_SESSION['ID'];
                 <?php
 $uemail = $_SESSION['email'];
 
-$query = "SELECT employee.employeeID, course.courseID,course.cName, courseprogram.programID, course.level, course.credit, course.classfication from employee left join course on course.employeeID=employee.employeeID join courseprogram on courseprogram.courseID= course.courseID where employee.employeeID='" . $emp . "' ORDER BY course.level";
+$query = "SELECT distinct course.courseID, employee.employeeID, course.cName, courseprogram.programID, course.level, course.credit, course.classfication from employee left join course on course.employeeID=employee.employeeID join courseprogram on courseprogram.courseID= course.courseID and courseprogram.level=course.level where employee.employeeID='" . $emp . "' ORDER BY course.level";
 $result = mysqli_query($db, $query) or die(mysqli_error($db));
 
 while ($row = mysqli_fetch_assoc($result)) {
