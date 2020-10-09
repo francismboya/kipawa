@@ -100,7 +100,7 @@ $len = count($courseID);
 ?>
         <div class="col-md-12">
             <div class="div class=" col-md-12 mb-12">
-                <div class="table-responsive">
+                <div class="table-responsive" style="font-size:14px">
                     <div class="container py-5">
                         <div class="p-5 bg-white rounded shadow mb-5">
                             <!-- Bordered tabs-->
@@ -141,11 +141,11 @@ for ($i = 0; $i < $len; $i++) {
        <table class="table">
             <thead>
                 <tr><h4> Student enrolled in course' . ' ' . $courseID[$i] . '</h4></tr>   <tr>
-                        <th>Reg no</th>
-                        <th>Name</th>
-                        <th>Department</th>
-                        <th>Program</th>
-                        <th>NTA Level</th>
+                        <th style="font-size:14px">Reg no</th>
+                        <th style="font-size:14px">Name</th>
+                        <th style="font-size:14px">Department</th>
+                        <th style="font-size:14px">Program</th>
+                        <th style="font-size:14px">NTA Level</th>
                     </tr>
                 </thead>
                 <tbody>';
@@ -168,10 +168,10 @@ for ($i = 0; $i < $len; $i++) {
 
         for ($r = 0; $r < $reg2; $r++) {
             $data = $data . '<tr><td>' . $regno[$r] . '</td>' .
-                '<td>' . $fname[$r] . ' ' . $lname[$r] . '</td>' .
-                '<td>' . $depertmentID[$r] . '</td>' .
-                '<td>' . $programID[$r] . '</td>' .
-                '<td>' . $level[$r] . '</td> </tr>';
+                '<td style="font-size:14px">' . $fname[$r] . ' ' . $lname[$r] . '</td>' .
+                '<td style="font-size:14px">' . $depertmentID[$r] . '</td>' .
+                '<td style="font-size:14px">' . $programID[$r] . '</td>' .
+                '<td style="font-size:14px">' . $level[$r] . '</td> </tr>';
         }
         $close = "
                 </tbody>
@@ -188,11 +188,11 @@ for ($i = 0; $i < $len; $i++) {
        <table class="table">
             <thead>
                 <tr><h4> Student enrolled in course' . ' ' . $courseID[$i] . '</h4></tr>   <tr>
-                        <th>Reg no</th>
-                        <th>Name</th>
-                        <th>Department</th>
-                        <th>Program</th>
-                        <th>NTA Level</th>
+                        <th style="font-size:14px">Reg no</th>
+                        <th style="font-size:14px">Name</th>
+                        <th style="font-size:14px">Department</th>
+                        <th style="font-size:14px">Program</th>
+                        <th style="font-size:14px">NTA Level</th>
                     </tr>
                 </thead>
                 <tbody>';
@@ -215,10 +215,10 @@ for ($i = 0; $i < $len; $i++) {
 
         for ($r = 0; $r < $reg; $r++) {
             $data = $data . '<tr><td>' . $regno[$r] . '</td>' .
-                '<td>' . $fname[$r] . ' ' . $lname[$r] . '</td>' .
-                '<td>' . $depertmentID[$r] . '</td>' .
-                '<td>' . $programID[$r] . '</td>' .
-                '<td>' . $level[$r] . '</td> </tr>';
+                '<td style="font-size:14px">' . $fname[$r] . ' ' . $lname[$r] . '</td>' .
+                '<td style="font-size:14px">' . $depertmentID[$r] . '</td>' .
+                '<td style="font-size:14px">' . $programID[$r] . '</td>' .
+                '<td style="font-size:14px">' . $level[$r] . '</td> </tr>';
         }
         $close = "
                 </tbody>

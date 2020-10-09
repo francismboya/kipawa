@@ -63,10 +63,10 @@ window.location = "pos.php";
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Email</th>
-                            <th>Name</th>
-                            <th>Position</th>
-                            <th>Option</th>
+                            <th style="font-size:14px">Email</th>
+                            <th style="font-size:14px">Name</th>
+                            <th style="font-size:14px">Position</th>
+                            <th style="font-size:14px">Option</th>
                         </tr>
                     </thead>
                     <tbody>
