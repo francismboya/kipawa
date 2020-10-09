@@ -94,18 +94,18 @@ $pro .= "</select>";
 
     </div>
     <div class="card-body">
-        <div class="table-responsive">
+        <div class="table-responsive" style="font-size:14px">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>Reg no</th>
-                        <th>Name</th>
-                        <th>Department</th>
-                        <th>contact</th>
-                        <th>Program</th>
-                        <th>gender</th>
+                        <th style="font-size:14px">Reg no</th>
+                        <th style="font-size:14px">Name</th>
+                        <th style="font-size:14px">Department</th>
+                        <th style="font-size:14px">contact</th>
+                        <th style="font-size:14px">Program</th>
+                        <th style="font-size:14px">gender</th>
 
-                        <th>Action</th>
+                        <th style="font-size:14px">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -119,13 +119,13 @@ $result = mysqli_query($db, $query) or die(mysqli_error($db));
 while ($row = mysqli_fetch_assoc($result)) {
 
     echo '<tr>';
-    echo '<td>' . $row['regno'] . '</td>';
-    echo '<td>' . $row['fname'] . ' ' . $row['mname'] . ' ' . $row['lname'] . '</td>';
-    echo '<td>' . $row['depertmentid'] . '</td>';
-    echo '<td>' . '' . $row['phoneno'] . '<br>' . $row['email'] . '</td>';
-    echo '<td>' . '(' . $row['programID'] . ') ' . $row['pName'] . '</td>';
-    echo '<td>' . $row['gender'] . '</td>';
-    echo '<td align="right"> <div class="btn-group">
+    echo '<td style="font-size:14px">' . $row['regno'] . '</td>';
+    echo '<td style="font-size:14px">' . $row['fname'] . ' ' . $row['mname'] . ' ' . $row['lname'] . '</td>';
+    echo '<td style="font-size:14px">' . $row['depertmentid'] . '</td>';
+    echo '<td style="font-size:14px">' . '' . $row['phoneno'] . '<br>' . $row['email'] . '</td>';
+    echo '<td style="font-size:14px">' . '(' . $row['programID'] . ') ' . $row['pName'] . '</td>';
+    echo '<td style="font-size:14px">' . $row['gender'] . '</td>';
+    echo '<td align="right" style="font-size:14px"> <div class="btn-group">
                               <a type="button" class="btn btn-primary bg-gradient-primary" href="pro_searchfrm.php?action=edit & id=' . $row['regno'] . '"><i class="fas fa-fw fa-list-alt"></i> Details</a>
                             <div class="btn-group">
                               <a type="button" class="btn btn-primary bg-gradient-primary dropdown no-arrow" data-toggle="dropdown" style="color:white;">

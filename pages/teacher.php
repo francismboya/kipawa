@@ -58,7 +58,7 @@ window.location = "pos.php";
         </div>
 
         <div class="card-body">
-            <div class="table-responsive">
+            <div class="table-responsive" style="font-size:14px">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
@@ -76,11 +76,11 @@ $query = "SELECT employeeID, fname, lname, phoneno, s.statusName, employee.deper
 $result = mysqli_query($db, $query) or die(mysqli_error($db));
 while ($row = mysqli_fetch_assoc($result)) {
     echo '<tr>';
-    echo '<td>' . $row['fname'] . '</td>';
-    echo '<td>' . $row['lname'] . '</td>';
-    echo '<td>' . $row['depertmentID'] . '</td>';
+    echo '<td style="font-size:14px">' . $row['fname'] . '</td>';
+    echo '<td style="font-size:14px">' . $row['lname'] . '</td>';
+    echo '<td style="font-size:14px">' . $row['depertmentID'] . '</td>';
 
-    echo '<td align="right"> <div class="btn-group">
+    echo '<td align="right" style="font-size:14px"> <div class="btn-group">
                               <a type="button" class="btn btn-primary bg-gradient-primary" href="emp_searchfrm.php?action=edit & id=' . $row['employeeID'] . '"><i class="fas fa-fw fa-list-alt"></i> Details</a>
                             <div class="btn-group">
                               <a type="button" class="btn btn-primary bg-gradient-primary dropdown no-arrow" data-toggle="dropdown" style="color:white;">

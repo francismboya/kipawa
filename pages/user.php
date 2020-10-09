@@ -55,10 +55,10 @@ $result = mysqli_query($db, $query) or die(mysqli_error($db));
 while ($row = mysqli_fetch_assoc($result)) {
 
     echo '<tr>';
-    echo '<td>' . $row['fname'] . ' ' . $row['lname'] . '</td>';
-    echo '<td>' . $row['mname'] . '</td>';
-    echo '<td>' . $row['statusName'] . '</td>';
-    echo '<td align="right"> <div class="btn-group">
+    echo '<td style="font-size:14px">' . $row['fname'] . ' ' . $row['lname'] . '</td>';
+    echo '<td style="font-size:14px">' . $row['mname'] . '</td>';
+    echo '<td style="font-size:14px">' . $row['statusName'] . '</td>';
+    echo '<td align="right" style="font-size:14px"> <div class="btn-group">
                               <a type="button" class="btn btn-primary bg-gradient-primary" href="us_searchfrm.php?action=edit & id=' . $row['employeeID'] . '"><i class="fas fa-fw fa-list-alt"></i> Details</a>
                             <div class="btn-group">
                               <a type="button" class="btn btn-primary bg-gradient-primary dropdown no-arrow" data-toggle="dropdown" style="color:white;">

@@ -63,24 +63,25 @@ $pro .= "</select>";
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <div class="row col-sm-12">
-            <h4 class="m-2 col-sm-6 font-weight-bold text-primary">Import Student results from excel file &nbsp;<a href="#"
-                    data-toggle="modal" data-target="#abModal" type="button" class="btn btn-primary bg-gradient-primary"
-                    style="border-radius: 0px;"><i class="fas fa-paperclip" aria-hidden="true"></i></a></h4>
+            <h4 class="m-2 col-sm-6 font-weight-bold text-primary">Import Student results from excel file &nbsp;<a
+                    href="#" data-toggle="modal" data-target="#abModal" type="button"
+                    class="btn btn-primary bg-gradient-primary" style="border-radius: 0px;"><i class="fas fa-paperclip"
+                        aria-hidden="true"></i></a></h4>
         </div>
 
     </div>
     <div class="card-body">
-        <div class="table-responsive">
+        <div class="table-responsive" style="font-size:14px">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>Reg no</th>
-                        <th>Name</th>
-                        <th>Depertment</th>
-                        <th>Course ID</th>
-                        <th>Course Name</th>
-                        <th>Marks</th>
-                        <th>Average</th>
+                        <th style="font-size:14px">Reg no</th>
+                        <th style="font-size:14px">Name</th>
+                        <th style="font-size:14px">Depertment</th>
+                        <th style="font-size:14px">Course ID</th>
+                        <th style="font-size:14px">Course Name</th>
+                        <th style="font-size:14px">Marks</th>
+                        <th style="font-size:14px">Average</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -94,13 +95,13 @@ $result = mysqli_query($db, $query) or die(mysqli_error($db));
 while ($row = mysqli_fetch_assoc($result)) {
 
     echo '<tr>';
-    echo '<td>' . $row['regno'] . '</td>';
-    echo '<td>' . $row['fname'] . ' ' . $row['mname'] . ' ' . $row['lname'] . '</td>';
-    echo '<td>' . $row['depertmentid'] . '</td>';
-    echo '<td>';
-    echo '<td> </td>';
-    echo '<td>';
-    echo '<td>';                                                     
+    echo '<td style="font-size:14px">' . $row['regno'] . '</td>';
+    echo '<td style="font-size:14px">' . $row['fname'] . ' ' . $row['mname'] . ' ' . $row['lname'] . '</td>';
+    echo '<td style="font-size:14px">' . $row['depertmentid'] . '</td>';
+    echo '<td style="font-size:14px">';
+    echo '<td style="font-size:14px"> </td>';
+    echo '<td style="font-size:14px">';
+    echo '<td style="font-size:14px">';
     echo '</tr>';
 }
 ?>

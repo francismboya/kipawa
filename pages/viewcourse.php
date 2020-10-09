@@ -14,18 +14,18 @@ $name2 = $_SESSION['lname'];
 $emp = $_SESSION['ID'];
 ?>
 <div class="card-body">
-    <div class="table-responsive">
+    <div class="table-responsive" style="font-size:14px">
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
             <thead>
                 <p>Dear,<?php echo "$name1 $name2  the following course are assigned to you : "; ?></p>
                 <tr>
                 <tr>
-                    <th>COURSE ID</th>
-                    <th>COURSE NAME</th>
-                    <th>PROGRAM</th>
-                    <th>LEVEL</th>
-                    <th>CLASSFICATION</th>
-                    <th>CREDIT</th>
+                    <th style="font-size:14px">COURSE ID</th>
+                    <th style="font-size:14px">COURSE NAME</th>
+                    <th style="font-size:14px">PROGRAM</th>
+                    <th style="font-size:14px">LEVEL</th>
+                    <th style="font-size:14px">CLASSFICATION</th>
+                    <th style="font-size:14px">CREDIT</th>
                 </tr>
             </thead>
             <tbody>
@@ -37,12 +37,12 @@ $result = mysqli_query($db, $query) or die(mysqli_error($db));
 
 while ($row = mysqli_fetch_assoc($result)) {
     echo '<tr>';
-    echo '<td>' . $row['courseID'] . '</td>';
-    echo '<td>' . $row['cName'] . '</td>';
-    echo '<td>' . $row['programID'] . '</td>';
-    echo '<td>' . $row['level'] . '</td>';
-    echo '<td>' . $row['classfication'] . '</td>';
-    echo '<td>' . $row['credit'] . '</td>';
+    echo '<td style="font-size:14px">' . $row['courseID'] . '</td>';
+    echo '<td style="font-size:14px">' . $row['cName'] . '</td>';
+    echo '<td style="font-size:14px">' . $row['programID'] . '</td>';
+    echo '<td style="font-size:14px">' . $row['level'] . '</td>';
+    echo '<td style="font-size:14px">' . $row['classfication'] . '</td>';
+    echo '<td style="font-size:14px">' . $row['credit'] . '</td>';
 
     echo '</tr> ';
 }

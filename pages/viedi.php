@@ -41,8 +41,8 @@ $result = mysqli_query($db, $query) or die(mysqli_error($db));
 
 while ($row = mysqli_fetch_assoc($result)) {
     echo '<tr>';
-    echo '<td>' . $row['depertmentID'] . '</td>';
-    echo '<td>' . $row['dName'] . '</td>';
+    echo '<td style="font-size:14px">' . $row['depertmentID'] . '</td>';
+    echo '<td style="font-size:14px">' . $row['dName'] . '</td>';
 
     echo '</tr> ';
 }

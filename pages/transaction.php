@@ -34,18 +34,18 @@ window.location = "pos.php";
         </h4>
     </div>
     <div class="card-body">
-        <div class="table-responsive">
+        <div class="table-responsive" style="font-size:14px">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>course code</th>
-                        <th>Course name</th>
-                        <th>Department</th>
-                        <th>Level</th>
-                        <th>Credit</th>
-                        <th>classfication</th>
+                        <th style="font-size:14px">course code</th>
+                        <th style="font-size:14px">Course name</th>
+                        <th style="font-size:14px">Department</th>
+                        <th style="font-size:14px">Level</th>
+                        <th style="font-size:14px">Credit</th>
+                        <th style="font-size:14px ">classfication</th>
 
-                        <th>Action</th>
+                        <th style="font-size:12px">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -57,15 +57,15 @@ $result = mysqli_query($db, $query) or die(mysqli_error($db));
 
 while ($row = mysqli_fetch_assoc($result)) {
 
-    echo '<tr>';
-    echo '<td>' . $row['courseID'] . '</td>';
-    echo '<td>' . $row['cName'] . '</td>';
-    echo '<td>' . $row['depertmentID'] . '</td>';
-    echo '<td>' . $row['level'] . '</td>';
-    echo '<td>' . $row['credit'] . '</td>';
-    echo '<td>' . $row['classfication'] . '</td>';
+    echo '<tr style="font-size:14px">';
+    echo '<td style="font-size:14px">' . $row['courseID'] . '</td>';
+    echo '<td style="font-size:14px">' . $row['cName'] . '</td>';
+    echo '<td style="font-size:14px">' . $row['depertmentID'] . '</td>';
+    echo '<td style="font-size:14px">' . $row['level'] . '</td>';
+    echo '<td style="font-size:14px">' . $row['credit'] . '</td>';
+    echo '<td style="font-size:14px">' . $row['classfication'] . '</td>';
 
-    echo '<td align="right">
+    echo '<td align="right" style="font-size:14px">
                               <a type="button" class="btn btn-primary bg-gradient-primary" href="trans_view.php?action=edit & id=' . $row['courseID'] . '"><i class="fas fa-fw fa-th-list"></i> View</a>
                           </div> </td>';
     echo '</tr> ';

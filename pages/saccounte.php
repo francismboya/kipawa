@@ -59,7 +59,7 @@ window.location = "pos.php";
 
         </div>
         <div class="card-body">
-            <div class="table-responsive">
+            <div class="table-responsive" style="font-size:14px">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
@@ -76,14 +76,14 @@ $result = mysqli_query($db, $query) or die(mysqli_error($db));
 
 while ($row = mysqli_fetch_assoc($result)) {
     echo '<tr>';
-    echo '<td>' . $row['email'] . '</td>';
-    echo '<td>' . $row['fname'] . ' ' . $row['lname'] . '</td>';
-    echo '<td>' . $row['statusName'] . '</td>';
+    echo '<td style="font-size:14px">' . $row['email'] . '</td>';
+    echo '<td style="font-size:14px">' . $row['fname'] . ' ' . $row['lname'] . '</td>';
+    echo '<td style="font-size:14px">' . $row['statusName'] . '</td>';
     if ($row['lstate'] == 'enabled') {echo '<td align="right"> <div class="btn-group">
                               <a type="button" class="btn btn-primary bg-gradient-primary" href="sup_searchfrm.php?action=edit & id=' . $row['email'] . '"><i class="fas fa-fw fa-list-alt"></i>Disable</a>
                             </td>';
     } else {
-        echo '<td align="right"> <div class="btn-group">
+        echo '<td align="right" style="font-size:14px"> <div class="btn-group">
                               <a type="button" class="btn btn-primary bg-gradient-primary" href="sup_searchfrm.php?action=edit & id=' . $row['email'] . '"><i class="fas fa-fw fa-list-alt"></i>enable</a>
 
                            </td>';
