@@ -33,14 +33,14 @@ window.location = "pos.php";
         <h4 class="m-2 font-weight-bold text-primary">Admin Account(s)</h4>
     </div>
     <div class="card-body">
-        <div class="table-responsive">
+        <div class="table-responsive" style="font-size:14px">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>lname</th>
-                        <th>Type</th>
-                        <th>Action</th>
+                        <th style="font-size:14px">Name</th>
+                        <th style="font-size:14px">lname</th>
+                        <th style="font-size:14px">Type</th>
+                        <th style="font-size:14px">Action</th>
                     </tr>
                 </thead>
                 <tbody>

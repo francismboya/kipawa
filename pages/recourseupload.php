@@ -80,7 +80,7 @@ $pro .= "</select>";
                     <tr>
                         <th style="font-size:14px">Reg no</th>
                         <th style="font-size:14px">Name</th>
-                        <th> style="font-size:14px"Department</th>
+                        <th style="font-size:14px">Department</th>
                         <th style="font-size:14px">contact</th>
                         <th style="font-size:14px">Program</th>
                         <th style="font-size:14px">gender</th>

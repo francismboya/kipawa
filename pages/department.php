@@ -36,13 +36,13 @@ window.location = "pos.php";
 
     </div>
     <div class="card-body">
-        <div class="table-responsive">
+        <div class="table-responsive" style="font-size:14px">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>Department ID</th>
-                        <th>Department Name</th>
-                        <th>Action</th>
+                        <th style="font-size:14px">Department ID</th>
+                        <th style="font-size:14px">Department Name</th>
+                        <th style="font-size:14px">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -54,10 +54,10 @@ $result = mysqli_query($db, $query) or die(mysqli_error($db));
 while ($row = mysqli_fetch_assoc($result)) {
 
     echo '<tr>';
-    echo '<td>' . $row['depertmentID'] . '</td>';
-    echo '<td>' . $row['dName'] . '</td>';
+    echo '<td style="font-size:14px">' . $row['depertmentID'] . '</td>';
+    echo '<td style="font-size:14px">' . $row['dName'] . '</td>';
 
-    echo '<td align="right">
+    echo '<td align="right" style="font-size:14px">
                               <a type="button" class="btn btn-primary bg-gradient-primary" href="inv_searchfrm.php?action=edit & id=' . $row['depertmentID'] . '"><i class="fas fa-fw fa-th-list"></i> View</a>
                           </div> </td>';
     echo '</tr> ';
