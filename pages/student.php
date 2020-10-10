@@ -153,6 +153,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 include '../includes/footer.php';
 ?>
 
+
 <!-- Customer Modal-->
 <div class="modal fade" id="aModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -256,7 +257,8 @@ include '../includes/footer.php';
 
                     <hr>
                     <button type="submit" class="btn btn-success"><i class="fa fa-check fa-fw"></i>Save</button>
-                    <button type="reset" class="btn btn-danger"><i class="fa fa-times fa-fw"></i>Reset</button>
+                    <button type="reset" class="btn btn-danger" onclick="clear()"><i
+                            class="fa fa-times fa-fw"></i>Reset</button>
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                 </form>
             </div>
@@ -282,22 +284,40 @@ include '../includes/footer.php';
             </div>
             <div class="modal-body">
                 <form role="form" method="post" action="studentfile.php" enctype='multipart/form-data'>
+                    <div class="row">
+                        <div class="file-loading col-sm-4">
+                            <label for="csvfl" class="btn btn-primary "><i class="fas fa-upload"></i>Attach CSV
+                                File</label>
+                            <input type='file' id='csvfl' name='file' accept=".csv" style="visibility:hidden" required>
+                            <label class="text-danger" id='csvfl2'> NO File
+                                Chosen</label>
 
-                    <div class="file-loading">
+                        </div>
+                        <div class="file-loading col-sm-4">
+                            <label for="impng" class="btn btn-primary "><i class="fas fa-upload"></i>Upload Multiple
+                                Image
+                                File</label>
+                            <input type='file' id='impng' name='file[]' accept="image/png" style="visibility:hidden"
+                                required multiple>
 
-                        <input type='file' id='csvfl' name='file' accept=".csv">
-                        <?php echo $msg
-?>
+                            <label class="text-danger d2" id='impng2'> NO Image
+                                Chosen</label>
+                        </div>
                     </div>
 
                     <hr>
-                    <button type="submit" name="import" class="btn btn-success"><i
-                            class="fa fa-check fa-fw"></i>Save</button>
-                    <button type="reset" class="btn btn-danger"><i class="fa fa-times fa-fw"></i>Reset</button>
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <div class="row">
+                        <button type="submit" name="import" class="btn btn-success" style="margin-left:3px"><i
+                                class="fa fa-check fa-fw"></i>Save</button>
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal"
+                            style="margin-left:3px">Cancel</button>
                 </form>
-
+                <button class="btn btn-danger" onclick="cleare();" style="margin-left:3px"><i
+                        class="fa fa-times fa-fw"></i>Reset</button>
             </div>
         </div>
+
     </div>
 </div>
+</div>
+<script src="../js/student.js"></script>

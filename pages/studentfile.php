@@ -6,7 +6,7 @@ $msg = '';
 
 if (isset($_POST['import'])) {
 
-    echo $filename = $_FILES["file"]["tmp_name"];
+    $filename = $_FILES["file"]["tmp_name"];
 
     if ($_FILES["file"]["size"] > 0) {
 
@@ -71,10 +71,12 @@ if (isset($_POST['import'])) {
             $ln = count($regno);
             for ($i = 0; $i < $ln; $i++) {
                 echo " <br> error on " . $regno[$i] . " " . $fname[$i] . "<br>";
+
             }
             echo "insert error";
         } else {
             $con->commit();
+
         }
 
 //if (!$con-> commit()) {
