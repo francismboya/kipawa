@@ -72,7 +72,7 @@ window.location = "login.php";
                     $_SESSION['users'] = "student";
                     $_SESSION['typid'] = "student.regno";
                     $_SESSION['id'] = "regno";
-                } elseif ($found_user['statusName'] == "teacher" or $found_user['statusName'] == "admin"
+                } elseif ($found_user['statusName'] == "teacher" or $found_user['statusName'] == "admin" or $found_user['statusName'] =="hod"
                     or $found_user['statusName'] == "management" or $found_user['statusName'] == "registrar"
                     or $found_user['statusName'] == "principal") {
                     $_SESSION['ID'] = $found_user['employeeID'];
@@ -108,6 +108,15 @@ window.location = "index.php";
 //then it will be redirected to index.php
 alert("<?php echo $_SESSION['fname']; ?> Welcome!");
 window.location = "teacheractvity.php";
+</script>
+<?php
+
+                }elseif ($_SESSION['statusName'] == 'hod') {
+
+                    ?> <script type="text/javascript">
+//then it will be redirected to index.php
+alert("<?php echo $_SESSION['fname']; ?> Welcome!");
+window.location = "hodactivity.php";
 </script>
 <?php
 
