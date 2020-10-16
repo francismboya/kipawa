@@ -1,4 +1,12 @@
 $(function() {
+    $(document).ajaxStart(function() {
+        $("#wait").css("display", "block");
+        $("#stdld").fadeOut();
+    });
+    $(document).ajaxComplete(function() {
+        $("#wait").css("display", "none");
+        $("#stdld").slideDown(1000);
+    });
     $('#std').click(
         function(e) {
             var valid = this.form.checkValidity();
@@ -21,7 +29,17 @@ $(function() {
         });
 });
 
+
+
 $(function() {
+    $(document).ajaxStart(function() {
+        $("#wait").css("display", "block");
+        $("#stdld").fadeOut();
+    });
+    $(document).ajaxComplete(function() {
+        $("#wait").css("display", "none");
+        $("#stdld").slideDown(1000);
+    });
     $('#std1').click(
         function(e) {
             var valid = this.form.checkValidity();
@@ -45,6 +63,14 @@ $(function() {
 });
 
 $(function() {
+    $(document).ajaxStart(function() {
+        $("#wait").css("display", "block");
+        $("#stdld").fadeOut();
+    });
+    $(document).ajaxComplete(function() {
+        $("#wait").css("display", "none");
+        $("#stdld").slideDown(1000);
+    });
     $('#std2').click(
         function(e) {
             var valid = this.form.checkValidity();
@@ -70,6 +96,14 @@ $(function() {
 
 
 $(function() {
+    $(document).ajaxStart(function() {
+        $("#wait").css("display", "block");
+        $("#stdld").fadeOut();
+    });
+    $(document).ajaxComplete(function() {
+        $("#wait").css("display", "none");
+        $("#stdld").slideDown(1000);
+    });
     $('#std3').click(
         function(e) {
             var valid = this.form.checkValidity();
@@ -93,6 +127,14 @@ $(function() {
 });
 
 $(function() {
+    $(document).ajaxStart(function() {
+        $("#wait").css("display", "block");
+        $("#stdld").fadeOut();
+    });
+    $(document).ajaxComplete(function() {
+        $("#wait").css("display", "none");
+        $("#stdld").slideDown(1000);
+    });
     $('#std4').click(
         function(e) {
             var valid = this.form.checkValidity();

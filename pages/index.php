@@ -14,13 +14,14 @@ $result = mysqli_query($db, $query) or die(mysqli_error($db));
 while ($row = mysqli_fetch_assoc($result)) {
     $Aa = $row['statusName'];
 
-    if ($Aa == 'User') {
+    if ($Aa == 'teacher') {
 
         ?> <script type="text/javascript">
 //then it will be redirected
 alert("Restricted Page! You will be redirected to POS");
 window.location = "pos.php";
 </script>
+
 <?php }
 
 }
@@ -34,7 +35,8 @@ window.location = "pos.php";
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-0">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total Employee</div>
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total Employee
+                            </div>
                             <div class="h6 mb-0 font-weight-bold text-gray-800">
                                 <?php
 $query = "SELECT COUNT(*) FROM employee";
@@ -178,3 +180,21 @@ while ($row = mysqli_fetch_array($result)) {
 <?php
 include '../includes/footer.php';
 ?>
+<script>
+$.notify("<?php echo "Welcome! " . $_SESSION['fname'] . " " . $_SESSION['lname'] . ", "; ?>" + "admin account verified",
+    "success")
+//$('#ajaxorg').load('index.php');
+</script>
+
+<script>
+if (history.pushState) {
+    var loc = window.location.href + "<?php echo $_SESSION['fname'] ?>"
+    var passhash = CryptoJS.MD5(loc).toString();
+    var id = "?encry#" + passhash;
+    var pth = "/php/kipawa/pages/index.php"
+    var newurl = window.location.protocol + "//" + window.location.host + pth + id;
+    window.history.pushState("object or string", "Title", newurl);
+} else {
+    document.location.href = window.location.href;
+}
+</script>

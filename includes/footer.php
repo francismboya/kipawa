@@ -65,6 +65,15 @@
 <!-- Page level custom scripts -->
 <script src="../js/demo/datatables-demo.js"></script>
 <script src="../js/city.js"></script>
+<script src='../alertcss/alert.js'></script>
+<script src='../alertcss/notify.min.js'></script>
+<script src="../js/jx.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/core.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/md5.js"></script>
+
+
+
+
 
 
 <!-- PROFILE OVERLAY NA MODAL -->
@@ -270,3 +279,65 @@ include 'modal.php';
         </div>
     </div>
 </div>
+<script type="text/javascript">
+document.getElementById("clim2").onclick = function(e) {
+    //e = e || window.event;
+    e.preventDefault();
+    var loc = window.location.href + "<?php echo $_SESSION['fname'] ?>"
+    var passhash = CryptoJS.MD5(loc).toString();
+    location.href = "index.php?" + passhash;
+}
+
+document.getElementById("clim3").onclick = function(e) {
+    // e = e || window.event;
+    e.preventDefault();
+    var loc = window.location.href + "<?php echo $_SESSION['fname'] ?>"
+    var passhash = CryptoJS.MD5(loc).toString();
+    location.href = "management.php?" + passhash;
+}
+
+document.getElementById("clim4").onclick = function(e) {
+    // e = e || window.event;
+    e.preventDefault();
+    var loc = window.location.href + "<?php echo $_SESSION['fname'] ?>"
+    var passhash = CryptoJS.MD5(loc).toString();
+    location.href = "teacher.php?" + passhash;
+}
+document.getElementById("clim5").onclick = function(e) {
+    //e = e || window.event;
+    e.preventDefault();
+    var loc = window.location.href + "<?php echo $_SESSION['fname'] ?>"
+    var passhash = CryptoJS.MD5(loc).toString();
+    location.href = "student.php?" + passhash;
+}
+document.getElementById("clim6").onclick = function(e) {
+    // e = e || window.event;
+    e.preventDefault();
+    var loc = window.location.href + "<?php echo $_SESSION['fname'] ?>"
+    var passhash = CryptoJS.MD5(loc).toString();
+    location.href = "department.php?" + passhash;
+}
+document.getElementById("clim7").onclick = function(e) {
+    // e = e || window.event;
+    e.preventDefault();
+    var loc = window.location.href + "<?php echo $_SESSION['fname'] ?>"
+    var passhash = CryptoJS.MD5(loc).toString();
+    location.href = "transaction.php?" + passhash;
+}
+
+document.getElementById("clim8").onclick = function(e) {
+    //  e = e || window.event;
+    e.preventDefault();
+    var loc = window.location.href + "<?php echo $_SESSION['fname'] ?>"
+    var passhash = CryptoJS.MD5(loc).toString();
+    location.href = "saccount.php?" + passhash;
+}
+
+document.getElementById("clim9").onclick = function(e) {
+    // e = e || window.event;
+    e.preventDefault();
+    var loc = window.location.href + "<?php echo $_SESSION['fname'] ?>"
+    var passhash = CryptoJS.MD5(loc).toString();
+    location.href = "user.php?" + passhash;
+}
+</script>

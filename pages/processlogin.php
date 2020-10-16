@@ -1,18 +1,20 @@
 <?php
-
 require '../includes/connection.php';
 require 'session.php';
-if (isset($_POST['btnlogin'])) {
+$kind = 0;
+?>
 
+<?php
+if (isset($_POST['user']) && isset($_POST['password'])) {
     $users = trim($_POST['user']);
     $upass = trim($_POST['password']);
     //$h_upass = sha1($upass);
     $h_upass = $upass;
     if ($upass == '') {
-        ?> <script type="text/javascript">
-alert("Password is missing!");
-window.location = "login.php";
-</script>
+        echo json_encode(['status' => 'password']);
+        exit();
+        ?>
+
 <?php
 } else {
 //create some sql statement
@@ -92,24 +94,17 @@ window.location = "login.php";
                     $_SESSION['id'] = "employeeID";
                 }
 
-                //this part is the verification if admin or user ka
                 if ($_SESSION['statusName'] == 'admin') {
+                    $kind = 1;
 
-                    ?> <script type="text/javascript">
-//then it will be redirected to index.php
-alert("<?php echo $_SESSION['fname']; ?> Welcome!");
-window.location = "index.php";
-</script>
+                    ?>
 <?php
+} elseif ($_SESSION['statusName'] == 'teacher') {
+                    $kind = 2;
 
-                } elseif ($_SESSION['statusName'] == 'teacher') {
-
-                    ?> <script type="text/javascript">
-//then it will be redirected to index.php
-alert("<?php echo $_SESSION['fname']; ?> Welcome!");
-window.location = "teacheractvity.php";
-</script>
+                    ?>
 <?php
+<<<<<<< HEAD
 
                 }elseif ($_SESSION['statusName'] == 'hod') {
 
@@ -136,44 +131,44 @@ window.location = "pos.php";
 alert("<?php echo $_SESSION['fname']; ?> Welcome!");
 window.location = "pos.php";
 </script>
+=======
+} elseif ($_SESSION['statusName'] == 'student') {
+                    $kind = 3;
+                    ?>
+>>>>>>> c54c8166190b3ece3188151d11f826f176c6937b
 <?php
 
                 } elseif ($_SESSION['statusName'] == 'principal') {
-
-                    ?> <script type="text/javascript">
-//then it will be redirected to index.php
-alert("<?php echo $_SESSION['fname']; ?> Welcome!");
-window.location = "pos.php";
-</script>
+                    $kind = 4;
+                    ?>
 <?php
-
-                } elseif ($_SESSION['statusName'] == 'registrar') {
-
-                    ?> <script type="text/javascript">
-//then it will be redirected to index.php
-alert("<?php echo $_SESSION['fname']; ?> Welcome!");
-window.location = "pos.php";
-</script>
+} elseif ($_SESSION['statusName'] == 'registrar') {
+                    $kind = 5;
+                    ?>
 <?php
 
                 }
             } else {
-                //IF theres no result
+                $kind = 6;
                 ?>
-<script type="text/javascript">
-alert("Username or Password Not Registered! Contact Your administrator.");
-window.location = "index.php";
-</script>
+
 <?php
+
+                // echo json_encode(['status' => 'password']);
 
             }
 
         } else {
+            $kind = 7;
             # code...
             echo "Error: " . $sql . "<br>" . $db->error;
         }
 
     }
 }
-$db->close();
+
+echo json_encode(['status' => $kind]);
+
+//$db->close();
+
 ?>
