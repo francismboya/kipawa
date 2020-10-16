@@ -18,7 +18,8 @@ $depertment = $_SESSION['depertmentID'];
     <div class="table-responsive" style="font-size:14px">
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
             <thead>
-                <p>Dear,<?php echo "$name1 $name2  the following are Program registered under your Depertment : "; ?></p>
+                <p>Dear,<?php echo "$name1 $name2  the following are Program registered under your Depertment : "; ?>
+                </p>
                 <tr>
                 <tr>
                     <th style="font-size:14px">Program Code</th>
@@ -31,7 +32,7 @@ $depertment = $_SESSION['depertmentID'];
                 <?php
 $uemail = $_SESSION['email'];
 
-$query = "SELECT * FROM Program where depertmentID='".$depertment."'";
+$query = "SELECT * FROM program where depertmentID='".$depertment."'";
 $result = mysqli_query($db, $query) or die(mysqli_error($db));
 
 while ($row = mysqli_fetch_assoc($result)) {

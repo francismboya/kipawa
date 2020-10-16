@@ -9,11 +9,11 @@
 <?php
 include '../includes/connection.php';
 include '../includes/hsidebar.php';
-include 'studentfile.php';
+//include 'studentfile.php';
 $users = $_SESSION['users'];
 $typid = $_SESSION['typid'];
 $ID = $_SESSION['id'];
-$deparment=$_SESSION['depertmentID'];
+$deparment = $_SESSION['depertmentID'];
 
 $query = "SELECT u." . $ID . ", t.statusName
                           FROM " . $users . " u
@@ -85,7 +85,8 @@ $pro .= "</select>";
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <div class="row col-sm-12">
-            <h4 class="m-2 col-sm-12 font-weight-bold text-primary">List of student under  <?php  echo $deparment;?> Depertment</h4>
+            <h4 class="m-2 col-sm-12 font-weight-bold text-primary">List of student under <?php echo $deparment; ?>
+                Depertment</h4>
         </div>
 
     </div>
@@ -108,7 +109,7 @@ $pro .= "</select>";
 
                     <?php $query = "SELECT student.regno, student.fname, mname, lname, student.depertmentid,
 student.year, student.level, student.email, student.gender, student.programID,program.programID, program.pName, phoneno FROM student
-join program on program.programID=student.programID where student.depertmentID='".$deparment."'
+join program on program.programID=student.programID where student.depertmentID='" . $deparment . "'
 ";
 $result = mysqli_query($db, $query) or die(mysqli_error($db));
 
@@ -118,7 +119,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     echo '<td style="font-size:14px">' . $row['regno'] . '</td>';
     echo '<td style="font-size:14px">' . $row['fname'] . ' ' . $row['mname'] . ' ' . $row['lname'] . '</td>';
     echo '<td style="font-size:14px">' . $row['depertmentid'] . '</td>';
-    echo '<td style="font-size:14px">' . " 0".'' . $row['phoneno'] . '<br>' . $row['email'] . '</td>';
+    echo '<td style="font-size:14px">' . " 0" . '' . $row['phoneno'] . '<br>' . $row['email'] . '</td>';
     echo '<td style="font-size:14px">' . '(' . $row['programID'] . ') ' . $row['pName'] . '</td>';
     echo '<td style="font-size:14px">' . $row['gender'] . '</td>';
     echo '<td align="right" style="font-size:14px"> <div class="btn-group">
@@ -152,9 +153,9 @@ include '../includes/footer.php';
 
 <!-- Customer Modal-->
 
-    </div>
 </div>
-    </div>
+</div>
+</div>
 </div>
 </div>
 <script src="../js/student.js"></script>
