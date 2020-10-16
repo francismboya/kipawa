@@ -78,6 +78,11 @@ $(document).ready(function() {
 
                     $('#ajaxorg').load('teacheractvity.php');
                     //teacher
+                } else if (dec == 8) {
+
+                    $.notify("HOD account verified", "success")
+
+                    $('#ajaxorg').load('hodactivity.php');
                 } else if (dec == 1) {
                     window.location = "index.php";
                     var b = window.location.href + "?url=";

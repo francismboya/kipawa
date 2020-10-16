@@ -119,8 +119,7 @@ if (isset($_POST['user']) && isset($_POST['password'])) {
                     ?>
 <?php
 
-                }
-                elseif ($_SESSION['statusName'] == 'principal') {
+                } elseif ($_SESSION['statusName'] == 'hod') {
                     $kind = 8;
                     ?>
 <?php
