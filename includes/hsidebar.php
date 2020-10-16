@@ -41,7 +41,7 @@ confirm_logged_in();
     <meta name="viewport" content="width=device-width, initial-scale=0.6 user-scalable=no">
 
     <title>SRM</title>
-    <link rel="icon" href="../img/favicon.png" type="image/png" sizes="16x16">f
+    <link rel="icon" href="../img/favicon.png" type="image/png" sizes="16x16">
 
     <!-- Custom fonts for this template-->
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
