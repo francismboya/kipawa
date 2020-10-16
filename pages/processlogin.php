@@ -2,7 +2,7 @@
 require '../includes/connection.php';
 require 'session.php';
 $kind = 0;
-//session
+
 ?>
 
 <?php
