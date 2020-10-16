@@ -5,11 +5,13 @@
         rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
     <link rel='stylesheet' href='../vendor/bootstrap/css/bootstrap.min.css'>
+
+
 </head>
 <?php
 include '../includes/connection.php';
 include '../includes/sidebar.php';
-include 'studentfile.php';
+//include 'studentfile.php';
 $users = $_SESSION['users'];
 $typid = $_SESSION['typid'];
 $ID = $_SESSION['id'];
@@ -283,41 +285,57 @@ include '../includes/footer.php';
                 </button>
             </div>
             <div class="modal-body">
-                <form role="form" method="post" action="studentfile.php" enctype='multipart/form-data'>
-                    <div class="row">
-                        <div class="file-loading col-sm-4">
-                            <label for="csvfl" class="btn btn-primary "><i class="fas fa-upload"></i>Attach CSV
-                                File</label>
-                            <input type='file' id='csvfl' name='file' accept=".csv" style="visibility:hidden" required>
-                            <label class="text-danger" id='csvfl2'> NO File
-                                Chosen</label>
+                <div id='ajaxorg'>
 
+                    <form role="form" method="post" action="studentfile.php" enctype='multipart/form-data' id='csvsub'>
+                        <div class="row">
+                            <div class="file-loading col-sm-4">
+                                <label for="csvfl" class="btn btn-primary "><i class="fas fa-upload"></i>Attach CSV
+                                    File</label>
+                                <input type='file' id='csvfl' name='file' accept=".csv" style="visibility:hidden"
+                                    required>
+                                <label class="text-danger" id='csvfl2'> NO File
+                                    Chosen</label>
+
+                            </div>
+                            <div class="file-loading col-sm-4">
+                                <label for="impng" class="btn btn-primary "><i class="fas fa-upload"></i>Upload Multiple
+                                    Image
+                                    File</label>
+                                <input type='file' id='impng' name='filer[]' accept="image/png"
+                                    style="visibility:hidden" required multiple>
+
+                                <label class="text-danger d2" id='impng2'> NO Image
+                                    Chosen</label>
+                            </div>
                         </div>
-                        <div class="file-loading col-sm-4">
-                            <label for="impng" class="btn btn-primary "><i class="fas fa-upload"></i>Upload Multiple
-                                Image
-                                File</label>
-                            <input type='file' id='impng' name='file[]' accept="image/png" style="visibility:hidden"
-                                required multiple>
 
-                            <label class="text-danger d2" id='impng2'> NO Image
-                                Chosen</label>
-                        </div>
-                    </div>
-
-                    <hr>
-                    <div class="row">
-                        <button type="submit" name="import" class="btn btn-success" style="margin-left:3px"><i
-                                class="fa fa-check fa-fw"></i>Save</button>
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal"
-                            style="margin-left:3px">Cancel</button>
-                </form>
-                <button class="btn btn-danger" onclick="cleare();" style="margin-left:3px"><i
-                        class="fa fa-times fa-fw"></i>Reset</button>
+                        <hr>
+                        <div class="row">
+                            <button type="submit" name="import" class="btn btn-success" style="margin-left:3px"><i
+                                    class="fa fa-check fa-fw"></i>Save</button>
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal"
+                                style="margin-left:3px">Cancel</button>
+                    </form>
+                    <button class="btn btn-danger" onclick="cleare();" style="margin-left:3px"><i
+                            class="fa fa-times fa-fw"></i>Reset</button>
+                </div>
             </div>
-        </div>
 
+        </div>
     </div>
 </div>
-</div>
 <script src="../js/student.js"></script>
+
+<script>
+if (history.pushState) {
+    var loc = window.location.href + "<?php echo $_SESSION['fname'] ?>"
+    var passhash = CryptoJS.MD5(loc).toString();
+    var id = "?encry#" + passhash;
+    var pth = "/php/kipawa/pages/index.php"
+    var newurl = window.location.protocol + "//" + window.location.host + pth + id;
+    window.history.pushState("object or string", "Title", newurl);
+} else {
+    document.location.href = window.location.href;
+}
+</script>

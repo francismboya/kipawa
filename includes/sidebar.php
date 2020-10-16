@@ -77,11 +77,13 @@ confirm_logged_in();
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
+
             <li class="nav-item">
-                <a class="nav-link" href="index.php">
+                <a class="nav-link" href="index.php" id="clim2">
                     <i class="fas fa-fw fa-home"></i>
                     <span>Home</span></a>
             </li>
+
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -91,45 +93,45 @@ confirm_logged_in();
             </div>
             <!-- Tables Buttons -->
             <li class="nav-item">
-                <a class="nav-link" href="management.php">
+                <a class="nav-link" href="javascript:void(0)" onclick="location.href='management.php'" id="clim3">
                     <i class="fas fa-fw fa-user"></i>
                     <span>Management</span></a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="teacher.php">
+                <a class="nav-link" href="javascript:void(0)" onclick="location.href='teacher.php'" id="clim4">
                     <i class="fas fa-fw fa-chalkboard-teacher"></i>
                     <span>Teacher</span></a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="student.php">
+                <a class="nav-link" href="javascript:void(0)" onclick="location.href='student.php'" id="clim5">
 
                     <i class="fas fa-fw fa-graduation-cap"></i>
                     <span>Student</span></a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="department.php">
+                <a class="nav-link" href="javascript:void(0)" onclick="location.href='department.php'" id="clim6">
                     <i class="fas fa-fw fa-archive"></i>
                     <span>Department</span></a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="transaction.php">
+                <a class="nav-link" href="javascript:void(0)" onclick="location.href='transaction.php'" id="clim7">
 
                     <i class="fas fa-fw fa-book-open"></i>
                     <span>Course</span></a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="saccount.php">
+                <a class="nav-link" href="javascript:void(0)" onclick="location.href='saccount.php'" id="clim8">
                     <i class="fas fa-fw fa-cogs"></i>
                     <span>Account Management</span></a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="user.php">
+                <a class="nav-link" href="javascript:void(0)" onclick="location.href='user.php'" id="clim9">
                     <i class="fas fa-fw fa-users"></i>
                     <span>Results</span></a>
             </li>
@@ -144,3 +146,65 @@ confirm_logged_in();
         </ul>
         <!-- End of Sidebar -->
         <?php include_once 'topbar.php';?>
+        <script type="text/javascript">
+        document.getElementById("clim2").onclick = function(e) {
+            //e = e || window.event;
+            e.preventDefault();
+            var loc = window.location.href + "<?php echo $_SESSION['fname'] ?>"
+            var passhash = CryptoJS.MD5(loc).toString();
+            location.href = "index.php?" + passhash;
+        }
+
+        document.getElementById("clim3").onclick = function(e) {
+            // e = e || window.event;
+            e.preventDefault();
+            var loc = window.location.href + "<?php echo $_SESSION['fname'] ?>"
+            var passhash = CryptoJS.MD5(loc).toString();
+            location.href = "management.php?" + passhash;
+        }
+
+        document.getElementById("clim4").onclick = function(e) {
+            // e = e || window.event;
+            e.preventDefault();
+            var loc = window.location.href + "<?php echo $_SESSION['fname'] ?>"
+            var passhash = CryptoJS.MD5(loc).toString();
+            location.href = "teacher.php?" + passhash;
+        }
+        document.getElementById("clim5").onclick = function(e) {
+            //e = e || window.event;
+            e.preventDefault();
+            var loc = window.location.href + "<?php echo $_SESSION['fname'] ?>"
+            var passhash = CryptoJS.MD5(loc).toString();
+            location.href = "student.php?" + passhash;
+        }
+        document.getElementById("clim6").onclick = function(e) {
+            // e = e || window.event;
+            e.preventDefault();
+            var loc = window.location.href + "<?php echo $_SESSION['fname'] ?>"
+            var passhash = CryptoJS.MD5(loc).toString();
+            location.href = "department.php?" + passhash;
+        }
+        document.getElementById("clim7").onclick = function(e) {
+            // e = e || window.event;
+            e.preventDefault();
+            var loc = window.location.href + "<?php echo $_SESSION['fname'] ?>"
+            var passhash = CryptoJS.MD5(loc).toString();
+            location.href = "transaction.php?" + passhash;
+        }
+
+        document.getElementById("clim8").onclick = function(e) {
+            //  e = e || window.event;
+            e.preventDefault();
+            var loc = window.location.href + "<?php echo $_SESSION['fname'] ?>"
+            var passhash = CryptoJS.MD5(loc).toString();
+            location.href = "saccount.php?" + passhash;
+        }
+
+        document.getElementById("clim9").onclick = function(e) {
+            // e = e || window.event;
+            e.preventDefault();
+            var loc = window.location.href + "<?php echo $_SESSION['fname'] ?>"
+            var passhash = CryptoJS.MD5(loc).toString();
+            location.href = "user.php?" + passhash;
+        }
+        </script>
