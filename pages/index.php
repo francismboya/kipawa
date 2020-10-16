@@ -18,11 +18,39 @@ while ($row = mysqli_fetch_assoc($result)) {
 
         ?> <script type="text/javascript">
 //then it will be redirected
-alert("Restricted Page! You will be redirected to POS");
-window.location = "pos.php";
+alert("Restricted Page! You will be redirected");
+window.location = "teacheractvity.php";
 </script>
 
 <?php }
+elseif ($Aa == 'hod') {
+
+        ?> <script type="text/javascript">
+//then it will be redirected
+alert("Restricted Page! You will be redirected ");
+window.location = "hodactivity.php";
+</script>
+
+<?php }
+elseif ($Aa == 'registrar') {
+
+        ?> <script type="text/javascript">
+//then it will be redirected
+alert("Restricted Page! You will be redirected");
+window.location = "#";
+</script>
+
+<?php }
+elseif ($Aa == 'student') {
+
+        ?> <script type="text/javascript">
+//then it will be redirected
+alert("Restricted Page! You will be redirected");
+window.location = "#";
+</script>
+
+<?php }
+
 
 }
 ?>

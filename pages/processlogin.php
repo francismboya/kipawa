@@ -120,6 +120,11 @@ if (isset($_POST['user']) && isset($_POST['password'])) {
 <?php
 
                 }
+                elseif ($_SESSION['statusName'] == 'principal') {
+                    $kind = 8;
+                    ?>
+<?php
+}
             } else {
                 $kind = 6;
                 ?>
