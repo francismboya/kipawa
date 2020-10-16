@@ -75,7 +75,7 @@ if (isset($_POST['user']) && isset($_POST['password'])) {
                     $_SESSION['users'] = "student";
                     $_SESSION['typid'] = "student.regno";
                     $_SESSION['id'] = "regno";
-                } elseif ($found_user['statusName'] == "teacher" or $found_user['statusName'] == "admin"
+                } elseif ($found_user['statusName'] == "teacher" or $found_user['statusName'] == "admin" or $found_user['statusName'] == "hod"
                     or $found_user['statusName'] == "management" or $found_user['statusName'] == "registrar"
                     or $found_user['statusName'] == "principal") {
                     $_SESSION['ID'] = $found_user['employeeID'];
@@ -113,15 +113,18 @@ if (isset($_POST['user']) && isset($_POST['password'])) {
                 } elseif ($_SESSION['statusName'] == 'principal') {
                     $kind = 4;
                     ?>
+
 <?php
 } elseif ($_SESSION['statusName'] == 'registrar') {
                     $kind = 5;
                     ?>
+
 <?php
 
                 } elseif ($_SESSION['statusName'] == 'hod') {
                     $kind = 8;
                     ?>
+
 <?php
 }
             } else {

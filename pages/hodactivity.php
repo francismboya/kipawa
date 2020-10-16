@@ -26,7 +26,7 @@ $typid = $_SESSION['typid'];
 $ID = $_SESSION['id'];
 $name1 = $_SESSION['fname'];
 $name2 = $_SESSION['lname'];
-$depertment=$_SESSION['depertmentID'];
+$depertment = $_SESSION['depertmentID'];
 $query = "SELECT u." . $ID . ", t.statusName
                           FROM " . $users . " u
                           JOIN status t ON t.email=u.email WHERE u.email = '" . $_SESSION['email'] . "'";
@@ -91,23 +91,23 @@ window.location = "pos.php";
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" style="margin-top:10px">
-                    <div class="dashboard-stat bg-primary card border-left-danger shadow h-100 py-2"
-                        href="#">
+                    <div class="dashboard-stat bg-primary card border-left-danger shadow h-100 py-2" href="#">
                         <?php
-                                $query = "SELECT COUNT(*) FROM employee join status on status.email=employee.email where status.statusName='teacher' and employee.depertmentID='".$depertment."'";
-                                $result = mysqli_query($db, $query) or die(mysqli_error($db));
-;                                $btn='<a type="button" style="border-radius: 0px; margin: auto; color: white" href="hoviewte.php"> <i class="fas fa-book-open"></i> View
+$query = "SELECT COUNT(*) FROM employee join status on status.email=employee.email where status.statusName='teacher' and employee.depertmentID='" . $depertment . "'";
+$result = mysqli_query($db, $query) or die(mysqli_error($db));
+$btn = '<a type="button" style="border-radius: 0px; margin: auto; color: white" href="hoviewte.php"> <i class="fas fa-book-open"></i> View
                    </a>';
-                                while ($row = mysqli_fetch_array($result)) {
-                                ?>
-                        <span class="text-xs font-weight-bold text-white text-uppercase mb-1 text-center" ><strong style="font-size: 35px">Teachers</strong></span>
-                            <span class="text-center" style="font-size:25px;color:white"> <?php echo "$row[0]". "  Teachers <br>" ;
-                            echo $btn;
+while ($row = mysqli_fetch_array($result)) {
+    ?>
+                        <span class="text-xs font-weight-bold text-white text-uppercase mb-1 text-center"><strong
+                                style="font-size: 35px">Teachers</strong></span>
+                        <span class="text-center" style="font-size:25px;color:white"> <?php echo "$row[0]" . "  Teachers <br>";
+    echo $btn;
 
-                            ?>    
-                            </span>
-                        
-                    <?php } ?>
+    ?>
+                        </span>
+
+                        <?php }?>
 
                     </div>
                     <!-- /.dashboard-stat -->
@@ -115,70 +115,70 @@ window.location = "pos.php";
                 <!-- /.col-lg-3 col-md-3 col-sm-6 col-xs-12 -->
 
                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" style="margin-top:10px">
-                    <div class="dashboard-stat bg-primary card border-left-danger shadow h-100 py-2"
-                        href="#">
+                    <div class="dashboard-stat bg-primary card border-left-danger shadow h-100 py-2" href="#">
                         <?php
-                                $query2 = "SELECT COUNT(*) FROM student WHERE student.depertmentID='".$depertment."'";
-                                $result = mysqli_query($db, $query2) or die(mysqli_error($db));
-;                                $btn='<a type="button" style="border-radius: 0px; margin: auto; color: white" href="hviewst.php"> <i class="fas fa-book-open"></i> View
+$query2 = "SELECT COUNT(*) FROM student WHERE student.depertmentID='" . $depertment . "'";
+$result = mysqli_query($db, $query2) or die(mysqli_error($db));
+$btn = '<a type="button" style="border-radius: 0px; margin: auto; color: white" href="hviewst.php"> <i class="fas fa-book-open"></i> View
                    </a>';
-                                while ($row = mysqli_fetch_array($result)) {
-                                ?>
-                        <span class="text-xs font-weight-bold text-white text-uppercase mb-1 text-center" ><strong style="font-size: 35px">Students</strong></span>
-                            <span class="text-center" style="font-size:25px;color:white"> <?php echo "$row[0]". "  Students <br>" ;
-                            echo $btn;
+while ($row = mysqli_fetch_array($result)) {
+    ?>
+                        <span class="text-xs font-weight-bold text-white text-uppercase mb-1 text-center"><strong
+                                style="font-size: 35px">Students</strong></span>
+                        <span class="text-center" style="font-size:25px;color:white"> <?php echo "$row[0]" . "  Students <br>";
+    echo $btn;
 
-                            ?>    
-                            </span>
-                        
-                    <?php } ?>
+    ?>
+                        </span>
+
+                        <?php }?>
 
                     </div>
                     <!-- /.dashboard-stat -->
                 </div>
 
                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" style="margin-top:10px">
-                    <div class="dashboard-stat bg-primary card border-left-danger shadow h-100 py-2"
-                        href="#">
+                    <div class="dashboard-stat bg-primary card border-left-danger shadow h-100 py-2" href="#">
                         <?php
-                                $query3 = "SELECT COUNT(*) FROM course WHERE course.depertmentID='".$depertment."'";
-                                $result = mysqli_query($db, $query3) or die(mysqli_error($db));
-                                $btn='<a type="button" style="border-radius: 0px; margin: auto; color: white" href="hviewcourse.php"> <i class="fas fa-book-open"></i> View
+$query3 = "SELECT COUNT(*) FROM course WHERE course.depertmentID='" . $depertment . "'";
+$result = mysqli_query($db, $query3) or die(mysqli_error($db));
+$btn = '<a type="button" style="border-radius: 0px; margin: auto; color: white" href="hviewcourse.php"> <i class="fas fa-book-open"></i> View
                    </a>';
-                                while ($row = mysqli_fetch_array($result)) {
-                                ?> 
-                   
+while ($row = mysqli_fetch_array($result)) {
+    ?>
 
-                        <span class="text-xs font-weight-bold text-white text-uppercase mb-1 text-center" ><strong style="font-size: 35px">Courses</strong></span>
-                            <span class="text-center" style="font-size:25px;color:white"> <?php echo "$row[0]". "  Courses <br>" ;
-                            echo $btn;
 
-                            ?>    
-                            </span>
-                        
-                    <?php } ?>
+                        <span class="text-xs font-weight-bold text-white text-uppercase mb-1 text-center"><strong
+                                style="font-size: 35px">Courses</strong></span>
+                        <span class="text-center" style="font-size:25px;color:white"> <?php echo "$row[0]" . "  Courses <br>";
+    echo $btn;
+
+    ?>
+                        </span>
+
+                        <?php }?>
 
                     </div>
                     <!-- /.dashboard-stat -->
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" style="margin-top:10px">
-                    <div class="dashboard-stat bg-primary card border-left-danger shadow h-100 py-2"
-                        href="#">
+                    <div class="dashboard-stat bg-primary card border-left-danger shadow h-100 py-2" href="#">
                         <?php
-                                $query = "SELECT COUNT(*) FROM program where depertmentID='".$depertment."'";
-                                $result = mysqli_query($db, $query) or die(mysqli_error($db));
-;                                $btn='<a type="button" style="border-radius: 0px; margin: auto; color: white" href="hoviewpro.php"> <i class="fas fa-book-open"></i> View
+$query = "SELECT COUNT(*) FROM program where depertmentID='" . $depertment . "'";
+$result = mysqli_query($db, $query) or die(mysqli_error($db));
+$btn = '<a type="button" style="border-radius: 0px; margin: auto; color: white" href="hoviewpro.php"> <i class="fas fa-book-open"></i> View
                    </a>';
-                                while ($row = mysqli_fetch_array($result)) {
-                                ?>
-                        <span class="text-xs font-weight-bold text-white text-uppercase mb-1 text-center" ><strong style="font-size: 35px"">Programs</strong></span>
-                            <span class="text-center" style="font-size:25px;color:white"> <?php echo "$row[0]". "  Programs <br>" ;
-                            echo $btn;
+while ($row = mysqli_fetch_array($result)) {
+    ?>
+                        <span class="text-xs font-weight-bold text-white text-uppercase mb-1 text-center"><strong
+                                style="font-size: 35px"">Programs</strong></span>
+                            <span class=" text-center" style="font-size:25px;color:white"> <?php echo "$row[0]" . "  Programs <br>";
+    echo $btn;
 
-                            ?>    
-                            </span>
-                        
-                    <?php } ?>
+    ?>
+                        </span>
+
+                        <?php }?>
 
                     </div>
                     <!-- /.dashboard-stat -->
@@ -202,3 +202,9 @@ window.location = "pos.php";
 <?php
 include '../includes/footer.php';
 ?>
+
+<script>
+$.notify("<?php echo "Welcome! " . $_SESSION['fname'] . " " . $_SESSION['lname'] . ", "; ?>" + "hod account verified",
+    "success")
+//$('#ajaxorg').load('index.php');
+</script>
