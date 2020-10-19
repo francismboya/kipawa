@@ -29,24 +29,32 @@
     <script type="text/javascript">
     window.location = "index.php";
     </script>
+<noscript>
+mbwa wewe
+<?php echo "shenzi"; ?>
+</noscript>
 
     <?php
 }
 ?>
+
     <script type="text/javascript">
     function setscreencookies() {
         var width = window.innerWidth;
         if (width <= 1000) {
             callmb();
         } else if (width > 1000) {
-            callpc();
+           callpc();
 
         }
         return true;
     }
     setscreencookies();
     </script>
-
+<noscript>
+mbwa wewe
+<?php echo "shenzi"; ?>
+</noscript>
 
     <!DOCTYPE html>
     <html lang="en">
@@ -79,15 +87,4 @@
 
     </html>
 </div>
-<script>
-if (history.pushState) {
-    var loc = window.location.href + "<?php echo $_SESSION['fname'] ?>"
-    var passhash = CryptoJS.MD5(loc).toString();
-    var id = "?encry#" + passhash;
-    var pth = "/php/kipawa/pages/index.php"
-    var newurl = window.location.protocol + "//" + window.location.host + pth + id;
-    window.history.pushState("object or string", "Title", newurl);
-} else {
-    document.location.href = window.location.href;
-}
-</script>
+
