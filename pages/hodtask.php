@@ -5,8 +5,8 @@ include '../includes/hsidebar.php';
 $users = $_SESSION['users'];
 $typid = $_SESSION['typid'];
 $ID = $_SESSION['id'];
-$statas='teacher';
-$department=$_SESSION['depertmentID'];
+$statas = 'teacher';
+$department = $_SESSION['depertmentID'];
 
 $query = "SELECT u." . $ID . ", t.statusName
                           FROM " . $users . " u
@@ -36,17 +36,18 @@ window.location = "pos.php";
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-0">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Teacher in <?php echo " ".$department." " ; ?> depertment</div>
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Teacher in
+                                <?php echo " " . $department . " "; ?> depertment</div>
                             <div class="h6 mb-0 font-weight-bold text-gray-800">
                                 <?php
-$query = "SELECT COUNT(*) FROM employee join status on status.email=employee.email where status.statusName='".$statas."'";
+$query = "SELECT COUNT(*) FROM employee join status on status.email=employee.email where status.statusName='" . $statas . "'";
 $result = mysqli_query($db, $query) or die(mysqli_error($db));
 while ($row = mysqli_fetch_array($result)) {
-    echo "$row[0]". "  Teacher(s)";
+    echo "$row[0]" . "  Teacher(s)";
 }?>
-<a type="button" style="border-radius: 0px; margin: auto;" href="#">
+                                <a type="button" style="border-radius: 0px; margin: auto;" href="#">
                                     <i class="fas fa-book-open"></i> View
-</a> 
+                                </a>
 
 
 
@@ -72,12 +73,12 @@ while ($row = mysqli_fetch_array($result)) {
 $query = "SELECT COUNT(*) FROM student e join status s on e.email=s.email where s.statusName='student'";
 $result = mysqli_query($db, $query) or die(mysqli_error($db));
 while ($row = mysqli_fetch_array($result)) {
-echo "$row[0]". "  Student(s)";
+    echo "$row[0]" . "  Student(s)";
 }
 ?> <a type="button" style="border-radius: 0px; margin: auto;" href="#">
                                     <i class="fas fa-book-open"></i> View
-</a> 
- 
+                                </a>
+
                             </div>
                         </div>
                         <div class="col-auto">
@@ -90,48 +91,51 @@ echo "$row[0]". "  Student(s)";
 
     </div>
     <!-- Employee ROW -->
-     <section class="section">
+    <section class="section">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" style="margin-top:10px">
-                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Courses Under <?php echo " ".$department." " ; ?> depertment</div>
-                            <div class="h6 mb-0 font-weight-bold text-gray-800">
-                                <?php
-                                $query = "SELECT COUNT(*) FROM employee e
+                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Courses Under
+                        <?php echo " " . $department . " "; ?> depertment</div>
+                    <div class="h6 mb-0 font-weight-bold text-gray-800">
+                        <?php
+$query = "SELECT COUNT(*) FROM employee e
                         join status s on e.email=s.email where s.statusName='registrar'";
-                                $result = mysqli_query($db, $query) or die(mysqli_error($db));
-                                while ($row = mysqli_fetch_array($result)) {
-                                ?>
-                                
-                        <span class="text-center" style="font-size:20px;color:white"><?php echo "$row[0]". "  Course(s)";?></span>
-                                
-                            <?php}?> 
-                            <a type="button" style="border-radius: 0px; margin: auto;" href="#">
-                                    <i class="fas fa-book-open"></i> View
-                   </a> 
- 
-                            </div>
-                        </div>            </div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-users fa-2x text-gray-300"></i>
-                        </div>
+$result = mysqli_query($db, $query) or die(mysqli_error($db));
+while ($row = mysqli_fetch_array($result)) {
+    ?>
+
+                        <span class="text-center"
+                            style="font-size:20px;color:white"><?php echo "$row[0]" . "  Course(s)"; ?></span>
+
+                        <?php }?>
+                        <a type="button" style="border-radius: 0px; margin: auto;" href="#">
+                            <i class="fas fa-book-open"></i> View
+                        </a>
+
                     </div>
                 </div>
             </div>
         </div>
-            </div>
+        <div class="col-auto">
+            <i class="fas fa-users fa-2x text-gray-300"></i>
         </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 
-    </div>
-    <!-- PRODUCTS ROW -->
-    <div class="col-md-3">
-        <!-- Product record -->
-                </div>
-            </div>
-        </div>
+</div>
+<!-- PRODUCTS ROW -->
+<div class="col-md-3">
+    <!-- Product record -->
+</div>
+</div>
+</div>
 
-    </div>
+</div>
 
 </div>
 <?php

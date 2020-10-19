@@ -171,7 +171,7 @@ include '../includes/footer.php';
             <div class="modal-body">
 
 
-                <form role="form" method="post" action="pro_transac.php?action=add" class="form-horizontal">
+                <form role="form" method="post" action="studentadd.php?action=add" class="form-horizontal">
                     <!--image-->
                     <div class="container">
                         <div class="row justify-content-center">
@@ -179,7 +179,7 @@ include '../includes/footer.php';
                                 <div class="imagePreview"></div>
                                 <label class="btn btn-primary col-sm-12">
                                     Upload profile photo<input type="file" class="uploadFile img" value="Upload Photo"
-                                        style="width:0px;height: 0px;overflow: hidden;">
+                                        name="image" style="width:0px;height: 0px;overflow: hidden;">
                                 </label>
                             </div><!-- col-2 -->
                         </div><!-- row -->
@@ -194,7 +194,7 @@ include '../includes/footer.php';
 
                         </div>
                         <div class="form-group col-sm-4">
-                            <input class="form-control" placeholder="Middle Name" name="firstname">
+                            <input class="form-control" placeholder="Middle Name" name="middlename">
 
                         </div>
 
@@ -204,13 +204,11 @@ include '../includes/footer.php';
                     </div>
 
                     <div class="row">
-                        <div class="form-group col-sm-4">
+                        <div class="form-group col-sm-6">
                             <input class="form-control" placeholder="Email" name="email" required>
                         </div>
-                        <div class="form-group col-sm-4">
-                            <input class="form-control" placeholder="Employee ID" name="employeeid" required>
-                        </div>
-                        <div class="form-group col-sm-4">
+
+                        <div class="form-group col-sm-6">
                             <input class="form-control" placeholder="Phone Number" name="phonenumber" required>
                         </div>
                     </div>
@@ -258,7 +256,8 @@ include '../includes/footer.php';
                     </div>
 
                     <hr>
-                    <button type="submit" class="btn btn-success"><i class="fa fa-check fa-fw"></i>Save</button>
+                    <button type="submit" class="btn btn-success" name="save"><i
+                            class="fa fa-check fa-fw"></i>Save</button>
                     <button type="reset" class="btn btn-danger" onclick="clear()"><i
                             class="fa fa-times fa-fw"></i>Reset</button>
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
