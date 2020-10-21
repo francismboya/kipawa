@@ -107,10 +107,8 @@ $len = count($courseID);
                             <ul id="myTab1" role="tablist"
                                 class="nav nav-tabs nav-pills with-arrow flex-column flex-sm-row text-center">
                                 <?php
-                                if ($len == 0) {
-                                    # code...
-                                
-for ($i = 0; $i < $len; $i++){
+
+for ($i = 0; $i < $len; $i++) {
     while ($j < $len) {
         if ($j == 0) {
             $upl = '<li class="nav-item flex-sm-fill">
@@ -235,29 +233,7 @@ for ($i = 0; $i < $len; $i++){
     }
 
     ?>
-                                <?php }}
-                                else{
-                                    $tbody1 = 'role="tabpanel" aria-labelledby="home-tab" class="tab-pane fade px-4 py-5">
-       <table class="table">
-            <thead>
-                <tr><h4> NO any Course assigned to you currently </h4></tr>   <tr>
-                        <th style="font-size:14px">Reg no</th>
-                        <th style="font-size:14px">Name</th>
-                        <th style="font-size:14px">Department</th>
-                        <th style="font-size:14px">Program</th>
-                        <th style="font-size:14px">NTA Level</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr> 
-                     No Data found
-                    </tr>
-                </tbody>
-                </table>
-                ';
-
-                                    echo $tbody1 ;
-                                }
+                                <?php }
 ?>
                                 <!-- End bordered tabs -->
                         </div>

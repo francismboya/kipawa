@@ -1,4 +1,4 @@
-<div class="card-body"><div class="table-responsive" style="font-size:14px"><table class="table table-bordered" id="dataTable" width="100%" cellspacing="0"> <thead><p>Dear, mboya felix  the following Student info contain error:</p><tr> <th style="font-size:14px">SN</th><th style="font-size:14px">regno</th>
+<div class="card-body"><div class="table-responsive" style="font-size:14px"><table class="table table-bordered" id="dataTable" width="100%" cellspacing="0"> <thead><p>Dear, JOHN STEPHEN  the following Student info contain error:</p><tr> <th style="font-size:14px">SN</th><th style="font-size:14px">regno</th>
                             <th style="font-size:14px">fname</th>  <th style="font-size:14px">lname</th>
                             <th style="font-size:14px">programID</th>
                             <th style="font-size:14px">reason</th></tr></thead>
