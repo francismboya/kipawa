@@ -29,6 +29,8 @@ $name1 = $_SESSION['fname'];
 $name2 = $_SESSION['lname'];
 $emp = $_SESSION['ID'];
 $response = array();
+$errorf = array();
+
 $reason = array();
 $bc = 0;
 $errorfile = "../error/" . $emp . ".txt";
@@ -47,13 +49,18 @@ if (isset($_POST['import'])) {
             $height = $fileinfo[1];
             if (($_FILES["filer"]["size"][$i] > 1000000)) {
                 $response[$bc] = $filename;
+                $errorf[$filename] = "size exceed 1MB";
+
                 $bc++;
 
             } else if ($width != "225" || $height != "225") {
                 $response[$bc] = $filename;
+                $errorf[$filename] = "image dimension expected 255px X 255px";
+
                 $bc++;
 
             } else {
+                $filename;
 
                 move_uploaded_file($_FILES['filer']['tmp_name'][$i], '../stdimg/' . $filename);
 
@@ -82,6 +89,9 @@ if (isset($_POST['import'])) {
             $regDate = array();
             $phoneno = array();
             $validity = 0;
+            $statusName = "student";
+            $lstate = "enabled";
+            $state = "Approved";
 
             $i = 0;
 
@@ -90,53 +100,142 @@ if (isset($_POST['import'])) {
                 if ($row == 1) {
                     continue;
                 }
+                $filerr = $col[0] . ".png";
+                $d = strtotime($col[10]);
+                $regDate = date("m/d/Y", $d);
+                $yearr = date("Y", $d);
+
                 $insert = "INSERT INTO student (regno,fname,mname,lname,
-            depertmentID,programID,year,level,email,file,gender,state,regDate,phoneno)values('" . $col[2] . "','" . $col[3] . "','" . $col[4] .
-                    "','" . $col[5] . "','" . $col[6] . "','" . $col[7] . "','" . $col[8] . "','" . $col[9] .
-                    "','" . $col[10] . "','" . $col[11] . "','" . $col[12] . "','" . $col[13] . "','" . $col[14] .
-                    "','" . $col[15] . "')";
+            depertmentID,programID,year,level,email,file,gender,state,regDate,phoneno)values('" . $col[0] . "','" . $col[1] . "','" . $col[2] .
+                    "','" . $col[3] . "','" . $col[4] . "','" . $col[5] . "','" . $yearr . "','" . $col[6] .
+                    "','" . $col[7] . "','" . $filerr . "','" . $col[8] . "','" . $col[9] . "','" . $regDate .
+                    "','" . $col[11] . "')";
+
+                $loginis = "INSERT INTO login (email, password) values('" . $col[7] . "','" . $col[3] . "')";
+                $statusis = "INSERT INTO status (statusName, email, lstate) values('" . $statusName . "','" . $col[7] . "','" . $lstate . "')";
+                $sql = "SELECT email FROM login where email='" . $col[7] . "'";
+
+                if ($result = mysqli_query($db, $sql)) {
+
+                } else {
+                    $validity = 1;
+                    $regno[$i] = $col[0];
+                    $fname[$i] = $col[1];
+                    $mname[$i] = $col[2];
+                    $lname[$i] = $col[3];
+                    $depertmentID[$i] = $col[4];
+                    $programID[$i] = $col[5];
+                    $year[$i] = $yearr;
+                    $level[$i] = $col[6];
+                    $email[$i] = $col[7];
+                    $file2[$i] = $filerr;
+                    $gender[$i] = $col[8];
+                    $state[$i] = $col[9];
+                    $regDate[$i] = $regDate;
+                    $phoneno[$i] = $col[11];
+                    $reason[$i] = "connection error";
+                    $i++;
+
+                }
 
                 mysqli_autocommit($db, false);
-                if (in_array($col[11], $response)) {
+                if (in_array($filerr, $response)) {
                     $validity = 1;
-                    $regno[$i] = $col[2];
-                    $fname[$i] = $col[3];
-                    $mname[$i] = $col[4];
-                    $lname[$i] = $col[5];
-                    $depertmentID[$i] = $col[6];
-                    $programID[$i] = $col[7];
-                    $year[$i] = $col[8];
-                    $level[$i] = $col[9];
-                    $email[$i] = $col[10];
-                    $file2[$i] = $col[11];
-                    $gender[$i] = $col[12];
-                    $state[$i] = $col[13];
-                    $regDate[$i] = $col[14];
-                    $phoneno[$i] = $col[15];
-                    $reason[$i] = "error on image";
+                    $regno[$i] = $col[0];
+                    $fname[$i] = $col[1];
+                    $mname[$i] = $col[2];
+                    $lname[$i] = $col[3];
+                    $depertmentID[$i] = $col[4];
+                    $programID[$i] = $col[5];
+                    $year[$i] = $yearr;
+                    $level[$i] = $col[6];
+                    $email[$i] = $col[7];
+                    $file2[$i] = $filerr;
+                    $gender[$i] = $col[8];
+                    $state[$i] = $col[9];
+                    $regDate[$i] = $regDate;
+                    $phoneno[$i] = $col[11];
+                    $reason[$i] = $errorf[$filerr];
+                    $i++;
+
+                } else if (mysqli_num_rows($result) > 0) {
+
+                    $validity = 1;
+                    $regno[$i] = $col[0];
+                    $fname[$i] = $col[1];
+                    $mname[$i] = $col[2];
+                    $lname[$i] = $col[3];
+                    $depertmentID[$i] = $col[4];
+                    $programID[$i] = $col[5];
+                    $year[$i] = $yearr;
+                    $level[$i] = $col[6];
+                    $email[$i] = $col[7];
+                    $file2[$i] = $filerr;
+                    $gender[$i] = $col[8];
+                    $state[$i] = $col[9];
+                    $regDate[$i] = $regDate;
+                    $phoneno[$i] = $col[11];
+                    $reason[$i] = "user exit in system";
+                    $i++;
+
+                } else if (!mysqli_query($db, $loginis)) {
+                    $validity = 1;
+                    $regno[$i] = $col[0];
+                    $fname[$i] = $col[1];
+                    $mname[$i] = $col[2];
+                    $lname[$i] = $col[3];
+                    $depertmentID[$i] = $col[4];
+                    $programID[$i] = $col[5];
+                    $year[$i] = $yearr;
+                    $level[$i] = $col[6];
+                    $email[$i] = $col[7];
+                    $file2[$i] = $filerr;
+                    $gender[$i] = $col[8];
+                    $state[$i] = $col[9];
+                    $regDate[$i] = $col[10];
+                    $phoneno[$i] = $col[11];
+                    $reason[$i] = "error on CSV";
                     $i++;
 
                 } else if (!mysqli_query($db, $insert)) {
                     $validity = 1;
-                    $regno[$i] = $col[2];
-                    $fname[$i] = $col[3];
-                    $mname[$i] = $col[4];
-                    $lname[$i] = $col[5];
-                    $depertmentID[$i] = $col[6];
-                    $programID[$i] = $col[7];
-                    $year[$i] = $col[8];
-                    $level[$i] = $col[9];
-                    $email[$i] = $col[10];
-                    $file2[$i] = $col[11];
-                    $gender[$i] = $col[12];
-                    $state[$i] = $col[13];
-                    $regDate[$i] = $col[14];
-                    $phoneno[$i] = $col[15];
-                    $reason[$i] = "error on csv file info";
-
+                    $regno[$i] = $col[0];
+                    $fname[$i] = $col[1];
+                    $mname[$i] = $col[2];
+                    $lname[$i] = $col[3];
+                    $depertmentID[$i] = $col[4];
+                    $programID[$i] = $col[5];
+                    $year[$i] = $yearr;
+                    $level[$i] = $col[6];
+                    $email[$i] = $col[7];
+                    $file2[$i] = $filerr;
+                    $gender[$i] = $col[8];
+                    $state[$i] = $col[9];
+                    $regDate[$i] = $col[10];
+                    $phoneno[$i] = $col[11];
+                    $reason[$i] = "error on CSV";
                     $i++;
-                }
 
+                } else if (!mysqli_query($db, $statusis)) {
+                    $validity = 1;
+                    $regno[$i] = $col[0];
+                    $fname[$i] = $col[1];
+                    $mname[$i] = $col[2];
+                    $lname[$i] = $col[3];
+                    $depertmentID[$i] = $col[4];
+                    $programID[$i] = $col[5];
+                    $year[$i] = $yearr;
+                    $level[$i] = $col[6];
+                    $email[$i] = $col[7];
+                    $file2[$i] = $filerr;
+                    $gender[$i] = $col[8];
+                    $state[$i] = $col[9];
+                    $regDate[$i] = $col[10];
+                    $phoneno[$i] = $col[11];
+                    $reason[$i] = "error on CSV";
+                    $i++;
+
+                }
             }
 
             if ($validity == 1) {
@@ -232,7 +331,7 @@ if (isset($_POST['import'])) {
     <?php
 } else {
                 $db->commit();
-                echo json_encode(['status' => "success"]);
+                // echo json_encode(['status' => "success"]);
                 ?>
     <div class="shadow mb-4" id="loadertz2">
         <div class="card-body bg">'

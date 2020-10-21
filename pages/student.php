@@ -171,15 +171,18 @@ include '../includes/footer.php';
             <div class="modal-body">
 
 
-                <form role="form" method="post" action="studentadd.php?action=add" class="form-horizontal">
+                <form role="form" method="post" action="studentadd.php?action=add" class="form-horizontal"
+                    enctype="multipart/form-data">
                     <!--image-->
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-sm-6 imgUp">
                                 <div class="imagePreview"></div>
                                 <label class="btn btn-primary col-sm-12">
-                                    Upload profile photo<input type="file" class="uploadFile img" value="Upload Photo"
-                                        name="image" style="width:0px;height: 0px;overflow: hidden;">
+                                    Upload profile photo
+                                    <input type="file" class="uploadFile img" name="image" accept="image/*"
+                                        style="width:0px;height: 0px;overflow: hidden;" />
+                                    <!--value="Upload Photo"-->
                                 </label>
                             </div><!-- col-2 -->
                         </div><!-- row -->
