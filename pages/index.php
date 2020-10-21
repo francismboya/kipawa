@@ -38,7 +38,16 @@ alert("Restricted Page! You will be redirected");
 window.location = "#";
 </script>
 
-<?php } elseif ($Aa == 'student') {
+<?php } elseif ($Aa == 'principal') {
+
+        ?> <script type="text/javascript">
+//then it will be redirected
+alert("Restricted Page! You will be redirected");
+window.location = "principal.php";
+</script>
+
+<?php }
+elseif ($Aa == 'student') {
 
         ?> <script type="text/javascript">
 //then it will be redirected

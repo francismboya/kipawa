@@ -1,0 +1,9 @@
+email,password,regno,fname,mname,lname,depertmentID,programID,year,level,email,file,gender,state,regDate,phoneno
+amanidayo@gmail.com,12345,SID-VETA-2018-001,Amani,Ivan,Dayo,ITT,ITT,2018,6,amanidayo@gmail.com,SID-VETA-2018-001.png,Male,Approved,12/22/2018,759191200
+upendomkone@gmail.com,12345,SID-VETA-2018-002, Upendo,Jabiri,Mkone,ELEC,ELEC,2018,5,upendomkone@gmail.com,SID-VETA-2018-002.png,female,Approved,12/23/2018,79191201
+kivutiriissa@gmail.com,12345,SID-VETA-2018-003, Kivutiri,Hussein,Issa,ELEC,ELEC,2018,5,kivutiriissa@gmail.com,SID-VETA-2018-003.png,Male,Approved,12/24/2018,79191202
+jumaathumani@gmail.com,12346,SID-VETA-2018-004, Juma,Mkongowe,Athumani,ITT,ITT,2018,3,jumaathumani@gmail.com,SID-VETA-2018-004.png,Male,Approved,12/25/2018,79191203
+habarinode@gmail.com,12347,SID-VETA-2018-005, Habari,Jakaranda,Node,ELECT,ELECT,2018,6,habarinode@gmail.com,SID-VETA-2018-005.png,Male,Approved,12/26/2018,79191204
+frankjohn@gmail.com,12348,SID-VETA-2018-006, Frank,Felix,John,ELECT,ELECT,2018,6,frankjohn@gmail.com,SID-VETA-2018-006.png,Male,Approved,12/27/2018,79191205
+barakannko@gmail.com,12349,SID-VETA-2018-007, Baraka,Justice,Nnko,ITT,ITT,2018,3,barakannko@gmail.com,SID-VETA-2018-007.png,Male,Approved,12/28/2018,79191206
+eliasipallangyo@gmail.com,12350,SID-VETA-2018-008, Eliasi,Eframeni,Pallangyo,ELEC,ELEC,2018,5,eliasipallangyo@gmail.com,SID-VETA-2018-008.png,Male,Approved,12/29/2018,79191207

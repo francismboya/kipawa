@@ -107,7 +107,7 @@ confirm_logged_in();
             <li class="nav-item">
                 <a class="nav-link" href="#">
                     <i class="fas fa-fw fa-archive"></i>
-                    <span>RESULTS</span></a>
+                    <span>RESULTS SUMMARY</span></a>
             </li>
 
 
