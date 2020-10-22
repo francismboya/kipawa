@@ -22,11 +22,11 @@ while ($row = mysqli_fetch_assoc($result)) {
 $job .= "</select>";
 
 $sqlforjob = "SELECT DISTINCT depertmentID, dName
-FROM department order by depertmentID asc";
+FROM department where depertmentID !='MNG'order by depertmentID asc";
 $result = mysqli_query($db, $sqlforjob) or die("Bad SQL: $sqlforjob");
 
 $job2 = "<select class='form-control col-sm-12' name='jobs' required>
-        <option value='' disabled selected hidden>Select Department</option>";
+<option value='' disabled selected hidden>Select Department</option>";
 while ($row = mysqli_fetch_assoc($result)) {
     $job2 .= "<option value='" . $row['depertmentID'] . "'>" . $row['dName'] . "</option>";
 }
@@ -66,31 +66,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 $emp .= "</select>";
 
 ?>
-<script>
-window.onload = function() {
 
-    // ---------------
-    // basic usage
-    // ---------------
-    var $ = new City();
-    $.showProvinces("#province");
-    $.showCities("#city");
-
-    // ------------------
-    // additional methods
-    // -------------------
-
-    // will return all provinces
-    console.log($.getProvinces());
-
-    // will return all cities
-    console.log($.getAllCities());
-
-    // will return all cities under specific province (e.g Batangas)
-    console.log($.getCities("Batangas"));
-
-}
-</script>
 <!-- end of Employee select and script -->
 
 <!-- Logout Modal-->
@@ -128,15 +104,16 @@ window.onload = function() {
             <div class="modal-body">
 
 
-                <form role="form" method="post" action="cust_transac.php?action=add" class="form-horizontal">
+                <form role="form" method="post" action="manageadd.php?action=add" class="form-horizontal"
+                    enctype="multipart/form-data">
                     <!--image-->
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-sm-6 imgUp">
                                 <div class="imagePreview"></div>
                                 <label class="btn btn-primary col-sm-12">
-                                    Upload profile photo<input type="file" class="uploadFile img" value="Upload Photo"
-                                        style="width:0px;height: 0px;overflow: hidden;">
+                                    Upload profile photo<input type="file" class="uploadFile img" name="image"
+                                        style="width:0px;height: 0px;overflow: hidden;" accept="image/*">
                                 </label>
                             </div><!-- col-2 -->
                         </div><!-- row -->
@@ -151,7 +128,7 @@ window.onload = function() {
 
                         </div>
                         <div class="form-group col-sm-4">
-                            <input class="form-control" placeholder="Middle Name" name="firstname">
+                            <input class="form-control" placeholder="Middle Name" name="middlename">
 
                         </div>
 
@@ -176,9 +153,8 @@ window.onload = function() {
                         <div class="form-group col-sm-6">
                             <select class='form-control' name='position' required>
                                 <option value="" disabled selected hidden>Select Position</option>
-                                <option value="Male">Registrar</option>
-                                <option value="Female">Principal</option>
-                                <option value="Female">Admin</option>
+                                <option value="principal">Principal</option>
+                                <option value="admin">Registrar</option>
 
                             </select>
                         </div>
@@ -190,15 +166,12 @@ window.onload = function() {
                             </select>
                         </div>
 
-                        <div class="row">
-                            <div class="form-group col-sm-12">
-                                <?php echo $job2; ?>
-                            </div>
-                        </div>
+
                     </div>
 
                     <hr>
-                    <button type="submit" class="btn btn-success"><i class="fa fa-check fa-fw"></i>Save</button>
+                    <button type="submit" class="btn btn-success" name="save"><i
+                            class="fa fa-check fa-fw"></i>Save</button>
                     <button type="reset" class="btn btn-danger"><i class="fa fa-times fa-fw"></i>Reset</button>
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                 </form>
@@ -255,14 +228,15 @@ window.onload = function() {
             <div class="modal-body">
 
 
-                <form role="form" method="post" action="cust_transac.php?action=add" class="form-horizontal">
+                <form role="form" method="post" action="teacheradd.php?action=add" class="form-horizontal"
+                    enctype="multipart/form-data">
                     <!--image-->
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-sm-6 imgUp">
                                 <div class="imagePreview"></div>
                                 <label class="btn btn-primary col-sm-12">
-                                    Upload profile photo<input type="file" class="uploadFile img" value="Upload Photo"
+                                    Upload profile photo<input type="file" class="uploadFile img" name="image"
                                         style="width:0px;height: 0px;overflow: hidden;">
                                 </label>
                             </div><!-- col-2 -->
@@ -278,7 +252,7 @@ window.onload = function() {
 
                         </div>
                         <div class="form-group col-sm-4">
-                            <input class="form-control" placeholder="Middle Name" name="firstname">
+                            <input class="form-control" placeholder="Middle Name" name="middlename">
 
                         </div>
 
@@ -303,9 +277,8 @@ window.onload = function() {
                         <div class="form-group col-sm-6">
                             <select class='form-control' name='position' required>
                                 <option value="" disabled selected hidden>Select Position</option>
-                                <option value="Male">Registrar</option>
-                                <option value="Female">Principal</option>
-                                <option value="Female">Admin</option>
+                                <option value="hod">HOD</option>
+                                <option value="teacher">Teacher</option>
 
                             </select>
                         </div>
@@ -325,7 +298,8 @@ window.onload = function() {
                     </div>
 
                     <hr>
-                    <button type="submit" class="btn btn-success"><i class="fa fa-check fa-fw"></i>Save</button>
+                    <button type="submit" class="btn btn-success" name='save'><i
+                            class="fa fa-check fa-fw"></i>Save</button>
                     <button type="reset" class="btn btn-danger"><i class="fa fa-times fa-fw"></i>Reset</button>
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                 </form>

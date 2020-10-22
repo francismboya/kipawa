@@ -46,7 +46,7 @@ if (isset($_POST['user']) && isset($_POST['password'])) {
         LEFT JOIN employee ON login.email=employee.email LEFT JOIN status on login.email=status.email
         LEFT JOIN student ON login.email=student.email
          where login.password='" . $h_upass . "' AND login.email='" . $users . "'";
-        $result = $db->query($sql);
+        echo $result = $db->query($sql);
         if ($result) {
             //get the number of results based n the sql statement
             //check the number of result, if equal to one
@@ -55,21 +55,22 @@ if (isset($_POST['user']) && isset($_POST['password'])) {
                 //store the result to a array and passed to variable found_user
                 $found_user = mysqli_fetch_array($result);
                 //fill the result to session variable
-                if ($found_user['statusName'] == "student") {echo $_SESSION['ID'] = $found_user['regno'];
-                    echo $_SESSION['fname'] = $found_user['fname'];
-                    echo $_SESSION['mname'] = $found_user['mname'];
-                    echo $_SESSION['lname'] = $found_user['lname'];
-                    echo $_SESSION['depertmentID'] = $found_user['depertmentID'];
-                    echo $_SESSION['programID'] = $found_user['programID'];
-                    echo $_SESSION['year'] = $found_user['year'];
-                    echo $_SESSION['level'] = $found_user['level'];
-                    echo $_SESSION['email'] = $found_user['email'];
-                    echo $_SESSION['file'] = $found_user['file'];
-                    echo $_SESSION['state'] = $found_user['state'];
-                    echo $_SESSION['regDate'] = $found_user['regDate'];
-                    echo $_SESSION['phoneno'] = $found_user['phoneno'];
-                    echo $_SESSION['StatusName'] = $found_user['statusName'];
-                    echo $_SESSION['gender'] = $found_user['gender'];
+                if ($found_user['statusName'] == "student") {
+                    $_SESSION['ID'] = $found_user['regno'];
+                    $_SESSION['fname'] = $found_user['fname'];
+                    $_SESSION['mname'] = $found_user['mname'];
+                    $_SESSION['lname'] = $found_user['lname'];
+                    $_SESSION['depertmentID'] = $found_user['depertmentID'];
+                    $_SESSION['programID'] = $found_user['programID'];
+                    $_SESSION['year'] = $found_user['year'];
+                    $_SESSION['level'] = $found_user['level'];
+                    $_SESSION['email'] = $found_user['email'];
+                    $_SESSION['file'] = $found_user['file'];
+                    $_SESSION['state'] = $found_user['state'];
+                    $_SESSION['regDate'] = $found_user['regDate'];
+                    $_SESSION['phoneno'] = $found_user['phoneno'];
+                    $_SESSION['StatusName'] = $found_user['statusName'];
+                    $_SESSION['gender'] = $found_user['gender'];
 
                     $AAA = $_SESSION['ID'];
                     $_SESSION['users'] = "student";

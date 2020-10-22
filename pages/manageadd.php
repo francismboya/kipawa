@@ -25,20 +25,14 @@ if (isset($_POST['save'])) {
     $lname = $_POST["lastname"];
     $email = $_POST['email'];
     $phoneno = $_POST['phonenumber'];
-    $level = $_POST['level'];
+
     $gender = $_POST['gender'];
-    $department = $_POST['deparment'];
-    $department = $_POST['deparment'];
-    $programID = $_POST['program'];
-    $regno = $_POST['regno'];
-    $d = strtotime($_POST['regddate']);
-    $regDate = date("m/d/yy", $d);
-    $year = date("yy", $d);
+    $department = "MNG";
+    $employeeID = $_POST['employeeid'];
     $passwd = $lname;
-    $statusName = "student";
+    $statusName = $_POST["position"];
     $lstate = "enabled";
-    $state = "Approved";
-    $name = $regno . ".png";
+    $name = $employeeID . ".png";
     $image = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
     if ($image == "png") {
         $fileinfo = @getimagesize($_FILES["image"]["tmp_name"]);
@@ -50,30 +44,34 @@ if (isset($_POST['save'])) {
 
         } else {
             #validated
-            move_uploaded_file($_FILES['image']['tmp_name'], '../stdimg/' . $name);
+            move_uploaded_file($_FILES['image']['tmp_name'], '../stfimg/' . $name);
             $file = $name;
             #validation of other detail
-            $regno2 = substr($regno, 0, 9);
+            $regno2 = substr($employeeID, 0, 9);
 
-            if (strcmp($regno2, "KICTC-CER") == 0 || strcmp($regno2, "KICTC-DIP") == 0) {
+            if (strcmp($regno2, "KICTC-STA") == 0) {
                 #valid
                 if (strcmp($mname, "") == 0) {
                     #no middle name
-                    $insert = "INSERT INTO student (regno,fname,lname,
-            depertmentID,programID,year,level,email,file,gender,state,regDate,phoneno)values('" . $regno . "','" . $fname . "','" . $lname . "','" . $department . "','" . $programID . "','" . $year . "','" . $level .
-                        "','" . $email . "','" . $file . "','" . $gender . "','" . $state . "','" . $regDate .
+                    $insert = "INSERT INTO employee (employeeID,fname,lname,email,
+            file,gender, depertmentID, phoneno)values('" . $employeeID . "','" . $fname . "','" . $lname . "','" . $email . "','"
+                        . $file . "','" . $gender . "','" . $department .
                         "','" . $phoneno . "')";
 
                 } else {
-                    $insert = "INSERT INTO student (regno,fname,mname,lname,
-            depertmentID,programID,year,level,email,file,gender,state,regDate,phoneno)values('" . $regno . "','" . $fname . "','" . $mname .
-                        "','" . $lname . "','" . $department . "','" . $programID . "','" . $year . "','" . $level .
-                        "','" . $email . "','" . $file . "','" . $gender . "','" . $state . "','" . $regDate .
+                    $insert = "INSERT INTO employee (employeeID,fname, mname, lname,email,
+            file,gender, depertmentID, phoneno)values('" . $employeeID . "','" . $fname . "','" . $mname . "','" . $lname . "','" . $email . "','"
+                        . $file . "','" . $gender . "','" . $department .
                         "','" . $phoneno . "')";
                 }
                 $loginis = "INSERT INTO login (email, password) values('" . $email . "','" . $passwd . "')";
                 $statusis = "INSERT INTO status (statusName, email, lstate) values('" . $statusName . "','" . $email . "','" . $lstate . "')";
                 $sql = "SELECT email FROM login where email='" . $email . "'";
+                $selrm = "SELECT login.email FROM login JOIN status on status.email =login.email where status.statusName='" . $statusName . "'";
+                $a = 0;
+                $em = "";
+                $seldl = "";
+
                 if ($result = mysqli_query($db, $sql)) {
 
                     if (mysqli_num_rows($result) > 0) {
@@ -81,24 +79,50 @@ if (isset($_POST['save'])) {
                         $errorep = "user already exit in database";
 
                     } else {
-                        mysqli_autocommit($db, false);
+
                         #insertion
+                        if ($result = mysqli_query($db, $selrm)) {
+                            $a = 1;
+                        } else {
+                            $errorep = "connection error";
+                        }
+                        if ($a == 1) {
+                            if (mysqli_num_rows($result) > 0) {
+                                $found_user = mysqli_fetch_array($result);
+                                $em = $found_user["email"];
+                                $seldl = "delete  FROM login where email='" . $em . "'";
+
+                                $a = 2;
+                            } else {
+                                $a = 3;
+                            }
+                        }
+                        mysqli_autocommit($db, false);
+
+                        if ($a == 2) {
+                            if (!mysqli_query($db, $seldl)) {
+                                #error
+                                $errorep = "2.1 connection error";
+
+                            }
+
+                        }
 
                         if (!mysqli_query($db, $loginis)) {
                             #error
-                            $errorep = "error on student information";
+                            $errorep = "2.2 error on user information";
 
                         }
 
                         if (!mysqli_query($db, $insert)) {
                             #error
-                            $errorep = "error on student information";
+                            $errorep = "2.3 error on user information";
 
                         }
 
                         if (!mysqli_query($db, $statusis)) {
                             #error
-                            $errorep = "error on student information";
+                            $errorep = "2.4 error on user information";
 
                         }
                         #check if error occured
@@ -130,7 +154,8 @@ if (isset($_POST['save'])) {
 
     ?>
     <?php
-if (strcmp($errorep, "") > 0) {
+
+    if (strcmp($errorep, "") > 0) {
         ?>
 
 
@@ -156,12 +181,13 @@ if (strcmp($errorep, "") > 0) {
     </div>
     <script>
     var errorcat = "<?php echo $errorep ?>";
+    var tn = "<?php echo $statusName ?>";
     Swal.fire({
         icon: 'error',
-        title: 'STUDENT  NOT ADDED',
+        title: tn + ' not added',
         text: errorcat,
 
-        footer: '<a href="student.php">view student here!</a>'
+        footer: '<a href="management.php">view management here!</a>'
 
     }).then((result) => {
         if (result.value) {
@@ -172,7 +198,7 @@ if (strcmp($errorep, "") > 0) {
             $(document).ajaxComplete(function() {
                 $("#wait").css("display", "none");
             });
-            $('#ajaxorg').load('student.php');
+            $('#ajaxorg').load('management.php');
         }
     });
     </script>
@@ -207,9 +233,9 @@ if (strcmp($errorep, "") > 0) {
     <script>
     Swal.fire({
         icon: 'success',
-        title: 'STUDENT INFORMATION ADDED SUCCESSFULLY',
+        title: 'USER INFORMATION ADDED SUCCESSFULLY',
         text: 'all information now are live!',
-        footer: '<a href="student.php">view student!</a>'
+        footer: '<a href="management.php">view mangement!</a>'
 
     }).then((result) => {
         if (result.value) {
@@ -221,7 +247,7 @@ if (strcmp($errorep, "") > 0) {
                 $("#wait").css("display", "none");
             });
 
-            $('#ajaxorg').load('student.php');
+            $('#ajaxorg').load('management.php');
         }
     });
     </script>

@@ -52,7 +52,7 @@ window.location = "pos.php";
                 <tbody>
                     <?php
 $query = "SELECT employeeID, fname, lname, phoneno, s.statusName FROM employee join status s on s.email= employee.email
-                      where s.statusName !='teacher' and s.statusName !='student'";
+                      where s.statusName !='teacher' and s.statusName !='student' and s.statusName !='hod'";
 $result = mysqli_query($db, $query) or die(mysqli_error($db));
 
 while ($row = mysqli_fetch_assoc($result)) {
