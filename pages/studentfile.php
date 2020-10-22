@@ -139,7 +139,7 @@ if (isset($_POST['import'])) {
                 }
 
                 mysqli_autocommit($db, false);
-                if (in_array($filerr, $response)) {
+                if (array_key_exists($filerr, $response)) {
                     $validity = 1;
                     $regno[$i] = $col[0];
                     $fname[$i] = $col[1];
