@@ -47,7 +47,14 @@ if (isset($_POST['import'])) {
             $fileinfo = @getimagesize($_FILES["filer"]["tmp_name"][$i]);
             $width = $fileinfo[0];
             $height = $fileinfo[1];
-            if (($_FILES["filer"]["size"][$i] > 1000000)) {
+            $regno2 = substr($filename, 0, 9);
+            if ($regno2 != "KICTC-CERT" || $regno2 != "KICTC-DIP") {
+                $response[$bc] = $filename;
+                $errorf[$filename] = "invalid image name";
+
+                $bc++;
+
+            } else if (($_FILES["filer"]["size"][$i] > 1000000)) {
                 $response[$bc] = $filename;
                 $errorf[$filename] = "size exceed 1MB";
 
@@ -104,6 +111,7 @@ if (isset($_POST['import'])) {
                 $d = strtotime($col[10]);
                 $regDate = date("m/d/Y", $d);
                 $yearr = date("Y", $d);
+                $regno3 = substr($col[0], 0, 9);
 
                 $insert = "INSERT INTO student (regno,fname,mname,lname,
             depertmentID,programID,year,level,email,file,gender,state,regDate,phoneno)values('" . $col[0] . "','" . $col[1] . "','" . $col[2] .
@@ -139,7 +147,7 @@ if (isset($_POST['import'])) {
                 }
 
                 mysqli_autocommit($db, false);
-                if (array_key_exists($filerr, $response)) {
+                if (array_key_exists($filerr, $errorf)) {
                     $validity = 1;
                     $regno[$i] = $col[0];
                     $fname[$i] = $col[1];
@@ -156,6 +164,25 @@ if (isset($_POST['import'])) {
                     $regDate[$i] = $regDate;
                     $phoneno[$i] = $col[11];
                     $reason[$i] = $errorf[$filerr];
+                    $i++;
+
+                } else if ($regno3 != "KICTC-CERT" || $regno3 != "KICTC-DIP") {
+                    $validity = 1;
+                    $regno[$i] = $col[0];
+                    $fname[$i] = $col[1];
+                    $mname[$i] = $col[2];
+                    $lname[$i] = $col[3];
+                    $depertmentID[$i] = $col[4];
+                    $programID[$i] = $col[5];
+                    $year[$i] = $yearr;
+                    $level[$i] = $col[6];
+                    $email[$i] = $col[7];
+                    $file2[$i] = $filerr;
+                    $gender[$i] = $col[8];
+                    $state[$i] = $col[9];
+                    $regDate[$i] = $regDate;
+                    $phoneno[$i] = $col[11];
+                    $reason[$i] = "invalid registration number";
                     $i++;
 
                 } else if (mysqli_num_rows($result) > 0) {
