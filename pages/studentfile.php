@@ -48,7 +48,7 @@ if (isset($_POST['import'])) {
             $width = $fileinfo[0];
             $height = $fileinfo[1];
             $regno2 = substr($filename, 0, 9);
-            if (strcmp($regno2, "KICTC-CER") != 0 || strcmp($regno2, "KICTC-DIP") != 0) {
+            if (strcmp($regno2, "KICTC-CER") > 0 || strcmp($regno2, "KICTC-DIP") > 0) {
                 $response[$bc] = $filename;
                 $errorf[$filename] = "invalid image name";
 
@@ -166,7 +166,7 @@ if (isset($_POST['import'])) {
                     $reason[$i] = $errorf[$filerr];
                     $i++;
 
-                } else if (strcmp($regno3, "KICTC-CER") != 0 || strcmp($regno3, "KICTC-DIP") != 0) {
+                } else if (strcmp($regno3, "KICTC-CER") > 0 || strcmp($regno3, "KICTC-DIP") > 0) {
                     $validity = 1;
                     $regno[$i] = $col[0];
                     $fname[$i] = $col[1];

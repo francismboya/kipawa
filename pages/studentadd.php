@@ -55,7 +55,7 @@ if (isset($_POST['save'])) {
             #validation of other detail
             $regno2 = substr($regno, 0, 9);
 
-            if ($regno2 == "KICTC-CER" || $regno2 == "KICTC-DIP") {
+            if (strcmp($regno2, "KICTC-CER") == 0 || strcmp($regno2, "KICTC-DIP") == 0) {
                 #valid
                 if ($mname == "") {
                     #no middle name
