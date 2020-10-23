@@ -1,14 +1,12 @@
-<?php $scr=0; ?>
-<noscript>
-<?php $scr=1; ?>
-</noscript>
+<?php $scr = 0;?>
 <div id='ajaxorg'>
     <div id="wait" style="display:none; justify-content: center;">
         <img src='../img/loadpage.gif'
             style="pointer-events: none; cursor: default; height: 280px; left: 50%; margin-top: -140px; margin-left: -140px; position: absolute; top: 50%; width: 280px;">
     </div>
     <html>
-<head>
+
+    <head>
         <title>SRMS</title>
         <link type="text/css" href="../css/loginpc.css" rel="stylesheet" media="all" rel="stylesheet" />
         <link type="text/css" href="../css/main.css" rel="stylesheet" media="all" rel="stylesheet" />
@@ -159,15 +157,3 @@
 
     </html>
 </div>
-<script>
-if (history.pushState) {
-    var loc = window.location.href + "<?php echo $_SESSION['fname'] ?>"
-    var passhash = CryptoJS.MD5(loc).toString();
-    var id = "?encry#" + passhash;
-    var pth = "/php/kipawa/pages/index.php"
-    var newurl = window.location.protocol + "//" + window.location.host + pth + id;
-    window.history.pushState("object or string", "Title", newurl);
-} else {
-    document.location.href = window.location.href;
-}
-</script>

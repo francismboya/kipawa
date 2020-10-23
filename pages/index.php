@@ -51,7 +51,7 @@ window.location = "principal.php";
         ?> <script type="text/javascript">
 //then it will be redirected
 alert("Restricted Page! You will be redirected");
-window.location = "#";
+window.location = "../../std/result.php";
 </script>
 
 <?php }

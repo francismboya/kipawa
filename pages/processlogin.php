@@ -46,7 +46,7 @@ if (isset($_POST['user']) && isset($_POST['password'])) {
         LEFT JOIN employee ON login.email=employee.email LEFT JOIN status on login.email=status.email
         LEFT JOIN student ON login.email=student.email
          where login.password='" . $h_upass . "' AND login.email='" . $users . "'";
-        echo $result = $db->query($sql);
+        $result = $db->query($sql);
         if ($result) {
             //get the number of results based n the sql statement
             //check the number of result, if equal to one
@@ -69,7 +69,7 @@ if (isset($_POST['user']) && isset($_POST['password'])) {
                     $_SESSION['state'] = $found_user['state'];
                     $_SESSION['regDate'] = $found_user['regDate'];
                     $_SESSION['phoneno'] = $found_user['phoneno'];
-                    $_SESSION['StatusName'] = $found_user['statusName'];
+                    $_SESSION['statusName'] = $found_user['statusName'];
                     $_SESSION['gender'] = $found_user['gender'];
 
                     $AAA = $_SESSION['ID'];

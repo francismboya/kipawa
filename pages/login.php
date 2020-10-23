@@ -29,10 +29,7 @@
     <script type="text/javascript">
     window.location = "index.php";
     </script>
-<noscript>
-mbwa wewe
-<?php echo "shenzi"; ?>
-</noscript>
+
 
     <?php
 }
@@ -44,17 +41,14 @@ mbwa wewe
         if (width <= 1000) {
             callmb();
         } else if (width > 1000) {
-           callpc();
+            callpc();
 
         }
         return true;
     }
     setscreencookies();
     </script>
-<noscript>
-mbwa wewe
-<?php echo "shenzi"; ?>
-</noscript>
+
 
     <!DOCTYPE html>
     <html lang="en">
@@ -87,4 +81,3 @@ mbwa wewe
 
     </html>
 </div>
-

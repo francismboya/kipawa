@@ -48,6 +48,7 @@ $(document).ready(function() {
             data: $("#lgforms").serialize(),
             success: function(response) {
                 var dec = response.status;
+                console.log(dec)
                 if (dec == 6) {
                     $.notify("wrong password or username entered", "error")
                     Swal.fire({
