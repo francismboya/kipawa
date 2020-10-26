@@ -54,16 +54,22 @@ window.location = "pos.php";
 $query = 'SELECT courseID, cName, depertmentID, level, credit, classfication FROM course
               ORDER BY courseID ASC';
 $result = mysqli_query($db, $query) or die(mysqli_error($db));
-
+$core;
 while ($row = mysqli_fetch_assoc($result)) {
+    if ($row['classfication'] == "c" || $row['classfication'] == "C") {
+        $core = "core";
+    } else {
+        $core = "fundamental";
+
+    }
 
     echo '<tr style="font-size:14px">';
     echo '<td style="font-size:14px">' . $row['courseID'] . '</td>';
     echo '<td style="font-size:14px">' . $row['cName'] . '</td>';
     echo '<td style="font-size:14px">' . $row['depertmentID'] . '</td>';
     echo '<td style="font-size:14px">' . $row['level'] . '</td>';
-    echo '<td style="font-size:14px">' . $row['credit'] . '</td>';
-    echo '<td style="font-size:14px">' . $row['classfication'] . '</td>';
+    echo '<td style="font-size:14px">' . $row["credit"] . '</td>';
+    echo '<td style="font-size:14px">' . $core . '</td>';
 
     echo '<td align="right" style="font-size:14px">
                               <a type="button" class="btn btn-primary bg-gradient-primary" href="trans_view.php?action=edit & id=' . $row['courseID'] . '"><i class="fas fa-fw fa-th-list"></i> View</a>

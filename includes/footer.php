@@ -322,7 +322,7 @@ document.getElementById("clim7").onclick = function(e) {
     e.preventDefault();
     var loc = window.location.href + "<?php echo $_SESSION['fname'] ?>"
     var passhash = CryptoJS.MD5(loc).toString();
-    location.href = "transaction.php?" + passhash;
+    location.href = "course.php?" + passhash;
 }
 
 document.getElementById("clim8").onclick = function(e) {
@@ -338,6 +338,6 @@ document.getElementById("clim9").onclick = function(e) {
     e.preventDefault();
     var loc = window.location.href + "<?php echo $_SESSION['fname'] ?>"
     var passhash = CryptoJS.MD5(loc).toString();
-    location.href = "user.php?" + passhash;
+    location.href = "pos.php?" + passhash;
 }
 </script>

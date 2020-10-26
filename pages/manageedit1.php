@@ -1,3 +1,8 @@
+$query = 'UPDATE customer set FIRST_NAME ="' . $fname . '",
+LAST_NAME ="' . $lname . '", PHONE_NUMBER="' . $phone . '" WHERE
+CUST_ID ="' . $zz . '"';
+$result = mysqli_query($db, $query) or die(mysqli_error($db));
+
 <div id='ajaxorg'>
     <div id="wait" style="display:none; justify-content: center;">
         <img src='../img/loadpage.gif'
@@ -23,10 +28,10 @@ if (isset($_POST['save'])) {
     $fname = $_POST['firstname'];
     $mname = $_POST['middlename'];
     $lname = $_POST["lastname"];
-    $email = $_POST['email'];
     $phoneno = $_POST['phonenumber'];
+
     $gender = $_POST['gender'];
-    $department = "MNG";
+    $department = $_POST["jobs"];
     $employeeID = $_POST['employeeid'];
     $passwd = $lname;
     $statusName = $_POST["position"];
@@ -52,13 +57,13 @@ if (isset($_POST['save'])) {
                 #valid
                 if (strcmp($mname, "") == 0) {
                     #no middle name
-                    $insert = "INSERT INTO employee (employeeID,fname,lname,email,
+                    echo $insert = "INSERT INTO employee (employeeID,fname,lname,email,
             file,gender, depertmentID, phoneno)values('" . $employeeID . "','" . $fname . "','" . $lname . "','" . $email . "','"
                         . $file . "','" . $gender . "','" . $department .
                         "','" . $phoneno . "')";
 
                 } else {
-                    $insert = "INSERT INTO employee (employeeID,fname, mname, lname,email,
+                    echo $insert = "INSERT INTO employee (employeeID,fname, mname, lname,email,
             file,gender, depertmentID, phoneno)values('" . $employeeID . "','" . $fname . "','" . $mname . "','" . $lname . "','" . $email . "','"
                         . $file . "','" . $gender . "','" . $department .
                         "','" . $phoneno . "')";
@@ -66,18 +71,15 @@ if (isset($_POST['save'])) {
                 $loginis = "INSERT INTO login (email, password) values('" . $email . "','" . $passwd . "')";
                 $statusis = "INSERT INTO status (statusName, email, lstate) values('" . $statusName . "','" . $email . "','" . $lstate . "')";
                 $sql = "SELECT email FROM login where email='" . $email . "'";
-                $selrm = "SELECT login.email FROM login JOIN status on status.email =login.email where status.statusName='" . $statusName . "'";
+                $selrm = "SELECT employee.email FROM employee
+                join login ON login.email=employee.email join
+                status on status.email =login.email join department
+                ON department.depertmentID=employee.depertmentID where
+                status.statusName='hod' AND employee.depertmentID='" . $department . "'";
                 $a = 0;
                 $em = "";
                 $seldl = "";
-                $sql2 = "SELECT employeeID FROM employee where employeeID='" . $employeeID . "'";
-                if ($result = mysqli_query($db, $sql2)) {
-                    if (mysqli_num_rows($result) > 0) {
-                        #error exist
-                        $errorep = "employee registration number already exit in database";
-                    }
 
-                }
                 if ($result = mysqli_query($db, $sql)) {
 
                     if (mysqli_num_rows($result) > 0) {
@@ -86,22 +88,24 @@ if (isset($_POST['save'])) {
 
                     } else {
 
-                        #insertion
+                        if (strcmp($statusName, "hod") == 0) { #insertion
                         if ($result = mysqli_query($db, $selrm)) {
                             $a = 1;
                         } else {
                             $errorep = "connection error";
                         }
-                        if ($a == 1) {
-                            if (mysqli_num_rows($result) > 0) {
-                                $found_user = mysqli_fetch_array($result);
-                                $em = $found_user["email"];
-                                $seldl = "delete  FROM login where email='" . $em . "'";
+                            if ($a == 1) {
+                                if (mysqli_num_rows($result) > 0) {
+                                    $found_user = mysqli_fetch_array($result);
+                                    $em = $found_user["email"];
+                                    $seldl = "update status set statusName='teacher' where email='" . $em . "'";
 
-                                $a = 2;
-                            } else {
-                                $a = 3;
+                                    $a = 2;
+                                } else {
+                                    $a = 3;
+                                }
                             }
+
                         }
                         mysqli_autocommit($db, false);
 
@@ -138,13 +142,6 @@ if (isset($_POST['save'])) {
 
                         } else {
                             $db->commit();
-                            if (strcmp($_SESSION['statusName'], "admin") == 0) {
-                                $_SESSION['file'] = $file;
-                                $_SESSION['fname'] = $fname;
-
-                                $_SESSION['lname'] = $lname;
-
-                            }
 
                         }
 
@@ -200,7 +197,7 @@ if (isset($_POST['save'])) {
         title: tn + ' not added',
         text: errorcat,
 
-        footer: '<a href="management.php">view management here!</a>'
+        footer: '<a href="teacher.php">view teacher\'s here!</a>'
 
     }).then((result) => {
         if (result.value) {
@@ -211,7 +208,7 @@ if (isset($_POST['save'])) {
             $(document).ajaxComplete(function() {
                 $("#wait").css("display", "none");
             });
-            $('#ajaxorg').load('management.php');
+            $('#ajaxorg').load('teacher.php');
         }
     });
     </script>
@@ -248,7 +245,7 @@ if (isset($_POST['save'])) {
         icon: 'success',
         title: 'USER INFORMATION ADDED SUCCESSFULLY',
         text: 'all information now are live!',
-        footer: '<a href="management.php">view mangement!</a>'
+        footer: '<a href="teacher.php">view teacher\'s!</a>'
 
     }).then((result) => {
         if (result.value) {
@@ -260,7 +257,7 @@ if (isset($_POST['save'])) {
                 $("#wait").css("display", "none");
             });
 
-            $('#ajaxorg').load('management.php');
+            $('#ajaxorg').load('teacher.php');
         }
     });
     </script>

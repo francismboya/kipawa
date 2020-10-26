@@ -63,13 +63,13 @@ while ($row = mysqli_fetch_assoc($result)) {
     echo '<td style="font-size:14px">' . $row['phoneno'] . '</td>';
 
     echo '<td align="right" style="font-size:14px"> <div class="btn-group">
-                              <a type="button" class="btn btn-primary bg-gradient-primary" href="cust_searchfrm.php?action=edit & id=' . $row['employeeID'] . '"><i class="fas fa-fw fa-list-alt"></i> Details</a>
+                              <a type="button" class="btn btn-primary bg-gradient-primary" href="manageedit.php?action=edit & id=' . $row['employeeID'] . '"><i class="fas fa-fw fa-list-alt"></i> Details</a>
                             <div class="btn-group">
                               <a type="button" class="btn btn-primary bg-gradient-primary dropdown no-arrow" data-toggle="dropdown" style="color:white;">
                               ... <span class="caret"></span></a>
                             <ul class="dropdown-menu text-center" role="menu">
                                 <li>
-                                  <a type="button" class="btn btn-warning bg-gradient-warning btn-block" style="border-radius: 0px;" href="cust_edit.php?action=edit & id=' . $row['employeeID'] . '">
+                                  <a type="button" class="btn btn-warning bg-gradient-warning btn-block" style="border-radius: 0px;" href="manageedit.php?action=edit & id=' . $row['employeeID'] . '">
                                     <i class="fas fa-fw fa-edit"></i> Edit
                                   </a>
                                 </li>

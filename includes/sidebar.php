@@ -118,7 +118,12 @@ confirm_logged_in();
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0)" onclick="location.href='transaction.php'" id="clim7">
+                <a class="nav-link" href="javascript:void(0)" onclick="location.href='program.php'" id="clim67">
+                    <i class="fas fa-fw fa-archive"></i>
+                    <span>Program</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="javascript:void(0)" onclick="location.href='course.php'" id="clim7">
 
                     <i class="fas fa-fw fa-book-open"></i>
                     <span>Course</span></a>
@@ -131,7 +136,7 @@ confirm_logged_in();
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0)" onclick="location.href='user.php'" id="clim9">
+                <a class="nav-link" href="javascript:void(0)" onclick="location.href='pos.php'" id="clim9">
                     <i class="fas fa-fw fa-users"></i>
                     <span>Results</span></a>
             </li>
@@ -189,7 +194,7 @@ confirm_logged_in();
             e.preventDefault();
             var loc = window.location.href + "<?php echo $_SESSION['fname'] ?>"
             var passhash = CryptoJS.MD5(loc).toString();
-            location.href = "transaction.php?" + passhash;
+            location.href = "course.php?" + passhash;
         }
 
         document.getElementById("clim8").onclick = function(e) {
@@ -205,6 +210,6 @@ confirm_logged_in();
             e.preventDefault();
             var loc = window.location.href + "<?php echo $_SESSION['fname'] ?>"
             var passhash = CryptoJS.MD5(loc).toString();
-            location.href = "user.php?" + passhash;
+            location.href = "pos.php?" + passhash;
         }
         </script>

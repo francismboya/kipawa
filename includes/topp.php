@@ -109,14 +109,17 @@ if ($_SESSION['GENDER'] == 'Male') {
 
                             <?php
 
-$query = 'SELECT ID, FIRST_NAME,LAST_NAME,USERNAME,PASSWORD, t.TYPE
-                          FROM users u
-                          JOIN employee e ON e.EMPLOYEE_ID=u.EMPLOYEE_ID
-                          JOIN type t ON t.TYPE_ID=u.TYPE_ID';
+$users = $_SESSION['users'];
+$typid = $_SESSION['typid'];
+$ID = $_SESSION['id'];
+
+$query = "SELECT u." . $ID . ", fname, lname, u.email, l.password
+                          FROM " . $users . " u
+                          JOIN login l ON u.email=l.email";
 $result = mysqli_query($db, $query) or die(mysqli_error($db));
 
 while ($row = mysqli_fetch_assoc($result)) {
-    $a = $_SESSION['MEMBER_ID'];
+    $a = $_SESSION['ID'];
     $bbb = $_SESSION['TYPE'];
 }
 

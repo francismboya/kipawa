@@ -32,12 +32,25 @@
                     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
                         <span
-                            class="mr-2 d-non255e d-lg-inline text-gray-600 small"><?php echo $_SESSION['fname'] . ' ' . $_SESSION['lname']; ?></span>
-                        <img class="img-profile rounded-circle" <?php
-if ($_SESSION['gender'] == 'male') {
-    echo 'src="../img/male.png"';
+                            class="mr-2 d-non255e d-lg-inline text-gray-600 large"><?php echo $_SESSION['fname'] . ' ' . $_SESSION['lname']; ?></span>
+                        <img class="img-profile rounded-circle" style="height:100%; width:120px" <?php
+$image1 = $_SESSION['file'];
+if (strcmp($_SESSION['users'], "student") == 0) {
+    $pathimg = "../stdimg/" . $image1;
 } else {
-    echo 'src="../img/female.png"';
+    $pathimg = "../stfimg/" . $image1;
+
+}
+if (file_exists($pathimg) && is_file($pathimg)) {
+    $pathimg2 = ' src=' . $pathimg;
+    echo $pathimg2;
+
+} else {
+    if ($_SESSION['gender'] == 'male') {
+        echo ' src="../img/male.png"';
+    } else {
+        echo ' src="../img/female.png"';
+    }
 }
 ?>>
 

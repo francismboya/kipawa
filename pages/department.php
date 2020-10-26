@@ -84,16 +84,17 @@ include '../includes/footer.php';
                 </button>
             </div>
             <div class="modal-body">
-                <form role="form" method="post" action="pro_transac.php?action=add">
+                <form role="form" method="post" action="departmentadd.php?action=add">
 
                     <div class="form-group">
                         <input class="form-control" placeholder="Department  ID" name="partmentid" required>
                     </div>
                     <div class="form-group">
-                        <input class="form-control" placeholder="Department Name" name="department name" required>
+                        <input class="form-control" placeholder="Department Name" name="departmentname" required>
                     </div>
                     <hr>
-                    <button type="submit" class="btn btn-success"><i class="fa fa-check fa-fw"></i>Save</button>
+                    <button type="submit" class="btn btn-success" name="save"><i
+                            class="fa fa-check fa-fw"></i>Save</button>
                     <button type="reset" class="btn btn-danger"><i class="fa fa-times fa-fw"></i>Reset</button>
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                 </form>
