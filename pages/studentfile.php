@@ -43,12 +43,16 @@ if (isset($_POST['import'])) {
 
         // Looping all files
         for ($i = 0; $i < $countfiles; $i++) {
-            $filename = $_FILES['filer']['name'][$i];
-            $fileinfo = @getimagesize($_FILES["filer"]["tmp_name"][$i]);
+           echo $filename = $_FILES['filer']['name'][$i];
+            $fileinfo = @getimagesize($_FILES["filer"]["tmp_name"][$i]) ;
+            echo "<br>";
+
             $width = $fileinfo[0];
             $height = $fileinfo[1];
             $regno2 = substr($filename, 0, 9);
-            if (strcmp($regno2, "KICTC-CER") > 0 || strcmp($regno2, "KICTC-DIP") > 0) {
+            echo $rep=strcmp($regno2, "KICTC-DIP");
+
+            if (strcmp($regno2, "KICTC-DIP") > 0 && strcmp($regno2, "KICTC-CER") > 0) {
                 $response[$bc] = $filename;
                 $errorf[$filename] = "invalid image name";
 
@@ -98,7 +102,7 @@ if (isset($_POST['import'])) {
             $validity = 0;
             $statusName = "student";
             $lstate = "enabled";
-            $state = "Approved";
+            $state1 = "Approved";
 
             $i = 0;
 
@@ -108,19 +112,21 @@ if (isset($_POST['import'])) {
                     continue;
                 }
                 $filerr = $col[0] . ".png";
-                $d = strtotime($col[10]);
+                $d = strtotime($col[9]);
                 $regDate = date("m/d/Y", $d);
                 $yearr = date("Y", $d);
                 $regno3 = substr($col[0], 0, 9);
 
                 $insert = "INSERT INTO student (regno,fname,mname,lname,
-            depertmentID,programID,year,level,email,file,gender,state,regDate,phoneno)values('" . $col[0] . "','" . $col[1] . "','" . $col[2] .
+            depertmentID,programID,year,level,email,file,gender,state,regDate,phoneno)
+            values('" . $col[0] . "','" . $col[1] . "','" . $col[2] .
                     "','" . $col[3] . "','" . $col[4] . "','" . $col[5] . "','" . $yearr . "','" . $col[6] .
-                    "','" . $col[7] . "','" . $filerr . "','" . $col[8] . "','" . $col[9] . "','" . $regDate .
-                    "','" . $col[11] . "')";
+                    "','" . $col[7] . "','" . $filerr . "','" . $col[8] . "','" . $state1 . "','" . $regDate .
+                    "','" . $col[10] . "')";
 
                 $loginis = "INSERT INTO login (email, password) values('" . $col[7] . "','" . $col[3] . "')";
-                $statusis = "INSERT INTO status (statusName, email, lstate) values('" . $statusName . "','" . $col[7] . "','" . $lstate . "')";
+                $statusis = "INSERT INTO status (statusName, email, lstate) 
+                values('" . $statusName . "','" . $col[7] . "','" . $lstate . "')";
                 $sql = "SELECT email FROM login where email='" . $col[7] . "'";
 
                 if ($result = mysqli_query($db, $sql)) {
@@ -138,9 +144,9 @@ if (isset($_POST['import'])) {
                     $email[$i] = $col[7];
                     $file2[$i] = $filerr;
                     $gender[$i] = $col[8];
-                    $state[$i] = $col[9];
+                    $state[$i] = $state1;
                     $regDate[$i] = $regDate;
-                    $phoneno[$i] = $col[11];
+                    $phoneno[$i] = $col[10];
                     $reason[$i] = "connection error";
                     $i++;
 
@@ -160,13 +166,13 @@ if (isset($_POST['import'])) {
                     $email[$i] = $col[7];
                     $file2[$i] = $filerr;
                     $gender[$i] = $col[8];
-                    $state[$i] = $col[9];
+                    $state[$i] = $state1;
                     $regDate[$i] = $regDate;
-                    $phoneno[$i] = $col[11];
+                    $phoneno[$i] = $col[10];
                     $reason[$i] = $errorf[$filerr];
                     $i++;
 
-                } else if (strcmp($regno3, "KICTC-CER") > 0 || strcmp($regno3, "KICTC-DIP") > 0) {
+                } else if (strcmp($regno3, "KICTC-CER") > 0 && strcmp($regno3, "KICTC-DIP") > 0) {
                     $validity = 1;
                     $regno[$i] = $col[0];
                     $fname[$i] = $col[1];
@@ -179,9 +185,9 @@ if (isset($_POST['import'])) {
                     $email[$i] = $col[7];
                     $file2[$i] = $filerr;
                     $gender[$i] = $col[8];
-                    $state[$i] = $col[9];
+                    $state[$i] = $state1;
                     $regDate[$i] = $regDate;
-                    $phoneno[$i] = $col[11];
+                    $phoneno[$i] = $col[10];
                     $reason[$i] = "invalid registration number";
                     $i++;
 
@@ -199,9 +205,9 @@ if (isset($_POST['import'])) {
                     $email[$i] = $col[7];
                     $file2[$i] = $filerr;
                     $gender[$i] = $col[8];
-                    $state[$i] = $col[9];
+                    $state[$i] = $state1;
                     $regDate[$i] = $regDate;
-                    $phoneno[$i] = $col[11];
+                    $phoneno[$i] = $col[10];
                     $reason[$i] = "user exit in system";
                     $i++;
 
@@ -218,9 +224,9 @@ if (isset($_POST['import'])) {
                     $email[$i] = $col[7];
                     $file2[$i] = $filerr;
                     $gender[$i] = $col[8];
-                    $state[$i] = $col[9];
-                    $regDate[$i] = $col[10];
-                    $phoneno[$i] = $col[11];
+                    $state[$i] = $state1;
+                    $regDate[$i] = $regDate;
+                    $phoneno[$i] = $col[10];
                     $reason[$i] = "error on CSV";
                     $i++;
 
@@ -237,9 +243,9 @@ if (isset($_POST['import'])) {
                     $email[$i] = $col[7];
                     $file2[$i] = $filerr;
                     $gender[$i] = $col[8];
-                    $state[$i] = $col[9];
-                    $regDate[$i] = $col[10];
-                    $phoneno[$i] = $col[11];
+                    $state[$i] = $state1;
+                    $regDate[$i] = $regDate;
+                    $phoneno[$i] = $col[10];
                     $reason[$i] = "error on CSV";
                     $i++;
 
@@ -256,9 +262,9 @@ if (isset($_POST['import'])) {
                     $email[$i] = $col[7];
                     $file2[$i] = $filerr;
                     $gender[$i] = $col[8];
-                    $state[$i] = $col[9];
-                    $regDate[$i] = $col[10];
-                    $phoneno[$i] = $col[11];
+                    $state[$i] = $state1;
+                    $regDate[$i] = $regDate;
+                    $phoneno[$i] = $col[10];
                     $reason[$i] = "error on CSV";
                     $i++;
 
@@ -405,8 +411,29 @@ if (isset($_POST['import'])) {
             }
 
         }
-    } else {
+    } else {?>
+        <script>
+        Swal.fire({
+        icon: 'error',
+        title: 'STUDENT INFO NOT UPDATED',
+        text: 'Number of file missmatches with image file!',
 
+        footer: '<a href="student.php.php">view student Info!</a>'
+
+    }).then((result) => {
+            if (result.value) {
+                $(document).ajaxStart(function() {
+                    $("#wait").css("display", "block");
+                    $("#loadertz").fadeOut(2);
+                });
+                $(document).ajaxComplete(function() {
+                    $("#wait").css("display", "none");
+                });
+                $('#ajaxorg').load('student.php');
+            }
+        });
+    </script>
+    <?php
     }
 }
 include '../includes/footer.php';
