@@ -1,14 +1,19 @@
 <head>
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
+    <!-- <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+        rel="stylesheet">-->
     <link rel="stylesheet" href="../css/style.css">
     <link rel='stylesheet' href='../vendor/bootstrap/css/bootstrap.min.css'>
-
+    <title>STUDENT KIPAWA ICT CENTRE</title>
 
 </head>
 <?php
+$path = '../img/logo21.png';
+$type = pathinfo($path, PATHINFO_EXTENSION);
+$data = file_get_contents($path);
+$base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
+
 include '../includes/connection.php';
 include '../includes/sidebar.php';
 //include 'studentfile.php';
@@ -92,6 +97,7 @@ $pro .= "</select>";
             <h4 class="m-2 col-sm-6 font-weight-bold text-primary">Import Student Detail from csv file &nbsp;<a href="#"
                     data-toggle="modal" data-target="#abModal" type="button" class="btn btn-primary bg-gradient-primary"
                     style="border-radius: 0px;"><i class="fas fa-paperclip" aria-hidden="true"></i></a></h4>
+
         </div>
 
     </div>
@@ -99,6 +105,7 @@ $pro .= "</select>";
         <div class="table-responsive" style="font-size:14px">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
+
                     <tr>
                         <th style="font-size:14px">Reg no</th>
                         <th style="font-size:14px">Name</th>
@@ -340,4 +347,145 @@ if (history.pushState) {
 } else {
     document.location.href = window.location.href;
 }
+</script>
+<script>
+$(document).ready(function() {
+    var a =
+        '<h2 style="text-align:center;color:black;padding-top:90px;">Registered Student Kipawa ICT<h2>';
+    var b = '<div class="hero-image"';
+    var c = "style ='background-image: url";
+    var d =
+        '("https: //1.bp.blogspot.com/-vTxIJk9Q82I/X5lOz-6fAzI/AAAAAAAAN94/ECwlZ55kYHUhcaHRh0fPIvo4s9v2tVITACLcBGAsYHQ/s517/logo3.png");';
+    var f = "padding-top:5%; padding-bottom:5%; background-repeat: no-repeat; background-size: cover;'>";
+    var g = '</div>';
+    var ad = b + c + d + f + a + g;
+    var ba = "<?php echo $base64; ?>";
+    table = $('#dataTable').DataTable({
+        "bDestroy": true,
+        "dom": '<"dt-buttons"Bf><"clear">lirtp',
+        "paging": true,
+        "autoWidth": true,
+        lengthMenu: [
+            [10, 25, 50, 100, 200, -1],
+            [10, 25, 50, 100, 200, "All"]
+        ],
+        buttons: [{
+                extend: 'csv',
+                text: 'EXPORT TO CSV',
+                className: 'btn btn-primary',
+                exportOptions: {
+                    columns: ':visible'
+                }
+            }, {
+                extend: 'excel',
+                text: 'EXPORT TO EXCEL',
+                className: 'btn btn-primary',
+                exportOptions: {
+                    columns: ':visible'
+                }
+            }, {
+                extend: 'print',
+                footer: true,
+                title: '',
+                text: 'PRINT',
+                messageTop: ad,
+                className: 'btn btn-primary',
+                exportOptions: {
+                    columns: ':visible'
+                },
+
+                customize: function(win) {
+                    $(win.document.body).find('table')
+                        .addClass('compact')
+                        .css('font-size', 'inherit');
+
+                    $(win.document.body)
+                        .css('font-size', '10pt')
+                        .prepend(
+                            '<img src="https://1.bp.blogspot.com/-vTxIJk9Q82I/X5lOz-6fAzI/AAAAAAAAN94/ECwlZ55kYHUhcaHRh0fPIvo4s9v2tVITACLcBGAsYHQ/s517/logo3.png"  style="pointer-events: none; cursor: default; height: 180px; left: 50%; margin-top: -90px; margin-left: -90px; padding-bottom:5%; position: absolute; top: 7%;  opacity: 1; width: 180px;" />',
+                        );
+
+
+                }
+
+            },
+
+            {
+                extend: 'pdfHtml5',
+                text: 'EXPORT TO PDF',
+                className: 'btn btn-primary',
+                exportOptions: {
+                    columns: ':visible'
+                },
+                customize: function(doc) {
+                    doc.content.splice(1, 0, {
+                        margin: [0, 0, 0, 12],
+                        alignment: 'center',
+                        image: ba
+                    });
+                    doc.watermark = {
+                        text: 'KIPAWA ICT CENTRE',
+                        color: 'blue',
+                        opacity: 0.1,
+                        image: ba
+                    };
+
+                    var now = new Date();
+                    var jsDate = now.getDate() + '-' + (now.getMonth() + 1) + '-' + now
+                        .getFullYear();
+
+                    doc['footer'] = (function(page, pages) {
+                        return {
+                            columns: [{
+                                    alignment: 'left',
+                                    text: ['Created on: ', {
+                                        text: jsDate.toString()
+                                    }]
+                                },
+
+                                {
+                                    alignment: 'center',
+                                    text: ['published by: ', {
+                                        text: 'kipawa ict centre'
+                                    }]
+                                },
+                                {
+                                    alignment: 'right',
+                                    text: ['page ', {
+                                        text: page.toString()
+                                    }, ' of ', {
+                                        text: page.toString()
+                                    }]
+                                }
+                            ],
+                            margin: 20
+                        }
+                    });
+                },
+                download: 'open'
+            },
+            {
+                extend: 'colvis',
+                text: 'Column visibility',
+                className: 'btn btn-primary',
+                collectionLayout: 'fixed two-column'
+
+
+            }
+        ],
+        columnDefs: [{
+            targets: -1,
+            visible: true
+        }]
+        // aLengthMenu: [
+        //[10, 25, 50, 100, 200, -1],
+        // [10, 25, 50, 100, 200, "All"]
+        // ],
+        // iDisplayLength: -1
+    });
+    table.buttons().container()
+        .appendTo('#datatable_wrapper .col-md-6:eq(0)');
+
+
+});
 </script>

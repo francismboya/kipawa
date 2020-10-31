@@ -39,8 +39,6 @@ confirm_logged_in();
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="viewport" content="width=device-width, initial-scale=0.6 user-scalable=no">
-
-    <title>SRM</title>
     <link rel="icon" href="../img/favicon.png" type="image/png" sizes="16x16">
 
     <!-- Custom fonts for this template-->

@@ -29,7 +29,7 @@ if (isset($_POST['save'])) {
     $classfication = $_POST['clas'];
     $program = $_POST['prog'];
 
-    echo $insert = "INSERT INTO course (courseID, cName, depertmentID,employeeID,level,
+    $insert = "INSERT INTO course (courseID, cName, depertmentID,employeeID,level,
     credit, classfication)
     values('" . $courseID .
         "','" . $cName . "','" . $depertmentID . "','" . $employee . "','" .
@@ -52,7 +52,7 @@ if (isset($_POST['save'])) {
 
             } else {
                 foreach ($program as $b) {
-                    echo $insert = "INSERT INTO courseprogram (courseID, programID, level)values('" . $courseID .
+                    $insert = "INSERT INTO courseprogram (courseID, programID, level)values('" . $courseID .
                         "','" . $b . "','" . $level . "')";
                     echo '<br>';
 

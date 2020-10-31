@@ -68,9 +68,19 @@
 <script src='../alertcss/alert.js'></script>
 <script src='../alertcss/notify.min.js'></script>
 <script src="../js/jx.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/core.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/md5.js"></script>
-
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/core.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/md5.js"></script>-->
+<script src="../crypto-js/core.js"></script>
+<script src="../crypto-js/md5.js"></script>
+<script src="../vendor/tbasset/newa/Buttons-1.6.5/js/dataTables.buttons.min.js"></script>
+<script src="../vendor/tbasset/newa/Buttons-1.6.5/js/buttons.print.min.js"></script>
+<script src="../vendor/tbasset/newa/Buttons-1.6.5/js/buttons.flash.min.js"></script>
+<script src="../vendor/tbasset/newa/JSZip-2.5.0/jszip.min.js"></script>
+<script src="../vendor/tbasset/newa/pdfmake-0.1.36/pdfmake.min.js"></script>
+<script src="../vendor/tbasset/newa/pdfmake-0.1.36/vfs_fonts.js"></script>
+<script src="../vendor/tbasset/newa/Buttons-1.6.5/js/buttons.html5.min.js"></script>
+<script src="../vendor/tbasset/newa/Buttons-1.6.5/js/buttons.print.min.js"></script>
+<script src="../vendor/tbasset/newa/Buttons-1.6.5/js/buttons.colVis.min.js"></script>
 
 
 
