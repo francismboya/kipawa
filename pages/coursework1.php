@@ -43,7 +43,7 @@ if (!empty($_POST["id"])) {
 $uemail = $_SESSION['email'];
 $a = "";
 $b = "";
-$query = "SELECT distinct course.courseID, employee.employeeID, course.cName, courseprogram.programID, course.level, course.credit, course.classfication from employee left join course on course.employeeID=employee.employeeID join courseprogram on courseprogram.courseID= course.courseID and courseprogram.level=course.level where employee.employeeID='" . $emp . "' ORDER BY course.level";
+$query = "SELECT distinct course.courseID, employee.employeeID, course.cName, courseprogram.programID, course.level, course.credit, course.classfication from employee left join course on course.employeeID=employee.employeeID join courseprogram on courseprogram.courseID= course.courseID and courseprogram.level=course.level where employee.employeeID='" . $emp . "' ORDER BY course.courseID";
 $result = mysqli_query($db, $query) or die(mysqli_error($db));
 while ($row = mysqli_fetch_assoc($result)) {
     echo '<tr>';

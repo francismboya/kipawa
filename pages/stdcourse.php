@@ -1,8 +1,4 @@
 <?php
-$sql3 = "select course.courseID, course.cName, course.classfication,
- course.credit
- from student join courseprogram on courseprogram.programID=student.programID AND courseprogram.level=student.level
- join course on course.courseID=courseprogram.courseID WHERE student.regno='KICTC-CER-006-2020'";
 
 include '../includes/connection.php';
 include '../includes/stdsidebar.php';
@@ -66,7 +62,7 @@ window.location = "index.php";
                 </div>
                 <div class="row">
                     <div class="col-lg-12 col-xl-12 col-sm-12">
-                        <div class="card shadow mb-4">
+                        <div class="card mb-4">
                             <div class="card-header d-flex justify-content-between align-items-center">
                                 <h6 class="text-primary font-weight-bold m-0" style="font-style: italic;">The following
                                     are the courses registered
@@ -97,7 +93,7 @@ window.location = "index.php";
                                             <tbody>
                                                 <?php
 $query = "select course.courseID, course.cName, course.classfication,course.credit from student join courseprogram on courseprogram.programID=student.programID AND courseprogram.level=student.level
- join course on course.courseID=courseprogram.courseID WHERE student.regno='" . $_SESSION['ID'] . "'";
+ join course on course.courseID=courseprogram.courseID WHERE student.regno='" . $_SESSION['ID'] . "' ORDER BY course.courseID";
 
 $result = mysqli_query($db, $query) or die(mysqli_error($db));
 $counter = 1;
@@ -131,7 +127,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                                 <!--/semester 1 end-->
                                 <!--semester2-->
 
-                                <div class="container">
+                                <div class="container" id="sem2" style="display:none;">
                                     <h3 class="text-dark mb-1" style="font-size:24px; font-style: italic;">semester 2
                                     </h3>
                                     <div class="table-responsive" style="font-size:14px">
@@ -149,13 +145,14 @@ while ($row = mysqli_fetch_assoc($result)) {
                                             <tbody>
                                                 <?php
 $query = "select course.courseID, course.cName, course.classfication,course.credit from student join courseprogram on courseprogram.programID=student.programID AND courseprogram.level=student.level
- join course on course.courseID=courseprogram.courseID WHERE student.regno='" . $_SESSION['ID'] . "'";
-
+ join course on course.courseID=courseprogram.courseID WHERE student.regno='" . $_SESSION['ID'] . "' ORDER BY course.courseID";
+$ifsem2 = 0;
 $result = mysqli_query($db, $query) or die(mysqli_error($db));
 $counter = 1;
 while ($row = mysqli_fetch_assoc($result)) {
     $sem = substr($row['courseID'], 5, 1);
     if ($sem == 2) {
+        $ifsem2 = 1;
         echo '<tr>';
         echo '<td style="font-size:14px">' . $counter . '</td>';
         echo '<td style="font-size:14px">' . $row['courseID'] . '</td>';
@@ -197,7 +194,16 @@ while ($row = mysqli_fetch_assoc($result)) {
 </body>
 <?php
 include "../includes/footer.php";
+if ($ifsem2 == "1") {
+    ?>
+<script>
+var sm = document.getElementById("sem2");
+sm.style.display = "block";
+</script>
+<?php
+}
 ?>
+
 
 </html>
 

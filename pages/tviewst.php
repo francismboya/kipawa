@@ -118,7 +118,7 @@ $len = count($courseID);
             <div class="div class=" col-md-12 mb-12">
                 <div class="table-responsive" style="font-size:14px">
                     <div class="container py-2">
-                        <div class="p-5 bg-white rounded shadow mb-5">
+                        <div class="p-5 bg-white rounded mb-5">
                             <!-- Bordered tabs-->
                             <ul id="myTab1" role="tablist"
                                 class="nav nav-tabs nav-pills with-arrow flex-column flex-sm-row text-center">

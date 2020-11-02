@@ -40,7 +40,7 @@ confirm_logged_in();
     <meta name="author" content="">
     <meta name="viewport" content="width=device-width, initial-scale=0.6 user-scalable=no">
 
-    <title>SRM</title>
+    <title>SRMS</title>
     <link rel="icon" href="../img/favicon.png" type="image/png" sizes="16x16">
 
     <!-- Custom fonts for this template-->
@@ -110,7 +110,7 @@ confirm_logged_in();
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="../pages/recourseupload.php">
+                <a class="nav-link" href="coursework1.php">
                     <i class="fas fa-fw fa-archive"></i>
                     <span>RESULTS</span></a>
             </li>

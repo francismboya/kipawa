@@ -1,8 +1,10 @@
 <?php
-$sql3 = "select course.courseID, course.cName, course.classfication,
- course.credit
- from student join courseprogram on courseprogram.programID=student.programID AND courseprogram.level=student.level
- join course on course.courseID=courseprogram.courseID WHERE student.regno='KICTC-CER-006-2020'";
+$sql3 = "
+SELECT coursework.courseID, coursework.score,
+ coursework.remarks, coursework.remarks, coursework.coID,
+ studentviewco.stateView FROM coursework JOIN studentviewco ON
+ studentviewco.coID=coursework.coID
+where regno='KICTC-CER-006-2020' and coursework.coID='ITT051022020'";
 
 include '../includes/connection.php';
 include '../includes/stdsidebar.php';
@@ -29,6 +31,20 @@ window.location = "index.php";
 <?php }
 
 }
+$query = "select course.courseID, course.cName, course.classfication,course.credit from student join courseprogram on courseprogram.programID=student.programID AND courseprogram.level=student.level
+ join course on course.courseID=courseprogram.courseID WHERE student.regno='" . $_SESSION['ID'] . "' ORDER BY course.courseID";
+
+$result21 = mysqli_query($db, $query) or die(mysqli_error($db));
+
+$courses = array();
+$counter = 0;
+while ($row = mysqli_fetch_assoc($result21)) {
+    $courses[$counter] = $row['courseID'];
+
+    $counter++;
+
+}
+
 ?>
 
 
@@ -60,17 +76,16 @@ window.location = "index.php";
 
             <div class="container-fluid">
                 <div class="d-sm-flex justify-content-between align-items-center mb-4">
-                    <h3 class="text-dark mb-0" style="font-size:24px; font-style: italic;">Registered course: <?php echo
+                    <h3 class="text-dark mb-0" style="font-size:24px; font-style: italic;">Coursework Scores: <?php echo
     "<span style='color:#007bff; margin-left:2px;'>" . $_SESSION['ID'] . "</span>"; ?>
                     </h3>
                 </div>
                 <div class="row">
                     <div class="col-lg-12 col-xl-12 col-sm-12">
-                        <div class="card shadow mb-4">
+                        <div class="card mb-4">
                             <div class="card-header d-flex justify-content-between align-items-center">
                                 <h6 class="text-primary font-weight-bold m-0" style="font-style: italic;">The following
-                                    are the courses registered
-                                    by
+                                    are the coursework results for
                                     <?php echo " " . $_SESSION['fname'] . " " . $_SESSION['mname'] . " " . $_SESSION['lname'] ?>
                                 </h6>
 
@@ -89,36 +104,52 @@ window.location = "index.php";
                                                     <th style="font-size:14px">SN</th>
                                                     <th style="font-size:14px">Course Code</th>
                                                     <th style="font-size:14px">Course Name</th>
-                                                    <th style="font-size:14px">Classification</th>
-                                                    <th style="font-size:14px">Credit</th>
+                                                    <th style="font-size:14px">Score</th>
+                                                    <th style="font-size:14px">Remark</th>
 
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <?php
-$query = "select course.courseID, course.cName, course.classfication,course.credit from student join courseprogram on courseprogram.programID=student.programID AND courseprogram.level=student.level
- join course on course.courseID=courseprogram.courseID WHERE student.regno='" . $_SESSION['ID'] . "'";
-
-$result = mysqli_query($db, $query) or die(mysqli_error($db));
 $counter = 1;
-while ($row = mysqli_fetch_assoc($result)) {
-    $sem = substr($row['courseID'], 5, 1);
-    if ($sem == 1) {
-        echo '<tr>';
-        echo '<td style="font-size:14px">' . $counter . '</td>';
-        echo '<td style="font-size:14px">' . $row['courseID'] . '</td>';
-        echo '<td style="font-size:14px">' . $row['cName'] . '</td>';
-        if ($row['classfication'] == "c") {
-            echo '<td style="font-size:14px">credit</td>';
-        } else {
-            echo '<td style="font-size:14px">fundamental</td>';
 
+foreach ($courses as $cb) {
+    $cid = $cb . date("Y");
+    $query = "
+SELECT coursework.courseID, coursework.score,
+ course.cName, coursework.remarks, coursework.coID,
+ studentviewco.stateView FROM coursework JOIN studentviewco ON
+ studentviewco.coID=coursework.coID JOIN course on coursework.courseID=course.courseID
+where regno='" . $_SESSION["ID"] . "' and coursework.coID='" . $cid . "'";
+    $result = mysqli_query($db, $query) or die(mysqli_error($db));
+
+    if (mysqli_num_rows($result) > 0) {
+
+        while ($row = mysqli_fetch_assoc($result)) {
+            if ($row['stateView'] == "yes") {
+                $sem = substr($row['courseID'], 5, 1);
+                if ($sem == 1) {
+
+                    if ($row['remarks'] == "pass") {
+                        echo '<tr>';
+
+                    } else {
+
+                        echo '<tr class="text-danger">';
+
+                    }
+                    echo '<td style="font-size:14px" class="text-dark">' . $counter . '</td>';
+                    echo '<td style="font-size:14px">' . $row['courseID'] . '</td>';
+                    echo '<td style="font-size:14px">' . $row['cName'] . '</td>';
+                    echo '<td style="font-size:14px">' . $row['score'] . '</td>';
+
+                    echo '<td style="font-size:14px ;">' . $row['remarks'] . '</td>';
+
+                    echo '</tr> ';
+                    $counter++;
+                }
+            }
         }
-
-        echo '<td style="font-size:14px">' . $row['credit'] . '</td>';
-
-        echo '</tr> ';
-        $counter++;
     }
 }
 ?>
@@ -131,7 +162,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                                 <!--/semester 1 end-->
                                 <!--semester2-->
 
-                                <div class="container">
+                                <div class="container" id="sem2" style="display:none;">
                                     <h3 class="text-dark mb-1" style="font-size:24px; font-style: italic;">semester 2
                                     </h3>
                                     <div class="table-responsive" style="font-size:14px">
@@ -141,36 +172,55 @@ while ($row = mysqli_fetch_assoc($result)) {
                                                     <th style="font-size:14px">SN</th>
                                                     <th style="font-size:14px">Course Code</th>
                                                     <th style="font-size:14px">Course Name</th>
-                                                    <th style="font-size:14px">Classification</th>
-                                                    <th style="font-size:14px">Credit</th>
+                                                    <th style="font-size:14px">Score</th>
+                                                    <th style="font-size:14px">Remark</th>
 
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <?php
-$query = "select course.courseID, course.cName, course.classfication,course.credit from student join courseprogram on courseprogram.programID=student.programID AND courseprogram.level=student.level
- join course on course.courseID=courseprogram.courseID WHERE student.regno='" . $_SESSION['ID'] . "'";
-
-$result = mysqli_query($db, $query) or die(mysqli_error($db));
 $counter = 1;
-while ($row = mysqli_fetch_assoc($result)) {
-    $sem = substr($row['courseID'], 5, 1);
-    if ($sem == 2) {
-        echo '<tr>';
-        echo '<td style="font-size:14px">' . $counter . '</td>';
-        echo '<td style="font-size:14px">' . $row['courseID'] . '</td>';
-        echo '<td style="font-size:14px">' . $row['cName'] . '</td>';
-        if ($row['classfication'] == "c") {
-            echo '<td style="font-size:14px">credit</td>';
-        } else {
-            echo '<td style="font-size:14px">fundamental</td>';
+$ifsem2 = 0;
 
+foreach ($courses as $cb) {
+    $cid = $cb . date("Y");
+    $query = "
+
+SELECT coursework.courseID, coursework.score,
+ course.cName, coursework.remarks, coursework.coID,
+ studentviewco.stateView FROM coursework JOIN studentviewco ON
+ studentviewco.coID=coursework.coID JOIN course on coursework.courseID=course.courseID
+where regno='" . $_SESSION["ID"] . "' and coursework.coID='" . $cid . "'";
+    $result = mysqli_query($db, $query) or die(mysqli_error($db));
+
+    if (mysqli_num_rows($result) > 0) {
+
+        while ($row = mysqli_fetch_assoc($result)) {
+            if ($row['stateView'] == "yes") {
+                $sem = substr($row['courseID'], 5, 1);
+                if ($sem == 2) {
+                    $ifsem2 = 1;
+                    if ($row['remarks'] == "pass") {
+                        echo '<tr>';
+
+                    } else {
+
+                        echo '<tr class="text-danger">';
+
+                    }
+                    echo '<td style="font-size:14px" class="text-dark">' . $counter . '</td>';
+                    echo '<td style="font-size:14px">' . $row['courseID'] . '</td>';
+                    echo '<td style="font-size:14px">' . $row['cName'] . '</td>';
+                    echo '<td style="font-size:14px">' . $row['score'] . '</td>';
+
+                    echo '<td style="font-size:14px ;">' . $row['remarks'] . '</td>';
+
+                    echo '</tr> ';
+
+                    $counter++;
+                }
+            }
         }
-
-        echo '<td style="font-size:14px">' . $row['credit'] . '</td>';
-
-        echo '</tr> ';
-        $counter++;
     }
 }
 ?>
@@ -197,6 +247,14 @@ while ($row = mysqli_fetch_assoc($result)) {
 </body>
 <?php
 include "../includes/footer.php";
+if ($ifsem2 == "1") {
+    ?>
+<script>
+var sm = document.getElementById("sem2");
+sm.style.display = "block";
+</script>
+<?php
+}
 ?>
 
 </html>
