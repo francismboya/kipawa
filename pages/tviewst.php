@@ -221,7 +221,8 @@ for ($i = 0; $i < $len; $i++) {
                     </tr>
                 </thead>
                 <tbody>';
-        $sql3 = "select student.regno,student.fname,student.lname, student.programID, student.depertmentID,courseprogram.level  from student join courseprogram on courseprogram.programID=student.programID AND courseprogram.level=student.level WHERE courseprogram.courseID='" . $courseID[$i] . "'";
+        $sql3 = "select student.regno,student.fname,student.lname, student.programID, student.depertmentID,courseprogram.level
+          from student join courseprogram on courseprogram.programID=student.programID AND courseprogram.level=student.level WHERE courseprogram.courseID='" . $courseID[$i] . "'";
         $result21 = mysqli_query($db, $sql3) or die(mysqli_error($db));
         $counter = 0;
         $regno = array();

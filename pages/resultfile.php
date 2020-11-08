@@ -66,6 +66,22 @@ if (isset($_POST['import'])) {
                     $grade1 = "inc";
                 } else {
                     $gr = round(floatval($col[1]));
+                    $scr = "SELECT *
+                                            FROM coursework
+                                            WHERE regno='" . $col[0] . "' AND coID='" . $cid . "'";
+                    if (mysqli_num_rows($result) > 0) {
+                        $validity = 1;
+                        $regno[$i] = $col[0];
+                        $score[$i] = $col[1];
+                        $grade[$i] = $grade1;
+
+                        $coID[$i] = $coID1;
+                        $courseID[$i] = $courseID1;
+
+                        $reason[$i] = "student not take this course";
+                        $i++;
+
+                    }
 
                     if ($gr >= 0 && $gr <= 34) {
                         $grade1 = "F";

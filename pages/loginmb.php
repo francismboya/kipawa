@@ -41,8 +41,8 @@
                 <div class="col-md-12">
                     <div class="loginColumns animated fadeInDown">
                         <div class="text-center">
-                         <img src="../assets/img/vetalogo.png" alt="" style="width: 180px;">
-                          
+                            <img src="../assets/img/vetalogo.png" alt="" style="width: 180px;">
+
                         </div>
                         <div style="padding-top: 15px;">
                             <div class="row">
@@ -95,7 +95,8 @@
                         <hr style="border-color: #e6e6e6;">
                         <div>
                             <div class="text-center">
-                                Copyright &nbsp;2020.&nbsp;VETA Kipawa SRMS
+                                Copyright &nbsp;<?php echo " " . date("Y"); ?>
+                                .&nbsp;VETA Kipawa SRMS
                             </div>
                         </div>
                     </div>

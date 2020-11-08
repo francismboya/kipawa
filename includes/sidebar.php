@@ -134,7 +134,7 @@ confirm_logged_in();
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0)" onclick="location.href='pos.php'" id="clim9">
+                <a class="nav-link" href="javascript:void(0)" onclick="location.href='adresult.php'" id="clim9">
                     <i class="fas fa-fw fa-users"></i>
                     <span>Results</span></a>
             </li>
@@ -208,6 +208,6 @@ confirm_logged_in();
             e.preventDefault();
             var loc = window.location.href + "<?php echo $_SESSION['fname'] ?>"
             var passhash = CryptoJS.MD5(loc).toString();
-            location.href = "pos.php?" + passhash;
+            location.href = "adresult.php?" + passhash;
         }
         </script>

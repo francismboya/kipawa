@@ -145,8 +145,8 @@
         <div id="footer">
             <div class="login_line">
             </div>
-            <p id="copyright" style="float: left; font-weight: bold;"> Copyright &copy; 2020 &nbsp; &nbsp; <a href="#"
-                    target="_blank"> VETA KIPAWA SRMS</a></p>
+            <p id="copyright" style="float: left; font-weight: bold;"> Copyright &copy; <?php echo date("Y"); ?>
+                &nbsp; &nbsp; <a href="#" target="_blank"> VETA KIPAWA SRMS</a></p>
 
             <p id="developers"><span> Designed and Developed by :</span> <a href="#" target="_blank"> KIPAWA ICT
                     CENTRE</a>

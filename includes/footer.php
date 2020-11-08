@@ -11,7 +11,8 @@
 <footer class="sticky-footer bg-white">
     <div class="container my-auto">
         <div class="copyright text-center my-auto">
-            <span>Copyright © VETA Kipawa SRM 2020</span>
+            <span>Copyright © VETA Kipawa SRM <?php echo " " . date("Y"); ?>
+            </span>
         </div>
     </div>
 </footer>
@@ -348,6 +349,6 @@ document.getElementById("clim9").onclick = function(e) {
     e.preventDefault();
     var loc = window.location.href + "<?php echo $_SESSION['fname'] ?>"
     var passhash = CryptoJS.MD5(loc).toString();
-    location.href = "pos.php?" + passhash;
+    location.href = "adresult.php?" + passhash;
 }
 </script>

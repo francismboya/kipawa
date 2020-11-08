@@ -1,189 +1,99 @@
-<!-- SIDE PART NA SUMMARY -->
-<div class="card-body col-md-3">
-    <?php
-if (!empty($_SESSION['pointofsale'])):
+<?php
 
-    $total = 0;
+# Grab the data from the database
+$query = "SELECT `year`, `sales`, `expenses` FROM `my_awesome_table`";
+$mysqli_result = $mysqli->query($query);
+$data = array();
 
-    foreach ($_SESSION['pointofsale'] as $key => $product):
-    ?>
-    <?php
-    $total = $total + ($product['quantity'] * $product['price']);
-    $lessvat = ($total / 1.18) * 0.18;
-    $netvat = ($total / 1.18);
-    $addvat = ($total / 1.18) * 0.18;
-
-endforeach;
-
-//DROPDOWN FOR CUSTOMER
-$sql = "SELECT CUST_ID, FIRST_NAME, LAST_NAME
-        FROM customer
-        order by FIRST_NAME asc";
-$res = mysqli_query($db, $sql) or die("Error SQL: $sql");
-
-$opt = "<select class='form-control'  style='border-radius: 0px;' name='customer' required>
-        <option value='' disabled selected hidden>Select Customer</option>";
-while ($row = mysqli_fetch_assoc($res)) {
-    $opt .= "<option value='" . $row['CUST_ID'] . "'>" . $row['FIRST_NAME'] . ' ' . $row['LAST_NAME'] . "</option>";
+while (($row = $mysqli_result->fetch_assoc()) !== null) {
+    $data[] = $row;
 }
-$opt .= "</select>";
-// END OF DROP DOWN
+
+# our converstion function given above.
+function convertDataToChartForm($data)
+{
+    $newData = array();
+    $firstLine = true;
+
+    foreach ($data as $dataRow) {
+        if ($firstLine) {
+            $newData[] = array_keys($dataRow);
+            $firstLine = false;
+        }
+
+        $newData[] = array_values($dataRow);
+    }
+
+    return $newData;
+}
+
 ?>
-    <?php
-echo "Today's date is : ";
-$today = date("Y-m-d H:i a");
-echo $today;
+
+
+<html>
+
+<head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+    google.charts.load('current', {
+        'packages': ['corechart']
+    });
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable((<?=json_encode(convertDataToChartForm($data));?>));
+
+        var options = {
+            title: 'Company Performance',
+            curveType: 'function',
+            legend: {
+                position: 'bottom'
+            }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+    }
+    </script>
+</head>
+
+<body>
+    <div id="curve_chart" style="width: 900px; height: 500px"></div>
+</body>
+
+</html>
+</code></pre>
+
+</body>
+
+</html>
+
+
+
+<?php
+
+function time_ago_in_php($timestamp)
+{
+
+    date_default_timezone_set("Asia/Kolkata");
+    $time_ago = strtotime($timestamp);
+    $current_time = time();
+    $time_difference = $current_time - $time_ago;
+    $seconds = $time_difference;
+
+    $minutes = round($seconds / 60); // value 60 is seconds
+    $hours = round($seconds / 3600); //value 3600 is 60 minutes * 60 sec
+    $days = round($seconds / 86400); //86400 = 24 * 60 * 60;
+    $weeks = round($seconds / 604800); // 7*24*60*60;
+    $months = round($seconds / 2629440); //((365+365+365+365+366)/5/12)*24*60*60
+    $years = round($seconds / 31553280); //(365+365+365+365+366)/5 * 24 * 60 * 60
+
+    if ($seconds <= 60) {return "Just Now";} else if ($minutes <= 60) {if ($minutes == 1) {return "one minute ago";} else {return "$minutes minutes ago";}} else if ($hours <= 24) {if ($hours == 1) {return "an hour ago";} else {
+        return "$hours hrs ago";}} else if ($days <= 7) {if ($days == 1) {return "yesterday";} else {
+        return "$days days ago";}} else if ($weeks <= 4.3) {if ($weeks == 1) {return "a week ago";} else {
+        return "$weeks weeks ago";}} else if ($months <= 12) {if ($months == 1) {return "a month ago";} else {
+        return "$months months ago";}} else {if ($years == 1) {return "one year ago";} else {return "$years years ago"
+        ;}}}
 ?>
-    <input type="hidden" name="date" value="<?php echo $today; ?>">
-    <div class="form-group row text-left mb-3">
-        <div class="col-sm-12 text-primary btn-group">
-            <?php echo $opt; ?>
-            <a href="#" data-toggle="modal" data-target="#poscustomerModal" type="button"
-                class="btn btn-primary bg-gradient-primary" style="border-radius: 0px;"><i
-                    class="fas fa-fw fa-plus"></i></a>
-        </div>
-
-    </div>
-    <div class="form-group row mb-2">
-
-        <div class="col-sm-5 text-left text-primary py-2">
-            <h6>
-                Subtotal
-            </h6>
-        </div>
-        <div class="col-sm-7">
-            <div class="input-group mb-2">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">TZS</span>
-                </div>
-                <input type="text" class="form-control text-right " value="<?php echo number_format($total, 2); ?>"
-                    readonly name="subtotal">
-            </div>
-        </div>
-
-    </div>
-    <div class="form-group row mb-2">
-
-        <div class="col-sm-5 text-left text-primary py-2">
-            <h6>
-                Less VAT
-            </h6>
-        </div>
-
-        <div class="col-sm-7">
-            <div class="input-group mb-2">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">TZS</span>
-                </div>
-                <input type="text" class="form-control text-right " value="<?php echo number_format($lessvat, 2); ?>"
-                    readonly name="lessvat">
-            </div>
-        </div>
-
-    </div>
-    <div class="form-group row mb-2">
-
-        <div class="col-sm-5 text-left text-primary py-2">
-            <h6>
-                Net of VAT
-            </h6>
-        </div>
-
-        <div class="col-sm-7">
-            <div class="input-group mb-2">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">TZS</span>
-                </div>
-                <input type="text" class="form-control text-right " value="<?php echo number_format($netvat, 2); ?>"
-                    readonly name="netvat">
-            </div>
-        </div>
-
-    </div>
-    <div class="form-group row mb-2">
-
-        <div class="col-sm-5 text-left text-primary py-2">
-            <h6>
-                Add VAT
-            </h6>
-        </div>
-
-        <div class="col-sm-7">
-            <div class="input-group mb-2">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">TZS</span>
-                </div>
-                <input type="text" class="form-control text-right " value="<?php echo number_format($addvat, 2); ?>"
-                    readonly name="addvat">
-            </div>
-        </div>
-
-    </div>
-    <div class="form-group row text-left mb-2">
-
-        <div class="col-sm-5 text-primary">
-            <h6 class="font-weight-bold py-2">
-                Total
-            </h6>
-        </div>
-
-        <div class="col-sm-7">
-            <div class="input-group mb-2">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">TZS</span>
-                </div>
-                <input type="text" class="form-control text-right " value="<?php echo number_format($total, 2); ?>"
-                    readonly name="total">
-            </div>
-        </div>
-
-    </div>
-    <?php endif;?>
-    <button type="button" class="btn btn-block btn-success" data-toggle="modal" data-target="#posMODAL">ACCEPT</button>
-    <button type="button" class="btn btn-block btn-danger" data-toggle="modal" data-target="#posMODAL">DENY</button>
-    <!-- Modal -->
-    <div class="modal fade" id="posMODAL" tabindex="-1" role="dialog" aria-labelledby="POS" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalCenterTitle">SUMMARY</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group row text-left mb-2">
-
-                        <div class="col-sm-12 text-center">
-                            <h3 class="py-0">
-                                GRAND TOTAL
-                            </h3>
-                            <h3 class="font-weight-bold py-3 bg-light">
-                                TZS <?php echo number_format($total, 2); ?>
-                            </h3>
-                        </div>
-
-                    </div>
-
-                    <div class="col-sm-12 mb-2">
-                        <div class="input-group mb-2">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">TZS</span>
-                            </div>
-                            <input class="form-control text-right" id="txtNumber" onkeypress="return isNumberKey(event)"
-                                type="text" name="cash" placeholder="ENTER CASH" name="cash" required>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary btn-block">PROCEED TO PAYMENT</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- END OF Modal -->
-
-    </form>
-</div> <!-- END OF CARD BODY -->
-
-</div>
+echo time_ago_in_php(‘2017-06-16 10:57:03’);

@@ -1,6 +1,22 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=0.6 user-scalable=no">
+    <meta http-equiv="refresh" content="900;url=logout.php" />
 </head>
+<?php
+if (isset($_SESSION['last_acted_on']) && (time() - $_SESSION['last_acted_on'] > 60 * 15)) {
+
+    ?>
+<script type="text/javascript">
+//then it will be redirected
+window.location = "logout.php";
+</script>
+<?php
+} else {
+    //session_regenerate_id(true);
+    $_SESSION['last_acted_on'] = time();
+}
+?>
+
 
 <!-- Content Wrapper -->
 <div id="content-wrapper" class="d-flex flex-column">

@@ -21,6 +21,9 @@ if (!empty($_POST["id"])) {
     $mda = 1;
 
 }
+if (!empty($_POST['grant'])) {
+
+}
 ?>
 
 <div class="card-body">
@@ -58,14 +61,16 @@ while ($row = mysqli_fetch_assoc($result)) {
         $a = 1;
     } else {
         echo '<td align="center" style="font-size:14px">
-         <a type="button" class="btn btn-warning bg-gradient-warning" href="manageedit.php?action=edit & id='
-            . $row['courseID'] . '"><i class="fas fa-eye-slash" style="margin-right:5px;"></i>not uploaded</a></td>';
+         <a type="button" class="btn btn-warning bg-gradient-warning" href="#"><i class="fas fa-eye-slash" style="margin-right:5px;"></i>not uploaded</a></td>';
         $a = 2;
     }
     if ($a == 1) {
         echo '<td align="center" style="font-size:14px">
-         <a type="button" class="btn btn-info bg-gradient-info" href="manageedit.php?action=edit & id='
-            . $row['courseID'] . '"><i class="fas fa-broadcast-tower" style="margin-right:5px;"></i>grant student</a></td>';
+         <form action="result1.php" method="post">
+         <input type="text" name="grant" value="' . $row['courseID'] . '" style="display:none;">
+         <button type="submit" class="btn btn-info bg-gradient-info" style="color:white"><i class="fas fa-broadcast-tower" style="margin-right:5px;"></i>grant student</button>
+
+              </form></td>';
 
     } else {
         echo '<td align="center" style="font-size:14px">
