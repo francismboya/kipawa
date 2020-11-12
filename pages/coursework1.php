@@ -119,6 +119,7 @@ while ($row = mysqli_fetch_assoc($result)) {
             echo '<td align="center" style="font-size:14px">
          <a type="button" class="btn btn-info bg-gradient-info" href="#"><i class="fas fa-times" style="margin-right:5px;"></i>no pending</a></td>';
             $b = 2;
+            
 
         }
     } else {

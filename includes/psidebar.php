@@ -78,7 +78,7 @@ confirm_logged_in();
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="teacheractvity.php">
+                <a class="nav-link" href="pdash.php">
                     <i class="fas fa-fw fa-home"></i>
                     <span>Home</span></a>
             </li>

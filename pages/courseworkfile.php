@@ -222,7 +222,7 @@ if (isset($_POST['import'])) {
             }
             $stadd = '</tbody></table></div></div>';
             file_put_contents($errorfile, $stadd . "\n", FILE_APPEND);
-            fclose($fp);
+           @fclose($fp);
             ?>
     <div class="shadow mb-4">
         <div class="card-body bg" id="loadertz">'

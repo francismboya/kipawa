@@ -8,6 +8,7 @@ if (!$sock = @fsockopen('www.google.com', 80)) {
 <div id='result'>
 
 </div>
+
 <script src="../vendor/jquery/jquery.min.js"></script>
 <script>
 setInterval(function() {

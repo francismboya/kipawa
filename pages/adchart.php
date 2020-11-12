@@ -95,7 +95,7 @@ function convertDataToChartForm($data)
             }
         }
         foreach ($dataRow as $key => $value) {
-            $value = (intval($value) / 7) * 100;
+            $value = (intval($value) / $total) * 100;
 
             $newData[] = array($key, $value);
         }
@@ -127,15 +127,13 @@ function convertDataToChartForm2($data)
 {
     $newData = array();
 
-    $newData2 = array();
-    $total = 0;
     $jb = 0;
 
-    $firstLine = true;
 
     foreach ($data as $dataRow) {
         if ($jb == 0) {
             $newData[] = array("grade", "number of student");
+            $jb=1;
 
         }
         foreach ($dataRow as $key => $value) {

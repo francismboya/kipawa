@@ -51,6 +51,7 @@ if (isset($_POST['import'])) {
         $courseID = array();
         $validity = 0;
         $i = 0;
+        $rlscheck=0;
 
         while (($col = fgetcsv($file, 10000, ",")) !== false and $row < $linecount) {
             if (strcmp($col[0], "") > 0) {
@@ -59,30 +60,81 @@ if (isset($_POST['import'])) {
                     continue;
                 }
                 $courseID1 = $_POST["courseID"];
+                $cid = $courseID1 . date("Y");
                 $regno3 = substr($col[0], 0, 9);
                 $grade1 = "";
+                
+               $scr = "SELECT *
+                                            FROM coursework
+                                            WHERE regno='" . $col[0] . "' AND coID='" . $cid . "'";
+               $rls = "SELECT * FROM result
+                    WHERE regno='" . $col[0] . "' AND coID='" . $cid . "'";
+
+                    if ($resultrls = mysqli_query($db, $rls)) {
+                        if (mysqli_num_rows($resultrls) > 0) {
+                            $rlscheck=1;
+                            $validity = 1;
+                            $regno[$i] = $col[0];
+                            $score[$i] = $col[1];
+                            $grade[$i] = $grade1;
+
+                            $coID[$i] = $cid;
+                            $courseID[$i] = $courseID1;
+
+                            $reason[$i] = "Student result Exist in System";
+                            $i++;
+                        } 
+                    }
+                    else{
+                        $validity = 1;
+                            $regno[$i] = $col[0];
+                            $score[$i] = $col[1];
+                            $grade[$i] = $grade1;
+
+                            $coID[$i] = $cid;
+                            $courseID[$i] = $courseID1;
+
+                            $reason[$i] = "Connection 1 Error";
+                            $i++;
+                    }
+                    if ($resultscr = mysqli_query($db, $scr)) {
+                        if (mysqli_num_rows($resultscr) > 0) {
+                            while($row3=mysqli_fetch_assoc($resultscr)){
+                                 $col[1]=$row3['score']+$col[1];
+                            }
+                          
+                        }else{
+
+                             $validity = 1;
+                            $regno[$i] = $col[0];
+                            $score[$i] = $col[1];
+                            $grade[$i] = $grade1;
+
+                            $coID[$i] = $cid;
+                            $courseID[$i] = $courseID1;
+
+                            $reason[$i] = "Student coursework not uploaded yet";
+                            $i++;
+                        }
+                    }else{
+                         $validity = 1;
+                            $regno[$i] = $col[0];
+                            $score[$i] = $col[1];
+                            $grade[$i] = $grade1;
+
+                            $coID[$i] = $cid;
+                            $courseID[$i] = $courseID1;
+
+                            $reason[$i] = "Connection Error";
+                            $i++;
+                    }
+
 
                 if ($col[1] == "inc") {
                     $grade1 = "inc";
                 } else {
                     $gr = round(floatval($col[1]));
-                    $scr = "SELECT *
-                                            FROM coursework
-                                            WHERE regno='" . $col[0] . "' AND coID='" . $cid . "'";
-                    if (mysqli_num_rows($result) > 0) {
-                        $validity = 1;
-                        $regno[$i] = $col[0];
-                        $score[$i] = $col[1];
-                        $grade[$i] = $grade1;
-
-                        $coID[$i] = $coID1;
-                        $courseID[$i] = $courseID1;
-
-                        $reason[$i] = "student not take this course";
-                        $i++;
-
-                    }
-
+                   
                     if ($gr >= 0 && $gr <= 34) {
                         $grade1 = "F";
 
@@ -234,7 +286,8 @@ if (isset($_POST['import'])) {
                     $reason[$i] = "student with regno  coursework not uploaded";
                     $i++;
 
-                } else if (!mysqli_query($db, $insert)) {
+                }else if($rlscheck==0){
+                    if (!mysqli_query($db, $insert)) {
                     $validity = 1;
                     $regno[$i] = $col[0];
                     $score[$i] = $col[1];
@@ -247,6 +300,7 @@ if (isset($_POST['import'])) {
                     $i++;
 
                 }
+            }
             }
         }
 

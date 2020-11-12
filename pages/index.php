@@ -43,7 +43,7 @@ window.location = "#";
         ?> <script type="text/javascript">
 //then it will be redirected
 alert("Restricted Page! You will be redirected");
-window.location = "principal.php";
+window.location = "pdash.php";
 </script>
 
 <?php } elseif ($Aa == 'student') {

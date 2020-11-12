@@ -2,7 +2,7 @@
                             <th style="font-size:14px">Reg No</th>  <th style="font-size:14px">Score</th>
                             <th style="font-size:14px">Grade</th>
                             <th style="font-size:14px">reason</th></tr></thead>
-                            <tbody> <tr><td style="font-size:14px">1</td><td style="font-size:14px">ITT06102</td><td style="font-size:14px">KICTC-CER-006-2020</td><td style="font-size:14px">12</td><td style="font-size:14px">F</td><td style="font-size:14px; color:red;">student not take this course</td></tr> 
-<tr><td style="font-size:14px">2</td><td style="font-size:14px">ITT06102</td><td style="font-size:14px">KICTC-CER-007-2020</td><td style="font-size:14px">14</td><td style="font-size:14px">F</td><td style="font-size:14px; color:red;">student not take this course</td></tr> 
-<tr><td style="font-size:14px">3</td><td style="font-size:14px">ITT06102</td><td style="font-size:14px">KICTC-CER-016-2020</td><td style="font-size:14px">20</td><td style="font-size:14px">F</td><td style="font-size:14px; color:red;">student not take this course</td></tr> 
+                            <tbody> <tr><td style="font-size:14px">1</td><td style="font-size:14px">ITT05101</td><td style="font-size:14px">KICTC-CER-006-2020</td><td style="font-size:14px">33</td><td style="font-size:14px"></td><td style="font-size:14px; color:red;">Student result Exist in System</td></tr> 
+<tr><td style="font-size:14px">2</td><td style="font-size:14px">ITT05101</td><td style="font-size:14px">KICTC-CER-007-2020</td><td style="font-size:14px">14</td><td style="font-size:14px"></td><td style="font-size:14px; color:red;">Student result Exist in System</td></tr> 
+<tr><td style="font-size:14px">3</td><td style="font-size:14px">ITT05101</td><td style="font-size:14px">KICTC-CER-016-2020</td><td style="font-size:14px">22</td><td style="font-size:14px"></td><td style="font-size:14px; color:red;">Student result Exist in System</td></tr> 
 </tbody></table></div></div>

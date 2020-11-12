@@ -19,7 +19,7 @@
 </head>
 <?php
 include '../includes/connection.php';
-include '../includes/hsidebar.php';
+include '../includes/psidebar.php';
 ?><?php
 $users = $_SESSION['users'];
 $typid = $_SESSION['typid'];
@@ -64,14 +64,13 @@ window.location = "pos.php";
 
 
 <div class="caption v-middle text-center">
-    <h1 class="cd-headline clip">
+    <h6 class="cd-headline clip">
         <span class="blc">Welcome| </span>
         <span class="cd-words-wrapper">
             <b class="is-visible"><?php echo $name1 . " " . $name2 ?></b>
             <b>Principal Dashboard </b>
-            <!--<b>Teacher</b>-->
         </span>
-    </h1>
+    </h6>
 </div>
 <!--code zangu-->
 
