@@ -62,93 +62,65 @@ window.location = "pos.php";
 </head>
 
 
-<div class="caption v-middle text-center">
-    <h1 class="cd-headline clip">
-        <span class="blc">Welcome| </span>
-        <span class="cd-words-wrapper">
-            <b class="is-visible"><?php echo $name1 . " " . $name2 ?></b>
-            <b>Teacher Dashboard </b>
-            <!--<b>Teacher</b>-->
-        </span>
-    </h1>
-</div>
+
 <!--code zangu-->
 
-<div class="main-page">
-    <div class="container-fluid">
-        <div class="row page-title-div">
-            <div class="col-sm-6">
+<div class="container-fluid">
+    <div class="d-sm-flex justify-content-between align-items-center mb-4">
+        <h3 class="text-dark mb-0">Dashboard</h3>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12 col-xl-12 col-sm-12">
+            <div class="card shadow mb-4">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <div class="caption v-middle text-center ">
+                        <h5 class="cd-headline clip text-primary font-weight-bold m-0">
+                            <span class="blc accordion text-info font-weight-bold m-0" style="font-size: 12px;">Welcome|
+                            </span>
+                            <span class="cd-words-wrapper">
+                                <b class="is-visible text-danger font-weight-bold m-0"
+                                    style="font-size: 12px;"><?php echo $name1 . " " . $name2 ?></b>
+                                <b style="font-size: 12px;" class="text-danger">Teacher Dashboard </b>
+                                <!--<b>Teacher</b>-->
+                            </span>
+                        </h5>
+                    </div>
+
+                </div>
+                <div class="card-body">
+                    <?php
+
+?>
+                    <div class="container">
+                        <div class="panel-body">
+                            <div class="panel-group" id="accordion">
+                                <p align='justify'>You have successfully logged to VETA Kipawa ICT Centre
+                                    Student Records Management System (SRMS).You currently have
+                                    access to the following sections</p>
+                                </br>
+                                <ul>
+                                    <li>Edit your Info</li>
+                                    <li>View course</li>
+                                    <li>Coursework(s)</li>
+                                    <li>Course results</li>
+                                    <li>Appeal</li>
+                                    <li>Course Materials & Notes</li>
+                                </ul>
+                                </br></br>
+                                Please select appropriate action to continue...!
+                                </br></br>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
-            <!-- /.col-sm-6 -->
         </div>
-        <!-- /.row -->
 
     </div>
-    <!-- /.container-fluid -->
-
-    <section class="section">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" style="margin-top:10px">
-                    <a class="dashboard-stat bg-primary card border-left-danger shadow h-100 py-2"
-                        href="manage-students.php">
-
-
-                        <span class="text-center" style="font-size:20px;color:white">1</span>
-                        <span class="text-xs font-weight-bold text-white text-uppercase mb-1 text-center">ENROLLED
-                            STUDENT</span>
-                        <span class="bg-icon"><i class="fa fa-users"></i></span>
-                    </a>
-                    <!-- /.dashboard-stat -->
-                </div>
-                <!-- /.col-lg-3 col-md-3 col-sm-6 col-xs-12 -->
-
-                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 " style="margin-top:20px">
-                    <a class="dashboard-stat bg-info card border-left-warning shadow h-100 py-2"
-                        href="manage-subjects.php">
-
-                        <span class="text-center" style="font-size:20px; color:white">1</span>
-                        <span class="text-xs font-weight-bold text-white text-uppercase mb-1 text-center">COURSE
-                            LIST</span>
-                        <span class="bg-icon"><i class="fa fa-ticket"></i></span>
-                    </a>
-                    <!-- /.dashboard-stat -->
-                </div>
-                <!-- /.col-lg-3 col-md-3 col-sm-6 col-xs-12 -->
-
-                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" style="margin-top:20px">
-                    <a class="dashboard-stat bg-light card border-left-warning shadow h-100 py-2"
-                        href="manage-classes.php">
-
-                        <span class="text-center" style="font-size:20px; color:black">1</span>
-                        <span class="text-xs font-weight-bold text-dark text-uppercase mb-1 text-center">Total
-                            classes</span>
-                        <span class="bg-icon"><i class="fa fa-bank"></i></span>
-                    </a>
-                    <!-- /.dashboard-stat -->
-                </div>
-                <!-- /.col-lg-3 col-md-3 col-sm-6 col-xs-12 -->
-
-                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" style="margin-top:20px">
-                    <a class="dashboard-stat bg-success card border-left-warning shadow h-100 py-2"
-                        href="manage-results.php">
-                        <span class="text-center" style="font-size:20px; color:orange">1</span>
-                        <span class="text-xs font-weight-bold text-warning text-uppercase mb-1 text-center">Results
-                            Declared</span>
-                        <span class="bg-icon"><i class="fa fa-file-text"></i></span>
-                    </a>
-                    <!-- /.dashboard-stat -->
-                </div>
-                <!-- /.col-lg-3 col-md-3 col-sm-6 col-xs-12 -->
-
-            </div>
-            <!-- /.row -->
-        </div>
-        <!-- /.container-fluid -->
-    </section>
-    <!-- /.section -->
-
 </div>
+
 <!-- /.main-page -->
 
 
