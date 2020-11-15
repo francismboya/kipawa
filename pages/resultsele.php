@@ -65,8 +65,7 @@ if ($resultcheck == 1) {
                         <input type="hidden" name="coID" value="<?php echo $cid; ?>" />
                         <input type="hidden" name="courseID" value="<?php echo $course['courseID']; ?>" />
                         <button type="submit" name="viewee" class="btn btn-primary m-2">view Result</button>
-                        <a href="adresult.php?action=add&id=<?php echo $course['courseID']; ?>"
-                            class="btn btn-primary m-2"> Analytical info</a>
+                        <button type="submit" name="analytical" class="btn btn-primary m-2"> Analytical info</button>
                         <?php } else {
                     ?>
                         <a href="#" class="btn btn-secondary m-2">view Result</a>

@@ -108,11 +108,17 @@ confirm_logged_in();
                     <i class="fas fa-fw fa-graduation-cap"></i>
                     <span>STUDENTS</span></a>
             </li>
-
             <li class="nav-item">
                 <a class="nav-link" href="coursework1.php">
                     <i class="fas fa-fw fa-archive"></i>
-                    <span>RESULTS</span></a>
+                    <span>COURSEWORK</span></a>
+            </li>
+
+
+            <li class="nav-item">
+                <a class="nav-link" href="result1.php">
+                    <i class="fas fa-fw fa-archive"></i>
+                    <span>RESULT</span></a>
             </li>
 
 

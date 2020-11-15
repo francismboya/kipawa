@@ -126,7 +126,7 @@ $hrefid[1] = "'#dataTable'";
                         </h4>
                     </div>
 
-                    <div class="row">
+                    <div class="row" id='hdtable'>
                         <div class="card-body col-md-12">
                             <div class="table-responsive" style="font-size:14px">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -145,10 +145,10 @@ $hrefid[1] = "'#dataTable'";
                                     <?php
 $crdo = 0;
 $on = 0;
-
-if (isset($_POST['courseID']) && !empty($_POST['courseID'])) {
-    $on = 1;
-    $query = "SELECT * from (SELECT courseID, score as scr,
+if (isset($_POST['viewee'])) {
+    if (isset($_POST['courseID']) && !empty($_POST['courseID'])) {
+        $on = 1;
+        $query = "SELECT * from (SELECT courseID, score as scr,
 result.grade, regno, coID FROM result WHERE courseID='" . $_POST['courseID'] . "'
 AND coID='" . $_POST['coID'] . "') a
  JOIN (SELECT * FROM coursework WHERE courseID='" . $_POST['courseID'] . "'
@@ -157,26 +157,26 @@ AND coID='" . $_POST['coID'] . "') b
  on courseprogram.programID=student.programID AND courseprogram.level=student.level where
  courseprogram.courseID='" . $_POST['courseID'] . "')c
  ON a.regno = b.regno and a.coID = b.coID and b.courseID=c.courseID and b.regno=c.regno";
-    $result = mysqli_query($db, $query) or die(mysqli_error($db));
-    $crd = "select * from course where courseID='" . $_POST['courseID'] . "' ";
-    $rel = mysqli_query($db, $crd) or die(mysqli_error($db));
-    if (mysqli_num_rows($rel) > 0) {
-        while ($row2 = mysqli_fetch_assoc($rel)) {
-            $crdo = $row2['credit'];
+        $result = mysqli_query($db, $query) or die(mysqli_error($db));
+        $crd = "select * from course where courseID='" . $_POST['courseID'] . "' ";
+        $rel = mysqli_query($db, $crd) or die(mysqli_error($db));
+        if (mysqli_num_rows($rel) > 0) {
+            while ($row2 = mysqli_fetch_assoc($rel)) {
+                $crdo = $row2['credit'];
 
+            }
         }
-    }
-    ?>
+        ?>
                                     <tbody>
                                         <?php
 if (mysqli_num_rows($result) > 0) {
-        while ($row = mysqli_fetch_assoc($result)) {
-            ?>
+            while ($row = mysqli_fetch_assoc($result)) {
+                ?>
 
                                         <tr>
                                             <td>
                                                 <?php echo $row['fname'] . " " . $row['mname'] . " " . $row['lname']
-            ?>
+                ?>
                                             </td>
 
                                             <td>
@@ -194,7 +194,12 @@ if (mysqli_num_rows($result) > 0) {
 
                                             </td>
                                             <td>
-                                                <?php echo $row['scr']; ?>
+                                                <?php
+if ($row['scr'] == "inc") {echo $row['scr'];
+                } else {
+                    echo $row['scr'] - $row['score'];
+                }
+                ?>
 
                                             </td>
                                             <td>
@@ -205,23 +210,23 @@ if (mysqli_num_rows($result) > 0) {
                                             <?php
 echo '<td align="center">
          <a type="button" class="btn btn-success bg-gradient-success" href="manageedit.php?action=edit & id='
-                . $row['courseID'] . '"><i class="far fa-eye" style="margin-right:5px;"></i>view</a>
+                    . $row['courseID'] . '"><i class="far fa-eye" style="margin-right:5px;"></i>view</a>
                 </td>';
 
-            ?>
+                ?>
 
 
                                             <td>
 
                                                 <?php
 if (strcmp($row['grade'], "F") == 0 || strcmp($row['grade'], "D") == 0) {
-                echo "FAIL";
+                    echo "FAIL";
 
-            } else {
-                echo "PASS";
+                } else {
+                    echo "PASS";
 
-            }
-            ?>
+                }
+                ?>
 
 
                                             </td>
@@ -229,16 +234,19 @@ if (strcmp($row['grade'], "F") == 0 || strcmp($row['grade'], "D") == 0) {
 
                                         </tr>
                                         <?php }
-        ?>
+            ?>
 
                                         <?php
 
-    }
-    ?>
+        }
+        ?>
 
 
                                         <?php
 }
+
+}
+
 ?>
                                     </tbody>
                                 </table>
@@ -246,8 +254,24 @@ if (strcmp($row['grade'], "F") == 0 || strcmp($row['grade'], "D") == 0) {
                             </div>
                         </div>
                     </div>
+
+
                 </div>
+
                 <?php
+
+if (isset($_POST['analytical'])) {
+    if (isset($_POST['courseID']) && !empty($_POST['courseID'])) {
+        $on = 3;
+        ?>
+
+                <?php
+include 'adchart.php';
+        ?>
+                <?php
+}
+}
+
 include '../includes/footer.php';
 
 ?>
@@ -271,7 +295,9 @@ include '../includes/footer.php';
                     } else if (bot.value = "ON") {
                         bot.value = "OFF";
                         jc = document.getElementById("rpnl");
+                        jcb = document.getElementById("an");
                         jc.style.display = "none";
+                        jcb.style.display = "none";
                         bot.style.background = "#9e9e9e";
                     }
                 }
@@ -286,7 +312,21 @@ include '../includes/footer.php';
                 jc2.style.display = "none";
                 bot2.style.background = "#9e9e9e";
                 </script>
-                <?php } else {
+                <?php } else if ($on == 3) {
+    ?>
+                <script>
+                bot2 = document.getElementById("viewer2");
+                bot2.value = "OFF";
+                jc2 = document.getElementById("rpnl");
+                jc3 = document.getElementById("hdtable");
+                jcb2 = document.getElementById("an");
+                jc3.style.display = "none";
+                jcb2.style.display = "block";
+                jc2.style.display = "none";
+                bot2.style.background = "#9e9e9e";
+                </script>
+                <?php
+} else {
     ?>
                 <script>
                 bot3 = document.getElementById("viewer2");

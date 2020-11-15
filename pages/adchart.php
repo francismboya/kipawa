@@ -55,14 +55,16 @@
     });
     </script>
 </head>
-<?php
-include '../includes/connection.php';
-//require 'session.php';
-include '../includes/sidebar.php';
+<div id='an' style="display:none">
+    <?php
+
 //fail or pass
-$sqln = "select * from(SELECT count(*)pass FROM `coursework` WHERE remarks='pass')a
+$cid = $_POST['courseID'] . date("Y");
+
+$sqln = "select * from(SELECT count(*)pass FROM `result` WHERE (grade='A' or grade='B+' or grade='B' or grade='C') and courseID='" . $_POST['courseID'] . "' and coID='" . $cid . "')a
 join
-(SELECT count(*)fail FROM `coursework` WHERE remarks='fail') b";
+(SELECT count(*)fail FROM `result` WHERE (grade='F' or grade='D'or grade='E') and courseID='" . $_POST['courseID'] . "' and coID='" . $cid . "') b";
+
 $result = mysqli_query($db, $sqln);
 $a = array();
 $i = 0;
@@ -104,17 +106,17 @@ function convertDataToChartForm($data)
 }
 
 //A B C D
-$sqlng = "select * from(SELECT count(*)A FROM `result` WHERE grade='A')a
+$sqlng = "select * from(SELECT count(*)A FROM `result` WHERE grade='A' and courseID='" . $_POST['courseID'] . "' and coID='" . $cid . "')a
 join
-(SELECT count(*)B_plus FROM `result` WHERE grade='B+') b
+(SELECT count(*)B_plus FROM `result` WHERE grade='B+' and courseID='" . $_POST['courseID'] . "' and coID='" . $cid . "') b
 join
-(SELECT count(*)B_plain FROM `result` WHERE grade='B') c
+(SELECT count(*)B_plain FROM `result` WHERE grade='B' and courseID='" . $_POST['courseID'] . "' and coID='" . $cid . "') c
 join
-(SELECT count(*)C FROM `result` WHERE grade='C') d
+(SELECT count(*)C FROM `result` WHERE grade='C' and courseID='" . $_POST['courseID'] . "' and coID='" . $cid . "') d
 join
-(SELECT count(*)D FROM `result` WHERE grade='D') e
+(SELECT count(*)D FROM `result` WHERE grade='D' and courseID='" . $_POST['courseID'] . "' and coID='" . $cid . "') e
 join
-(SELECT count(*)F FROM `result` WHERE grade='F') f";
+(SELECT count(*)F FROM `result` WHERE grade='F' and courseID='" . $_POST['courseID'] . "' and coID='" . $cid . "') f";
 $resultg = mysqli_query($db, $sqlng);
 $ag = array();
 
@@ -129,11 +131,10 @@ function convertDataToChartForm2($data)
 
     $jb = 0;
 
-
     foreach ($data as $dataRow) {
         if ($jb == 0) {
             $newData[] = array("grade", "number of student");
-            $jb=1;
+            $jb = 1;
 
         }
         foreach ($dataRow as $key => $value) {
@@ -147,115 +148,130 @@ function convertDataToChartForm2($data)
 
 ?>
 
-<div class="container-fluid">
-    <div class="row">
+    <div class="container-fluid">
+        <div class="row">
 
-        <!--start-->
-        <div class="card col-sm-12 m-2">
+            <!--start-->
+            <div class="card col-sm-12 m-2">
 
-            <div class="card-header d-flex justify-content-between align-items-center">
-                <h6 class="text-primary font-weight-bold m-0">percentage of Failed/passed student</h6>
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h6 class="text-primary font-weight-bold m-0">percentage of Failed/passed student
+                        <span class="text-danger font-weight-bold m-2">
+                            <?php echo $_POST['courseID'] ?>
+                        </span>
+                    </h6>
 
-            </div>
-            <div class="card-body" id="pie"></div>
 
-        </div>
-
-        <!--end-->
-        <!--start-->
-        <div class="card col-sm-12 m-2">
-
-            <div class="card-header d-flex justify-content-between align-items-center">
-                <h6 class="text-primary font-weight-bold m-0">GRADE DISTRIBUTION BAR GRAPH</h6>
+                </div>
+                <div class="card-body" id="pie"></div>
 
             </div>
 
-            <div class="card-body" id="bar"></div>
+            <!--end-->
+            <!--start-->
+            <div class="card col-sm-12 m-2">
 
-        </div>
-        <!--end-->
-        <!--start-->
-        <div class="card col-sm-12 m-2">
-            <div class="card-header d-flex justify-content-between align-items-center">
-                <h6 class="text-primary font-weight-bold m-0">RESULT DISTRIBUTION GRAPH </h6>
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h6 class="text-primary font-weight-bold m-0">GRADE DISTRIBUTION BAR GRAPH
+                        <span class="text-danger font-weight-bold m-2">
+                            <?php echo $_POST['courseID'] ?>
+                        </span>
+                    </h6>
+
+                </div>
+
+                <div class="card-body" id="bar"></div>
 
             </div>
-            <div class="card-body" id="line"></div>
+            <!--end-->
+            <!--start-->
+            <div class="card col-sm-12 m-2">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h6 class="text-primary font-weight-bold m-0">RESULT DISTRIBUTION GRAPH
+                        <span class="text-danger font-weight-bold m-2">
+                            <?php echo $_POST['courseID'] ?>
+                        </span>
+                    </h6>
+
+                </div>
+                <div class="card-body" id="line"></div>
+
+            </div>
+            <!--end-->
+
 
         </div>
-        <!--end-->
-
-
     </div>
-</div>
 
-
-<?php
-include '../includes/footer.php';
+    <?php
+//include '../includes/footer.php';
 
 ?>
-<script language="JavaScript">
-//piechart
-function drawChart() {
-    var data = google.visualization.arrayToDataTable((<?=json_encode(convertDataToChartForm($a));?>));
-    var options = {
-        'title': 'Ratio failed student vs passed student',
-        backgroundColor: '#f1f8e9',
-
-    };
-
-    // Instantiate and draw the chart.
-    var chart = new google.visualization.PieChart(document.getElementById('pie'));
-    chart.draw(data, options);
-}
-google.charts.setOnLoadCallback(drawChart);
-window.onload = drawChart;
-window.onresize = drawChart;
 
 
-//bar chart
-function drawChart2() {
-    var data = google.visualization.arrayToDataTable((<?=json_encode(convertDataToChartForm2($ag));?>));
+    <script language="JavaScript">
+    //piechart
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable((<?=json_encode(convertDataToChartForm($a));?>));
+        var options = {
+            'title': 'Ratio failed student vs passed student',
+            backgroundColor: '#f1f8e9',
 
-    // Define the chart to be drawn.
+        };
 
-    var options = {
-        title: 'Bar graph showing grade',
-        backgroundColor: '#f1f8e9'
-    };
-
-    // Instantiate and draw the chart.
-    var chart = new google.visualization.BarChart(document.getElementById('bar'));
-    chart.draw(data, options);
-}
-google.charts.setOnLoadCallback(drawChart2);
-window.onload = drawChart2;
-window.onresize = drawChart2;
-
+        // Instantiate and draw the chart.
+        var chart = new google.visualization.PieChart(document.getElementById('pie'));
+        chart.draw(data, options);
+    }
+    google.charts.setOnLoadCallback(drawChart);
+    window.onload = drawChart;
+    window.onresize = drawChart;
 
 
-function drawChart3() {
-    // Define the chart to be drawn.
-    var data = google.visualization.arrayToDataTable((<?=json_encode(convertDataToChartForm2($ag));?>));
+    //bar chart
+    function drawChart2() {
+        var data = google.visualization.arrayToDataTable((<?=json_encode(convertDataToChartForm2($ag));?>));
 
-    // Set chart options
-    var options = {
-        'title': 'Score distribution',
-        hAxis: {
-            title: 'Grade'
-        },
-        vAxis: {
+        // Define the chart to be drawn.
 
-            title: 'number of student'
-        },
-        backgroundColor: '#f1f8e9'
-    };
+        var options = {
+            title: 'Bar graph showing grade',
+            backgroundColor: '#f1f8e9'
+        };
 
-    // Instantiate and draw the chart.
-    var chart = new google.visualization.LineChart(document.getElementById('line'));
-    chart.draw(data, options);
-}
-google.charts.setOnLoadCallback(drawChart3);
-window.onload = drawChart3;
-window.onresize = drawChart3;
-</script>
+        // Instantiate and draw the chart.
+        var chart = new google.visualization.BarChart(document.getElementById('bar'));
+        chart.draw(data, options);
+    }
+    google.charts.setOnLoadCallback(drawChart2);
+    window.onload = drawChart2;
+    window.onresize = drawChart2;
+
+
+
+    function drawChart3() {
+        // Define the chart to be drawn.
+        var data = google.visualization.arrayToDataTable((<?=json_encode(convertDataToChartForm2($ag));?>));
+
+        // Set chart options
+        var options = {
+            'title': 'Score distribution',
+            hAxis: {
+                title: 'Grade'
+            },
+            vAxis: {
+
+                title: 'number of student'
+            },
+            backgroundColor: '#f1f8e9'
+        };
+
+        // Instantiate and draw the chart.
+        var chart = new google.visualization.LineChart(document.getElementById('line'));
+        chart.draw(data, options);
+    }
+    google.charts.setOnLoadCallback(drawChart3);
+    window.onload = drawChart3;
+    window.onresize = drawChart3;
+    </script>
+</div>

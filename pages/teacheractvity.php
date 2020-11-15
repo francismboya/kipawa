@@ -76,13 +76,15 @@ window.location = "pos.php";
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <div class="caption v-middle text-center ">
                         <h5 class="cd-headline clip text-primary font-weight-bold m-0">
-                            <span class="blc accordion text-info font-weight-bold m-0" style="font-size: 12px;">Welcome|
+                            <span class="blc accordion text-info font-weight-bold m-0 text-primary "
+                                style="font-size:20px;">Welcome|
                             </span>
-                            <span class="cd-words-wrapper">
+                            <span class="cd-words-wrapper" style="margin-left:5px">
                                 <b class="is-visible text-danger font-weight-bold m-0"
-                                    style="font-size: 12px;"><?php echo $name1 . " " . $name2 ?></b>
-                                <b style="font-size: 12px;" class="text-danger">Teacher Dashboard </b>
-                                <!--<b>Teacher</b>-->
+                                    style="font-size: 16px;"><?php echo $name1 . " " . $name2 ?></b>
+                                <b style="font-size: 16px;" class="text-danger font-weight-bold m-0">Teacher Dashboard
+                                </b>
+
                             </span>
                         </h5>
                     </div>
@@ -102,10 +104,11 @@ window.location = "pos.php";
                                 <ul>
                                     <li>Edit your Info</li>
                                     <li>View course</li>
-                                    <li>Coursework(s)</li>
-                                    <li>Course results</li>
-                                    <li>Appeal</li>
-                                    <li>Course Materials & Notes</li>
+                                    <li>View department</li>
+                                    <li>View student</li>
+                                    <li>upload coursework</li>
+                                    <li>upload result</li>
+                                    <li>export data</li>
                                 </ul>
                                 </br></br>
                                 Please select appropriate action to continue...!

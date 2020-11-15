@@ -36,9 +36,11 @@ window.location = "logout.php";
             <ul class="navbar-nav ml-auto">
 
                 <li class="nav-item dropdown no-arrow">
-                    <a class="nav-link" href="pos.php" role="button">
-                        <span class="mr-2 d-non255e d-lg-inline text-gray-600 small">POS</span>
+                    <a class="nav-link" href="" data-toggle="modal" data-target="#aModal2" type="button"
+                        class="btn btn-primary bg-gradient-primary" style="border-radius: 0px;" role="button">
+                        <span class="mr-2 d-non255e d-lg-inline text-gray-600 small">DOC</span>
                     </a>
+
                 </li>
 
                 <div class="topbar-divider d-non255e d-sm-block"></div>
@@ -52,27 +54,29 @@ window.location = "logout.php";
                         <img class="img-profile rounded-circle" style="height:100%; width:120px" <?php
 $image1 = $_SESSION['file'];
 if (strcmp($_SESSION['users'], "student") == 0) {
-    $pathimg = "../stdimg/" . $image1;
+    $pathimg = "data:image/jpg;charset=utf8;base64," . base64_encode($_SESSION['file']);
 } else {
-    $pathimg = "../stfimg/" . $image1;
+    $pathimg = "data:image/jpg;charset=utf8;base64," . base64_encode($_SESSION['file']);
 
 }
-if (file_exists($pathimg) && is_file($pathimg)) {
-    $pathimg2 = ' src=' . $pathimg;
-    echo $pathimg2;
-
-} else {
+if ($_SESSION['file'] == '') {
     if ($_SESSION['gender'] == 'male') {
         echo ' src="../img/male.png"';
     } else {
         echo ' src="../img/female.png"';
     }
+
+} else {
+    $pathimg2 = ' src=' . $pathimg;
+    echo $pathimg2;
+
 }
 ?>>
 
                     </a>
 
                     <?php
+
 $users = $_SESSION['users'];
 $typid = $_SESSION['typid'];
 $ID = $_SESSION['id'];
@@ -110,6 +114,34 @@ while ($row = mysqli_fetch_assoc($result)) {
             </ul>
 
         </nav>
+
+
+        <div class="modal fade" style="width:100%; height:100%" id="aModal2" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog  modal-lg" style="width:100%; height:100%" role="document">
+                <div class="modal-content" style="width:100%; height:100%">
+                    <div class="modal-header">
+                        <h5 class="modal-title btn btn-primary" id="exampleModalLabel">SYSTEM MANUAL</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" style="width:100%; height:100%">
+                        <?php
+$path = '../docfile/std.pdf';
+$path2 = file_get_contents($path);
+
+?>
+
+
+                        <object name="name" data="data:application/pdf;base64,<?php echo base64_encode($path2) ?>"
+                            type="application/pdf" style="height:100%; width:100%;" standby="loading"></object>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->

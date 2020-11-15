@@ -71,7 +71,7 @@ if (isset($_POST['user']) && isset($_POST['password'])) {
                     $_SESSION['phoneno'] = $found_user['phoneno'];
                     $_SESSION['statusName'] = $found_user['statusName'];
                     $_SESSION['gender'] = $found_user['gender'];
-
+                    $_SESSION['key'] = date('dmYHis') . "francis&kweka";
                     $AAA = $_SESSION['ID'];
                     $_SESSION['users'] = "student";
                     $_SESSION['typid'] = "student.regno";
@@ -90,6 +90,7 @@ if (isset($_POST['user']) && isset($_POST['password'])) {
                     $_SESSION['gender'] = $found_user['egender'];
                     $_SESSION['file'] = $found_user['efile'];
                     $AAA = $_SESSION['ID'];
+                    $_SESSION['key'] = date('dmYHis') . "francis&kweka";
 
                     $_SESSION['users'] = "employee";
                     $_SESSION['typid'] = "employee.employeeID";

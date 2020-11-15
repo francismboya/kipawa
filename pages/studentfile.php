@@ -30,6 +30,7 @@ $name2 = $_SESSION['lname'];
 $emp = $_SESSION['ID'];
 $response = array();
 $errorf = array();
+$imgContent = array();
 
 $reason = array();
 $bc = 0;
@@ -43,14 +44,13 @@ if (isset($_POST['import'])) {
 
         // Looping all files
         for ($i = 0; $i < $countfiles; $i++) {
-           echo $filename = $_FILES['filer']['name'][$i];
-            $fileinfo = @getimagesize($_FILES["filer"]["tmp_name"][$i]) ;
-            echo "<br>";
+            $filename = $_FILES['filer']['name'][$i];
+            $fileinfo = @getimagesize($_FILES["filer"]["tmp_name"][$i]);
 
             $width = $fileinfo[0];
             $height = $fileinfo[1];
             $regno2 = substr($filename, 0, 9);
-            echo $rep=strcmp($regno2, "KICTC-DIP");
+            $rep = strcmp($regno2, "KICTC-DIP");
 
             if (strcmp($regno2, "KICTC-DIP") > 0 && strcmp($regno2, "KICTC-CER") > 0) {
                 $response[$bc] = $filename;
@@ -71,10 +71,11 @@ if (isset($_POST['import'])) {
                 $bc++;
 
             } else {
-                $filename;
+                echo $filename;
 
-                move_uploaded_file($_FILES['filer']['tmp_name'][$i], '../stdimg/' . $filename);
-
+                $image = $_FILES['filer']['tmp_name'][$i];
+                $imgContent[$filename] = addslashes(file_get_contents($image));
+                // move_uploaded_file($_FILES['filer']['tmp_name'][$i], '../stdimg/' . $filename);
             }
 
         }
@@ -111,21 +112,21 @@ if (isset($_POST['import'])) {
                 if ($row == 1) {
                     continue;
                 }
-                $filerr = $col[0] . ".png";
+                echo $filerr = $col[0] . ".png";
                 $d = strtotime($col[9]);
                 $regDate = date("m/d/Y", $d);
                 $yearr = date("Y", $d);
                 $regno3 = substr($col[0], 0, 9);
 
-                $insert = "INSERT INTO student (regno,fname,mname,lname,
-            depertmentID,programID,year,level,email,file,gender,state,regDate,phoneno)
-            values('" . $col[0] . "','" . $col[1] . "','" . $col[2] .
-                    "','" . $col[3] . "','" . $col[4] . "','" . $col[5] . "','" . $yearr . "','" . $col[6] .
-                    "','" . $col[7] . "','" . $filerr . "','" . $col[8] . "','" . $state1 . "','" . $regDate .
-                    "','" . $col[10] . "')";
+                // $insert = "INSERT INTO student (regno,fname,mname,lname,
+                //depertmentID,programID,year,level,email,file,gender,state,regDate,phoneno)
+                //values('" . $col[0] . "','" . $col[1] . "','" . $col[2] .
+                //     "','" . $col[3] . "','" . $col[4] . "','" . $col[5] . "','" . $yearr . "','" . $col[6] .
+                //    "','" . $col[7] . "','" . $filerr . "','" . $col[8] . "','" . $state1 . "','" . $regDate .
+                //    "','" . $col[10] . "')";
 
                 $loginis = "INSERT INTO login (email, password) values('" . $col[7] . "','" . $col[3] . "')";
-                $statusis = "INSERT INTO status (statusName, email, lstate) 
+                $statusis = "INSERT INTO status (statusName, email, lstate)
                 values('" . $statusName . "','" . $col[7] . "','" . $lstate . "')";
                 $sql = "SELECT email FROM login where email='" . $col[7] . "'";
 
@@ -230,26 +231,60 @@ if (isset($_POST['import'])) {
                     $reason[$i] = "error on CSV";
                     $i++;
 
-                } else if (!mysqli_query($db, $insert)) {
-                    $validity = 1;
-                    $regno[$i] = $col[0];
-                    $fname[$i] = $col[1];
-                    $mname[$i] = $col[2];
-                    $lname[$i] = $col[3];
-                    $depertmentID[$i] = $col[4];
-                    $programID[$i] = $col[5];
-                    $year[$i] = $yearr;
-                    $level[$i] = $col[6];
-                    $email[$i] = $col[7];
-                    $file2[$i] = $filerr;
-                    $gender[$i] = $col[8];
-                    $state[$i] = $state1;
-                    $regDate[$i] = $regDate;
-                    $phoneno[$i] = $col[10];
-                    $reason[$i] = "error on CSV";
-                    $i++;
+                } else if (array_key_exists($filerr, $imgContent)) {
+                    $img = $imgContent[$filerr];
+                    $runner = "SET GLOBAL SESSION max_allowed_packet=1024*1024*1024";
+                    mysqli_query($db, $runner);
 
-                } else if (!mysqli_query($db, $statusis)) {
+                    $insert = "INSERT INTO student (regno,fname,mname,lname,
+            depertmentID,programID,year,level,email,file,gender,state,regDate,phoneno)
+            values('" . $col[0] . "','" . $col[1] . "','" . $col[2] .
+                        "','" . $col[3] . "','" . $col[4] . "','" . $col[5] . "','" . $yearr . "','" . $col[6] .
+                        "','" . $col[7] . "','" . $img . "','" . $col[8] . "','" . $state1 . "','" . $regDate .
+                        "','" . $col[10] . "')";
+
+                    if (!mysqli_query($db, $insert)) {
+                        mysqli_query($db, $insert) or die(mysqli_error($db));
+                        $validity = 1;
+                        $regno[$i] = $col[0];
+                        $fname[$i] = $col[1];
+                        $mname[$i] = $col[2];
+                        $lname[$i] = $col[3];
+                        $depertmentID[$i] = $col[4];
+                        $programID[$i] = $col[5];
+                        $year[$i] = $yearr;
+                        $level[$i] = $col[6];
+                        $email[$i] = $col[7];
+                        $file2[$i] = $filerr;
+                        $gender[$i] = $col[8];
+                        $state[$i] = $state1;
+                        $regDate[$i] = $regDate;
+                        $phoneno[$i] = $col[10];
+                        $reason[$i] = "12error on CSV";
+                        $i++;
+
+                    } else if (!mysqli_query($db, $statusis)) {
+                        $validity = 1;
+                        $regno[$i] = $col[0];
+                        $fname[$i] = $col[1];
+                        $mname[$i] = $col[2];
+                        $lname[$i] = $col[3];
+                        $depertmentID[$i] = $col[4];
+                        $programID[$i] = $col[5];
+                        $year[$i] = $yearr;
+                        $level[$i] = $col[6];
+                        $email[$i] = $col[7];
+                        $file2[$i] = $filerr;
+                        $gender[$i] = $col[8];
+                        $state[$i] = $state1;
+                        $regDate[$i] = $regDate;
+                        $phoneno[$i] = $col[10];
+                        $reason[$i] = "error on CSV";
+                        $i++;
+
+                    }
+
+                } else {
                     $validity = 1;
                     $regno[$i] = $col[0];
                     $fname[$i] = $col[1];
@@ -265,10 +300,11 @@ if (isset($_POST['import'])) {
                     $state[$i] = $state1;
                     $regDate[$i] = $regDate;
                     $phoneno[$i] = $col[10];
-                    $reason[$i] = "error on CSV";
+                    $reason[$i] = "bad image file";
                     $i++;
 
                 }
+
             }
 
             if ($validity == 1) {
@@ -318,6 +354,7 @@ if (isset($_POST['import'])) {
                     }
                 }
                 $stadd = '</tbody></table></div></div>';
+                $fp = fopen($errorfile, "a") or exit("Unable to open file!");
                 file_put_contents($errorfile, $stadd . "\n", FILE_APPEND);
                 fclose($fp);
                 ?>
@@ -412,8 +449,8 @@ if (isset($_POST['import'])) {
 
         }
     } else {?>
-        <script>
-        Swal.fire({
+    <script>
+    Swal.fire({
         icon: 'error',
         title: 'STUDENT INFO NOT UPDATED',
         text: 'Number of file missmatches with image file!',
@@ -421,20 +458,20 @@ if (isset($_POST['import'])) {
         footer: '<a href="student.php.php">view student Info!</a>'
 
     }).then((result) => {
-            if (result.value) {
-                $(document).ajaxStart(function() {
-                    $("#wait").css("display", "block");
-                    $("#loadertz").fadeOut(2);
-                });
-                $(document).ajaxComplete(function() {
-                    $("#wait").css("display", "none");
-                });
-                $('#ajaxorg').load('student.php');
-            }
-        });
+        if (result.value) {
+            $(document).ajaxStart(function() {
+                $("#wait").css("display", "block");
+                $("#loadertz").fadeOut(2);
+            });
+            $(document).ajaxComplete(function() {
+                $("#wait").css("display", "none");
+            });
+            $('#ajaxorg').load('student.php');
+        }
+    });
     </script>
     <?php
-    }
+}
 }
 include '../includes/footer.php';
 

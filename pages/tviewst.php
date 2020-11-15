@@ -192,7 +192,8 @@ for ($i = 0; $i < $len; $i++) {
                 '<td style="font-size:14px">' . $fname[$r] . ' ' . $lname[$r] . '</td>' .
                 '<td style="font-size:14px">' . $depertmentID[$r] . '</td>' .
                 '<td style="font-size:14px">' . $programID[$r] . '</td>' .
-                '<td style="font-size:14px">' . $level[$r] . '</td> </tr>';
+                '<td style="font-size:14px">' . $level[$r] . '
+                </td> </tr>';
         }
         $close = "
                 </tbody>
@@ -316,7 +317,8 @@ include '../includes/footer.php';
                                                 messageTop: ad,
                                                 className: 'btn btn-primary',
                                                 exportOptions: {
-                                                    columns: ':visible'
+                                                    columns: ':visible',
+                                                    stripHtml: false
                                                 },
 
                                                 customize: function(win) {

@@ -17,6 +17,7 @@ $ID = $_SESSION['id'];
 $name1 = $_SESSION['fname'];
 $name2 = $_SESSION['lname'];
 $emp = $_SESSION['ID'];
+$imgContent = array();
 
 if (isset($_POST['save'])) {
     $errorep = "";
@@ -50,7 +51,10 @@ if (isset($_POST['save'])) {
 
         } else {
             #validated
-            move_uploaded_file($_FILES['image']['tmp_name'], '../stdimg/' . $name);
+            $image = $_FILES['image']['tmp_name'];
+            $imgContent[$name] = addslashes(file_get_contents($image));
+
+            //move_uploaded_file($_FILES['image']['tmp_name'], '../stdimg/' . $name);
             $file = $name;
             #validation of other detail
             $regno2 = substr($regno, 0, 9);
@@ -61,14 +65,14 @@ if (isset($_POST['save'])) {
                     #no middle name
                     $insert = "INSERT INTO student (regno,fname,lname,
             depertmentID,programID,year,level,email,file,gender,state,regDate,phoneno)values('" . $regno . "','" . $fname . "','" . $lname . "','" . $department . "','" . $programID . "','" . $year . "','" . $level .
-                        "','" . $email . "','" . $file . "','" . $gender . "','" . $state . "','" . $regDate .
+                        "','" . $email . "','" . $imgContent[$name] . "','" . $gender . "','" . $state . "','" . $regDate .
                         "','" . $phoneno . "')";
 
                 } else {
                     $insert = "INSERT INTO student (regno,fname,mname,lname,
             depertmentID,programID,year,level,email,file,gender,state,regDate,phoneno)values('" . $regno . "','" . $fname . "','" . $mname .
                         "','" . $lname . "','" . $department . "','" . $programID . "','" . $year . "','" . $level .
-                        "','" . $email . "','" . $file . "','" . $gender . "','" . $state . "','" . $regDate .
+                        "','" . $email . "','" . $imgContent[$name] . "','" . $gender . "','" . $state . "','" . $regDate .
                         "','" . $phoneno . "')";
                 }
                 $loginis = "INSERT INTO login (email, password) values('" . $email . "','" . $passwd . "')";

@@ -1,10 +1,20 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=0.6 user-scalable=no">
 </head>
+
 <?php
 include '../includes/connection.php';
 include '../includes/tsidebar.php';
-?><?php
+$hrefid = array();
+$hrefid[1] = "'#dataTable2'";
+
+include 'tresult.php';
+
+?>
+<div id="rel">
+    <div id="reop">
+
+        <?php
 
 $users = $_SESSION['users'];
 $typid = $_SESSION['typid'];
@@ -13,51 +23,106 @@ $name1 = $_SESSION['fname'];
 $name2 = $_SESSION['lname'];
 $emp = $_SESSION['ID'];
 $mda = "";
+
 ?>
-<?Php
+        <?Php
 
 if (!empty($_POST["id"])) {
     $id = $_POST["id"];
     $mda = 1;
 
 }
-if (!empty($_POST['grant'])) {
 
+if (isset($_GET["courseID"])) {
+// Non-NULL Initialization Vector for decryption
+    $decryption_iv = '1234567891011121';
+// Store the cipher method
+    $ciphering = "AES-128-CTR";
+// Use OpenSSl Encryption method
+    $iv_length = openssl_cipher_iv_length($ciphering);
+    $options = 0;
+// Non-NULL Initialization Vector for encryption
+    $encryption_iv = '1234567891011121';
+
+// Store the decryption key
+    $decryption_key = $_SESSION['key'];
+
+// Use openssl_decrypt() function to decrypt the data
+    $decryption1 = openssl_decrypt($_GET["courseID"], $ciphering,
+        $decryption_key, $options, $decryption_iv);
+
+    $decryption = openssl_decrypt($_GET["coID"], $ciphering,
+        $decryption_key, $options, $decryption_iv);
+    include 'tchart.php';
+    ?>
+        <style>
+        #hidded {
+            display: none;
+        }
+        </style>
+        <?php
 }
+if (isset($_POST["view"])) {
+
+    ?>
+        <style>
+        #rel {
+            display: block;
+        }
+
+        #reop {
+            display: none;
+        }
+
+        #rel2 {
+            display: block;
+        }
+        </style>
+        <?php
+}
+
 ?>
 
-<div class="card-body">
-    <div class="table-responsive" style="font-size:14px">
-        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-            <thead>
-                <p>Dear,<?php echo "$name1 $name2  the following  are coursework information  to your courses: "; ?>
-                </p>
-                <tr>
-                    <th style="font-size:14px">COURSE ID</th>
-                    <th style="font-size:14px">Course Name</th>
-                    <th style="font-size:14px">View Course Result</th>
-                    <th style="font-size:14px">Result</th>
-                    <th style="font-size:14px">status</th>
-                    <th style="font-size:14px">action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
+        <div class="card-body" id="hidded">
+            <div class="table-responsive" style="font-size:14px">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <p>Dear,<?php echo "$name1 $name2  the following  are coursework information  to your courses: "; ?>
+                        </p>
+                        <tr>
+                            <th style="font-size:14px">COURSE ID</th>
+                            <th style="font-size:14px">Course Name</th>
+                            <th style="font-size:14px">View Course Result</th>
+                            <th style="font-size:14px">Result</th>
+                            <th style="font-size:14px">status</th>
+                            <th style="font-size:14px">action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
 $uemail = $_SESSION['email'];
 $a = "";
 $b = "";
 $query = "SELECT distinct course.courseID, employee.employeeID, course.cName, courseprogram.programID, course.level, course.credit, course.classfication from employee left join course on course.employeeID=employee.employeeID join courseprogram on courseprogram.courseID= course.courseID and courseprogram.level=course.level where employee.employeeID='" . $emp . "' ORDER BY course.courseID";
 $result = mysqli_query($db, $query) or die(mysqli_error($db));
 while ($row = mysqli_fetch_assoc($result)) {
+    $cid = $row['courseID'] . date("Y");
+
     echo '<tr>';
     echo '<td style="font-size:14px">' . $row['courseID'] . '</td>';
     echo '<td style="font-size:14px">' . $row['cName'] . '</td>';
-    $coquery = "SELECT * FROM result where courseID='" . $row['courseID'] . "'";
+    $coquery = "SELECT * FROM result where courseID='" . $row['courseID'] . "' and coID='" . $cid . "'";
     $resul = mysqli_query($db, $coquery) or die(mysqli_error($db));
     if (mysqli_num_rows($resul) > 0) {
         echo '<td align="center" style="font-size:14px">
-         <a type="button" class="btn btn-success bg-gradient-success" href="manageedit.php?action=edit & id='
-            . $row['courseID'] . '"><i class="far fa-eye" style="margin-right:5px;"></i>view</a></td>';
+        <form method="post" action="result1.php?">
+        <input type="text" name="courseID" value="' . $row['courseID'] . '" style="display:none;">
+        <input type="text" name="coID" value="' . $cid . '" style="display:none;">
+
+         <button type="submit" name="view" class="btn btn-success bg-gradient-success"><i class="far fa-eye" style="margin-right:5px;"></i>view</button>
+         </form></td>'
+        ;
+
         $a = 1;
     } else {
         echo '<td align="center" style="font-size:14px">
@@ -66,11 +131,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     }
     if ($a == 1) {
         echo '<td align="center" style="font-size:14px">
-         <form action="result1.php" method="post">
-         <input type="text" name="grant" value="' . $row['courseID'] . '" style="display:none;">
-         <button type="submit" class="btn btn-info bg-gradient-info" style="color:white"><i class="fas fa-broadcast-tower" style="margin-right:5px;"></i>grant student</button>
-
-              </form></td>';
+         <a type="button" class="btn btn-info bg-gradient-info" href="#"><i class="far fa-check-circle" style="margin-right:5px;"></i>result uploaded</a></td>';
 
     } else {
         echo '<td align="center" style="font-size:14px">
@@ -164,17 +225,19 @@ while ($row = mysqli_fetch_assoc($result)) {
     echo '</tr> ';
 }
 ?>
-            </tbody>
-        </table>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--yangu-->
     </div>
 </div>
-
-
 <?php
 
 include '../includes/footer.php';
 
 ?>
+
 
 <script>
 $(document).ready(function() {
@@ -262,4 +325,5 @@ function caller() {
 }
 caller();
 </script>
-<?php }?>
+<?php }
+?>

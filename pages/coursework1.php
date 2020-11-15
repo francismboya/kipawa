@@ -4,7 +4,14 @@
 <?php
 include '../includes/connection.php';
 include '../includes/tsidebar.php';
-?><?php
+$hrefid[1] = "'#dataTable2'";
+
+include 'tresultco.php';
+
+?>
+<div id="rel">
+    <div id="reop">
+        <?php
 
 $users = $_SESSION['users'];
 $typid = $_SESSION['typid'];
@@ -14,32 +21,96 @@ $name2 = $_SESSION['lname'];
 $emp = $_SESSION['ID'];
 $mda = "";
 ?>
-<?Php
+        <?Php
+
+if (isset($_POST['grantbtn'])) {
+    $granting = "UPDATE studentviewco SET stateView='yes' WHERE coID='" . $_POST['coID'] . "'";
+    if (mysqli_query($db, $granting)) {
+
+    }
+
+}
+if (isset($_POST['ungrantbtn'])) {
+    $granting = "UPDATE studentviewco SET stateView='no' WHERE coID='" . $_POST['coID'] . "'";
+    if (mysqli_query($db, $granting));
+    {
+
+    }
+
+}
 
 if (!empty($_POST["id"])) {
     $id = $_POST["id"];
     $mda = 1;
 
 }
+
+if (isset($_GET["courseID"])) {
+// Non-NULL Initialization Vector for decryption
+    $decryption_iv = '1234567891011121';
+// Store the cipher method
+    $ciphering = "AES-128-CTR";
+// Use OpenSSl Encryption method
+    $iv_length = openssl_cipher_iv_length($ciphering);
+    $options = 0;
+// Non-NULL Initialization Vector for encryption
+    $encryption_iv = '1234567891011121';
+
+// Store the decryption key
+    $decryption_key = $_SESSION['key'];
+
+// Use openssl_decrypt() function to decrypt the data
+    $decryption1 = openssl_decrypt($_GET["courseID"], $ciphering,
+        $decryption_key, $options, $decryption_iv);
+
+    $decryption = openssl_decrypt($_GET["coID"], $ciphering,
+        $decryption_key, $options, $decryption_iv);
+    include 'tchartco.php';
+    ?>
+        <style>
+        #hidded {
+            display: none;
+        }
+        </style>
+        <?php
+}
+if (isset($_POST["view"])) {
+
+    ?>
+        <style>
+        #rel {
+            display: block;
+        }
+
+        #reop {
+            display: none;
+        }
+
+        #rel2 {
+            display: block;
+        }
+        </style>
+        <?php
+}
 ?>
 
-<div class="card-body">
-    <div class="table-responsive" style="font-size:14px">
-        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-            <thead>
-                <p>Dear,<?php echo "$name1 $name2  the following  are coursework information  to your courses: "; ?>
-                </p>
-                <tr>
-                    <th style="font-size:14px">COURSE ID</th>
-                    <th style="font-size:14px">Course Name</th>
-                    <th style="font-size:14px">View coursework</th>
-                    <th style="font-size:14px">Result</th>
-                    <th style="font-size:14px">status</th>
-                    <th style="font-size:14px">action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
+        <div class="card-body" id="hidded">
+            <div class="table-responsive" style="font-size:14px">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <p>Dear,<?php echo "$name1 $name2  the following  are coursework information  to your courses: "; ?>
+                        </p>
+                        <tr>
+                            <th style="font-size:14px">COURSE ID</th>
+                            <th style="font-size:14px">Course Name</th>
+                            <th style="font-size:14px">View coursework</th>
+                            <th style="font-size:14px">Result</th>
+                            <th style="font-size:14px">status</th>
+                            <th style="font-size:14px">action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
 $uemail = $_SESSION['email'];
 $a = "";
 $b = "";
@@ -49,12 +120,19 @@ while ($row = mysqli_fetch_assoc($result)) {
     echo '<tr>';
     echo '<td style="font-size:14px">' . $row['courseID'] . '</td>';
     echo '<td style="font-size:14px">' . $row['cName'] . '</td>';
+    $cid = $row['courseID'] . date("Y");
+
     $coquery = "SELECT * FROM coursework where courseID='" . $row['courseID'] . "'";
     $resul = mysqli_query($db, $coquery) or die(mysqli_error($db));
     if (mysqli_num_rows($resul) > 0) {
         echo '<td align="center" style="font-size:14px">
-         <a type="button" class="btn btn-success bg-gradient-success" href="manageedit.php?action=edit & id='
-            . $row['courseID'] . '"><i class="far fa-eye" style="margin-right:5px;"></i>view</a></td>';
+        <form method="post" action="coursework1.php?">
+        <input type="text" name="courseID" value="' . $row['courseID'] . '" style="display:none;">
+        <input type="text" name="coID" value="' . $cid . '" style="display:none;">
+
+         <button type="submit" name="view" class="btn btn-success bg-gradient-success"><i class="far fa-eye" style="margin-right:5px;"></i>view</button>
+         </form></td>'
+        ;
         $a = 1;
     } else {
         echo '<td align="center" style="font-size:14px">
@@ -63,12 +141,28 @@ while ($row = mysqli_fetch_assoc($result)) {
         $a = 2;
     }
     if ($a == 1) {
-        echo '<td align="center" style="font-size:14px">
-         <form action="result1.php" method="post">
+        $biko = '<td align="center" style="font-size:14px">
+         <form action="coursework1.php" method="post">
          <input type="text" name="grant" value="' . $row['courseID'] . '" style="display:none;">
-         <button type="submit" class="btn btn-info bg-gradient-info" style="color:white"><i class="fas fa-broadcast-tower" style="margin-right:5px;"></i>grant student</button>
+          <input type="text" name="coID" value="' . $cid . '" style="display:none;">';
+        $viewst = "SELECT * FROM studentviewco WHERE coID='" . $cid . "'";
+        $resultviewst = mysqli_query($db, $viewst) or die(mysqli_error($db));
+        while ($rowviewst = mysqli_fetch_assoc($resultviewst)) {
+            $dicision = $rowviewst['stateView'];
+        }
+        if ($dicision == 'no') {
+            $biko .= '<button type="submit" name="grantbtn"class="btn btn-info bg-gradient-info" style="color:white"><i class="fas fa-broadcast-tower" style="margin-right:5px;"></i>grant student</button>
 
               </form></td>';
+
+        } else {
+            $biko .= '<button type="submit" name="ungrantbtn" class="btn btn-info bg-gradient-info" style="color:white"><i class="fas fa-user-slash" style="margin-right:5px;"></i>ungrant student</button>
+
+              </form></td>';
+
+        }
+
+        echo $biko;
 
     } else {
         echo '<td align="center" style="font-size:14px">
@@ -119,7 +213,6 @@ while ($row = mysqli_fetch_assoc($result)) {
             echo '<td align="center" style="font-size:14px">
          <a type="button" class="btn btn-info bg-gradient-info" href="#"><i class="fas fa-times" style="margin-right:5px;"></i>no pending</a></td>';
             $b = 2;
-            
 
         }
     } else {
@@ -163,11 +256,13 @@ while ($row = mysqli_fetch_assoc($result)) {
     echo '</tr> ';
 }
 ?>
-            </tbody>
-        </table>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--yangu-->
     </div>
 </div>
-
 
 <?php
 
