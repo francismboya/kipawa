@@ -46,7 +46,9 @@ $encryption_key = $_SESSION['key'];
 // Use openssl_encrypt() function to encrypt the data
 $encryption = openssl_encrypt($courseid, $ciphering,
     $encryption_key, $options, $encryption_iv);
+$encryption = rawurlencode($encryption);
 
+//$encryption = base64_encode($encryption);
 //data to encrypt
 $coursecoid = $_POST['coID'];
 // Store the cipher method
@@ -61,7 +63,32 @@ $encryption_key = $_SESSION['key'];
 // Use openssl_encrypt() function to encrypt the data
 $encryption2 = openssl_encrypt($coursecoid, $ciphering,
     $encryption_key, $options, $encryption_iv);
-echo "courseID=$encryption&coID=$encryption2";
+$encryption2 = rawurlencode($encryption2);
+$hiddentruth = "charset=utf8;/cxVaAmcjl0PSSEA70PL1Hb+R2VXVVYAAdb6MeNO97nQbzmBkhPt//vcL/4v/rN
+YearPRZ++R/+qsMy++GPH33/r+TrF+f3//3T+f+f6ffh7+/kX
+mR4XP5fft6H9e/9fP/+sCv0+Lr9o/XGicP7/Y//yLWf9cf/zLhf
+7cqGhFmS/8z4XmnwuV/PtF+nOB9Xus2Oewf3yEfX+f/7z/Fwb+BP
+31Tp76Wdu/3/3r99WInjfuU3K+JZXI37nk3wLK9yeUpV98fzdeGIt9X
+yf+1vJ/KyEg/y5O8R9WFf41K39/lf7Dz/8lKaX/fh74wT8Hs//9+d/+PLV
+/H/zwhfgf7lzO33f+p597SftfH+evP+/5CO/d39Ot2glp//NQfz3K9xUv5CK1fG/r
+fBh/Gl/b9zH5GIHqPaTc44mbj5NmykT/pZo8rfTS/T6fdFhizTcbn3M+uXw/G8XyzE
+dZS6XqI71sZRYvg2Qe0lv4af57Lem77/xud9Lgxp54ZU5cLKkUgv76n/j4jxd6TyWfUh
+x/x4p1ZRUhy1Dm9DevIiHp/VVH7QvwXx//+p/yWshg+8I8eMAV9+8Su6U/taU6Kl+i
+Cy9sfP71WjL/cwFCxL0bi6Hea4qdFkg9RcvZUiKOg/wsLjRyqXmTgtRadlaZaymd5I
+";
+$endtruth = "yse/MeS99rc8u/H4NZJKKVTjsNErTIVQXYqB+rgxparbTaWuvN2mizrV567a33bl3
+gt6xYtWbdzIZNW6OMOtrow8YIY4418yyAY5t92hxzzrW46eLKi3cvXrDWzrvsutvu2
+/bYc69D+Zx62unHzghnnuXZi4MT3t18+PR106WUbr3t9mt33HnXo9ReefW115+98eZb
+f2cthV9a/9vH/3vW0l9Zy1+m9EL7O2u81eyvSyTBSVPOyFiuiYybMkBBZ+UsjlRrDk
+qdchZnpitaZpVNyfGkjJHBelNuL/2du//K3D/lLdT6/5W3/FfmglL3P5G5oNT9h8z99
+7z9m6y52ObEEr4MqQ0V1FieMlEXMZhwsPcJ7L3rtRX+H/BeWaw5fl+X1MfKY4n8Vsiz
+0997rmItWpqr3eJixbl9TYJe0+ylRpY/IoHN9fV1zVpxW41rHuC/2gzml+TPddZyG5";
+
+//$encryption2 = base64_encode($encryption2);
+$hiddentruth = rawurlencode($hiddentruth);
+$endtruth = rawurlencode($endtruth);
+
+echo "ency=$hiddentruth &IoHN9fV1zVpxW=$encryption &T6fdFhizTcbn3M=$encryption2 &enc=$endtruth";
 ?>
 
                             ">

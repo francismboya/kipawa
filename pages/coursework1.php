@@ -45,7 +45,7 @@ if (!empty($_POST["id"])) {
 
 }
 
-if (isset($_GET["courseID"])) {
+if (isset($_GET["IoHN9fV1zVpxW"])) {
 // Non-NULL Initialization Vector for decryption
     $decryption_iv = '1234567891011121';
 // Store the cipher method
@@ -59,10 +59,13 @@ if (isset($_GET["courseID"])) {
 // Store the decryption key
     $decryption_key = $_SESSION['key'];
 
-// Use openssl_decrypt() function to decrypt the data
+    $B = "ioG%2BK%2FXoF%2Fg%3D";
+    $_GET["courseID"] = rawurldecode($_GET["IoHN9fV1zVpxW"]);
+    //$_GET["courseID"] = base64_decode($_GET["courseID"]);
+    // Use openssl_decrypt() function to decrypt the data
     $decryption1 = openssl_decrypt($_GET["courseID"], $ciphering,
         $decryption_key, $options, $decryption_iv);
-
+    @$_GET["coID"] = rawurldecode($_GET["T6fdFhizTcbn3M"]);
     $decryption = openssl_decrypt($_GET["coID"], $ciphering,
         $decryption_key, $options, $decryption_iv);
     include 'tchartco.php';
