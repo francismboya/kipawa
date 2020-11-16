@@ -233,7 +233,7 @@ if (isset($_POST['import'])) {
 
                 } else if (array_key_exists($filerr, $imgContent)) {
                     $img = $imgContent[$filerr];
-                    $runner = "SET GLOBAL SESSION max_allowed_packet=1024*1024*1024";
+                    $runner = "SET GLOBAL max_allowed_packet=1024*1024*1024";
                     mysqli_query($db, $runner);
 
                     $insert = "INSERT INTO student (regno,fname,mname,lname,
