@@ -86,7 +86,7 @@ confirm_logged_in();
             <hr class="sidebar-divider">
             <!-- Tables Buttons -->
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="pdip.php">
                     <i class="fas fa-fw fa-user"></i>
                     <span>DEPARTMENT</span></a>
             </li>
@@ -94,20 +94,20 @@ confirm_logged_in();
             <li class="nav-item">
                 <a class="nav-link" href="#">
                     <i class="fas fa-fw fa-chalkboard-teacher"></i>
-                    <span>COURSES</span></a>
+                    <span>ACADEMIC SESSIONS</span></a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link" href="#">
 
                     <i class="fas fa-fw fa-graduation-cap"></i>
-                    <span>STUDENTS</span></a>
+                    <span>RESULT SUMMARY</span></a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link" href="#">
                     <i class="fas fa-fw fa-archive"></i>
-                    <span>RESULTS SUMMARY</span></a>
+                    <span>PUBLIC NOTES</span></a>
             </li>
 
 
