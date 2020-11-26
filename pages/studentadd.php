@@ -33,8 +33,8 @@ if (isset($_POST['save'])) {
     $programID = $_POST['program'];
     $regno = $_POST['regno'];
     $d = strtotime($_POST['regddate']);
-    $regDate = date("m/d/yy", $d);
-    $year = date("yy", $d);
+    $regDate = date("m/d/Y", $d);
+    $year = date("Y", $d);
     $passwd = $lname;
     $statusName = "student";
     $lstate = "enabled";

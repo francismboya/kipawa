@@ -92,7 +92,7 @@ confirm_logged_in();
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="adsemsession.php">
                     <i class="fas fa-fw fa-chalkboard-teacher"></i>
                     <span>ACADEMIC SESSIONS</span></a>
             </li>

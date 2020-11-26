@@ -8,6 +8,10 @@ where regno='KICTC-CER-006-2020' and coursework.coID='ITT051022020'";
 
 include '../includes/connection.php';
 include '../includes/stdsidebar.php';
+if (isset($_GET['year'])) {
+    $_SESSION['coID'] = $_GET['year'];
+}
+$pub = 0;
 
 $users = $_SESSION['users'];
 $typid = $_SESSION['typid'];
@@ -91,7 +95,7 @@ while ($row = mysqli_fetch_assoc($result21)) {
                                 </h6>
 
                             </div>
-                            <div class="card-body">
+                            <div class="card-body" id="sempub" style="display:none">
                                 <div class="col-lg-6 col-xl-6" id="gpa" style="display:none;">
                                     <div class="card  mb-4">
                                         <div class="card-header d-flex justify-content-between align-items-center">
@@ -109,7 +113,7 @@ $gpac = 0;
 $gpa = 0;
 $remarks = "";
 foreach ($courses as $cb) {
-    $cid = $cb . date("Y");
+    $cid = $cb . $_SESSION['coID'];
     $query = "SELECT * from
                                             (SELECT courseID, score as scr, result.grade, regno, coID
                                             FROM result
@@ -251,7 +255,7 @@ $counter = 1;
 foreach ($courses as $cb) {
     $pf = 0;
 
-    $cid = $cb . date("Y");
+    $cid = $cb . $_SESSION['coID'];
     $query = "SELECT * from
 (SELECT courseID, score as scr, result.grade, regno, coID
 FROM result
@@ -274,6 +278,11 @@ ON a.regno = b.regno and a.coID = b.coID and b.courseID=c.courseID";
         while ($row = mysqli_fetch_assoc($result)) {
             $row['stateView'] = "yes";
             if ($row['stateView'] == "yes") {
+                if ($pub == 0) {
+                    $pub = 1;
+
+                }
+
                 $sem = substr($row['courseID'], 5, 1);
                 if ($sem == 1) {
 
@@ -340,7 +349,7 @@ $ifsem2 = 0;
 foreach ($courses as $cb) {
     $pf = 0;
 
-    $cid = $cb . date("Y");
+    $cid = $cb . $_SESSION['coID'];
     $query = "SELECT * from
 (SELECT courseID, score as scr, result.grade, regno, coID
 FROM result
@@ -363,6 +372,11 @@ ON a.regno = b.regno and a.coID = b.coID and b.courseID=c.courseID";
         while ($row = mysqli_fetch_assoc($result)) {
             $row['stateView'] = "yes";
             if ($row['stateView'] == "yes") {
+                if ($pub == 0) {
+                    $pub = 1;
+
+                }
+
                 $sem = substr($row['courseID'], 5, 1);
                 if ($sem == 2) {
                     $ifsem2 = 1;
@@ -411,6 +425,17 @@ ON a.regno = b.regno and a.coID = b.coID and b.courseID=c.courseID";
 
                                 <!--/semester2 end-->
                             </div>
+
+                            <!--unpub-->
+                            <div class="card-body bg-gradient-warning" id="sempub2" style="display:none;">
+                                <h4 class="card-title">Dear user</h4>
+                                <p class="card-text text-dark font-italic font-weight-bold">Result for this
+                                    academic year
+                                    Not published
+                                    yet
+                                </p>
+                            </div>
+                            <!--/unpub-->
                         </div>
 
                     </div>
@@ -437,7 +462,30 @@ sm.style.display = "block";
 
 </html>
 
-
+<?php
+if ($pub == 0) {
+    ?>
+<script>
+var sm = document.getElementById("sempub2");
+sm.style.display = "block";
+var sm2 = document.getElementById("sempub");
+sm2.style.display = "none";
+</script>
+<?php
+}
+?>
+<?php
+if ($pub == 1) {
+    ?>
+<script>
+var sm = document.getElementById("sempub2");
+sm.style.display = "none";
+var sm2 = document.getElementById("sempub");
+sm2.style.display = "block";
+</script>
+<?php
+}
+?>
 
 
 <a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>

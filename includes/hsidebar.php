@@ -119,9 +119,15 @@ confirm_logged_in();
                     <i class="fas fa-fw fa-graduation-cap"></i>
                     <span>STUDENT IN YOUR COURSES</span></a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="hcyear.php">
+                    <i class="fas fa-fw fa-archive"></i>
+                    <span>COURSEWORK</span></a>
+            </li>
+
 
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="hryear.php">
                     <i class="fas fa-fw fa-archive"></i>
                     <span>RESULTS</span></a>
             </li>

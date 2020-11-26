@@ -91,13 +91,13 @@ confirm_logged_in();
                     <span>COURSE</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="stdcoursework.php">
+                <a class="nav-link" href="stdcyear.php">
                     <i class="fas fa-fw fa-user"></i>
                     <span>COURSEWORK</span></a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="stdresult.php">
+                <a class="nav-link" href="stdryear.php">
                     <i class="fas fa-fw fa-chalkboard-teacher"></i>
                     <span>COURSE RESULT</span></a>
             </li>

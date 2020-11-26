@@ -59,156 +59,86 @@ window.location = "stddashboard.php";
 }
 ?>
 
-<div class="row show-grid">
-    <!-- Customer ROW -->
-    <div class="col-md-3">
-        <!-- Customer record -->
-        <div class="col-md-12 mb-3">
-            <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-0">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total Employee
-                            </div>
-                            <div class="h6 mb-0 font-weight-bold text-gray-800">
-                                <?php
-$query = "SELECT COUNT(*) FROM employee";
-$result = mysqli_query($db, $query) or die(mysqli_error($db));
-while ($row = mysqli_fetch_array($result)) {
-    echo "$row[0]";
+
+<div class="d-flex flex-column" id="content-wrapper">
+    <div id="content">
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 col-xl-12 col-sm-12">
+                    <div class="card shadow mb-4">
+                        <div class="btn-danger card-header d-flex justify-content-between align-items-center"
+                            style="background: url('../img/gold.jpeg');background-size: cover ">
+                            <h6 class="text-white font-weight-bold m-0">Registrar Panel</h6>
+
+                        </div>
+                        <div class="card-body">
+                            <?php
+
+?>
+                            <div class="container">
+                                <div class="panel-body">
+                                    <div class="panel-group" id="accordion">
+                                        <p align='justify'>You have successfully logged to VETA Kipawa ICT Centre
+                                            Student Records Management System (SRMS).You currently have
+                                            access to the following sections</p>
+                                        </br>
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <ul>
+                                                    <li>Edit your Info</li>
+                                                    <li>View Department</li>
+                                                    <li>Manage Academic Session</li>
+                                                    <li>View Result Summary</li>
+                                                    <li>Issue Public Announcement</li>
+
+                                                </ul>
+                                                </br>
+                                                Please select appropriate action to continue...!
+                                                </br>
+                                            </div>
+
+                                            <div class="col-sm-4" style="background-color:#ffffff;">
+                                                <?php
+if ($_SESSION['gender'] == 'male') {
+
+    ?>
+                                                <img src='../img/gold24.gif'
+                                                    style=" pointer-events: none; cursor: default; height:100%; width:100%;">
+                                                <?php
+} else {
+    ?>
+                                                <img src='../img/gold25.gif'
+                                                    style=" pointer-events: none; cursor: default; height:100%; width:100%;">
+
+
+                                                <?php
 }
-?> Record(s)
+?>
 
-                            </div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-users fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                                            </div>
+                                            <div class="col-sm-4" style="background-color:#e4f5f2
 
-        <!-- Supplier record -->
-        <div class="col-md-12 mb-3">
-            <div class="card border-left-warning shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-0">
-                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Student</div>
-                            <div class="h6 mb-0 font-weight-bold text-gray-800">
-                                <?php
-$query = "SELECT COUNT(*) FROM student e join status s on e.email=s.email where s.statusName='student'";
-$result = mysqli_query($db, $query) or die(mysqli_error($db));
-while ($row = mysqli_fetch_array($result)) {
-    echo "$row[0]";
-}
-?> Record(s)
+;">
+                                                <img src='../img/gold235.gif'
+                                                    style=" pointer-events: none; cursor: default; height:100%; width:100%;">
 
-                            </div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-users fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-    </div>
-    <!-- Employee ROW -->
-    <div class="col-md-3">
-        <!-- Employee record -->
-        <div class="col-md-12 mb-3">
-            <div class="card border-left-success shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-0">
-                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Registrar</div>
-                            <div class="h6 mb-0 font-weight-bold text-gray-800">
-                                <?php
-$query = "SELECT COUNT(*) FROM employee e
-                        join status s on e.email=s.email where s.statusName='registrar'";
-$result = mysqli_query($db, $query) or die(mysqli_error($db));
-while ($row = mysqli_fetch_array($result)) {
-    echo "$row[0]";
-}
-?> Record(s)
+                                            </div>
 
-                            </div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-users fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- User record -->
-        <div class="col-md-12 mb-3">
-            <div class="card border-left-danger shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-0">
-                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Head of Department
-                            </div>
-                            <div class="h6 mb-0 font-weight-bold text-gray-800">
-                                <?php
-$query = "SELECT COUNT(*) FROM employee e
-                        join status s on e.email=s.email where s.statusName='hod'";
-$result = mysqli_query($db, $query) or die(mysqli_error($db));
-while ($row = mysqli_fetch_array($result)) {
-    echo "$row[0]";
-}
-?> Record(s)
-                            </div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-user fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-    <!-- PRODUCTS ROW -->
-    <div class="col-md-3">
-        <!-- Product record -->
-        <div class="col-md-12 mb-3">
-            <div class="card border-left-info shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-
-                        <div class="col mr-0">
-                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Teacher</div>
-                            <div class="row no-gutters align-items-center">
-                                <div class="col-auto">
-                                    <div class="h6 mb-0 mr-3 font-weight-bold text-gray-800">
-                                        <?php
-$query = "SELECT COUNT(*) FROM employee e
-                          join status s on e.email=s.email where s.statusName='teacher'";
-$result = mysqli_query($db, $query) or die(mysqli_error($db));
-while ($row = mysqli_fetch_array($result)) {
-    echo "$row[0]";
-}
-?> Record(s)
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="col-auto">
-                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
                         </div>
-
                     </div>
                 </div>
+
             </div>
         </div>
 
     </div>
-
 </div>
 <?php
 include '../includes/footer.php';

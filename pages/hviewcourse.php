@@ -19,7 +19,6 @@ $emp = $_SESSION['ID'];
             <thead>
                 <p>Dear,<?php echo "$name1 $name2  the following course are assigned to you : "; ?></p>
                 <tr>
-                <tr>
                     <th style="font-size:14px">COURSE ID</th>
                     <th style="font-size:14px">COURSE NAME</th>
                     <th style="font-size:14px">PROGRAM</th>

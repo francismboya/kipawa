@@ -19,7 +19,7 @@
     <?php
 // connection of database
 include '../includes/connection.php';
-include '../includes/tsidebar.php';
+include '../includes/hsidebar.php';
 
 //$con = mysqli_connect('localhost', 'remote', '123456', 'kipawa');
 $users = $_SESSION['users'];
@@ -51,7 +51,6 @@ if (isset($_POST['import'])) {
         $courseID = array();
         $validity = 0;
         $i = 0;
-        $rlscheck=0;
 
         while (($col = fgetcsv($file, 10000, ",")) !== false and $row < $linecount) {
             if (strcmp($col[0], "") > 0) {
@@ -60,112 +59,18 @@ if (isset($_POST['import'])) {
                     continue;
                 }
                 $courseID1 = $_POST["courseID"];
-                $cid = $courseID1 . date("Y");
                 $regno3 = substr($col[0], 0, 9);
-                $grade1 = "";
-                
-               $scr = "SELECT *
-                                            FROM coursework
-                                            WHERE regno='" . $col[0] . "' AND coID='" . $cid . "'";
-               $rls = "SELECT * FROM result
-                    WHERE regno='" . $col[0] . "' AND coID='" . $cid . "'";
+                $coID1 = $courseID1 . $_SESSION['coID'];
+                $insert = "INSERT INTO coursework (courseID,score,remarks,regno,coID)
+            values('" . $courseID1 . "','" . $col[1] . "','" . $col[2] .
+                    "','" . $col[0] . "','" . $coID1 . "')";
 
-                    if ($resultrls = mysqli_query($db, $rls)) {
-                        if (mysqli_num_rows($resultrls) > 0) {
-                            $rlscheck=1;
-                            $validity = 1;
-                            $regno[$i] = $col[0];
-                            $score[$i] = $col[1];
-                            $grade[$i] = $grade1;
-
-                            $coID[$i] = $cid;
-                            $courseID[$i] = $courseID1;
-
-                            $reason[$i] = "Student result Exist in System";
-                            $i++;
-                        } 
-                    }
-                    else{
-                        $validity = 1;
-                            $regno[$i] = $col[0];
-                            $score[$i] = $col[1];
-                            $grade[$i] = $grade1;
-
-                            $coID[$i] = $cid;
-                            $courseID[$i] = $courseID1;
-
-                            $reason[$i] = "Connection 1 Error";
-                            $i++;
-                    }
-                    if ($resultscr = mysqli_query($db, $scr)) {
-                        if (mysqli_num_rows($resultscr) > 0) {
-                            while($row3=mysqli_fetch_assoc($resultscr)){
-                                 $col[1]=$row3['score']+$col[1];
-                            }
-                          
-                        }else{
-
-                             $validity = 1;
-                            $regno[$i] = $col[0];
-                            $score[$i] = $col[1];
-                            $grade[$i] = $grade1;
-
-                            $coID[$i] = $cid;
-                            $courseID[$i] = $courseID1;
-
-                            $reason[$i] = "Student coursework not uploaded yet";
-                            $i++;
-                        }
-                    }else{
-                         $validity = 1;
-                            $regno[$i] = $col[0];
-                            $score[$i] = $col[1];
-                            $grade[$i] = $grade1;
-
-                            $coID[$i] = $cid;
-                            $courseID[$i] = $courseID1;
-
-                            $reason[$i] = "Connection Error";
-                            $i++;
-                    }
-
-
-                if ($col[1] == "inc") {
-                    $grade1 = "inc";
-                } else {
-                    $gr = round(floatval($col[1]));
-                   
-                    if ($gr >= 0 && $gr <= 34) {
-                        $grade1 = "F";
-
-                    } else if ($gr >= 35 && $gr <= 44) {
-                        $grade1 = "D";
-
-                    } else if ($gr >= 45 && $gr <= 54) {
-                        $grade1 = "c";
-
-                    } else if ($gr >= 55 && $gr <= 64) {
-                        $grade1 = "B";
-
-                    } else if ($gr >= 65 && $gr <= 74) {
-                        $grade1 = "B+";
-
-                    } else if ($gr >= 75 && $gr <= 100) {
-                        $grade1 = "A";
-
-                    }
-                }
-                $coID1 = $courseID1 . date("Y");
-                $insert = "INSERT INTO result (courseID,regno,score,grade,coID)
-            values('" . $courseID1 . "','" . $col[0] . "','" . $col[1] .
-                    "','" . $grade1 . "','" . $coID1 . "')";
-
+                $loginis = "INSERT INTO studentviewco (stateView, coID) values('no', " . "'" . $coID1 . "')";
                 $sql = "select student.regno from student join courseprogram on courseprogram.programID=student.programID AND courseprogram.level=student.level WHERE
                  courseprogram.courseID='" . $courseID1 . "' and student.regno='" . $col[0] . "'";
 
                 $sql2 = "SELECT regno FROM student where regno='" . $col[0] . "'";
-                $sql3 = "SELECT coID FROM coursework where coID='" . $coID1 . "'";
-                $sql4 = "SELECT coID FROM coursework where coID='" . $coID1 . "' and regno='" . $col[0] . "'";
+                $sql3 = "SELECT coID FROM studentviewco where coID='" . $coID1 . "'";
 
                 if ($result = mysqli_query($db, $sql)) {
 
@@ -173,7 +78,7 @@ if (isset($_POST['import'])) {
                     $validity = 1;
                     $regno[$i] = $col[0];
                     $score[$i] = $col[1];
-                    $grade[$i] = $grade1;
+                    $remark[$i] = $col[2];
                     $coID[$i] = $coID1;
                     $courseID[$i] = $courseID1;
                     $reason[$i] = "connection error";
@@ -187,7 +92,7 @@ if (isset($_POST['import'])) {
                     $validity = 1;
                     $regno[$i] = $col[0];
                     $score[$i] = $col[1];
-                    $grade[$i] = $grade1;
+                    $remark[$i] = $col[2];
                     $coID[$i] = $coID1;
                     $courseID[$i] = $courseID1;
                     $reason[$i] = "connection error";
@@ -200,22 +105,7 @@ if (isset($_POST['import'])) {
                     $validity = 1;
                     $regno[$i] = $col[0];
                     $score[$i] = $col[1];
-                    $grade[$i] = $grade1;
-
-                    $coID[$i] = $coID1;
-                    $courseID[$i] = $courseID1;
-                    $reason[$i] = "connection error";
-                    $i++;
-
-                }
-                if ($result4 = mysqli_query($db, $sql4)) {
-
-                } else {
-                    $validity = 1;
-                    $regno[$i] = $col[0];
-                    $score[$i] = $col[1];
-                    $grade[$i] = $grade1;
-
+                    $remark[$i] = $col[2];
                     $coID[$i] = $coID1;
                     $courseID[$i] = $courseID1;
                     $reason[$i] = "connection error";
@@ -228,8 +118,7 @@ if (isset($_POST['import'])) {
                     $validity = 1;
                     $regno[$i] = $col[0];
                     $score[$i] = $col[1];
-                    $grade[$i] = $grade1;
-
+                    $remark[$i] = $col[2];
                     $coID[$i] = $coID1;
                     $courseID[$i] = $courseID1;
                     $reason[$i] = "invalid registration number";
@@ -240,8 +129,7 @@ if (isset($_POST['import'])) {
                     $validity = 1;
                     $regno[$i] = $col[0];
                     $score[$i] = $col[1];
-                    $grade[$i] = $grade1;
-
+                    $remark[$i] = $col[2];
                     $coID[$i] = $coID1;
                     $courseID[$i] = $courseID1;
 
@@ -252,55 +140,37 @@ if (isset($_POST['import'])) {
                     $validity = 1;
                     $regno[$i] = $col[0];
                     $score[$i] = $col[1];
-                    $grade[$i] = $grade1;
-
+                    $remark[$i] = $col[2];
                     $coID[$i] = $coID1;
                     $courseID[$i] = $courseID1;
 
                     $reason[$i] = "student not take this course";
                     $i++;
 
-                } else if ((mysqli_num_rows($result3) <= 0)) {
-
+                } else if (!mysqli_query($db, $insert)) {
                     $validity = 1;
+
                     $regno[$i] = $col[0];
                     $score[$i] = $col[1];
-                    $grade[$i] = $grade1;
-
+                    $remark[$i] = $col[2];
                     $coID[$i] = $coID1;
                     $courseID[$i] = $courseID1;
-
-                    $reason[$i] = "coursework of this course not uploaded";
-                    $i++;
-
-                } else if ((mysqli_num_rows($result4) <= 0)) {
-
-                    $validity = 1;
-                    $regno[$i] = $col[0];
-                    $score[$i] = $col[1];
-                    $grade[$i] = $grade1;
-
-                    $coID[$i] = $coID1;
-                    $courseID[$i] = $courseID1;
-
-                    $reason[$i] = "student with regno  coursework not uploaded";
-                    $i++;
-
-                }else if($rlscheck==0){
-                    if (!mysqli_query($db, $insert)) {
-                    $validity = 1;
-                    $regno[$i] = $col[0];
-                    $score[$i] = $col[1];
-                    $grade[$i] = $grade1;
-
-                    $coID[$i] = $coID1;
-                    $courseID[$i] = $courseID1;
-
                     $reason[$i] = "1.0 error on CSV";
                     $i++;
 
+                } else if ((mysqli_num_rows($result3) <= 0)) {
+                    if (!mysqli_query($db, $loginis)) {
+                        $validity = 1;
+                        $regno[$i] = $col[0];
+                        $score[$i] = $col[1];
+                        $remark[$i] = $col[2];
+                        $coID[$i] = $coID1;
+                        $courseID[$i] = $courseID1;
+                        $reason[$i] = "1.1 error on CSV";
+                        $i++;
+
+                    }
                 }
-            }
             }
         }
 
@@ -319,7 +189,7 @@ if (isset($_POST['import'])) {
                     $stadd = $stadd . '<td style="font-size:14px">' . $courseID[$i] . '</td>';
                     $stadd = $stadd . '<td style="font-size:14px">' . $regno[$i] . '</td>';
                     $stadd = $stadd . '<td style="font-size:14px">' . $score[$i] . '</td>';
-                    $stadd = $stadd . '<td style="font-size:14px">' . $grade[$i] . '</td>';
+                    $stadd = $stadd . '<td style="font-size:14px">' . $remark[$i] . '</td>';
                     $stadd = $stadd . '<td style="font-size:14px; color:red;">'
                         . $reason[$i] . '</td>';
                     $stadd = $stadd . '</tr> ';
@@ -330,7 +200,7 @@ if (isset($_POST['import'])) {
                         '<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">' .
                         ' <thead><p>' . $hinfo . '</p><tr> <th style="font-size:14px">SN</th><th style="font-size:14px">Course ID</th>
                             <th style="font-size:14px">Reg No</th>  <th style="font-size:14px">Score</th>
-                            <th style="font-size:14px">Grade</th>
+                            <th style="font-size:14px">Remark</th>
                             <th style="font-size:14px">reason</th></tr></thead>
                             <tbody>' . ' ' . $stadd . "\n", FILE_APPEND);
                     fclose($fp);
@@ -341,7 +211,7 @@ if (isset($_POST['import'])) {
                     $stadd = $stadd . '<td style="font-size:14px">' . $courseID[$i] . '</td>';
                     $stadd = $stadd . '<td style="font-size:14px">' . $regno[$i] . '</td>';
                     $stadd = $stadd . '<td style="font-size:14px">' . $score[$i] . '</td>';
-                    $stadd = $stadd . '<td style="font-size:14px">' . $grade[$i] . '</td>';
+                    $stadd = $stadd . '<td style="font-size:14px">' . $remark[$i] . '</td>';
                     $stadd = $stadd . '<td style="font-size:14px; color:red;">' . $reason[$i] . '</td>';
                     $stadd = $stadd . '</tr> ';
 
@@ -352,7 +222,7 @@ if (isset($_POST['import'])) {
             }
             $stadd = '</tbody></table></div></div>';
             file_put_contents($errorfile, $stadd . "\n", FILE_APPEND);
-            fclose($fp);
+            @fclose($fp);
             ?>
     <div class="shadow mb-4">
         <div class="card-body bg" id="loadertz">'
@@ -421,9 +291,9 @@ if (isset($_POST['import'])) {
     <script>
     Swal.fire({
         icon: 'success',
-        title: 'RESULT UPLOADED SUCCESSFULLY',
+        title: 'COURSEWORK RESULT UPLOADED SUCCESSFULLY',
         text: 'all information now are live!',
-        footer: '<a href="result1.php">view student!</a>'
+        footer: '<a href="coursework1.php">view student!</a>'
 
     }).then((result) => {
         if (result.value) {
@@ -435,7 +305,7 @@ if (isset($_POST['import'])) {
                 $("#wait").css("display", "none");
             });
 
-            $('#ajaxorg').load('result1.php');
+            $('#ajaxorg').load('coursework1.php');
         }
     });
     </script>

@@ -7,7 +7,9 @@ include '../includes/connection.php';
 include '../includes/tsidebar.php';
 $hrefid = array();
 $hrefid[1] = "'#dataTable2'";
-
+if (isset($_GET['year'])) {
+    $_SESSION['coID'] = $_GET['year'];
+}
 include 'tresult.php';
 
 ?>
@@ -15,7 +17,6 @@ include 'tresult.php';
     <div id="reop">
 
         <?php
-
 $users = $_SESSION['users'];
 $typid = $_SESSION['typid'];
 $ID = $_SESSION['id'];
@@ -106,7 +107,8 @@ $b = "";
 $query = "SELECT distinct course.courseID, employee.employeeID, course.cName, courseprogram.programID, course.level, course.credit, course.classfication from employee left join course on course.employeeID=employee.employeeID join courseprogram on courseprogram.courseID= course.courseID and courseprogram.level=course.level where employee.employeeID='" . $emp . "' ORDER BY course.courseID";
 $result = mysqli_query($db, $query) or die(mysqli_error($db));
 while ($row = mysqli_fetch_assoc($result)) {
-    $cid = $row['courseID'] . date("Y");
+    //$cid = $row['courseID'] . date("Y");
+    @$cid = $row['courseID'] . $_SESSION['coID'];
 
     echo '<tr>';
     echo '<td style="font-size:14px">' . $row['courseID'] . '</td>';

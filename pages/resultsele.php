@@ -38,7 +38,7 @@ foreach ($depid as $depd) {
         <form method="post" action="adresult.php?">
             <div class="card" style="width:100%">
                 <?PHP
-$cid = $course['courseID'] . date("Y");
+$cid = $course['courseID'] . $_SESSION['coID'];
                 $resultcheck = 0;
                 $sql4 = "SELECT courseID, score as scr, result.grade, regno, coID
                         FROM result

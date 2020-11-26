@@ -52,6 +52,9 @@
 include '../includes/connection.php';
 //require 'session.php';
 include '../includes/sidebar.php';
+if (isset($_GET['year'])) {
+    $_SESSION['coID'] = $_GET['year'];
+}
 
 ?>
 <div class="row" style="right:0;top:0; margin-left:80%">

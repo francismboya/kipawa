@@ -59,7 +59,7 @@
     <?php
 
 //fail or pass
-$cid = $_POST['courseID'] . date("Y");
+$cid = $_POST['courseID'] . $_SESSION['coID'];
 
 $sqln = "select * from(SELECT count(*)pass FROM `result` WHERE (grade='A' or grade='B+' or grade='B' or grade='C') and courseID='" . $_POST['courseID'] . "' and coID='" . $cid . "')a
 join

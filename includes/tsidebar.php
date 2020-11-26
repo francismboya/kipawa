@@ -109,14 +109,14 @@ confirm_logged_in();
                     <span>STUDENTS</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="coursework1.php">
+                <a class="nav-link" href="cyear.php">
                     <i class="fas fa-fw fa-archive"></i>
                     <span>COURSEWORK</span></a>
             </li>
 
 
             <li class="nav-item">
-                <a class="nav-link" href="result1.php">
+                <a class="nav-link" href="ryear.php">
                     <i class="fas fa-fw fa-archive"></i>
                     <span>RESULT</span></a>
             </li>

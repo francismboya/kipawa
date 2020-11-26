@@ -13,10 +13,16 @@
         rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
     <link rel='stylesheet' href='../vendor/bootstrap/css/bootstrap.min.css'>
+    <title>VETA KIPAWA ICT CENTRE STUDENT INFORMATION</title>
 </head>
 
 <body>
     <?php
+$path = '../img/logo21.png';
+$type = pathinfo($path, PATHINFO_EXTENSION);
+$data = file_get_contents($path);
+$base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
+
 include '../includes/connection.php';
 include '../includes/hsidebar.php';
 $users = $_SESSION['users'];
@@ -70,7 +76,14 @@ while ($row = mysqli_fetch_assoc($result)) {
 $pro .= "</select>";
 ?>
 
-    <div class="card shadow mb-" 6>
+
+    <div class="card">
+        <div class="row" style="right:0;top:0; margin-left:80%">
+            <button class="badge btn btn-warning" style="margin-top:5px;">advanced view</button>
+            <input type="button" class="btn btn-primary hid" name="bot" id="viewer"
+                style="margin-right:40px; margin-top:5px; background-color:#9e9e9e;" value="OFF" onclick="expert(this)">
+        </div>
+
         <?php
 $query = "select student.regno,student.fname,student.lname, student.programID, courseprogram.level,program.programID,program.pName,course.courseID,course.employeeID,course.cName,course.depertmentID,course.level  from student join courseprogram on courseprogram.programID=student.programID join course on course.courseID=courseprogram.courseID join program on program.programID=student.programID where course.employeeID='" . $emp . "' and student.level= courseprogram.level";
 $result = mysqli_query($db, $query) or die(mysqli_error($db));
@@ -88,6 +101,9 @@ $employeeID = array();
 $cName = array();
 $depertmentID = array();
 $href = array();
+$hrefid = array();
+$hrt = array();
+
 while ($row = mysqli_fetch_assoc($result)) {
     $regno[$counter] = $row['regno'];
     if (!in_array($row['courseID'], $courseID)) {
@@ -101,8 +117,8 @@ $len = count($courseID);
         <div class="col-md-12">
             <div class="div class=" col-md-12 mb-12">
                 <div class="table-responsive" style="font-size:14px">
-                    <div class="container py-5">
-                        <div class="p-5 bg-white rounded shadow mb-5">
+                    <div class="container py-2">
+                        <div class="p-5 bg-white rounded mb-5">
                             <!-- Bordered tabs-->
                             <ul id="myTab1" role="tablist"
                                 class="nav nav-tabs nav-pills with-arrow flex-column flex-sm-row text-center">
@@ -114,6 +130,7 @@ for ($i = 0; $i < $len; $i++) {
             $upl = '<li class="nav-item flex-sm-fill">
         <a id="home1-tab" data-toggle="tab" href=';
             $href[$j] = '"#' . $courseID[$j] . '"';
+            $hrt[$j] = $courseID[$j];
             $dwl = 'role="tab" aria-controls="home1" aria-selected="true" class="nav-link text-uppercase font-weight-bold mr-sm-3 rounded-0 border active">';
             $course = $courseID[$j] . '</a>';
             $record = $upl . $href[$j] . $dwl . $course;
@@ -122,6 +139,7 @@ for ($i = 0; $i < $len; $i++) {
             $upl = '<li class="nav-item flex-sm-fill">
         <a id="home1-tab" data-toggle="tab" href=';
             $href[$j] = '"#' . $courseID[$j] . '"';
+            $hrt[$j] = $courseID[$j];
             $dwl = 'role="tab" aria-controls="profile1" aria-selected="false" class="nav-link text-uppercase font-weight-bold mr-sm-3 rounded-0 border">';
             $course = $courseID[$j] . '</a>';
             $record = $upl . $href[$j] . $dwl . $course;
@@ -136,11 +154,14 @@ for ($i = 0; $i < $len; $i++) {
     }
     if ($i == 0) {
         $headt = '<div id="myTab1Content" class="tab-content">';
+        $hrefid[$i] = '"#j' . substr($href[$i], 2);
         $hrefd = '<div id="' . substr($href[$i], 2);
-        $tbody1 = 'role="tabpanel" aria-labelledby="home-tab" class="tab-pane fade px-4 py-5 show active">
-       <table class="table">
+        $tbody1 = 'role="tabpanel" aria-labelledby="home-tab" class="tab-pane fade px-4 py-2 show active">
+        <div class="table-responsive" style="font-size:14px">
+        <table class="table table-bordered" id="' . 'j' . $hrt[$i] . '" width="100%" cellspacing="0">
             <thead>
-                <tr><h4> Student enrolled in course' . ' ' . $courseID[$i] . '</h4></tr>   <tr>
+                <tr><h4> Student enrolled in course' . ' ' . $courseID[$i] . '</h4>
+              </tr>   <tr>
                         <th style="font-size:14px">Reg no</th>
                         <th style="font-size:14px">Name</th>
                         <th style="font-size:14px">Department</th>
@@ -171,23 +192,28 @@ for ($i = 0; $i < $len; $i++) {
                 '<td style="font-size:14px">' . $fname[$r] . ' ' . $lname[$r] . '</td>' .
                 '<td style="font-size:14px">' . $depertmentID[$r] . '</td>' .
                 '<td style="font-size:14px">' . $programID[$r] . '</td>' .
-                '<td style="font-size:14px">' . $level[$r] . '</td> </tr>';
+                '<td style="font-size:14px">' . $level[$r] . '
+                </td> </tr>';
         }
         $close = "
                 </tbody>
         </table>
+      </div>
       </div>";
         $divend = "</div>";
         $edata = $headt . $hrefd . $tbody1 . $data . $close;
         echo $edata;
         $data = '';
     } else {
+        $hrefid[$i] = '"#j' . substr($href[$i], 2);
 
         $hrefd = '<div id="' . substr($href[$i], 2);
-        $tbody1 = 'role="tabpanel" aria-labelledby="home-tab" class="tab-pane fade px-4 py-5">
-       <table class="table">
+        $tbody1 = 'role="tabpanel" aria-labelledby="home-tab" class="tab-pane fade px-4 py-1">
+        <div class="table-responsive" style="font-size:14px">
+        <table class="table table-bordered" id="' . 'j' . $hrt[$i] . '" width="100%" cellspacing="0">
             <thead>
-                <tr><h4> Student enrolled in course' . ' ' . $courseID[$i] . '</h4></tr>   <tr>
+                <tr><h4> Student enrolled in course' . ' ' . $courseID[$i] . '</h4>
+                </tr>   <tr>
                         <th style="font-size:14px">Reg no</th>
                         <th style="font-size:14px">Name</th>
                         <th style="font-size:14px">Department</th>
@@ -196,7 +222,8 @@ for ($i = 0; $i < $len; $i++) {
                     </tr>
                 </thead>
                 <tbody>';
-        $sql3 = "select student.regno,student.fname,student.lname, student.programID, student.depertmentID,courseprogram.level  from student join courseprogram on courseprogram.programID=student.programID AND courseprogram.level=student.level WHERE courseprogram.courseID='" . $courseID[$i] . "'";
+        $sql3 = "select student.regno,student.fname,student.lname, student.programID, student.depertmentID,courseprogram.level
+          from student join courseprogram on courseprogram.programID=student.programID AND courseprogram.level=student.level WHERE courseprogram.courseID='" . $courseID[$i] . "'";
         $result21 = mysqli_query($db, $sql3) or die(mysqli_error($db));
         $counter = 0;
         $regno = array();
@@ -223,6 +250,7 @@ for ($i = 0; $i < $len; $i++) {
         $close = "
                 </tbody>
         </table>
+      </div>
       </div>";
         $edata = $hrefd . $tbody1 . $data . $close;
         echo $edata;
@@ -241,7 +269,109 @@ for ($i = 0; $i < $len; $i++) {
                     <?php
 include '../includes/footer.php';
 ?>
-
                     <script src="../vendor/assets/bootstrap/js/bootstrap.min.js"></script>
-                    <script src="../vendor/stde/assets/js/jquery.min.js"></script>
+                    <script>
+                    // Access the array elements
+                    function expert(bot) {
+                        // var cols = document.getElementsByClassName('hid');
+                        // for (i = 0; i < cols.length; i++) {
+                        //  cols[i].style.display = 'none';
+                        // }
+                        var col = document.getElementById("hid");
+                        if (bot.value == "OFF") {
+                            bot.className = "btn btn-primary";
+                            $(document).ready(function() {
+                                var a =
+                                    '<h2 style="text-align:center;color:black;padding-top:90px;">Registered Student Kipawa ICT<h2>';
+                                var b = '<div class="hero-image"';
+                                var c = "style ='background-image: url";
+                                var d =
+                                    '("https: //1.bp.blogspot.com/-vTxIJk9Q82I/X5lOz-6fAzI/AAAAAAAAN94/ECwlZ55kYHUhcaHRh0fPIvo4s9v2tVITACLcBGAsYHQ/s517/logo3.png");';
+                                var f =
+                                    "padding-top:5%; padding-bottom:5%; background-repeat: no-repeat; background-size: cover;'>";
+                                var g = '</div>';
+                                var ba = "<?php echo $base64; ?>";
+                                var ids = <?php echo json_encode($hrefid); ?>;
+                                // Display the array elements
+                                $.each(ids, function(index, value) {
+                                    var value2 =
+                                        '<h2 style="text-align:center;color:black;padding-top:90px;">Student enrolled in course ' +
+                                        value.substring(3, 11) + '</h2>';
+                                    var ad = b + c + d + f + value2 + g;
+                                    var table = $(eval(value)).DataTable({
+                                        "bDestroy": true,
+                                        "dom": '<"dt-buttons"Bf><"clear">lirtp',
+                                        "searching": true,
+                                        "paging": true,
+                                        "autoWidth": true,
+                                        lengthMenu: [
+                                            [10, 25, 50, 100, 200, -1],
+                                            [10, 25, 50, 100, 200, "All"]
+                                        ],
+
+
+                                        buttons: [{
+                                                extend: 'print',
+                                                title: '',
+                                                text: 'print',
+                                                messageTop: ad,
+                                                className: 'btn btn-primary',
+                                                exportOptions: {
+                                                    columns: ':visible',
+                                                    stripHtml: false
+                                                },
+
+                                                customize: function(win) {
+
+                                                    $(win.document.body)
+                                                        .css('font-size', '10pt')
+                                                        .prepend(
+                                                            '<img src="https://1.bp.blogspot.com/-vTxIJk9Q82I/X5lOz-6fAzI/AAAAAAAAN94/ECwlZ55kYHUhcaHRh0fPIvo4s9v2tVITACLcBGAsYHQ/s517/logo3.png"  style="pointer-events: none; cursor: default; height: 180px; left: 50%; margin-top: -90px; margin-left: -90px; padding-bottom:5%; position: absolute; top: 7%;  opacity: 1; width: 180px;" />',
+                                                        );
+
+                                                    $(win.document.body).find('table')
+                                                        .addClass('compact')
+                                                        .css('font-size', 'inherit');
+
+
+
+                                                }
+
+                                            },
+
+                                            {
+                                                extend: 'colvis',
+                                                text: 'Column visibility',
+                                                className: 'btn btn-primary',
+                                                collectionLayout: 'fixed two-column'
+
+
+                                            }
+                                        ]
+                                    });
+                                });
+
+                            });
+                            bot.value = "ON";
+                            bot.style.background = "#007bff";
+                        } else if (bot.value = "ON") {
+                            bot.value = "OFF";
+                            bot.style.background = "#9e9e9e";
+                            var ids = <?php echo json_encode($hrefid); ?>;
+                            // Display the array elements
+                            $.each(ids, function(index, value) {
+
+                                var table = $(eval(value)).DataTable({
+                                    "bDestroy": true,
+                                    "searching": false,
+                                    "paging": false,
+                                    "autoWidth": true,
+
+                                });
+                            });
+                        }
+                    }
+                    </script>
+
+
                     <!-- Customer Modal-->

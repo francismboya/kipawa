@@ -62,136 +62,64 @@ window.location = "pos.php";
     <link rel='stylesheet' href='../vendor/bootstrap/css/bootstrap.min.css'>
 </head>
 
-
-<div class="caption v-middle text-center">
-    <h1 class="cd-headline clip">
-        <span class="blc">Welcome| </span>
-        <span class="cd-words-wrapper">
-            <b class="is-visible"><?php echo $name1 . " " . $name2 ?></b>
-            <b>HOD Dashboard </b>
-            <!--<b>Teacher</b>-->
-        </span>
-    </h1>
-</div>
 <!--code zangu-->
+<div class="container-fluid">
 
-<div class="main-page">
-    <div class="container-fluid">
-        <div class="row page-title-div">
-            <div class="col-sm-6">
+
+    <div class="row">
+        <div class="col-lg-12 col-xl-12 col-sm-12">
+            <div class="card shadow mb-4">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <div class="caption v-middle text-center ">
+                        <h5 class="cd-headline clip text-primary font-weight-bold m-0">
+                            <span class="blc accordion text-info font-weight-bold m-0 text-primary "
+                                style="font-size:20px;">Welcome|
+                            </span>
+                            <span class="cd-words-wrapper" style="margin-left:5px">
+                                <b class="is-visible text-danger font-weight-bold m-0"
+                                    style="font-size: 16px;"><?php echo $name1 . " " . $name2 ?></b>
+                                <b style="font-size: 16px;" class="text-danger font-weight-bold m-0">HOD Dashboard
+                                </b>
+
+                            </span>
+                        </h5>
+                    </div>
+
+                </div>
+                <div class="card-body">
+                    <?php
+
+?>
+                    <div class="container">
+                        <div class="panel-body">
+                            <div class="panel-group" id="accordion">
+                                <p align='justify'>You have successfully logged to VETA Kipawa ICT Centre
+                                    Student Records Management System (SRMS).You currently have
+                                    access to the following sections</p>
+                                </br>
+                                <ul>
+                                    <li>Edit your Info</li>
+                                    <li>View course</li>
+                                    <li>View department</li>
+                                    <li>View student</li>
+                                    <li>upload coursework</li>
+                                    <li>upload result</li>
+                                    <li>export data</li>
+                                </ul>
+                                </br></br>
+                                Please select appropriate action to continue...!
+                                </br></br>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
-            <!-- /.col-sm-6 -->
         </div>
-        <!-- /.row -->
 
     </div>
-    <!-- /.container-fluid -->
-
-    <section class="section">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" style="margin-top:10px">
-                    <div class="dashboard-stat bg-primary card border-left-danger shadow h-100 py-2" href="#">
-                        <?php
-$query = "SELECT COUNT(*) FROM employee join status on status.email=employee.email where status.statusName='teacher' and employee.depertmentID='" . $depertment . "'";
-$result = mysqli_query($db, $query) or die(mysqli_error($db));
-$btn = '<a type="button" style="border-radius: 0px; margin: auto; color: white" href="hoviewte.php"> <i class="fas fa-book-open"></i> View
-                   </a>';
-while ($row = mysqli_fetch_array($result)) {
-    ?>
-                        <span class="text-xs font-weight-bold text-white text-uppercase mb-1 text-center"><strong
-                                style="font-size: 35px">Teachers</strong></span>
-                        <span class="text-center" style="font-size:25px;color:white"> <?php echo "$row[0]" . "  Teachers <br>";
-    echo $btn;
-
-    ?>
-                        </span>
-
-                        <?php }?>
-
-                    </div>
-                    <!-- /.dashboard-stat -->
-                </div>
-                <!-- /.col-lg-3 col-md-3 col-sm-6 col-xs-12 -->
-
-                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" style="margin-top:10px">
-                    <div class="dashboard-stat bg-primary card border-left-danger shadow h-100 py-2" href="#">
-                        <?php
-$query2 = "SELECT COUNT(*) FROM student WHERE student.depertmentID='" . $depertment . "'";
-$result = mysqli_query($db, $query2) or die(mysqli_error($db));
-$btn = '<a type="button" style="border-radius: 0px; margin: auto; color: white" href="hviewst.php"> <i class="fas fa-book-open"></i> View
-                   </a>';
-while ($row = mysqli_fetch_array($result)) {
-    ?>
-                        <span class="text-xs font-weight-bold text-white text-uppercase mb-1 text-center"><strong
-                                style="font-size: 35px">Students</strong></span>
-                        <span class="text-center" style="font-size:25px;color:white"> <?php echo "$row[0]" . "  Students <br>";
-    echo $btn;
-
-    ?>
-                        </span>
-
-                        <?php }?>
-
-                    </div>
-                    <!-- /.dashboard-stat -->
-                </div>
-
-                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" style="margin-top:10px">
-                    <div class="dashboard-stat bg-primary card border-left-danger shadow h-100 py-2" href="#">
-                        <?php
-$query3 = "SELECT COUNT(*) FROM course WHERE course.depertmentID='" . $depertment . "'";
-$result = mysqli_query($db, $query3) or die(mysqli_error($db));
-$btn = '<a type="button" style="border-radius: 0px; margin: auto; color: white" href="hviewcourse.php"> <i class="fas fa-book-open"></i> View
-                   </a>';
-while ($row = mysqli_fetch_array($result)) {
-    ?>
-
-
-                        <span class="text-xs font-weight-bold text-white text-uppercase mb-1 text-center"><strong
-                                style="font-size: 35px">Courses</strong></span>
-                        <span class="text-center" style="font-size:25px;color:white"> <?php echo "$row[0]" . "  Courses <br>";
-    echo $btn;
-
-    ?>
-                        </span>
-
-                        <?php }?>
-
-                    </div>
-                    <!-- /.dashboard-stat -->
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" style="margin-top:10px">
-                    <div class="dashboard-stat bg-primary card border-left-danger shadow h-100 py-2" href="#">
-                        <?php
-$query = "SELECT COUNT(*) FROM program where depertmentID='" . $depertment . "'";
-$result = mysqli_query($db, $query) or die(mysqli_error($db));
-$btn = '<a type="button" style="border-radius: 0px; margin: auto; color: white" href="hoviewpro.php"> <i class="fas fa-book-open"></i> View
-                   </a>';
-while ($row = mysqli_fetch_array($result)) {
-    ?>
-                        <span class="text-xs font-weight-bold text-white text-uppercase mb-1 text-center"><strong
-                                style="font-size: 35px"">Programs</strong></span>
-                            <span class=" text-center" style="font-size:25px;color:white"> <?php echo "$row[0]" . "  Programs <br>";
-    echo $btn;
-
-    ?>
-                        </span>
-
-                        <?php }?>
-
-                    </div>
-                    <!-- /.dashboard-stat -->
-                </div>
-            </div>
-            <!-- /.row -->
-        </div>
-        <!-- /.container-fluid -->
-    </section>
-    <!-- /.section -->
-
 </div>
-<!-- /.main-page -->
+
 
 
 <!---code zangu-->

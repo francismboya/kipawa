@@ -8,7 +8,10 @@ where regno='KICTC-CER-006-2020' and coursework.coID='ITT051022020'";
 
 include '../includes/connection.php';
 include '../includes/stdsidebar.php';
-
+if (isset($_GET['year'])) {
+    $_SESSION['coID'] = $_GET['year'];
+}
+$pub = 0;
 $users = $_SESSION['users'];
 $typid = $_SESSION['typid'];
 $ID = $_SESSION['id'];
@@ -90,7 +93,7 @@ while ($row = mysqli_fetch_assoc($result21)) {
                                 </h6>
 
                             </div>
-                            <div class="card-body">
+                            <div class="card-body" id="sempub" style="display:none">
                                 <?php
 
 ?>
@@ -114,7 +117,7 @@ while ($row = mysqli_fetch_assoc($result21)) {
 $counter = 1;
 
 foreach ($courses as $cb) {
-    $cid = $cb . date("Y");
+    $cid = $cb . $_SESSION['coID'];
     $query = "
 SELECT coursework.courseID, coursework.score,
  course.cName, coursework.remarks, coursework.coID,
@@ -127,6 +130,11 @@ where regno='" . $_SESSION["ID"] . "' and coursework.coID='" . $cid . "'";
 
         while ($row = mysqli_fetch_assoc($result)) {
             if ($row['stateView'] == "yes") {
+                if ($pub == 0) {
+                    $pub = 1;
+
+                }
+
                 $sem = substr($row['courseID'], 5, 1);
                 if ($sem == 1) {
 
@@ -183,7 +191,7 @@ $counter = 1;
 $ifsem2 = 0;
 
 foreach ($courses as $cb) {
-    $cid = $cb . date("Y");
+    $cid = $cb . $_SESSION['coID'];
     $query = "
 
 SELECT coursework.courseID, coursework.score,
@@ -197,6 +205,11 @@ where regno='" . $_SESSION["ID"] . "' and coursework.coID='" . $cid . "'";
 
         while ($row = mysqli_fetch_assoc($result)) {
             if ($row['stateView'] == "yes") {
+                if ($pub == 0) {
+                    $pub = 1;
+
+                }
+
                 $sem = substr($row['courseID'], 5, 1);
                 if ($sem == 2) {
                     $ifsem2 = 1;
@@ -236,6 +249,16 @@ where regno='" . $_SESSION["ID"] . "' and coursework.coID='" . $cid . "'";
 
                                 <!--/semester2 end-->
                             </div>
+                            <!--unpub-->
+                            <div class="card-body bg-gradient-warning" id="sempub2" style="display:none;">
+                                <h4 class="card-title">Dear user</h4>
+                                <p class="card-text text-dark font-italic font-weight-bold">Coursework Result for this
+                                    academic year
+                                    Not published
+                                    yet
+                                </p>
+                            </div>
+                            <!--/unpub-->
                         </div>
 
                     </div>
@@ -252,6 +275,31 @@ if ($ifsem2 == "1") {
 <script>
 var sm = document.getElementById("sem2");
 sm.style.display = "block";
+</script>
+<?php
+}
+?>
+
+<?php
+if ($pub == 0) {
+    ?>
+<script>
+var sm = document.getElementById("sempub2");
+sm.style.display = "block";
+var sm2 = document.getElementById("sempub");
+sm2.style.display = "none";
+</script>
+<?php
+}
+?>
+<?php
+if ($pub == 1) {
+    ?>
+<script>
+var sm = document.getElementById("sempub2");
+sm.style.display = "none";
+var sm2 = document.getElementById("sempub");
+sm2.style.display = "block";
 </script>
 <?php
 }

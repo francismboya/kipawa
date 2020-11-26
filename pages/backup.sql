@@ -2992,9 +2992,19 @@ DROP TABLE IF EXISTS semisterstate;
 CREATE TABLE `semisterstate` (
   `seID` varchar(20) NOT NULL,
   `sestateID` varchar(20) NOT NULL,
+  `sem1st` varchar(20) NOT NULL,
+  `sem1end` varchar(20) NOT NULL,
+  `sem2st` varchar(20) NOT NULL,
+  `sem2end` varchar(20) NOT NULL,
+  `sem1state` varchar(20) NOT NULL,
+  `sem2state` varchar(20) NOT NULL,
   PRIMARY KEY (`seID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+INSERT INTO semisterstate VALUES("2019/2020","progress","11/16/2019","02/26/2020","
+    11/25/2020","11/26/2020","progress","progress");
+INSERT INTO semisterstate VALUES("2020/2021","progress","11/24/2020","11/27/2021","
+    11/26/2020","10/26/2021","progress","progress");
 
 
 
@@ -3089,7 +3099,7 @@ CREATE TABLE `student` (
   CONSTRAINT `student_ibfk_2` FOREIGN KEY (`programID`) REFERENCES `program` (`programID`) ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO student VALUES("KICTC-CER-001-2020","Amani","Ivan","Dayo","ITT","BT-ICT","2018","4","kweka1@gmail.com","‰PNG
+INSERT INTO student VALUES("KICTC-CER-001-2020","Amani","Ivan","Dayo","ICT","BT-ICT","2018","4","kweka1@gmail.com","‰PNG
 
 \0\0\0IHDR\0\0\0á\0\0\0á\0\0\0±ÑE-\0\0zTXtRaw profile type exif\0\0xÚ­›gŽ]·–…ÿs=æ0n gÐÃïoñV•%Ùè\'Yuë¦sÈV iwþç¿¯û/þÔÑ£Ë¥õ:jõüÉ#8ù¥ûÏŸù~ŸßÏ÷ç|=òü·×ÝÏ‘—éó´×¯Ï¿þ×>“ßÊ/êëëûý‘¿®ßÿ¸Pü<$H¿ï¯¯¥øy#|]`~¦å™ûu
 v>_ßÿ„N?âúúØ×‡ÿ|žÑÛ…û¤O
@@ -3379,7 +3389,7 @@ RL­ßŸ/×ÄCöëwïåÃûo¿û™­¸+€8œwýøkºÁ.³R&®\'ñGnøƒéö¸¼\04-ˆ,RöMæb:NFQúuì
 UGGB:d{»jÉš³–lª¦¥
 *g+#$ ÿ™ù9 VÀ”¥	,ê”ÕŒHš¶±¼Ð´(eLyä)Æ°(¥0©#¹ !‚9Ôžìù™é‰²q91æ.M8NÓû÷V¯~!­·6
 }KnâºLgòbN¶8_¥\\úqZZÇÎ¦üI7ë×ç®¥ßHÆË6tœÈ§mºŒaé<Ž©a’}ºyÿqùÛßÄÕò€%âA¨6³H‰+\'_ˆf\"°ÃOJ¹ëú„Ýq+ûR\0Æ“0â±§‡w=9Â!EÃ­*Þ00Eá†¹jEbm¿jÌ‡UÛ¾£­\\]!T]mò[Qåa1üo]4@]&Ó¿E$6±iš¤JÞT‹êmlÎá²ƒ¿Ú³×Q§8FÊI€Rôf³)9»[Îùq¡ö\\l\0=3¥óš®¶7~E-Låû´¹ìV-Ç¾LÀÈ]ËNÚ¦€¶1ž­––r”ÐÛ½j¹Ã¿ËŽ8Š¼gðK¼÷gû1[ðÔïä‘À×\'è|ý×pÝº*š\0\0\0\0IEND®B`‚","Male","Approved","12/22/2018","759191200");
-INSERT INTO student VALUES("KICTC-CER-002-2020","Abdallah","Hussein","Abdallah","ITT","BT-ICT","2018","4","kweka2@gmail.com","‰PNG
+INSERT INTO student VALUES("KICTC-CER-002-2020","Abdallah","Hussein","Abdallah","ICT","BT-ICT","2018","4","kweka2@gmail.com","‰PNG
 
 \0\0\0IHDR\0\0\0á\0\0\0á\0\0\0±ÑE-\0\0uzTXtRaw profile type exif\0\0xÚ­šir[;’…ÿcµŒ	`9#z½üú(ë=ûÙÑeÙ¢L‘—@gH\\wþ÷®û¬$ïr©Íº™çOî¹ÇÁÍþŒ÷=øü¾¿?çë‘ÿÿô¼ûþEä©Äcúü·Ù×ë<ÿ×>ƒŸÊß.ÔÖ×/æÏ¿èùëúí—ÅÏCÒŠôóþºPÿºPŠŸ_„¯ŒÏ¶¼õVÿ¾…y>_ïÿ„NßâúzÙ×‹ý®Do>\'ÅxRHžï1ÅÏÒûçÒÐ/ø“ñÂÊûYÏ¤d_# ¿‹“ÿÛªÜ¯Yùþ)üáù_’Â‡½çOüLû~üíó¡üòü×Ýñß>9­ïOþéùìCûu;?þÝ»›»÷|v7²RûÚÔ­¼ŸxáäRé½Íøªü+ü\\ßWç«9ªw‘òí—Ÿ|­ÐC$ú7ä°Ã7œ÷¸Âb‰9žXyŒqÅôžk©Æ—²RÖW¸±¦žvjäl‘ÞÄ³ñ{-á}n·Øäö;ðÊ¸XP)8}ûo|ýñB÷ªäCðí;V¬+ªY†2§ï¼Š„„û£ŽÊð¯_ÿ(¯‰´•æÆ‡ŸŸKÌ¾jKu”^¢/,<~z-ÔýuBÄgðFñ¾ÆXC Žü.ÔbÊq’‚PJÜ¬2fzƒä´¨Ïæ=5¼×Æ?OƒY$¢$K•Ôô4ÈUØ¨Ÿš54J*¹”b¥–Vz–,[1³j¿QSÍµT«µ¶Úëh©åVšµÚšk½{K·^{ë½Á‡®<x÷àcÌ8ÓÌ³L›u¶ÙçX”ÏÊ«,[u5·ú;î´Á‰m»î¶û\'JéäSŽzÚég\\Jí¦›o¹vëm·ßñµà>iýÇ×ÿ=káGÖâË”^X¿³Æ[kýq‰ 8)Ê‹9ñªPÐQ9ó-äR§œùéŠYeQrvPÆÈ`>!–¾s÷Wæ~Ê›Ëùÿ•·ø#sN©ûodÎ)uÈÜ?óö›¬m±ÍòÉ½©TŸh¿[Ë`)âP4zMlÛ·2bã/Tõ›G÷×¡zéø’kZ7ì™ãŽkÑ;Aà™r¹ä4íyÎ-b©%ÖáOjã¦ív½ÄËéXFÚ=i¼¿‹¥<£)—7µE N³³è|ê¬\\Æ¯ÊÉÅ™MvÆ»tÞE9ÖmslÞ^ÛëÛ=°
 ²c°Ÿ_ýÌ|N´v{oT™kVò!SàvËB0=	÷h‘ ðwå\'á›¼×ÅŸ_ó›Ç“æÕG¤-è¡ÂÂ¼½ÍÔã±\'ˆN®œÄ_Xcìm#Ÿmì•ÖëÇ±™‰ yn,ì~dV‘é·•;>sÍx[™ÑqG¿‹žç„P3Æ½&y Àý¦ÎîÚ¹é„f(‘SÖ©7ŽÕw#³<â¼¾\0r™&lwî)!ÝÛN	•„¾z^‡âHýlzqŸÛö˜¯”›òyÜìc•¬nŒ¥Ó¼çè%=ÅÃ¡«Ñ€û4ðøôrÀ4Ë.mC™¼.P!®‹}¯Ú}œ|ü¢	Â¦»Û{%®„¤¹½ïxr\\µ­›—%*§Q„ˆ`XOõZu{+~‰Ê¡ë£’™YUR‡ÿ¯M]ÄÐ§è‰/[Fèþ“ÿý8‹ß{Lá“vªŽ~ÓËè¶ö0àbÐO*.M`!ì4l6ÕD¤R}¿eÌJ)ƒ§”ü<kÃdæªkóo­´[²,øÚýäëÆ-´!ÈÓ`3¬	žà<èE·ÌKFÀHÚk{8ížíû\\»æµÌß˜éþ›ÐÁ›Êd­À7]•÷¾4z|\"I¸iÌ~ÙD‹„.wNåˆ=}Q7ywGºãñ³f–v!ž§
@@ -3953,7 +3963,7 @@ kHV7
 «µÌ¦š&Ð\\àŠÄ)úÝ¥•¸´¤ä²j²j1³š.iñvfDi„?Û+S*“Dª2ODèNm †„¤ ÖªO–“ÀÈÍÈŒÔ9hˆ’õ:§Ëu¹á9*tš& PP1 “kZÂC¢k‡<wÈö/Õõ5‰‚™Dcë²eùLº}-4›–õ›V+¾Õ,èFJíÖï0L·(ý“\'“‹þùïm€IDÁQU#q˜¦H$Y„WýÛ  ±\0\"Å2êS‘;nÞHVnkWÜ_9XýÉÖÜß0!‘îË·øìl?;ÍÏÌÜŠ˜¶øh§ÍBŒqªBý‰^K
 ]5ÑÑØÄh§†µ·Óý°@ìf$~¥Z»ªú²uÄW£§µh/tu,X#»¿š]³ýïp¿þ™`­#\'·E~·aBÅ@!„Àèúúà†–%Ó¹BZ_!«ˆdi·aW‰Ìµmª5(+	¸Æh=<ØuulÛ\'ÅR\'¿ßâ6­´r5«¢ï­õú?E§õ8P_¡Êl?Z»‡ý FÛÞ6:€CUÇcT²M•EÛÎ»™Jë¹V¯`K©Þîww¡ƒ¹üpšòðLè^¼EvÔÌÐÝWUµBcˆdõmWI0„•tWÃd‡„EÃäÔñ÷–á~ý‰HmÇ#Ã¶i	Yí„¥U(édæ·gòPl¹vMbôxÐ¼=è7ÛÜBz\'F—+¶uãö¤hÇm=
 #ß‡ëróhÕåê¶ÄeÜÁPrFââB»’}\0\0E²ˆ€¡ÕDÒY÷9aGÓfKÛkÿ¸dÝ¡Ñ¦\0¸·hÛãjù_UÓÚÁlmZÚ»Sæ&×ß\\Àvá&Ëõûÿø\'\'$ý€4›\0\0\0\0IEND®B`‚","Male","Approved","12/26/2018","79191204");
-INSERT INTO student VALUES("KICTC-CER-004-2020","Baraka","Justice","Nnko","ITT","BT-ICT","2018","4","kweka4@gmail.com","‰PNG
+INSERT INTO student VALUES("KICTC-CER-004-2020","Baraka","Justice","Nnko","ICT","BT-ICT","2018","4","kweka4@gmail.com","‰PNG
 
 \0\0\0IHDR\0\0\0á\0\0\0á\0\0\0±ÑE-\0\0%[zTXtRaw profile type exif\0\0xÚ­œk’9n…ÿs^	|,‡ÏïÀË÷w²$yºg&Â¶4­’nÝÊdÀy€¸îýçÿÁ¯^š…â­×QkäWeØä/=þüšßŸ)–ïÏï×ýõ•ÿåõðçÆK™¯ùçŸ½þzÿï×ÿç?_&ó¸Pß¿¾±þúQ~]¿ÿíBöó%kEúûùu¡ñëBÙ~¾‘~]`þ<V¬£·|„u¾þúùŸmà¿ ?lÿzÛ¯7ÿýß¥±{Ç¹O6»9åÈŸ–ígùû/ä©oð§åÊSöïï…?KþýHlÈ¿Ú§ø«
 ÊŸ¿¥óúß‚’ëÏëþº™õÏ×ùzò¿½þë‚áÛâ¸sÞîü—×§÷÷Çùýß{§‡÷îÏÓÍRÙÒúë¡~?Ê÷7Þ¸ØòüýXåwã?çïíû=øÝÙ»	ù‰;.~ï4’±û/•tÒL/ÝïëN›%»Öøj¶-¯õÜlØVÔÑáwzÖòÈ\'wb¶	oæUû³–ôÝw|·Û©sã“x§%.–”
@@ -4283,7 +4293,7 @@ I.™™ÂÒúðÁÙª2(­ë5³äœ»”›Ã›mZ¼¢ÄÕad\'Â`n $v¯n‘R¹ù\'=¸[öä¦U:””8:˜Èãdç6¤o‰ÁBd
 0	»yõjŠ>®¯†!ra¬Ö–æ³YÇEIÑ%VnóöD|—%k/u©A±Òú£—â­Án}}3y¢˜M0	\'é$çNçÔ¶´-@*¦=@™—Äâjã8¾~ys{{ûáüŽ™/£L§Dä*7t]^“mÚØ–H‚lž’çó‰”Eà)6§Ÿ÷ûÌzôÿ§g\"¢ãñx<÷ÿ<f÷éÏùK´uµÖRÊR‹ªV³®ëÔ­º]Å˜‰øêÅKfîS×÷]JÉÌæóTæùß¾ýö0Œ/o^¼zõêÅÕõ8$&gá+¶ÒFC‹§np’È´3kT º8M·ï7ÈifFîÄîˆ’—›–s&#\'\'ŠÀ0€ª;Mz‘>õ]ÎÆ:Mœƒž³\'‚‹¢:ÈRä‹†¿À*¼v÷œ3v’’­tX«Tv_
 ûfÌêMöFˆ¤8÷IX$å”sÎ”²pöf‘ëk¡š*5¨zåDãÕáÓ§çûû¡ëJmîêL‰sbuª¦}JÍ@{#:»†¯hU«ÏS1âÜÊr.“8\'3\\y\\¯ZËÏmêJÍèyÛBùgÄ£¦,ø4A|ûaèú´ùQ(f¾þÃŸÂÚ.z#¨j5%¢yY¢•	¼IDú¾¿¯rÎµšj‰šOˆÿþ÷¿ÿùßÿíoßýx¿ÿí_þ×?ýi>ÏÇqá¾Kn¦„êVKYÝF‰™G8È  Ü11×ºø~’s<‰«€D8\'IVµN:•#‡Ä×Ãq“r8^¦N—Òç®†²\',su³f‹¤ÂÉÝÈ‰\0/ÓlfJECmþ0DÐºÍÝ›UK3!ºø”Ø…Ë™%À¦M)oa&áÌIRêbsæ
 fb5§Z˜ÀbK™îÎ÷ãõøöÓÛ~È¯¾ú/ÕÊ»÷?2ÌÊÒI­1Œ!D$]+©cYõF-YÊ\\ª+SêËsê@‹a1w‚ää„Z+ØCDOþÀzm«Çv\\±ÍÕ¬mö³$.ö¯Ö.¯ƒß08Z=(ZPv<Ir™g2_–…™«Ö$ÉÈ¡üÿ\0Ôoõö™ü¬\0\0\0\0IEND®B`‚","Male","Approved","12/28/2018","79191206");
-INSERT INTO student VALUES("KICTC-CER-005-2020","Amani","Ivan","Dayo","ITT","BT-ICT","2018","4","kweka5@gmail.com","‰PNG
+INSERT INTO student VALUES("KICTC-CER-005-2020","Amani","Ivan","Dayo","ICT","BT-ICT","2018","4","kweka5@gmail.com","‰PNG
 
 \0\0\0IHDR\0\0\0á\0\0\0á\0\0\0±ÑE-\0\0ÃzTXtRaw profile type exif\0\0xÚ­›iv9v…ÿc^æ,ã9Þ—ïï\"Iµ¤®ê–[¬bRÉÈàw\0 wþç¿¯û/þXÌÞåb­öZ=rÏ=~hþóg¼ïÁç÷ýý9_¯üý—÷Ý_DÞJ¼¦Ï_[ýºþûýÜàó2ø©üt£¶¾~1ýEÏ_÷o¿Ý(~^’F¤Ÿ÷×ú×Rüü\"|Ý`|¦åkoöóæù¼~}þþwú××e_ÿþ÷lDož“b<)$Ï÷˜âg\0éýïÒÐ/øSåÂÊçg¾§ô}3òWqò?Êýž•?…¿yÿ·¤¤úyßñÆ¯Á¬?^ÿòýP~{ÿë†î…ø§\'§õãÉ¿¼ï+yým:ßÿß»›»÷|f7r%¤õkR?¢£¸›äô>Vù2þ/ülï«óÕÕ»HùöËO¾Vè!ýrØa„Î{]a1ÄO4^c\\1½÷Z²ØãRÖBÊú
 7Zêi§FÎéM¼Œ%¼çö÷¸Þ+càfA¥àôí?ñõ·7ºW%‚o?bÅ¸¢Ša(súÎU$$Üï:*/Àß_¿ÿQ^,/Ì	??·˜%|Õ–ê(½D\'.,¼~z-Øþº!âÙ…Á„D(ƒTBÞb´ˆc#?ƒµ˜rœ¤ ”7£Œ9Ñ-[Ô³ùŒ…wm,ñó6˜E\"
@@ -4573,7 +4583,7 @@ eD“je´ìÛEQ	YÆ·¸ž+Ú¿²­­­¢(\\êg>Ÿ£‚~Ä;ÞÁ Ï}Iã÷nfÞïzL¸™ÍËo\0Û…ÞÖ&XñùÅ‘àâ  
 T²\"Z\"ø‹f 4àlî¹–®ˆÑ¡ÃÜØ”¨¥Ÿ3–²€›Kvy5=XÌ«úÞÌÇuDt~~þèÑ££ããU×/Ú&ˆmÇÌó­YwÞvÜõWU£–Ÿ>½}wþ«_ýê÷_}ó›ßþ#KÕgE@ª&³{o>€Ü~ò75if¦¥ˆL…0\"YL«zl–‰cÊÙL¥›MÏXùlv~—ÊÍ‘4‰ØOlÍÖ;÷ËhÐ“UÍ´ÍxÖëü¥7î¾õÞÏö®ÿ÷¿øËóU&“f¶8_5u½XžjŸ
 7_|QMÓ\0@Œ‰®ŽÑ±ˆÎ„ÎM ¦?JŒú =ÆX–¥s–T5„r>Ÿå®flš ¨ÄsB4pt`PP…€H@âPÊçr^ðy{—+Fk›õgç8›3Ëñ¬\\SãÑÑÑ·ß~ûøñã¶OEYg³­jYÁ¼8]ˆÈ´i¤¨hÙŸN§Ó_~ô‹—n^?[ž>}òdy~ÖõQs>[´³íýW®ïÄvyôä»~‰1\'\0”²¡”RŸº¦dç9éÒ1PN2˜¶YspmEU]O¬¶DÃÈuL¥ˆB\0Í³­ñ:·ÍbÔ?!6ëÚe¤i&‰«ˆ¶½5»ûæÛo<|ÿÆ­ßþî«Ï¿þ¶¨·b—B‡OŽˆgãé,\"ë¤3ÔQeYÖuí,¬ªêŠÚÒCÇ;\'DÌYGgÀ?ŽT-bÁSµÐ¾SEéûž‰‘sJY‡&”¤0 @``]KqôB»jry‰v|õâ÷¹1}iö4f©¢(ðèéÑ—_~ùÙgŸ¥”æ;{³ÙLÕ¦Í„\0rL1F)‹lðÒõë‰©®ëï¾ûî¿þúÏNÎÎÏNN(„¢Õòüø«¯¿{rtüÑG¿œÏ·~ýŸÿSJ)·KBã Âd9v1A©Ï^o^~lÄ›™À@ˆÀgPêÈi\0íÆ{D!´¡˜ï/ýÅÙ0‡¢¬V1ŸžŸN÷nÜ{÷ƒ[÷ÞájT|úÅïIªÔ¥”rÛ¶€šRbfgW‡i<|ö\'|o²>\0®ŠÑÍSÂÛp\"2È”õ*BD<L]‡\')Ä¤üïÿÃ\"CØO€`AT\02€ Ú8qRs)“á?¼¸w;Ò°’&B$§ý—q<7sÎÎ§qBN®‹kñ·á1¯VíÓ§Ç_|ñåï¿ü*ÆT×MŽÉ\0æ³™!SE(Š­Ù,e{ôÃâ\"±æ|ðäèèàpµXeú®Ÿoï\0ÁáÑñÍWn¾ýöÃ÷Þÿ\0¾ÿþ;÷
 L©_Ue‚ŒíoÛ™‰™†í¢Ñ H‹\"™ÐˆPèBë•\0L‰¨*BQeðQ!’=]YÙoöXˆª*bÑÍüö½·ß}ï£í½ëe=Kýgþ›üM]7ABf³ùÁ“ƒý½=0ÓœAM»¶¿û^ˆÿøãÙÙI»ê@Í©Vž,G»œKõØOd,Ÿ{ûùùus/5.™‡ý“) þ?n„q5Þ Q\0\0\0\0IEND®B`‚","Male","Approved","12/22/2018","759191200");
-INSERT INTO student VALUES("KICTC-CER-006-2020","Antony","Juva","Mtui","ITT","TC-ICT","2018","5","kweka6@gmail.com","‰PNG
+INSERT INTO student VALUES("KICTC-CER-006-2020","Antony","Juva","Mtui","ICT","TC-ICT","2018","5","kweka6@gmail.com","‰PNG
 
 \0\0\0IHDR\0\0\0á\0\0\0á\0\0\0±ÑE-\0\0 zTXtRaw profile type exif\0\0xÚ­šYv\\9vEÿ1
 =p‡ƒv-ÏÀÃ÷>J))3ËJW‘ƒŒæ=à6§àÎÿü÷uÿÅW-Ñ»\\Z¯V«ç+[¶8ø¥ûÏ×x?ƒÏïçû:_üýÓóîû‘§éóg¯_ïÿöüø<~+?\\¨¯¯æÏ/Xþº~ÿåBñó4\"ý¾¿.d_JñóBøºÀøLËWëíÇ)Ìóyüúü\'üwú××Û¾Þüëß¹½]¸OŠñ¤<?cŠŸ¤÷ß¥¡øSå!•÷{?Ã×ÅÈ_ÅÉÿ0*÷kV¾ÿþæù_’’êçyÇ?³~üËçCùåù¯ºâîœÖ÷;ÿü|	ý×é|ûïîîÞó™ÝÈ•Ö¯I}›Êû7NBžÞÇ*ßÿ…ßÛû6¾»£z)ß~ùÉ÷
@@ -4844,7 +4854,7 @@ cÙ9}okccSí…öÊêÌêêèì\\Òl\"©Á8ñ\'ûù1
  ˆž½zuÞéLÎÎ¹$A–!qdYù¿>ÑG`””Þ+ßùD!¥ç_šeþ-!IÖ%ô¾^¿}¡`©Ô*ipm¡‘hK¤àÍá!FF¥
 ;eô¬¾HT‚ÀZ&†÷y·kÇi¢æêOUDÞÐ_£\"ïØ\"a@)­ÿ
 !„úÂi4ÐÜ ~WÍA/¨\'sIPÒ¾D¿Šõs¬qô¬•ˆþ#y”ržiÍh\0\0\0\0IEND®B`‚","Male","Approved","12/22/2018","759191200");
-INSERT INTO student VALUES("KICTC-CER-007-2020","Amani","Ivan","Dayo","ITT","TC-ICT","2018","5","kweka7@gmail.com","‰PNG
+INSERT INTO student VALUES("KICTC-CER-007-2020","Amani","Ivan","Dayo","ICT","TC-ICT","2018","5","kweka7@gmail.com","‰PNG
 
 \0\0\0IHDR\0\0\0á\0\0\0á\0\0\0±ÑE-\0\0ŸzTXtRaw profile type exif\0\0xÚ­šir\\9v…ÿc^æa9¸\"¼/ßßARlI¥ê¨°[”ÈTòå{ÀÎ\0Àÿùïëþ‹?µÅìri½ŽZ=òÈ#N^tÿù3ß÷àóûþþœ¯Ÿüÿ—÷Ý÷/\"o%~¦Ï{ýºþÇûÿºÁçÇäUùéF}}ýÂ~ýÅÈ_÷ï¿Ý(~~$H¯÷×Æ×Rüü\"|Ý`~¦åëèíç)Øùüüúü\'üsú××e_ÿþÿÜˆÞ.<\'ÅxRHžï1ÅÏ\0ÒûçÒÔ/øSåÂ
 ¯Ó{Ç§úu3ò§8ùŸFå~ÏÊ÷«ð7ïÿ–öÞw¼ñk0ë÷Ï?¾ÊoïÝÐ½ÿôä´¾ŸüËû>†ñût~ü»wwwïùÌnæJHë×¤~Lå½âB#äé}¬òÕøWxÝÞ×à«;ªw‘òí—7¾V!ýrØa†Îû¹Âbˆ9žØøãŠé½×S‹#.e-¤¬¯pcK#íÔÉß\"½‰wã÷XÂ{îx[¡óà¸2nT
@@ -5082,7 +5092,7 @@ LI“1¿ÍqÅl:lªZRR\0à„ˆ©­áóU¼§ÓîýIQô*Ã¼F¶cv‹£’„YM“(
 \0fTÑ8³#ì<ŸœsäÉxŠ
 B5cŠêŠTI0)Æ4Î9Éœ[e&DJE\0‰i’ˆ„ËåÒN#TBp}XnÖo¿ùÎt»;l¯zO¨±ï¼÷Ž“ŠM
 ˆ(Ö)¨21æ†æ‘œùTž§:ßg¡Ç=óœÔ	b¼µJG«@“¤œ)•9‘“K€	ƒsÎ{™¦Ý”€H‰À‘\"úàúÕ2ôÓ´Û^ÝnoQÔ8‹Mèd3Éƒ\\û´FUTb—’€[„Ë‡¯¿ýÞû÷¼¾XMÃaØÇ(@ÀÎrEŒúlØø(š@	”AÃ\\½¼\"ðP«/­rºá(pý¸ÊG…WEç¼R$þÿ\0qË0’à Ž\0\0\0\0IEND®B`‚","Male","Approved","12/22/2018","759191200");
-INSERT INTO student VALUES("KICTC-CER-008-2020","Justice","Hussein","Ndosi","ITT","TC-MFT","2018","5","kweka8@gmail.com","‰PNG
+INSERT INTO student VALUES("KICTC-CER-008-2020","Justice","Hussein","Ndosi","ICT","TC-MFT","2018","5","kweka8@gmail.com","‰PNG
 
 \0\0\0IHDR\0\0\0á\0\0\0á\0\0\0±ÑE-\0\0zTXtRaw profile type exif\0\0xÚ­›k’c)’…ÿ³ŠYïÇrÀ³ÙÁ,¾ƒ”QYÙÕfc6QR(¤{w?‡rçþûºÿâ_í)»\\Z¯£VÏ¿<òˆ“\'ÝþÍ÷3øü~¾çûÈï{Ýýü!òRâ1}~íõûþ_¯ÿuÏÃäYùíBÝ¾XÿÃÈßë÷?.?I#Òóý½Ðø^(ÅÏÂ÷ó3-_Go¿OaÏã÷óŸeàÛéG´ïÛ¾oþó÷ÜX½]¸OŠñ¤<?cŠŸ¤÷íÒÔøSå!ž\'\'Ïê÷b,È?­“ÿmTîÏ¨ü<ÿæõ?‚ÂÍÞëŽþ¾˜õçñ_å×¿to‰»s²Ÿ;ÿíõzÃøs:¿¾ïÝÝÝ{>³›¹²¤õ;©_SyÏxãbÉÓûXå«ñ]xÞÞ×à«;²×ùöæ_Fˆ¬þ9ì0Ãç=Z0†˜ã‰Ç-¦÷ZO-ŽhŠZHY_áÆ–FÚ©?#¼‰WãÏXÂ»ïx·³Ð¹ñ¼3.”
 N?þ_ÿöB÷*åCðýg­WT2EN?y	÷W•·À¿¾þü§¸&\"XÞ2w&8ýú\\b•ðÍ-åQzN¼±ðø©µÐö÷,÷.&$\"à+Éjð-ÆëØ‰ÏäB=¦!¥ÄÍ(cNTK‹=êÞ|¦…÷ÞXâçe0‹@P@©š‘&±°‘?-wrh–Tr)¥–VzeÖTs-µÖV~³¥–[iµµÖÛh³§ž{éµ·Þ]}Ž8àXFmô1ÆœÜtråÉ§\'o˜sÅ•V^eÕÕV_cM#},[±jÍº³asÇ68±ën»ï±ç	‡T:ù”SO;ýŒ3/©vÓÍ·ÜzÛíwÜùµà>aý—¯ÿ{ÔÂ¯¨Å)½±ýD¶öëApR3\"s âM ¡£bæ{È9:…N1ó#R%2Ê¢àì ˆÁ|B,7üÄî¯Èý-n.çÿWÜâ¯È9…î?9§Ðý›ÈýkÜþ!j[lc>¹!•¡Õ\'Êïj%ïš|fžÖÝ€ï™Û]½Qì¤{ç©wî–ÂŽ©ÜëÄ©«ÕÍ;NÐ»zÝ·õROá~ð+ÅÔ£(ŠuÏ{6?ÍV¨ÃÒ,±¤N¬ût±OþcT*´\\Ä%ä¥—´>ïo¿Þó)‹–‹{Žå}Üó›Ú¬193fÝŸç¾Ÿ|×¸½nó°Òg•sgµŽU°vnÑëkhº“\0í½*ë4ø­€ãä¶˜ížÃöšmGòÉwP:3‹n¥Ðç)scZKy¯Ñiœû3N¯_}°’ÉˆøûZøíÑ1½ïðÍ<s‡òøÌ=2×§%â¨üµ¦ü3y_W7ˆfjÂî3ã7³­PïkqéÚù˜kºE³%Êý¶ü™.Ù÷ûkn–œ-3]MTÓ=¤o-(³|¬¤üÂë_Éà¸¿aeð¤Æ›Ä{Œ.{;,da»ã,ý9ÓÓYþésÙSÉ*Ï KÏ/÷tj\'÷f5Íh†ôËdêŽd­¥7Š2ÆÚTr¡ô×š~\0äLªV«åþZ³_™ãa-5Ä4w ÄznJKò˜·V¶µJVQC…á~×Ùð³¸ÍÝ	:VôÞbW‹j N›[YCEõo*½ßÛµö{ý¶®p
@@ -6601,7 +6611,7 @@ a	ñÀ¹ú,”ÚÞE„dô¸ˆ)/½‹÷{s
 ëé6uÄ&ˆÔ°\0@(Î¥¬µvÝÍü1sDSU@e¥‡±eoýÒ+G¤-/)´Ûcdº´Ú«!þŠSò:úßÕö×žˆŸûÑ„Å³Y`­)Üë¹üŠÈ€Ðë¸¬\0–$ÿ÷f»W0“1{bBJcN9%´P_u‰ôA³im«ø\'¦ßl]# VÅ!.„Ž‰C­m	ÄŒŠ/ŠQGEéÎ
 Äà7Ç™ïÍ5\0‘QÝQÁC¯ ‘È¾ÕOà„9~&ž¢­3A—‹{­Í_HÀK[ôFólfÓ4Íó¼8Œµ,m‹¡êüdTôŒ`M _‹¶×¾r¹ª…ô¹XÄëœ’%ð×7àuê{¼/kd˜ˆ˜–]¨…ñªIþ­ßXëãã‹OùpSŠ?ó‘œÜ3Q¢4ä4¤”ÎP«ÌÓTK]Âä:š°7Ç\"úÀP	OÍ;.\'+-C»ÕfÿŠï~:{q…àuÙ³f$…äml$ÿ¾‘‡D	y äæs©µÊ<Ïµ*\0ÃgézÐ	¯VI_°¨6êS–®­ÈVq\"rÎœÓÿ_Û•5·Ã`€§wÛÿÿ+7qlK¼€>\0¤(ÙÉN§³oŽÏØHâøŽsˆÎZ&^×uMëº®­6k­2%µó=†tixz²scöoŽÒejÓ¢({ÊÕCkr‡m=F·q– &­5;¬æñü!fjÄþÂÛs†u*BSÅG£Aá•”ù0ôÿ¼mcÑôÐ@2MôÞ;çñÞä×eI)1°óÖ0ŽšB€	I*Ý‘€hD¡ÊÈÓq€†f—_UÈj_ŽYËx*LÕÎ–ðú¤)i…Ê£uÎ£©•(åTÊ’R.œ=ÜóMcákÐû4µEØ3¶ŠD‚jn{B‡€\0©¦%­÷û}Yf>ÅhÇx¥ïS½bûy×|I:#îÝÏ€xµûº±]Ï2¹Øû‡ÇàØÑ¦˜zá?Î¦y§†cOlEçÈ<4Üæ6èœ€ïŸÁ†,RÛw4Æ€³Æ;ëU‡ÈÄ­³¥–FŒ5Ñªå¬–nÂÚú[b:=mu½gýt+fœÞ~ˆ/2$› ^IVÂZ€#ÅÑ!•Ršà€cýñÌŸìWùÜÄ1o\0g¥dRN­Ô5­Ç²<¥ç;Þé UØuwƒxþJs„í\0t‡÷‰RJ³™Ä¸4‡æ£Ï`*‹æÐÖë2©Ï)±íÒœ³P=51\'Š12sÊ¹ä,š—j£~ñÖy\'iè¡þ˜a~4­ƒ,4†Z« —¤ŒÎykbp!8C`¦ÞÞÊ¯Ÿ×ëõãú~9‡?YjÙôÇ=¡í‰¸µ®ô¡ª ªN†¨\"äÞ•Q*©ÄçQ>\"‚tÒ$s3ÈÒßï\\ÆŒ¥Pa®Ä)×÷ëõß¼ü¸6,\0NÉÆzŸ¡uLÉ¥?JPÊXQ!ï½(Næœç;,Eq!žNÆY9H×´~~~Þn·Zjð>„bpÖ~¯úQ)¡@©<0 Ì#´ëýnk¤¡Žk³‚ÈÀÖXùž’vÎD•Mý3Ú{øJ‹Ÿç$IÐ¾E·í‹/ÛL8Õ¡8PÛÝÿOG>`€£÷Á;ƒ€ÆºË%Õ²,«8xg,³k°™Sm´|f2ý¼WôéB§ñOˆM˜Ç¢[\\î`òLhh>˜\\5¬­U‚ŠPk-¥æÒ
 ‘uüÊüjg5Ä/}W¹#^å3~MÆ×Î9‘ÁÉ9ßï÷Çã!øQkí)Æóù|>¿…ÎöÙeßÓñq(†s×Ã.»½¥+¿f=m_´â:òüµãýæÌú¦l‚íè˜\0ñ\01xï19gc<¥šß¯×œ	ò•ÁŽßÃ‡¤§FÝ•wlOP½Åm~ÀchTè‡hr£”O÷|Éô4C•+jmÔ¸Vn„@=k)\"–è¾õa}*“y£¨àWóúÙÝEº(Î9@lµ¦”n÷ûív7’à‚?EŠ>QÕÔ†Œð»½¢\0oÌÖ3ù/ãä7ì¯Zd<!3O\0\0\0\0IEND®B`‚","Male","Approved","12/26/2018","79191204");
-INSERT INTO student VALUES("KICTC-CER-014-2020","Baraka","Justice","Nnko","ITT","TC-MFT","2018","5","kweka14@gmail.com","‰PNG
+INSERT INTO student VALUES("KICTC-CER-014-2020","Baraka","Justice","Nnko","ICT","TC-MFT","2018","5","kweka14@gmail.com","‰PNG
 
 \0\0\0IHDR\0\0\0á\0\0\0á\0\0\0±ÑE-\0\0)mzTXtRaw profile type exif\0\0xÚ­œiŽ\\¹Ž…ÿk½ÍÃr4P@ï —ßßQDú•ýª€ú•ËÎtdÄ$ò$¯ýÏ_÷_ü7R.—Öë¨Õó_yÄÉ7Ýþ›ïÏàóûóýgß¯üý·×Ý¯D^J|MŸ¿öú}ÿÏëÿ:ÀçËä»ò—õýýÁúý#ßÿ8Pü|Iº\"}¾ß¥øùAø`~nË×ÑÛ_oaÙçë÷óŸeà·Óqßö}óŸÏÕ;…ó¤-…äù3¦ø¹€ô~»4õþŒ,=œ
 ßg¾êõø=òwëäÿrUîÏ]ùõ]ø‡×ÿØ”T?¯;^ø}1ë¯¯ûz(¼þ= {Kü—3§ýëÌ¿½Î
@@ -6962,7 +6972,7 @@ uø[IÌn¦€ÝJŸÂÌÚ¯3ênI6Ï<yB6®fcž#:°é7èaê°+Õ?‰çÚóÉ•µÍ8zdW¶ó«âÈ¢F NÆîÚaw%Ó|Zî‰
 €ªª«jše9\"N¦Ó~¿\\YYft–”byyéÿð÷öv?ÿü‹»wïÞ¼yó{ßûÞåËì€&›Æ#’s¶×ëyï÷÷÷&“‰Öæà`Ÿ†577vv¶‡Ãƒ~¿Ï3U)\"c¾÷ýJˆ|ð+—å/\\tY^M«étZ”=k-—ËÓétwoZM‹¢€JªÌeyæ¦Ój<‡°è}à×-ŠÒ¹LEÖeR*Ä‘k\\+„!sEQ»,¶…4ÆÎÏ/\\½zí_þËÿ!Æ°¼²rúô—Áû™¯ ‚Bž•$H+süØ	ŒøñÝ_öGZš~o°0¿øøÑãÝ½ÌåÃñþöÖöÜ`®ÌK«RÊg•B­­®;{îý÷?ØÜÜZëáhdŒî=)äçú‹/>øøÑ“•¥Õ,Ë|åmæŒ²ƒþÜÚÚ±Ÿÿü—ûÞ\0¸ÿÙg?ýéO‰à«¯íâ6¤ Yæåk¯¼¾·½ÿÎî;£ñxóÉ–’wÖ×ÖË¢œŸ›wÆîîîŽÆ#côçŸ¾¿¿¿¼¼´¸° ”ZY^){åÒâ’56sÎý^©ÿÃÿýÆD5u5??×+\0lê*Ï3c´5ºišÑh¤µb¯XgÍñõcwîÜþâ‹ÏYVswwW\0ÅàµÖ«««¿üÅÏ?»ÿéÅ‹_xá…µµÕ?üpsssuuõõ×_ÿæ7¾þî»ïþàÏþ”uÛ¼÷ËËËo¼ñOí¶··WVVŒÑ£ÑèÞ½{wîÜáNÂh4ì÷{½^éœuÎöû½7ßüÛ^ïúÉ“\'O:õúë¯ÞºuóæÍ´Ö;;;+++\'OnäyvòäÆ•+—<øìÉ“Ç,¼páÂ™3g¼oŒ1/½ôÒâââ{ï½ÿöÛïÜ¿ÿàâÅ‹Dtûöí+W®ÌÏÏ_ºtikkëý÷nÜºùƒ)Oœ8qþü¹óçÏmmmþøÇ?vÎUU5¿ò•¯¬®®²2·Öši-D4™Lz½ëêóÚc!€<”ÌÎóYnÏž»pöÜ…J!²‡K¤†=Þ¼ûñÝÇstïïï¯[ÿæ×;s…òå—¾LøÞÿõþéâââh8’J¾ôâ+ËKÇ&ãê“O>¹sç£?÷÷÷àë_ýÆú±“¾¡ïÞ½~ýz¡×ëÇãÉdò_ÿW¿wöôŒðñÝOnÜ¸ÁÔÜªª†ÃÑ+/¿zêäßà­[·~ðƒ?{ðàÁ‹W¯Þ4·ïÞù¸,{/½ôÒ‰\'¾ôò¢2Æ „xúôéîÎþ¥K—^¼zmyyÙ{ÿïüã>úèOþ?)Ër2™¬­­]»vma~\0¾ú•¯Þ¸qãÏþôÏ½÷ãñøÊ•+ó‹b{{;CƒÁÀZ;·¶¶Ž;VUUµ¹¹9???ˆh:ŽÇc&m&MhîRUUÅ\"-ˆ8??ßÕ˜››SJ1ëƒe¤”L?àŒå½ç6BêðÃf0\"_pCd2™!úý~žçü9Ÿ¦g^ó‚[H“É¤ªª$RÀêÚ1Æƒƒ¦qO-„`Œ©ªjkkkqqq~~>½µº®ÇãqannŽ¡éÜÿã\0Ö¤`8³÷ždY–|ß>|¸¸¸¸°°€ˆüeY–ëëëð}té	[é½‡1Æ¤]Ï÷±ŒåÛÅÒó«ëÚƒH1Vñåou‰Ë	cÏ\"ßŒ$ìZÇçyž~Œ‘o{UUD4Ê²Lz\"BˆÉdòé§Ÿ......²ò(ÿpR÷æ%RùbF£ÑÁÁõ³-„`ÕÝÔàM@w~‰ûÇ¡Ãð>–Neôar½áo5,3g=[R°\"EUU	ùŸÞF×R2„PUU>f‹iÖè’õZŸS­P:e©Äkë›0Ð$©
 &%ö„\0çÇÉü]ÆŸ\'¢UW®«ÚÂ—×e6\'nÂäw/˜açG˜ßÏ>cè	#Ü¥€?Ó]–yÇ›]vI‰’Ènüù[QßŽŽb7p¿œœéË®µH×Ä6ý‘.{„9¢ü*¼\0ÔšŸcÉnŸ!&-ê>Ù€$rHÓ4]¾Q÷®%U’´š¦Ñ’rPŠŽWÎ(I¾ú•;õù»âÌM¡ÏQÎ×œ({Iò³+\\R2ßštÇ§Ó)_ó¡yÕñçG,Óã12·!)YtÇ6]ÊuzÆÏrKU†º+óïÓ®\\‚¦Ï¦‡c~¨‰B”VÎ>1ÿd7}tiƒ]juWãˆW~z¾|åÝk;\"r„¾–L—
 ÖzuC7*´ÖšwÞ®ÄCzK‰ÈúGôKÒ‹åyÞÍa)çy~dñÞ%}*‘€ã“ã·×e$rÍ—¨Õ]Õ´ˆeÌ‘\"¸I‰–Ý•ÏL“¶t%|Í\\B0ùŽ‹œÄ‰M6Ý|™\\`º‚3|‰xù÷dÓÄe;¢úÖ%§aZÝ?˜Öj’åâ‹O¡”;ºâü9Ý°îJ\'ußÑ¡]g;M±˜‚äƒ2ýñôvÒ^<qÒ›1Š#Ü¨.{©ûbI§)e‘”QÒšînd\\[$wˆâüSêåÀMÒÿü—º{¡éß“ü	ÿ·®k®fx_àÊ,Ý_þõ\"Ý<Ñ%ýu`\0\"Ù¡wïòó÷7EO—t{d+?â—žþÂŽæõ¼F—†–žôå˜dæ›Þr÷qðè<Y¤m4}ÒeêòUÕuÍâ¼ÿtÀ8ûòå±0/Ô”È»»ÄóµMJÝ=êˆ¶ßüDå#¢ÿM/Óè®¿,\0\0\0\0IEND®B`‚","Male","Approved","12/28/2018","79191206");
-INSERT INTO student VALUES("KICTC-CER-015-2020","Hemedi","Noel","Massawe","ITT","BT-MFT","2018","5","kweka15@gmail.com","‰PNG
+INSERT INTO student VALUES("KICTC-CER-015-2020","Hemedi","Noel","Massawe","ICT","BT-MFT","2018","5","kweka15@gmail.com","‰PNG
 
 \0\0\0IHDR\0\0\0á\0\0\0á\0\0\0±ÑE-\0\0)ÉzTXtRaw profile type exif\0\0xÚ­œi’\\¹n…ÿs^ça9$HFx^¾¿ÃÌÒkéuG8Â¯ÕR©*3ï@\0g\0qåÎÿü÷uÿÅ#çîri½ŽZ=ÿå‘Gœü¥ûÏóý|~¾ÿÎ÷+ßÿös÷ë…È_ÓçÛ^¿ïÿùù¿ðù2ù[ùËº}_X¿¿0ò÷øýÅÏ—¤+Òß÷÷@ã{ ?/„ïæç¶|½ýõÖù|ý~þ³üvú#Ú÷mß7ÿù}n¬Þ.œ\'ÅxRHž?cŠŸHï·KS/ðgL•7†Tø{æ;ý||Æ‚üÝ:ù¿\\•û3*¿þþáç%ÕÏÏ?ø}1ë¯¯ûóPþøù÷€î-ñ_Îœì×™ûù,1ýy;?¿ïÝÝÝ{>w7seIë÷¦~nåý7.–<½U~5~þÞÞ¯Á¯îÈ^#äÛ›_ü²0BdõoÈa‡n8ï«ãs<±ñ5F‹éý¬§G4E-#~…[i§NÄŒð&Åî×µ„wÞñNg¡sâxg,(œþøOüúÇÝ«”Á÷_kÅuE%!—¡ÈéOÞE@ÂýÉ£òøç×Ÿÿ)®‰–·Ìœ~}±Jøæ–ò(½@\'ÞXøú©µÐö÷\0,ç.\\LHDÀW’?Ôà[Œ-Ö±ŸÉzL9.BJ‰›«Œ9Q--ö¨só™Þ{c‰ŸƒY¢¤š¡i«°‘?-wrh–Tr)¥–VzeÖTs-µÖV~³¥–[iµµÖÛh³§ž{éµ·Þ]}Ž8àXFmô1ÆœœträÉ§\'o˜sÅ•V^eÕÕV_cM#},[±jÍº³asÇ68±ën»ï±ç	‡T:ù”SO;ýŒ3/©vÓÍ·ÜzÛíwÜù+jÁ}Âúo¿þïQ?Q‹/Rzcû5>ÚÚÏ!‚à¤(fD,æ@Ä›\"@BGÅÌ÷st
 bæG¤*Jä*‹‚³ƒ\"Fó	±Üð+vÿŠÜoqs9ÿ¿â\"çºÿDäœB÷‘û÷¸ýMÔ¶ØÆ|r/B*C-ªO”ß-ÔÌh!O_ÀKîØxkÕñ+ë“qìÕR¾ ~{B/¼£ÌácI£´´áD`uñ™q6u±÷º‰@VuÜ>n®;Œ²‡ºžo‹äjíž×ÃEpWƒ]7³Z­y§³ÇiÖ.°ÉÜ±[ØÏÊÙíœÒ‘u»0ŽAjµï4{]ÛßvR/\'ÃimíRVß™…YõrÛeµâ9Lk¡Ü÷iŸìýn-¢Î²´ÉeÄ<\'2ïÎ•Ní‹•<ø¶ŸzÉÀ‚Þ}êÜu¦{öü\'lã„f\'×ê\0_Þ¾4[÷ÀB–^KŸØkuÞÈEX	ôI\\Åì×ê@Öj¢²KÝy¤Ï!Ê]m—•mÍ´ª_»Ç|tkqõTnŒ—:˜§EE¦Ÿ¦5šÅ,gx§”¹¯³a$[…‡Ôè>ë°VPÔ gp——üæè\\K‹ÍÚfV‰ë·µådõcQ&hk²›z9‰8¡:Ò‚H#Ößz[Ù-£tˆ,§áÊbæ:Êž\\!«$–l¯>sŒ“(IB^.0QR¦r(Š”çF¢7@\"”Ä‰ù@ëSxúAÈÛô¡üýPï\\Ú“b|Ö[gæKèÛ»U8K¬PkE õÉô÷‚Ow·ÖìR3PvÝV%Ÿv·÷Føf½Tÿ„Ùë²1È±»<l¤m\\£ß0›å½2äœYÞÖÇ¼|ÍÁ¨«ëïz¿HŒ»Ý!Á€ŸÁoÖ®ËÀ©‘Oy,N+Dãîv¹zOÎ+5VvUjxãæÏ-–W4\0Vwo²‘º\0þò= e.LÒ£\'­ö¾Œþnr·Tü©,Ö¬`ó*í€)n*\0ø/ÛüK¹³Ê\\¡ðI#®Ó”AÎGá¶•*²e5ÀyÚ6¼Æ rLÊ_YæØf¬×òm“yj52¡ßh°îeùëÈ§_*›2<9püHz ¦¹tn½¬Hùm¡TÉHÉ­³Tp™„%™s††ÞúQ[„3gè¨ÛŠ¼†l®c»%A1Œö!4”îA\'sòºäa`K½gS%Â!;÷3W§ç÷}tµð2¸ —aµZ¸ŠnU«ßnœ\0! M&‡ëñ²Ívˆ*9®†NÃuŽ…ÔK¼(bêGpwXãQ±Â÷„bªt¿*€6×óT´RÇ	U¹ÞtB¿0édÄgCFŒÍ‚ª1.¢Í\\&`87àp* =±`\0Z\\ôÐXŽS7H˜Ã&L–FC.­<”?n\"®zº]uÉ’«€åG‘GŽÆt’í´¨‡zf·³Xq’¦ï~Dw| ×\05Tüó·º—þFæ.—©+Ò ¨ï,PèS†áCjß§ÜaP‹ÛÏŸ KÈ›.Ÿ–bv»õB¡€ûæ+i‚¼	ë¥¸b²ñøØš2¢–sA%P\"¬ÎtoõT5@ÌÇc™ŠKd&D¶fhrÅÒïóÊqP‰ò¯kêoÓ74ä58cÕ%1/%d”ËƒU UÈÁ´šO4.Sâ”
@@ -7300,7 +7310,7 @@ RÞ^b -ö\0¶â#^qé‡®€¬ÐÐ¾2•Ç£Œ82u±_dL\"œS[UË\\–5”µ’SJ‰˜¼Ô²¶R.e½Ô%­ëx	Ù¥iR7§“
 âÅýBhYÆ!Uð_Î§þå—ûõ×‹;IJJpqO\0É!§^€ùv´õüðŸ³w+v<¸£ƒ8	¹ŸÝÕíûhRb?(©·M6pH—vô°Áz²÷MúÑ;üîf×\"|ËTtx-ycÉQ„M4¢wTU5‰8‹›mxFpên\'Ç@6]Ù/[2\0rÌ\"<.gö&ÞšD’NEÆð®$¢‰x\"ÞO\"c	3VR‘Â}/§®,§#	±PwÄ¸º@œó¼Écy[ =¾Ø<æ~t¥8ÅðÞ‰2³3±2#3%á”ÚÒM[SmnÖªa…D˜pT›k;Ÿªž+#*ÀyÕçóE†áe>-m•,Ñ;{ùrx^Ëz8ý~Ïß¼\'y7ÜeGZªƒVÄ‹ëÙÑZ[Ûúi>^æÏÏ/ŸŸšSD\'«€n{`ð¶³%äÁöMYÔ½ÎÈÉ	Éƒ¡aWÝµAqOz½F·}”ÃÙ\"ùm„ÖÿE?ø¶R‡ºá\'ÛlØf[Û-ï¶X!÷ëUè7ßÀ‡!#‘gAÕÌj­fÖ°‰jƒW.R¹ncg¦¯‚X7ï	@sëî}5W3HÄ#sK	™	2ãH<%âŒ”:”·®²wÛAÎ\08º÷]elNæŠæ¶!ïIƒ7„ÃºFXo{B†\"8SK˜nÁ+„ÌÜB¹¶Ô:—µhí6¯$\"<¢¤Ì{l;$µù¼þ|þX«{!4\0ŸåËØü»Dwûïþnz÷Ýþn=-—¦êí°Î§ã—ùr¨õ\\ë¹¶Õ$]Ö2_–Zz¨»<r$&$fBð9i\0@=ÛÑÀãÎ¢¡£ŒLèÈèØ\"êî‰8Ê°—{1 Øh¹Ç˜!ö“him]§m×†À‡ô€Ú »tðÕX[2ùÆ7¹†–#|•³	¡ƒFÏHÌü*ÈE›Ém[öÛ§º…EqÜ
 CßAˆÜùÄ­­¥jQWC\0aRB\'CGtFOŒL@h){ãÞ£Ž\"R&HCˆ±1Ô-Dd`j!8¦eC€·9ô \'¸fuO’mÑK‘åŒ@ÈÀˆ€Là®ÆML›ˆ9%¡ËŠËZjmªj‰FN)÷ÃîÛq¿¶6k+â©)k-ì4æánRm‚x?ŒYí–üÝïþþî~\'I‹‘ä¹Ö/—Ó‡Ç‡>}úxYNæ¡!XÄq(¨²S\0\0ÙIDAT€cH’3÷ê“Ù	ÃSÞyÌFÞ€º¢#…î	{{Ó€œ!úaLÝN×,Ú:ó×v)¿ÖÑ{Ï¿W½ÐGV[âã&Ü¾¦Ùhì¤¯X„¸E¢öŸöhíWø§«•Ü[­M!Fêx‡¹ƒƒ4¬®_YÛ–hðÜ#Ü®í°mƒ
 i¦»ÕÚjÓæÌ4HR/HZ\0\\…Pb6ïÄœ‘ÄÌ]Ü¢\"aB0‹V´QQI}P$xbrð;ß6NŒè4DIÚµ7¹‘{B$qµËÄ†ñ¢\"ˆ$€1ƒ`s­Ì\"i\0—Öª©WkZ’8¦¼K²+e©õ‚5¡®àº—”Þïîÿîý.ûaüæý= <œŽ‡ÃËËé|¸\\žÇ‡çç—Úê&˜Hhæ(H	q Ì€÷jÛ‘¬ŸÈW@Œæ‚¨[ƒ>OJAëffF’ˆÃíMSîuQ_v¡_ŽLìØ/‘9N—øp†Û‹Öçø·¨ƒôƒvshÍšp´‡Xyu-îÀ£QÄ¹˜›Q\'v=1æ<jákr\0:J¥ßxp^éõÁŒ|ËÝ¤WlXs\' uSµæfäDL\"``Œæê¦€F‰\"}ÈQòÀH‘IfØ¡EøáD¯­gAôfjŠ„±Y?¡0²ýLU»@8Ž³«¨6¼ì@H½tslFPewDÌ))§‰êDr&3$K	G‘Qu)kmê`kYOà4í¾™vßïFs›ëz\\/§²Tmðò’YÞAþþŽwÿ­2=/?Ÿÿüåó¿~z>ÎA\"ëJí¸®!2¸7m¡ù‚ŒÙ{&;BBŒðjê¬âpy) `Ô 3ÊD(ªøÄ,}$º]Òã€ „ÅŽ€ãU§(q¢ÃkÐ—m„Èó£€é÷øÂ†Þ U\0\0Rs\"tÔªPÌ+;±#(( A8‰i#²¨;2	!xÄ–¸«FÉæ þ•¾ô·ËôF±ÿ-”óÄûÚ®sÕ®\\#úà-bà/ ŸáZgÿæSß´oËíë?úË†÷·ž›©k zÝ¶$Hb&¨!6Ub3GmŽÈ¬Ž¦M›¶µ,¡Ð8ã4w°¿X[j™Ï]–„4J$=œÿöó‡ÿóá‡Ÿ—uUçMét¼Bñ°OÛ‘Q4%†¾‰x$áˆU¥nÔ±žc­µÖZgõÜ¨f]Î}K”@¿þIOïý [Žðš!soi•W—õvc‡×É‹Ûq¦[Xó5:À·¨ŠÉÒ­É_sP¶2íkÃ-Àÿ¿È7wíªö\0\0\0\0IEND®B`‚","Male","Approved","12/28/2018","79191206");
-INSERT INTO student VALUES("KICTC-CER-016-2020","Benjamin","Asukile","Lusajo","ITT","TC-ICT","2018","5","kweka16@gmail.com","‰PNG
+INSERT INTO student VALUES("KICTC-CER-016-2020","Benjamin","Asukile","Lusajo","ICT","TC-ICT","2018","5","kweka16@gmail.com","‰PNG
 
 \0\0\0IHDR\0\0\0á\0\0\0á\0\0\0±ÑE-\0\0\'ÉzTXtRaw profile type exif\0\0xÚ­œi’]9n…ÿs^GXÇïÀË÷wnJê®rw„#ìR)•zùÞà ®Âý¯ÿ|á?øox¡¶>ÌÍ\"ÿU¯ž\'ßŒøóßü¾¦X¿¯ß÷×Ÿüý/¯‡??È¼Tø³üüuØ¯÷ÿ~ýøùcò]û§ýëë¯?ðúëøãoÊ?]‘¾?¿ä¿TòÏÒ¯ÌŸÛŠæ£ÿó-¬ûóç¯Ïÿ,¿ƒ¾äýëm¿Þü÷¿×ÎêÆyJÎ·¤ùšKþ¹€òýeê|ÍÅxc*ïk|ß[ÓÏ‚ü«uŠÿtUáïQùó]ú7¯ÿ-(Å~^¼ð×Å´?þË×SûÛë¿¾%þ§3—ýçÌy}¿œþ~;¿¿wFxïþÜÝ¬Æ’Ú¯›ú}+ßw¼q±äåû˜ñ«ó»ñ}ÿ~9¿F {7!?qÇÅ¯<eVÿ¥šNšé¥ûý¹Óæk¾¹ógÎ;—ïµQzö¼µDŒø•^îÅË!^¹lÂ[x5ÿ¹–ô×¿Óí48ñI¼3\'–”
 A_þ?~ýÛ½§”O)Ž?kÅuee—¡Èé+ï\" éýÎ£ö-ðï_ÿOq-D°}Ë<¸Á×Ï!VK¿rKyT¾@ÞØøó§ÖR?¿ÀqîÆÅ¤B¢‘üÉRì9÷”XÇA|&¹Ô¼Aj-®2×Bµô<²ÎÍgzúÞ›[þyÌ\"­Xé„ÆË$V`#zäÐl¥ÕÖšµÞFó6­XµffÝ~³—^{ëÖ{ÝûeÔÑ†>F>¦g/€csóîÃÝçä¤“#O>=yÃœ+¯²êjËV_cùš›ôÙu·m»ï¶ïyò)œ8vúÇÏ¼é’J·Þvíö;®ßùHµW^}íÙëo<óOÔRø	ëÿøõ¿ZúµüEJoì¢ÆG{ÿ}ˆ$8iŠË5ñ®ÐY1‹#ÕšƒB§˜EÏTEË\\eSpNRÄˆ`½)·—þÄî‘ûKÜB­ÿ§¸åß‘
@@ -8245,7 +8255,7 @@ B¡ú¿s­ñr81Â¡Ñ¹}@ã;x]Ø¢¼Ò»Ú.&ï)±ÁdB&-È‰Î8›8ë?v†wC>
 ;36åGC <¡]€OíS9L„Óœ{˜0M€†ÂÐ*x^€ìÂ¥ßÁÉè¾h63Pq°_ë?íoYÂbÁû6-å7¼’¡ì#¶-|ö±]/ïÙì‘c[j
 ÄÜu]ßµ1ö^$óJlÕ”íö\"DÅ¤_^2›fúÔ»x QB—LÕðÿaþiÑÁÌHR—	ýz	ìiñÂ©^†y˜K¤ZóìÓìbwCÚD“ì½Gñ™RtáÉ1ºðÝwq÷0%XóÍç£‡œ¾?”÷çnÒ™ß6M>‘šiGDßûœÞ³Ñöy LÉ½{rGó^p{ï±cwÌtï´Ò“ÂžÞ3Ð÷—¬–vu¾Kó®³=”¨ó¯ã º¾]Bý¸çY­[ùCƒ‰cPhZs/}¿› éì9FÔr÷ÜôWp#x“
 »öƒ¤õþÉˆ‹µt–a -¯O6GœøK„QTº)òUa³{0U‡#Îä/4j{ÛV¨è×u\0§–‹½%yqº¥ D/b4ìXAää™€#I‚ÒZn1×öI!›;yS]0ìÐ¶˜^æBíó+æ±*$ÆGŒ»R‰Mcp«aŠaØ0}ÍXOªsWºàDËË§pÅ-‹¸ìµjµ+Æ†QçŒ\0ò®ÔtG*Pa¦×ªQ3~*€@HÆ@šûÔ|M@Áþn.0vÀQ¶Åë5_ö_g\\¬ßwý‚s]Ü˜j¦§ÐÿÅ\'ç÷Î¾Ãò¹·>¢\"º?¦/ûòÝà>Ã§ž*†ã¦³;Su3é÷70ÁAû®ªW™W¸\'!Ðóô¯Ël2óz„Þ{Ü,ÀtUÝ­ým³ÆSî…Þ¤˜Ù®ˆWùý{¶ø¦<J\"ÇbÍ¾²µ¬5‡çºËÈ_Ý ¿¸á·{2zÑþ-içøÖNIÁúYÙ´oæ@O5Ó¾Å~FÀÙ÷|^zÖ…iÃcº¶ ‰^‘å´gj9¯Å”û‘s,‘h\"³„N±=lö³k¸ïTbŒöšÌ<Œä_8Sšçk—=Ð,ÉÙw¹ {ÓO/L:w²Ïq£Â¾÷ÚGp³Óü¨ˆ„ì‚¸ÙÛ[³ctUA¬}ÏÚM	°Àx†ùwDJ4æÙpáh©zøXúƒ´h4³g\\Çuýõš!Wžv6ú²Ñ’>k¬±Å[å€¥•:3…¶§Ÿ¾xù›RŸô]÷VèWR®}šÿß;fg®\0\0\0\0IEND®B`‚","Male","Approved","12/29/2018","79191207");
-INSERT INTO student VALUES("KICTC-DIP-002-2020","Halima","Mkongowe","Athumani","ITT","OD-MFT","2018","6","kweka18@gmail.com","‰PNG
+INSERT INTO student VALUES("KICTC-DIP-002-2020","Halima","Mkongowe","Athumani","ICT","OD-MFT","2018","6","kweka18@gmail.com","‰PNG
 
 \0\0\0IHDR\0\0\0á\0\0\0á\0\0\0±ÑE-\0\0/\0zTXtRaw profile type exif\0\0xÚ­œYŽ$7²Eÿ¹
 -3iËáôÞòß¹ŒÌ”ªZèV¡EF¸ÓI³;áÎÿýëº?þø#ø’½Ë¥õjµzþË–-þÑýç¿ñþ>¿?ßçëoþÿ—×ÝÏ\"/%þNŸÿíõëýß¯ÿyÏ_ƒ•¿\\¨¯¯Ì_`ùëúý·ÅÏ_I#Ò¿÷×…ìëB)~~¾.0>å«õö×G˜çó÷×ç?ÓÀo§?âúzÛ×›ÿÿÜ˜½]¸OŠñ¤<Æ?Hï·KC?àÏ˜*o©ðïò^Éé{$LÈßÍ“ÿË¨Üï«òó¯ð¯ÿ¶(©~^w¼ðëdÖŸ¿ÿöõP~{ýë‚îMñ_îœÖÏyýŒØ~œïß÷îîî=Ÿ§¹2¥õë¡¾åý‹7N¦<½U~5~þÝÞ/ãWwDïbÉ·_~òk‘Ù¿!‡F¸á¼¿WX1ÇÇ¸bz¯õÔ¢Å¥UZ”Ã-YÚ©³~‹åM¼ÆÞ}íÝn…Îwà1p± Ppúãñë/t¯B>ßæŠqE!ÃÐÊéOÞÅ‚„ûGåMð÷¯ßÿÓº&V°¼iî<àðós‰YÂWl)ŽÒ[èÄr-´ýu¦ˆ{+à+Ájð-ÆóØYŸÁ…zL9N– ”7£Œ9‘--ö¨{ó™Þ{c‰Ÿ—Á,¢¤šKci°V`#~ZîÄÐ(©äRJ-­ôbeÔTs-µÖV~£¥–[iµµÖ›µÑSÏ½ôÚ[ï®[-ŽÅª5ëf67\\yðéÁÆ˜q¦™g™u¶Ù§Í±Ÿ•WYuµÕÝ²5vÜiƒ»î¶û¶=N8„ÒÉ§œzÚéÇÎ¸„ÚM7ßrëm·_»ãgÕ‚û,ë¿ýúÏW-|¯Z|+¥7¶ŸUã£­}_\"NŠÖŒ‹9°âM+@@G­™ï!çè´tZ3o‘¬(‘Q-ÎZ1V0ŸË?k÷çÊý²n.çÿjÝâ÷Ê9-Ýÿbåœ–îVîß×íoVm‹m–Oî­ÒP“êéwÀ”¿‰r[¡’¶6«å¸s•Wà:xã½§°V¾,ï†ß°â!VË\\¼óc~[«5ýøp=rŸOoË‡):±¬e\\§„Í#¹RãtRÙþæ]cß­Î”{º=Æký87L†ÁEw³½O[¤w°;Ãî–N¯9õë6	™˜o/l./X½<$ë«íî/ÙÎ,÷ÕÊ¸Þl®ÆÙ‹(c¯š&˜½g\\w†aÜ‚·ú9’.S™ûPýÎwŒÆÈ&ËuÚàgth ^Öá=¦çû$j:x”¸H‡ y‡¸¸ôáá†»õª•eu¦ñžª[Í3ü®}Ï»Šãq[-ÌÎ3t.áyóI6rŒsÝ±ç‰‹ÛžÌf³’˜È›ÊLµqõ´Òl®fg¹\\îYOÖ.Î¼÷,¤Çn3›f‡8ïeÎö\\Ö˜Âƒ“ô3öÍ¡‚’a’²õuó²êyì|ra^!Ä{çÝAAÔê~‰ÿsüãÅM üô¯ãPÌøFç³‘Œµ’óŒB=ÂffîNI˜Ò‚Bq1„4 ÁLxõzF‹„Þ@9ñZ›ç®·4¿ÒaUë%žNèó¸r™w\"ë–=ç.-ßéIBˆ7âñ&¿6Q°¹MÚ¥ÐÖhÍPrW·¿ó!E`Þ÷µÖÍÈÆoƒÿhÂe…¦?‹àyWºíXÝ\\‡[“è…5dÝ<y†ð7šÁó	ž¾N+lâeï‚2€ê/ò\\/)ðQ`f\0‘êä?ãÿ.IÛl8¸åD˜´ðéŒ6m–ŸUª˜¶4”½EÊ•@;iØ]§øq¶ëÂùrK2ÞQ+ø:Wß¹¥¨%^ÛW°¼Ê’³v™kß& Jô1kàR²Û†ëÌ~·SÛ¾|(&~z	¥–@ ¿®ýÎ…œÒñÚÈvS$½˜÷’y;paÌÉqÏ\'ìZz
@@ -8606,7 +8616,7 @@ S³ÓŸ{ÎgÙçŸþwÿ÷ï6w·æçŽ=þÂ©n}þù½{÷¶¶¶È˜™éé¥¥¥}ËËs³³\0xëö­‡îìì£‘ˆÌÍÏŸ<qÂ÷2—
 X2 RÅðù½{÷WWøÃ=zôÉ“\'ï½÷ÞÅ+WÎ¼ü²÷þéæ&:ÿ½ïÿ`jzjww÷Ê•+ï¾óÎôòì¡ƒ‡ÈÒýG_þú×¿áãgNììì \'1B™™[šûÚÔ×ÎÅsýÉþÆÆÆäÌ„1dÊbóÞƒ{—¯ÿ‡ÿøÇÇŽÝÞÚüôÓOß~÷ã³ûýüþ,À„ØWÎ½þê«¯-..2G4V4)nó¯¿ú:Ÿ‹×®^ýñÿþ›ÜRæŒ±†ëzgmí—o½õÜáÃÿîßþ¾±võáÃ_¾÷ÞË——§§íµ«×¿þ¯þÄ`b‚@\\–gY«¦üàÁ£7¾ý“§Î^ýäòï¸¸¼2;3Gh®þæÚ™Ï»|Àëº¾ôÉåo~ó›ûì7Ö<wðà«¯¿væÌçÞºsg~~þÛßùN¯×«ªêâ…‹÷Ü?}úôòòòÆææ…‹._½òø+û–W×Ö®Þ¼~æÜ‹+û÷gÞ×!<\\}|õó\'Nžxþù™÷,25˜$C»åhé¹•—^9øðBº{ïîÿ{ëg\'Nœxã[ßDÄ.üø§?yó;oN?ÿþý·ßy›ˆN:uàÅ³ÓSÓÎ9ïýÓµµ¢,¶6Ö/\\X¿|áâÁƒ‡^zå•¹¹9B¬ŠÂf³½µuãúµwÞ~ûÔ©S/ž=;5=…Dy¿êúÊo~óÁï¿ùæ›³³³[[[·oß¾þÞ/²<;Ö;º»»óöÛoÿÎk¯¿úê«Æ˜K—.ýäÝ¿}å•WNœ<13=óèñã›×oF‘¬—eƒž\"@D›[×¯]ûù[oG£—^zéü¹ó>g­f$.\0\04IDATÅˆHÎúùåw>ýüÎ©éé^¿ÿÂÉ“§OŸžž}øøáÝ/¾˜]X<xä¨ñù¾ýN¾pú³[·>~Üëõ‡E¹¾¹ù›k×Ožza}}ý“kWoÞ¹]p`GOÖÖ>ºôq>=xñìÙÛ·ï¼ýóŸ³Â…ˆ¼÷Þû­ol‡C\04ÖUÜ7Ùîêúhj#ç`vŸlm®®•;±‘2¾ÿó÷>½ð‰ÓÝíÔGŸ?137Â™Ï —»ˆÒŸš0Þr¬Ër80ÈÔÔÄôÔ$\0äG_½qãéêã¼—Û]KWîÝÙžšœ*Ëâä/,ô²ò`iþ›?ø7äÈÏ[|ç~½¾»3’XÚ58ƒ”÷z„Œ­\'Ë°0³°¼´£á°çò…™ùÙÉ™²(ï}~÷“—ï?¸Ïe¼æ®FáQ1\\œ_‰\0€KKGžž1Du¨ë²žèMÜ¹u\".,Ì“±ƒlÐëõsßsäöï[^YÜ·½½sws\'Tqÿòå¥•Â¹ÏÝ¼~smumkcëáƒGO7ß|óÍ¯}íeÊeY•uYÖ!ÄÿþqôèÑ×^íw¾ñÈ\\È2‡âvËÂ‘B|2Ú-,}éìsGŽD®êzuóéõ\'¥·s‡NÏÎd£ÑÈš·~õÁÙÝíeƒ!wÙüÌ×þõwŽ:B¤©Á\'·>[8|ðøKg«ºÚÕíO?Y8zÐOˆbÔTAy8Û›;>¾ôðÁƒÍ§›ó3óË‹Ëùd¬Ê§†ºª|–½rî•—_:?95µúdíöí;—.]¼ÿÅƒýár›e.BBAkŒ!SŽªÌõŽ:º0»°´°ïî{W®|š÷óÑpÔëæg67¶>þøâ•O>ýî¿ú®(vËjT­­>]šß—Yï\0‹ù|²?‘ù‘„hbqáÔë¯òÄàÓ›7Þ¿rÙ9/ÂG;¥w…ÅþäÔú¯ÿ9ÏóÃýû®]»þ÷ï¿÷uàW_}Íe.H\0ÂÂRáLèç•3,¼Ã–„äà\\ð^%+K‚­Pïp°ögÿmscãáƒ‡ŸÝ¼yéòå¹Ù¹…¹yCVå?#3öz}$\"ç}oÐÏû½õÍýueY{º¶³»£ºþÖY/+ÊQYÎ»:Ôu¨Á8Û7fjzjvnvqiñ{ßûÞÜÜœïgeY‡»SÓÓÌ\\WuæóAo ÌQ\0fçÿäÿäÉÚÚÝ»wo\\»qóæg?üáï>}¦ïsŽ\\ŒJ¥”E1ÜÝ­Ê‚cPb€÷>Ïó,Ë&}C´µ¹±³³3èBÆPæ­%BÄßýþï:ï¾|pÿÚÍÏ80˜˜Ø-FÅp411A–ÀbáÕÕÕ…Å…<ÏëªrÎzý^–•e1*‹A bý~#¦!U§’•F„˜÷sëlªé¹™Áä@17Î¸¤%•X×Üó½“ÏŸüÓÿò§‘ãüÜüáÃ‡f¦g˜¹®ƒªnù,\'¢Á`\"FvÆ:p@B¼yíúÎæ¦!˜žšž›™½sçÎ£÷ïß¿³=Z]}2;3359å¬šš:îüw¾ým@øòË/?ºð±!S×uFÙs+Ïy´›kë—ÖÖ¯_»~çÖÝÏÜš™šÉ|63ãa4*†»ÃÝÝápw¨6—âzùÙ—Î~íõWàÉ“\'.]Úî.ØßŸœ`fßË­ó9åKûöÝþâ^êí­Ñî´Ÿ²ä\0À¢Ë³<„ëØÏûnÚ@ž÷VŸ®=ÝXŸš˜¼ÿðÁÓõõ¬×cû7ÿó©ßJ¬Ê•ù…©¼†£­§O{Îy¤ŒŒ0ÇªÊ#fŒ±çÜsË+—>¾pçÖ-kìÆÆÆ£Ç€ g§¦§Þ}ïÝ›Ÿß<zôØ©S/,ï_¹òé\'ëëóós\'Nœ<ýâéë×¯ÿíO\0½~ˆ–––Þxã,ËœõUYmmmOOO;GÃÑðöíÛwîÜ‡\"2ÓSÓÖ8ð>[\\X|çw.]ºtøðácÇ>]_»üÉå«×®2óöööÊÊÊÑãGýÃG;~ôÚõk÷¾¸ç½7Æœ:uêÈ‘#ì½;÷Ò‹‡úü³Ïßy÷ÝkSSÏŸ8\07nÞ\\YY9{öìüìÌ™çO¬Þð«_¾wã7Ÿöƒ²(Nž8yìØ±—_8Uoï¼ýÓ¿3Î†:”EqîÌ™çöís±,sk1E±öø‘ðÆ¨2L(
 .+‹¨$¯.ÄÑ»Ì»lrbòø±ã-}¥É…YÍÈ„º~øðËÛ·o?xð Æh­}üø±sîüùóˆè½{þùãÛÛ[?ùÉO&\'\'www™ùÌÙ3SÓ“,|÷ÞÝ+W®„Ê²ÜÝÙšžúößZœ_ôÏ­\0€¢(¬µûWöÑùóç_xáTžç««OnÜ¸q÷îÝ>úhgg‡Œý‡>þÞï~ïÀþ»;»¿|ÿýõª¬¶w¶à»ßúö‘¤¬Ö××õ«_mnl1eYnl¬Ÿ;}æìÉ¦{ýXT._þâË/ïÜ¹}ý“ß8¡[‡n<ÿü‰Ã‡õóüÍo|ëâÅ‹ÿã¯þzyeåÎ;““¯¾úÚ¾…}¸±±¡ª]Æ˜Âää¤µvkkëñãÇÌó\\©pwîÜY\\\\œ1îììt…Ä¶¶¶úýþÔÔF#Ç{½©Ú›1f0QY–EQè×•eÉÌ‹‹‹ˆøðáÃápxøða%Êé¯²,UVD²,Ë²ÌZËÌÃápww7„0&\'\'‹¢(ËR]Gúý¾÷^%àúý~Y–úûº®5ÀÒËÜÆÆÆÄÄD–e!Íê!bY–Ãápzz:ÏscŒˆìîîE¡íÏó\\ÃYÑ×ô\08çœsEQ<~üxii©×ë‰HY–kkkÚ9ÖÚ²,=zÔëõ–––þ%\"	]¾¡övUU»»»:A‹¢Èó<ÏsÂÒ–ŒF£ÍÍÍ‰‰	k-\"zï5[9‹¢pÎiyÝÓëõô3‰‚1f}}}cccee%Ïs0Š¢ý–eˆ˜ç¹÷¾®ë\'OžèWXk1::\0PUÕÆÆ†ú*Ý9§“A‡£®kÑÖ.òÞOMM©èvUUeY*õ²ßï÷û}k-vÍ ,K\0Ðo}Æ~SGZÛÚ}h³Z/9ï}WÇ^}>­µÚ±ÖjÓuJ©t24¤6íëv`F£Q–eÎ¹º®ëºÎ²L“Æ!í¯®—ƒVëºÖ6´~]¹Ý®š_ëdcÔ¶©GlKŠ`fÅ¤P×ñÜÐm]óÚÏ<#ã¯ß«§;?žÑ•ýGã§é—Æ»:ëJ‚m;MÛÖý½ÎÊyn_ª}ñ.Ï§í|ýcUU‰–˜0c!è’<ÙîŒ²µµçÛêÇž…ñ7‰­f·NŒ®Ü¢¾]]×eY&7£V<±H|)©£Ž–~8„ unˆxí›·\"öú“®Íœ~«¾ª®}²NcÔÃ¨Rg}ívµ´Ûnúí‚©ªJƒþÃ¶ô-Úh§ˆmí+èçõ\'úW­Dw>u™®­_”¿¶_÷ŒvžéºjÛ?OUÞn+mµý½>S7­Æ0{¼Ú6ÆTU\0ÞûîSU•’W¾*Ó kŒqÎé\0µ¾.íÚlÛW]Ûí¨édíöU;ô™ÝqïjwêÃµÛ±Æ¢(ÚÙ=¼Úan\'»~«®éöUuÖv>]ví	¢Ã¬ëLûQ_^\'‡n¨ÚVmŸn½­ßMÛïI¬¾y·®]“>ª}²[:iº{OwCÕ/m—ŸÆ$ºš»ó²=d“N³ýtÏ_Ý†Û“®…>3¨íO´%íð[é’k§»î:mÚVµ‡O×x­ý|ûa…íÁ•,+¿¢Â$1Ù!¡
 s´o¡[À3ÎÖíëèOºMËÑÓå4V»išª»IÛÿí`µ3-HY–úÝ1FÝuè×&ê¤n_»^íð´×µ¥ÓO¶óÕníú1t·ºîÔž>íH´Ôž2ú’m4¢­mOêî7†tèªû„¶¯Ûhw¦î¶Ó®ÃîñÝžÑ]ûžv,õ‹ôKÿé9Úîs­.n×¯¢ímŒÎžvÛÓ¡m|ÛŸíê¥Æ¯¬;G»l—·>J»Wÿy£Ê”ÖöpÛÏíq×Bm«ôç:ßôÉõu›§½ª“J›Q×õÿ¾2É=\0\0\0\0IEND®B`‚","female","Approved","12/25/2018","79191203");
-INSERT INTO student VALUES("KICTC-DIP-003-2020","Sara","Felix","Simbo","ITT","OD-ICT","2018","6","kweka19@gmail.com","‰PNG
+INSERT INTO student VALUES("KICTC-DIP-003-2020","Sara","Felix","Simbo","ICT","OD-ICT","2018","6","kweka19@gmail.com","‰PNG
 
 \0\0\0IHDR\0\0\0á\0\0\0á\0\0\0±ÑE-\0\0-^zTXtRaw profile type exif\0\0xÚ­œin$9’…ÿóuÒ¸‡+07˜ãÏ÷’:3»
 h`º²”‹áN\'ÍÞb4†;ÿû?×ýõ×_Á[h.åÚJ/Åó_ê©Ûà/Íþï÷àÓûýýw¾þäß¿}ßýüÀøVäÏøùg+_¯ÿþþ¿.ðùcð·üË…ÚúúÁüý=}]¿ýq!ûü5\"ý}]¨](ÚçáëãóX¾ôV}„y>~½ÿ3|9ýfëëe_/þóß©2{;sŸhvbˆžß-Úg\0ñ}¹8ô~·Xxaˆ™¿çßïýëbLÈßÍ“ÿeTîÏUùù[ø‡ïÿ±(±|¾ïøÆï“Y~þüÛï‡üÇ÷¿.èÞÿrç¸~îüÛ÷G³òçã|Ý»›»÷|žn¤Â”–¯‡ú~”÷7^8™òøÞVøUùÊü½¾__Í½‹%ß~ùÉ¯z0fÿ†vá†óþ\\a1ÄdÇ*š-‹ï{-Vë¶´j!&ý
@@ -8978,7 +8988,7 @@ K¥,Ë\0¥ÄhíûÁ_ýâÏ‚K—.icNœ8†å8I²,	Ã\0h£•–™Hûý(Í2B±6*}L T{QÔév+Õ²Ò*“)wàÜi^iå
 þû¿ÿ»±±ñ(êcNœ8^­UñàöíÛ×®]s]W)Õét1§OŸ¬Vƒ$é?|øð‹/¾ÐZ;ŽÓï÷³,ûÎw¿SŸ™Je¶òhùâÅRJÆXš¦ƒxðÚëoìÙ³OuãÆí_ýêWëëë‹‹GŒF_]»>55uèÐ¡Z­Öíö¾ür©Ûí€\"Žã]|iª>·wß¡âêÖÖÖnß¹søðá\'^š˜œÜÜÜ\\ZZÚÜÜtGHÑh4)¥\"ŒC»Ý–RÅöR©D)m·Û«««óóó¾ïÛÚÕÆÆF¥R	ÃPk¦iEcÇqìÐáœsÎ1I’!’$‘R–Ëe[Æ—R
 !jµ\0dYVø\'aŒ9ç®ë€}£ëºÖF’b†öÑùy,¥®ëbŒ…Y–¥i*¥ô</‚^¯g¯\\\0¾ï;Žc›â8¶\"ßJ)kœj?¤×ë…aè8ŽR*Žc!„ã8RÊf³Y©TJ¹åº±×2Œ1a2Æl‘Õ¾+?û`ŒY”n·ûèÑ£ùùù0mo<}útlllllLkeÙòò²çyÓÓÓ²`?
 /\"Ò‰\"Š\")¥=R±,®ëÚa[›¦©-¯ZzcÌ¶6Ë2ëwhÍ‚ °×˜e™õç,°§”Ò¢gì‹q^×Ó¾ïÛÑ^ô€åÈÇqÌ+RO§Ó±ZÇö•!!ÖN£\0¡GQd©K6\0lh¥ijŒ	‚À4BÀ~DAé²WX´^kM©-+‚\\Ó—4Ê™Ì²¬ð¬ÑZ!ìöO–\\ô{®š4$ª!Ò4õ<Ï^†Â6ÑF¹½¼B‹Y)eÿúLv‡B)e›akužç{?ìM•RÚA2´ÖAØd»uTD¼¸[Ï¤¶„íî‚‰Ÿë}#ìë˜ËŒù‹¶I¤è(ûÕ…½Nñ°]j{Ia¶uµwaèî¢l ÚÐ´Ý(¥,îŽÙ.Q]ˆü[Âªí=ûÜ–¢¶¶aE‰íÉÜ¶ÞZ!dsÖ]ÎÂ5ØŽIM¢£WœdÚo²4z‹n³—½Ô‚0i»¦-bÔÆ_š¦¶×ì\0-¨;;8æö®ØµM²ßk,ºØ~¸NÇqlo@š¦£AŸÛSRìlkÓ4µ+¬mK²,³éÙŽB™Óæ-È]«e1mŸŒŽí‡éÐno›¤º\0à8ÎèP¢*î]aU|¯µw‡š5äœ“áÏ·¢UBˆ\"Žm\\ší2E{FÃ€1f›Á9·7®röF=_ÜP›¡ìWP!„}¶]e`ë›¤”Y–ÙD]4}t”ÛUŽ}“ŽÂ¦®Qn{Ñ”ÒQ¢p!©P˜ïŽæÛErE9ŽSäx£²óEÂ•±ŸPŽm$—l£ÜÆw6°/NÓ!Äó}_)eó¥ïûEÞU±-´·ÄcoIÁë/ÆXq¥ßyEHÙÏ´Ájcg•\"•Ã‡½¿vŽªm°‘aÛoÛVØNïHlŽã7Îf7;¿É²è“\"Ä97Û;œŠ]ôÕh›Ç)\"D)v¬Û³kJ;9Ú•èhÛ—Ù‘d_YôÑP(r†McöeöIÑn»(E>³ßR¬bG?¼øX›\0ì¥Úµ©ëºÅ‘zq·ìG÷£ˆQë)jÛ_Äe1wè˜Ñ¯.Æ’àFc¨˜Lž—FAÌøEèêmþÞÅ­½êb`ìÈÅeŽ¶¿˜Iíó\"î^´iÌ³\"ù²0·m£ÉxÇeŽŽ“\"fìÂcÇ„Y¼Ë¾Æ6¯˜íWü?*àáPfyÓ\0\0\0\0IEND®B`‚","female","Approved","12/27/2018","79191205");
-INSERT INTO student VALUES("KICTC-DIP-004-2020","Eliasi","Eframeni","Pallangyo","ITT","OD-MFT","2018","6","kweka20@gmail.com","‰PNG
+INSERT INTO student VALUES("KICTC-DIP-004-2020","Eliasi","Eframeni","Pallangyo","ICT","OD-MFT","2018","6","kweka20@gmail.com","‰PNG
 
 \0\0\0IHDR\0\0\0á\0\0\0á\0\0\0±ÑE-\0\0&µzTXtRaw profile type exif\0\0xÚ­œiŽ]9r…ÿs^ça9€wàåû;|™©’ª
 0à.µRÒî%gò¶;ÿóß×ýÿõ½Ë¥õ:jõü—Gqò—î?ÿÍ÷3øü~¾ÿÎ×Ÿüû·×ÝÏ‘—¦Ï?{ýúü÷ë¿.ðùcò·ò—õõõ†ýþÆÈ_×ï\\(~þH‘þ¾¿.4¾.”âçðuù™–¯£·¿NÁÎçÏ¯ï–ßN?âúúØ×‡ÿüwn¬Þ.Ü\'ÅxRHžŸ1ÅÏ\0ÒûíÒÔüŒ©òÁ
@@ -9598,7 +9608,7 @@ pcã|ÙMÅD}!È9Wy–U3ÙaázÝÝÝñèö‡¿þº½½Éò|¹X,–«¼È­5Þ;kl^¥1Þ9ë¼q¼×:HÒøðp4¬µBÎJc
 INSERT INTO student VALUES("KICTC-DIP-006-2020","Merry","Jumanne","shoo","ELE","OD-ELE","2018","6","kweka23@gmail.com","KICTC-DIP-006-2020.png","female","Approved","12/23/2018","79191201");
 INSERT INTO student VALUES("KICTC-DIP-007-2020","Anna","A","Shayo","ELE","OD-ELE","2018","6","kweka24@gmail.com","KICTC-DIP-007-2020.png","female","Approved","12/23/2018","79191201");
 INSERT INTO student VALUES("KICTC-DIP-008-2020","Neema","Azziz","Materu","ELE","OD-ELE","2018","6","kweka25@gmail.com","KICTC-DIP-008-2020.png","female","Approved","12/23/2018","79191201");
-INSERT INTO student VALUES("KICTC-DIP-009-2020","Elvida","J","Mahela","ITT","OD-MFT","2018","6","kweka26@gmail.com","‰PNG
+INSERT INTO student VALUES("KICTC-DIP-009-2020","Elvida","J","Mahela","ICT","OD-MFT","2018","6","kweka26@gmail.com","‰PNG
 
 \0\0\0IHDR\0\0\0á\0\0\0á\0\0\0±ÑE-\0\0#zTXtRaw profile type exif\0\0xÚ­›k–\\§’…ÿ3ŠïÇp€€µz=üþ6Y*Û²ÔË·ïµ¬ªRVæ9@DìGÀqçþûºÿâ¿Šw¹´^G­žÿòÈ#N~èþóß|_ƒÏïëûï|}çßyÝ}ÿ\"òRâ{úü³×¯÷ÿxý|¾M~*ºPß_¿XýÅÈ_×ï?](~¾%H?Û×…Æ×…Rüü\"|]`~¦åëèíÏSXçóýëóŸeà¯Ó—¸¿ÞöõæŸÿ«g…û¤O
 Éó5¦ø@z]šú_cª¼1¤ÊÏ>õ÷zÿºò«uò•û9*ß?…ß¼þSPRý¼îxá¯‹Y¿¿ÿòuRæ¯¯]Ð½%þÓÓþ¾ó_^)œŸ§óãï½ÖÝ½ç3»™+KZ¿&õc*ï\'Þ¸Xòô>VùÓø[ø¹½?ƒ?Ý‘½››ß~ñg‡\"«Cf¸á¼ï;l†˜ã‰ï1î˜Þk=µ8âVÔBÊúnli$#^1mÂ›x5~%¼ûŽw»:7¶À;càbA©àôå?ñç·ºW)‚ïßkÅ¸¢’a(rúÊ»H¸?ò¨¼þñççÿ×DË[æÎ§_ŸK¬¾rKy”^ o,|ÿÔZhöu–ˆ{ð5¤jð-ÆëØ‰ÏäB=¦!¥Dc”1\'ª¥Åuo>ÓÂ{o,ñó2˜E 
@@ -9929,7 +9939,7 @@ X{I‹Ô>™•§£“±YQìñã\'OŸ=Ýv+·ºj€•=i\"\'“êÕ×¿¦0>žŒ§åñ²IÍ*5IPcé]œûà*ÏÅáäï\
 îŠJMªMÓ4!TÐ{ÇÆ\"um;›õÎ¹êÞ¹ÿöOš*<G?›¬wÿq_+t¯ýïxD¹LÞÀ¹Æ±óä_½zõóÛËw—ËeáÂ¤œPF,‚)[Í¢ë¾Z„¦m¹¡ëay}µŒf×«‚E†1Ý.GÉÙÏZÊB€(JÌF>«Š129rà¼ ±±ˆ 0sQ‘KÉ
 à|ï}\0ò1NS1Usu?GMÕÜéé³”’sr*¦PŠ¤”C\0b‡Dã0tM@ÕYß;Gä™E¢Ûæz…­ND°Cð•™z/öbl*>Ú*}’¤óX®?(!Ïª;©}T²FJ•jv¨D$¢j;XŸµHJ)Æˆ!¸zU-¥ô´}Ê£qô³•÷á¾ƒñ?Q.²§;6M§\0KÉ9Evýòjyz~š¥ÜQÛî<îÛ_Þ]¦d}¿hÂIÇ4_4‚:ë«›Ëw·wÔÎÁuPÈ#9ÄºÀà±@ŽÁ,0x/HËõ ªHlF©\0  î¨•œL‰²iÎÂŠ†Þ{ŠLOSj„\\ßÿæŒ’k˜\0“œDŠ ’ˆ9‡´^.Ùæe\\{þu×Î;ïd-)(ñ½µˆHÉ9õ]‡K†ï>ÿ{mŽOÈïì+ÉêQzÊaô2½×ÐÞr7:ïj/RD\\UäÚÈ¹˜`ß÷•´p}}íƒoÛvµ\\Æ”¨
 ÜSC¹rtvã@Ut»m«ûQó€ÎüQƒ\0\0ÞoøY¶/íKD¶Qmúhü‹@5£ÕŽ6øÞY-Ãz}²X¬Vë£ã“3ñonÓ¼mÖ¿¼»\\ÞÎõ/ŸŸ~}vœïˆÞ½ÓÎˆÒP`Èúý«sÒ¬ñÑÀÈ¬aûöl1æ<‰Å¬Ä±@R,fj[ã{3D®¬ãÉ‰(ÆRr12ÃàB×Ú8ŽfÀ‰]ðHx{së–ËÕ¦o(Ys,9gÐMžqÄ*jjVŠwÁµ.|¢¢ÝOªVŠ<¦àf_Ž}þ´’‡±Ö\0Lïù£fv ê±=4UZç>< oucŒ1E\0kš¦l©Üû=Ó‡Ú„l\'1òÐ`w_êç@(å1Ñ{„s\0Ãm†	UÇ[À!¥DJ¦*±Äõº<ëâÙ7äèCsÜÀ¼kƒ²¶›)©äåªô¼\\­Æ,~ÞÍŽæW7ÉwG`4­WKÄJÌ9#=[Ì”ÜíjR)ùv-€À¨UVb‡ƒB›ÝibvŽJ52vcÊÿèýOÀrT\0\0\0\0IEND®B`‚","female","Approved","12/25/2018","79191203");
-INSERT INTO student VALUES("KICTC-DIP-010-2020","Martha","Chriss","Mgaya","ITT","OD-MFT","2018","6","kweka27@gmail.com","‰PNG
+INSERT INTO student VALUES("KICTC-DIP-010-2020","Martha","Chriss","Mgaya","ICT","OD-MFT","2018","6","kweka27@gmail.com","‰PNG
 
 \0\0\0IHDR\0\0\0á\0\0\0á\0\0\0±ÑE-\0\0!zTXtRaw profile type exif\0\0xÚ­›iŽ9’…ÿó}îF‡+07˜ã÷÷™Y’º
 `Z*åîNÒÌÞbd¹ó¿ÿsÝ¿øS­d—‹µÚkõüÉ=÷8ø¡ùÏŸñ¾Ÿß×÷ç|}ç÷ß^w?oD^J|OŸ_[ýúü÷ëÝàómðSùåFm}½1£ç¯û·?nôõ ¤E~Ø_7ê_7JñóFøºÁøLË×Þì×)Ìóùþuýgøçôå®ØõZ™Ÿ÷þü=«·ÏI1ž’çkLñ3€ôþ¹4ôÆûZø OÆÏß_¿§Ä‚üÝ:ù_FåþŒÊÏOá^ÿ#(©~^w¼ðûbÖŸïûz(¿øî-ñ/ONëçÉ¿½nèNçûß½»¹{Ïgv#W–´~Mê{*ï\'>È²çô.«ü5þ~¶÷·ó·9²wòí—Ÿü]¡‡ÈêßÃƒqœ÷}…Ås<ÑøãŠé½Ö’Å—¢RÖßp£¥žvjsÞÄ«ñg,á=·¿Ç­Ðxð|2n”
@@ -10146,7 +10156,7 @@ IW`ê¦Ewb*É\"¯œI¢Ê Q’®hÚ9\'š·ÖÚnÚèæÈƒœ³U<­É•áL³½‘ðöÛoÇ‹¢§£žÈneÙ/¦ñ¯ðèÕzðèÙ
 1F9_¨ªChš¥Šzì
 ¤Û¶F¯?J¤š£¥²¦ûûMÓ0”XË:ÇXçäœó¾0Á,\"rEp bV…å¸ööwïÝûÀõë×ß¼uû‡?üáÉÉÉlZÇv?Ñ®™Öëºò£Wë…äG?—5LêŸQ¡”Z\0õãøøñÑéé)‡)VÃÞ/K§]o\0?šÚs@d^PÏL^_MéÔ~[\"¨õ…:ewv¬\"Ÿéáµ]Ä8Q¿—ÒèMÍÓöî_%d‚h7´ÉÞÂ~—/5Ïèâéÿ—~âó¹M&$
 >Ó3üàÁï\0÷îÝÿ§ÿôŸ½úê×¿ñ¯CŸ£˜ÎÿïÚa ‹ªÌ\0\0\0\0IEND®B`‚","female","Approved","12/25/2018","79191203");
-INSERT INTO student VALUES("KICTC-DIP-011-2020","Neema","Shaban","Athumani","ITT","OD-ICT","2018","6","kweka28@gmail.com","‰PNG
+INSERT INTO student VALUES("KICTC-DIP-011-2020","Neema","Shaban","Athumani","ICT","OD-ICT","2018","6","kweka28@gmail.com","‰PNG
 
 \0\0\0IHDR\0\0\0á\0\0\0á\0\0\0±ÑE-\0\0ûzTXtRaw profile type exif\0\0xÚ­›ir\\9v…ÿc^€‹q9#¼/ßßA’,IUÝá·TER™ùÞîp\0tçþûºÿâOMÉ»”k+½ÏŸÔSƒšÿüïkðé}}Î×wþýÛëîçÈKÆwûü³•¯Ï¿þ×>ß?å_nÔÖ×ó÷7zúºûãFñóÍ4\"ý¼¿nÔ¿ndñóFøºÁøLË—Þê¯S˜çóýëúOøßéK\\_ûúðŸÿN•èíÌs,ÆcÁ<_£ÅÏ\0ìýïlè¾F+|0Xy¯D¾zûžù§8ù_FåþÌÊÏOá_¼þGR¬|^w¼ð{0ËÏ÷|=ä?^ÿº¡{!þåÉ¶~žüÛëë×?¦óýÿ½»¹{Ïgv#BZ¾&õ=•÷ä&ÉÞe…¿•ÿ3?×÷·ó·9ªw‘òí—Ÿü]¡‡HôoHa‡n8ïû
 ‹!¦xbå{Œ+Ú{­Y=.e-XÒßpcµnÛ[¤×x5þŒ%¼çö÷¸ÞOÆÀÍ”ãèôå?ñ÷_Þè^•|¾ýÄŠqE!ÃPæô•O‘p¿ë(¿\0ÿýóòjd0¿07&8üüÜbæðU[ª#{‰6>˜ùþéµP÷×ÏÎ&ð%X%øc86ò3¸Q‹–â$!ç¸eLF·ÔØ¢žÍ55¼ÏÆ?/ƒY$\"ÓL•Ôtä*lÔOMÙrÊ9—\\sË=b%•\\J©Eà7ªÕTs-µÖV{ÍZj¹•V[s­·Ñc7À1÷Òko½÷1xèàÎƒ«cÆi3Í<Ë¬³Í>Ç¢|VZy•UWs«¯±ã¶Nì²ën»ïqÂ¡”N:ù”SO;ýŒK©]»éæ[n½íö;~²Ü\'­ûûÏZøÎZ|™ÒëOÖ¸´Öï[ÁIVÎÈXLŒWe€‚ŽÊ™o!¥è”:åÌ÷HWäÈ(³’³ƒ2FÓ	1ßð“»¿2÷[Þ\\Jÿ¯¼ÅïÌ9¥î?‘9§Ôý‹Ìý=oÿµ-¶YÞÜËÚPAõFûñ¡Az¡]A»ÚFVñï!šñŸ¾\'gÙO¢ÙÚÊi§Zy±íÕODksÏÔC[;ÇÉ—²Æ
@@ -10435,7 +10445,7 @@ H
 öº_g*½Œ¼uÍŸ{Œ$A’^ÿ~M àX€Ú»‰ó(,^°¾< ÊLðà\0IË*Í™7ýÅw&ª’å/AHJßó0!D¡ŒÉbI‚þb×;ïµ·whºn»¶ãÙTª\0ã^@Ù‹Ç+¨ª,ßåf8Š|_z^ÄRUUUË+‘HÄu\\)¥¢ªœ3ÇqtMç‚mÙòdSÓìl6ýÚï~›/8!ÃÐ T²t]GHú¾ÏÃSª8ŽÍ9‡2œ•¡Tß÷|ß§G£QÛ²×åŒc¡pXUU)¤ãØ®ë•Ct€‡†r›7olnn9pàÀ±Ç³ƒƒ®çpÎCFHUÕ@ô”1¦iú˜–¥rgÙ–16M30A×µÂÃó]ÎXÀPU0âo“1†ì•çQy½*¯”*âjf*oÄ¡\0a)‰”pÓ?ö‹Üw‘\"[¦ÍÝ$ðä—
 ¥ÚºdÄù¾oÛV™¼€Áç’Å+lÛ¶lGUÀXQU.|&ü\0ÜÄ8\"€‰D(˜£i ‰;ïeœ¢½\\ðK°A!Bªª\"„¢fÔ¶íìàP4fýcŒI)h Þ#™O!… ”J))¡•#®ë)I™«£&\0Háyža„Ð R\'¥¤”\"„|ßF£±X,ÎpÎ0Æ™Â0B®çrÆÃ ŠâØ¶”ˆN0‘H
 Î5]g>@BJæû	Jñ˜Ž\0ÆüK°DX¥—›Õ×øÃåÎ£òÒ™\\\"\"áæÛhsó½_õheZÀ8P×D\0q™d:Æ¹+Žü2Ðî:ÆaÁü›¡zLµ¿¨(ð­šþ!koÎ¾þJK‡ñ©iÆ\'³z€k}oáòwà:]~s†2©ñÃ$}þ¶|“÷UÊÿ¬,™ôöœª\0\0\0\0IEND®B`‚","female","Approved","12/25/2018","79191203");
-INSERT INTO student VALUES("KICTC-DIP-012-2020","Heavenlight","Raphael","John","ITT","OD-ICT","2018","6","kweka29@gmail.com","‰PNG
+INSERT INTO student VALUES("KICTC-DIP-012-2020","Heavenlight","Raphael","John","ICT","OD-ICT","2018","6","kweka29@gmail.com","‰PNG
 
 \0\0\0IHDR\0\0\0á\0\0\0á\0\0\0>³Òz\0\0„iCCPICC profile\0\0(‘}‘=HÃ@Å_[¥R*vâ¡ºØ‚¨ˆ£V¡B­ÐªƒÉ¥_Ð¤!Iqq\\~,V\\œuupÁ\'G\'E)ñI¡EŒÇýxwïq÷ð7«L5{ÆU³ŒL*)äò«Bð!DÆâ3õ9QLÃs|ÝÃÇ×»Ïò>÷çèW
 &|ñ,Ó‹xƒxzÓÒ9ïGXYRˆÏ‰ã]ø‘ë²ËoœKûyfÄÈfæ‰#ÄB©‹å.feC%ž\"Ž)ªFùþœË
@@ -10683,7 +10693,7 @@ cóPËOÄ0ª\'kVl¸šChse³è½rÙ“¯^BúÆ=¼íÿös‚ö’¦ûÖJu3.8ÕK‡òù¿õ0t!JÊä!qô„i NC^šlÇØ
 …^¯—õõu¡d3oooókäW‚Á ©TŠt:Ëå°Z­g*D¥V«	ŒŒŒ`6™)•K,,,099ÉÝ»w¹xñbSO•\'E}ÁjµríÚ5òù<v»]Ø…’$FYXX ‰ðÊ+¯2—Ë‘J¥Èd2hppµZL&C0dnnÇÃ‹/¾ˆÑh¤T*‘L&¹uë§OŸæ„ï’Vbmm+W® ÓéÅl6óöÛo£ÕjÑh4$	¦§§ùøã9þ<§N:p_Õ)Æãq&\'\'éïï§³³Sä·¼ó÷wH&·‰Åb„WÃ¼ÿþ?yë­¿Ñßß/°Í#šF- %ç¯ž+×¢©ŠE F±TâÁÃû¤* Z«–É¾ê¦‹EÊÅ\"---ÈVV‹¿€/_Àa¯«\0•J…b±(ŒïæjŒæM;NÞxãÒét}?á0ï½÷o¾ù&\'Ož¦ž[W7Z[[)•Jd2Ñ\'’N§éêêB’$,•J…T*E.—Ã`0ˆu)‰Ïz½žó=F­!c·ÛéëëŸÍf÷€ŒÚl6vvvH$=z´<ZÏñÔjµX­V\"‘ù|žJ¥!¾µµµ[ÁÂ»§8”ú4I’ÄÙˆ|Ò§?«ÕjŽ9Âøø8«…b±H{{û!ÚI6›ÙlsHZ	·ÛÍÚÚ±X•J…ÃáÀáp°¶¶F4¥½½l6Ëææ&z½ž¶¶6q&CCCBu»ÿ>ÓÓÓ$“IdYêø3Ï<ÃÒÒ*•ŠÕÕU>|ÈÒÒf³Y8U\"‘?ÿü3f³™/_ ×Ó+Î#—ËF‰Çã8¬6+†ŽŽ$I\"•J‘ÍfëÃÆ÷T*²,ÓÓÓÃÜÜ\\C€hikkÃ`0°µµE*•Âd2±µµE<§½½¶¶6AÉd’µµ5’É$¯¾ú*»MÇ>ýôR£z\\C>Ÿ§··ƒÁ°êy¿ç´¶Ú†Ñ`âäÉ¦¦§¹³´„N«c;‘àÁ¿ˆà†n—›àÌwù…®®.ü~?Çºº¸{÷.Ÿö9v»ÑÀ(§ÇÆ˜››ã³O/#Ë2---”J%ÚÚÚ˜˜˜@¯×?ÑœÏç‰D\"¬¬¬Pl<êB¡€÷¸›Í&ˆµ³³“ï¿ÿ³ÙŒÇãÁív300À­[·X\\\\D­V‹Åðz½`³Ùðz½är9VVV‡ÃÂHw¹\\x<áøàØ±c¬®®2=5ÍââbÝé¤V399‰×ë¥¿¿›Í†Ïç£P(0??Ïüü¼ðØz<\\.>Ÿd2ÉÕ«W…Ê[(xá…8zôè.CÙ×¢¯V«Q.•E÷jåa+ÞÂ§¹ÞÛ;Úiïhÿ¸¡jƒdqq‘p8Œ$IT«Ub±v»çŸ^H&¿ßO¹\\æÒ¥K8NÒé4&“‰3gÎ`·Û…Cevv–B¡@©T\"‘Hàt:¹xñ\"N§­Vû˜s0’Édxî¹çèííàÎ;|øá‡¤’)†††˜½5ËÍÙ›FGG…vä÷ûùé§Ÿƒ´´´ÉdèèèÀçóa±XˆÆ¢LMMÕ¤$‘ÏçI$Ò××‡Z­Æn·sîÜ9æææøè£„©Ô××ÇÐÐ`Ö\0kkkÜ¸qƒÁÁAdYÞck«b±XM1lNªàþ•J%òù<F£QˆÎjµÊN6[G‚ÕÖÛ>KÅzÛùZ­ÑÙªNZ­V¸r•ÃU&Š„(•ê\00*µJ¨oJ(Aqhm&æÏç)•Ju¨ì†C¤Z­R,Éår‚k+ûÑ5ê%×t¹\\ïu\"IuH1EÒV*ÁÕR8™Òø©\\.¥ìOq@4»·‹…\"åJY@M
 …—VØ}årY|S‘æ:N„O”ÇSmUö¢<ÀŒF£PÃ*•zègÖ»>2¿ÂÄþëpS:Vóú›¢r®Í4£Ü©Â<%IB§Ó‰{RhMéÆ Ü€ê~Â(êM•µV«5šsåŸ£SÎI¡•æ³m^·J¥¢T¬ßw3$xL×ÔO·&hJar€X
 êF…¿Bw’$íÑTÖ+qó=ý@›í‡=…üùÕ¨žPÐhûý=ó4çoqïæ‡ó4Âi.ù9È.RàIAÛ§ˆoLõ„VÌÿ[ÿQÖ¯õAóü/ãd@ÿšž¶F¥E-*Ev;ì§“ßÌ¯Uk»Eéû¾%\0ö|ÿÞŒ™ÃD•Ãñ›ü³˜Éš¶v8Çáøã†úðÇáøsÇ\0o‘ šj§Ð½\0\0\0\0IEND®B`‚","female","Approved","12/27/2018","79191205");
-INSERT INTO student VALUES("KICTC-DIP-013-2020","Gissele","Felix","Gonza","ITT","OD-ICT","2018","6","kweka30@gmail.com","‰PNG
+INSERT INTO student VALUES("KICTC-DIP-013-2020","Gissele","Felix","Gonza","ICT","OD-ICT","2018","6","kweka30@gmail.com","‰PNG
 
 \0\0\0IHDR\0\0\0á\0\0\0á\0\0\0±ÑE-\0\0%ÝzTXtRaw profile type exif\0\0xÚ­›Y’$7’mÿ±Š^æa9\0T!òvð–ßçZ$ÙÅ¡DXÒÍdfDx¸›Ãt¸ üÿÿ¿þ‹ÿæè5Ô6f_½Gþ««®¼ùfÆŸÿö÷oŠõû÷ûÏ}åç?<~ÿEæ¡Â×òóãì¿žÿÛãÿsŸ/›ïÚ¿\\hÞ_¿8üÅª¿®?ÿt¡üó¥hEúÞ~]hýºPÉ?¿H¿.°n+ö5Ç¿ÞÂñŸ¯¿^ÿþý“ï¯§ýzòŸ®ƒèYã}JÎ^R‰ü›KþY@ùþ†²õþÍ¥óÄTúÏ÷ü[Êo# §ø/«
 ÎÊïß¥óøŸ’RúÏãþÌþû×¿}<µ?=þë‚áñ¿¼s¹¿¿ó+ÿåv~ûûžÍðžÿÜÝ®ö_7õ{t¾‹<;„¼|/ëüüm|?¾?‹?3P½—”[¼ñðç¦•2Ñ©&K;½äß×›.K¬ÙóàkÎ7—ï±YF^ù*k©TýI/²Š•IÎ.é-<š_KúÞw}owÓä-ñÌœ¸XR)ýóñçß^è=•|Jqþ+Ö•q–¡Ìé_žEBÒû­ŽÚàßþüù?åµÁö…yrƒ;žŸKœ–~Õ–ê¨|‰.<±ñõ§×Ò°_ D¼wc1©ØSi©§8r)ÇI~6š¹Ô|HAj-«ÌµÐ-#Ï¬÷æ5#}ÏÍ-ÿ<f‘ˆFR³Ê&W6êgÔIíVZm­õ6Úl«í^zí­÷>ºÀo2êh£1æXcÏ2ël³Ï1g˜kî•WÛêk¬¹ÖÚ›7Ý\\yóêÍö>ù”SO;ýŒ3Ï:ûR>·Þvûw†»î¶lÅÀ	ë6lÚ²íÉ)%¯Þ¼ûðéË÷£Ô^yõµ×ßxó­·ÏZ
@@ -11001,7 +11011,7 @@ C$ö[Ë¡LïjœP
 #ÉX‚iN.™‚·2ØG°\0E\'µU²#‘¤ZTNRôÅ%ßÿþ#6‡bg‚ƒ¥vŒƒ<ÜÞqËÍÿØæÜÙ½rå±¯=rïo¾ãBˆHÍð¨6yín:úÂçÆÑêÙÍ›ßûÖwï¾|üéÍI¡JdS–ií7ß´¾ÿùé^úñcO|pyýúS¿.E2æz]•¢Ræ©†q$jádœfÌ¦•¸Š\'9õ1I9&#
 HÝ“Ym×Ò3çÂJ¹²Rê|º]†ÑTˆ7ã‘ ÊÊ¥{†ZFVEënÖ<¦Zˆ¡
 \'­Û»ÌÎ$,Ù\\ˆ:ÒÉœ”˜”¡šZe•PÓSØÆÒIx¢ZØXl‹ôýP[±ºmÝYwŽÝÒ‹ÉJyxKÚÝe$Rl8þ?meÉ9ÄX\0\0\0\0IEND®B`‚","female","Approved","12/27/2018","79191205");
-INSERT INTO student VALUES("KICTC-DIP-014-2020","Noela","Antony","Mtaka","ITT","OD-MFT","2018","6","kweka31@gmail.com","‰PNG
+INSERT INTO student VALUES("KICTC-DIP-014-2020","Noela","Antony","Mtaka","ICT","OD-MFT","2018","6","kweka31@gmail.com","‰PNG
 
 \0\0\0IHDR\0\0\0á\0\0\0á\0\0\0±ÑE-\0\0\'ÉzTXtRaw profile type exif\0\0xÚ­œi’]9n…ÿs^GXÇïÀË÷wnJê®rw„#ìR)•zùÞà ®Âý¯ÿ|á?øox¡¶>ÌÍ\"ÿU¯ž\'ßŒøóßü¾¦X¿¯ß÷×Ÿüý/¯‡??È¼Tø³üüuØ¯÷ÿ~ýøùcò]û§ýëë¯?ðúëøãoÊ?]‘¾?¿ä¿TòÏÒ¯ÌŸÛŠæ£ÿó-¬ûóç¯Ïÿ,¿ƒ¾äýëm¿Þü÷¿×ÎêÆyJÎ·¤ùšKþ¹€òýeê|ÍÅxc*ïk|ß[ÓÏ‚ü«uŠÿtUáïQùó]ú7¯ÿ-(Å~^¼ð×Å´?þË×SûÛë¿¾%þ§3—ýçÌy}¿œþ~;¿¿wFxïþÜÝ¬Æ’Ú¯›ú}+ßw¼q±äåû˜ñ«ó»ñ}ÿ~9¿F {7!?qÇÅ¯<eVÿ¥šNšé¥ûý¹Óæk¾¹ógÎ;—ïµQzö¼µDŒø•^îÅË!^¹lÂ[x5ÿ¹–ô×¿Óí48ñI¼3\'–”
 A_þ?~ýÛ½§”O)Ž?kÅuee—¡Èé+ï\" éýÎ£ö-ðï_ÿOq-D°}Ë<¸Á×Ï!VK¿rKyT¾@ÞØøó§ÖR?¿ÀqîÆÅ¤B¢‘üÉRì9÷”XÇA|&¹Ô¼Aj-®2×Bµô<²ÎÍgzúÞ›[þyÌ\"­Xé„ÆË$V`#zäÐl¥ÕÖšµÞFó6­XµffÝ~³—^{ëÖ{ÝûeÔÑ†>F>¦g/€csóîÃÝçä¤“#O>=yÃœ+¯²êjËV_cùš›ôÙu·m»ï¶ïyò)œ8vúÇÏ¼é’J·Þvíö;®ßùHµW^}íÙëo<óOÔRø	ëÿøõ¿ZúµüEJoì¢ÆG{ÿ}ˆ$8iŠË5ñ®ÐY1‹#ÕšƒB§˜EÏTEË\\eSpNRÄˆ`½)·—þÄî‘ûKÜB­ÿ§¸åß‘
@@ -11320,7 +11330,7 @@ TBièkðD6²BŠxmkçÞt}c–¦é|~qügQÕ³,$JQ½¬­±EUicâñ8™LH\"EÉ½§‡·?M¶v N˜“Œ[X
 I
 ikCÖËšÈ(¥â‘²LúFÀ²¹Î=‹Èhª*}±,i©·nn-Nÿùå§³Å…\\Ïæ©Õµ]³†LdŒT#CO7î>ÜôüÛñÎÝ:J*€j­ŒRRY·èn$z°R«ËÜLX×užçY–¥išeó\'ú¢kù…È(ŠG£¸dûdÏÄûÈN)ì¹acç
 ýH;èWÄËÂ>R(Þ@DJ7Xãö‡h‚õÝ5¨oò:Ÿ(˜ÁçÑA~ÝºSß·ÉTÜÓ“OmðË¯òÄ·JGŒJ@DK$gàe¹uÿe%W$B¡5Ö ÆjK…PÑÈŸ`°b+FeUVù…À$±uuçÑþ—ËZËè·÷ïÒ|¾´VÄ µÐK¡‹%)š\\¿ñ`ïèöÑ7“ûû%d›Ä$\'£4«Ækm­S;àð/ µ©ª\"/Ê4Ëæ³y–eeUY©¢$³ŒFQ\'¬òÇ7¿f‘‡Àù!z¼E[+x-t«ª¾üïÖ÷=…‡x3ØK/6r†P5öê×¬©‘3lµdû™¨«™lÓòp G$ÐYäp$¥`Cì¼:{u½zß.	¯­n)õJ¨¶·ÐéP„Ý¸ :XÛ¦5+Q>L^XxÜŒ?5\0%„T4Bc€;$Nþ‘H @PB… GJP’—A¼y{÷p}ã³[;ïï?øõÝÛô¯?Ny¾Äñ8©-M·Öï|~°{øâÚ½ýÊ()P§í„€#•8ì5N„€¬aT€ÐÚäù²\\æy1;›/Î‹óóe]+¥Æãq„”–ˆÃ±(•l€¤”ø¾%}q$w\\ÍŽÃèv ûëìáÊ<V•ÓÔ’R16¨u±¢ýœV¼-\0EÇØÙÞ[lÞÇ£jGhg5ç€Á´àÓO„ÿC5ç¿ÉEKÄú¿Y¥ÄßrP/Ã-KCÖX°B)¦ZßX»¾¹¾»½õõáÁ›×?¿yýêìÃ‡i½vãöÎÁÑ³ç/_ÞÝÛSÓ©@0äÄü°K>Ì<ÄI\'_N]›4M?ü}<;;ËóB×Žö9>¹|A)<‰Yh¼›\0\0Ãrt¥Öÿ`ru¥õGTb®üfÄ•	^rÿ\"q©öÕe>\0\0\0\0IEND®B`‚","female","Approved","12/27/2018","79191205");
-INSERT INTO student VALUES("KICTC-DIP-015-2020","John","Raphael","Boko","ITT","OD-MFT","2018","6","kweka32@gmail.com","‰PNG
+INSERT INTO student VALUES("KICTC-DIP-015-2020","John","Raphael","Boko","ICT","OD-MFT","2018","6","kweka32@gmail.com","‰PNG
 
 \0\0\0IHDR\0\0\0á\0\0\0á\0\0\0±ÑE-\0\0zTXtRaw profile type exif\0\0xÚ­šir;v…ÿc^æ,c„wàåû;(JOc»#Ü\"Å\"³²2;œHwþç¿¯û/þÕP£ËÅZíµzþåž{üÒüçßx?ƒÏïçûw¾^ùû§ãîû‘C‰×ôù³Õ¯ó¿ÿçŸ—Áoå‡µõõÆüùž¿®ß~¹Pü¼$H¿ï¯õ¯¥øy#|]`|¦åkoöãæù¼~}þþ;ýˆëë´¯“ý;ÑÛ…û¤O
 Éó3¦ø@zÿ]zƒŸ1UN©ð{Jõÿ6Uò§8ùFå~ÍÊ÷ßÂ_Žÿ’”T?Ç~fýþúÇã¡ürüë‚î…ø‡;§õýÎ?_7Ô_§óíÿ½»¹{Ïgv#WBZ¿&õm*ï7Nœ„<½U¾Œÿ…ßí}u¾š£z)ß~ùÉ×
@@ -11576,7 +11586,7 @@ G\0¹4®mÅ¬z(K,pÕn† 4ªLŠ„¬¢zÄ’èÌ…ä8dPwÑ6]-À²Qˆ”bŽT\\NÀÓÁ£ÎúÑPö’›ªCk¨ÞòŸj
 Åa„\\ÆhÎ¬eQ¤5’ê„Ç-Fž™sÎ9WUÕd2)]šœµÆÚÈ’$ªœÓt&’\\\0\0\0ÁIDAT©üyŒ¦£6‰Àƒ j!ÌmjÕtˆ”Éõ@(íC¢Ì”‚(iê9R“2*wié	C¿®Â Ù3tÅI·Nd£Ó*må]wë~¤¼á˜à„Á4j`	â+¡Ï!0\"sˆ™4Òõ’
 ŠAtD•5!„Þ{`Âèó‚Á•M
 ×«ßõ)þÀ<ÏH6%Ns=ºVi¨ãŸC¦ÿ\"Xc*çôÔôœí<ËÏ¢ÏvnN´ú…U”ÿn†šSr’§ö\0\0\0\0IEND®B`‚","Male","Approved","12/29/2018","79191207");
-INSERT INTO student VALUES("KICTC-DIP-016-2020","Miquison","Luis","Jose","ITT","OD-MFT","2018","6","kweka21@gmail.com","‰PNG
+INSERT INTO student VALUES("KICTC-DIP-016-2020","Miquison","Luis","Jose","ICT","OD-MFT","2018","6","kweka21@gmail.com","‰PNG
 
 \0\0\0IHDR\0\0\0á\0\0\0á\0\0\0±ÑE-\0\0\'IzTXtRaw profile type exif\0\0xÚ­œi®9ŽEÿk½IÔ¸QÐ;èå÷¹ñœ®Ê¬, .i?C\"yŠ‘áþÏ¿ð_ücÄPjm¶ùUf™yñÃˆ?¿Ö÷gŠåûóûuýÍ¿ÿôzøýFæ%ãoûùçh¿>ÿÇëÿ8ÀÏ_‹Ÿê?hì_oøŸß˜å×ñÇ_ôëD¦+Êüp~hþ:åŸ7Ò¯¬ŸÛŠmŽþÏ·à÷çï_ßÿYþúãí<õZõŸ÷þúïÒY½S9å|-YäÏlùçìû/ØÒßŸ•FëßÏ™?«¥_WÂ‚üÝ:Åºªð×¨üþ)ý›×ÿk?¯^øób¶ßÿíë©þýâ‡o‰ÿéÌ¶ŸùO¯·“Ó_oçÿÞ;#¼wîn•Æ’¶_7õÇ­|?ñA–½Ø÷µÆïÎ•Ÿû÷{ò{²wòwt~ï4Sfõ_*é¤•^ºßß;m.±ä›;ç¼³}¯ëyæ­¨%+ú^î6íØ b›ð¯æß×’¾óÎït;N|ŸÌ‰ƒ)Æ9èÿÄï{ ÷”ò)Åñ{­¸®¬$ä29ýÉ§HzäQýøßý¥¸¬ß2npEÿ9„×ô+·”GöÚø`åïŸZKýü:\0KÄ¹+“ŒÄF	¤–bÏ¹§Ä:â³8ÐÈV²‚Tk>\\e.fàŒ¬sóž¾Ïæš^³DµF9´ˆUØÈŸ^9´ªÕRkmµ×Qg]ÍZiµµÖ›Àouë¥×Þzï£Ï¾†2êh£Ækæi€cmö9æœkqÒÅ‘ß^|`-Ïn^¼zóîÃ§¯Múì²ën»ïöÜëäcœ8íô3Î<ë¦K*Ýrëm·ßqç]T{öÊ«¯½þÆ›oýŽZ
 ?aý—ßÿ÷¨¥?¢–¿HéƒýwÔøjï\"	NªbFÄrID¼+$tVÌâH¥ä Ð)fqfª¢f®²*8\')bD°Ü”ëK¿c÷Èý)n¡”ÿWÜò‘

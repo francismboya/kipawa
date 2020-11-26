@@ -1,7 +1,7 @@
 <?php // open IMAP connection
 $dns = "{imap.gmail.com:993/imap/ssl/novalidate-cert}INBOX";
 $email = "francismboya3@gmail.com";
-$password = "***";
+$password = "******";
 
 $mbox = imap_open($dns, $email, $password);
 // this will select top 10 emails

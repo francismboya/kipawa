@@ -10,6 +10,8 @@ function callpc() {
             $("#wait").css("display", "none");
         });
         $('#ajaxorg').load('loginpc.php');
+
+
     });
 
 }
@@ -25,7 +27,12 @@ function callmb() {
         $(document).ajaxComplete(function() {
             $("#wait").css("display", "none");
         });
+
         $('#ajaxorg').load('loginmb.php');
+
+
+
+
     });
 
 }
@@ -68,11 +75,11 @@ $(document).ready(function() {
                 } else if (dec == 4) {
                     $.notify("principal account verified", "success")
 
-                    $('#ajaxorg').load('index.php');
+                    $('#ajaxorg').load('pdash.php');
                     //principal
                 } else if (dec == 3) {
                     $.notify("student account verified", "success")
-                    $('#ajaxorg').load('index.php');
+                    $('#ajaxorg').load('stddashboard.php');
                     //student
                 } else if (dec == 2) {
                     $.notify("Instructor account verified", "success")

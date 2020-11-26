@@ -54,11 +54,11 @@ $name2 = $_SESSION['lname'];
                                                 <div class="col-sm-4">
                                                     <ul>
                                                         <li>Edit your Info</li>
-                                                        <li>View course</li>
-                                                        <li>Coursework(s)</li>
-                                                        <li>Course results</li>
-                                                        <li>Appeal</li>
-                                                        <li>Course Materials & Notes</li>
+                                                        <li>View Department</li>
+                                                        <li>Manage Academic Session</li>
+                                                        <li>View Result Summary</li>
+                                                        <li>Issue Public Announcement</li>
+
                                                     </ul>
                                                     </br>
                                                     Please select appropriate action to continue...!

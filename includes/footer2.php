@@ -24,10 +24,7 @@
 </div>
 <!-- End of Page Wrapper -->
 
-<!-- Scroll to Top Button-->
-<a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-</a>
+
 
 <!-- Logout Modal-->
 <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -51,7 +48,7 @@
 
 <!-- Bootstrap core JavaScript-->
 <script src="../vendor/jquery/jquery.min.js"></script>
-<script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!--<script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>-->
 
 <!-- Core plugin JavaScript-->
 <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
@@ -61,7 +58,7 @@
 
 <!-- Page level plugins -->
 <script src="../vendor/datatables/jquery.dataTables.min.js"></script>
-<script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
+<!--<script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>-->
 
 <!-- Page level custom scripts -->
 <script src="../js/demo/datatables-demo.js"></script>
@@ -117,7 +114,7 @@ function isNumberKey(evt) {
 </html>
 
 <?php
-include 'modal.php';
+//include 'modal.php';
 // JOB SELECT OPTION TAB /////////////////
 //$sql = "SELECT DISTINCT statusName, email FROM status";
 //$result = mysqli_query($db, $sql) or die ("Bad SQL: $sql");
@@ -349,6 +346,6 @@ document.getElementById("clim9").onclick = function(e) {
     e.preventDefault();
     var loc = window.location.href + "<?php echo $_SESSION['fname'] ?>"
     var passhash = CryptoJS.MD5(loc).toString();
-    location.href = "Rryear.php?" + passhash;
+    location.href = "adresult.php?" + passhash;
 }
 </script>
