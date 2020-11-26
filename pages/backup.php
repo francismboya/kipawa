@@ -8,7 +8,7 @@ $result = mysqli_query($con, "SHOW TABLES");
 while ($row = mysqli_fetch_row($result)) {
     $tables[] = $row[0];
 }
-$return = "SET GLOBAL max_allowed_packet=1024*1024*1024";
+$return = "SET GLOBAL max_allowed_packet=1024*1024*1024;";
 
 $return .= "\n\nSET FOREIGN_KEY_CHECKS = 0;\n\n";
 
